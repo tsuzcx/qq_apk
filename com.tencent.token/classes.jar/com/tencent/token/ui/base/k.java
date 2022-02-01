@@ -16,12 +16,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.token.by;
-import com.tencent.token.ca;
+import com.tencent.token.bz;
 import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cq;
+import com.tencent.token.cr;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
@@ -55,7 +55,7 @@ public class k
           }
         } while (paramAnonymousMessage == null);
         k.a(k.this, paramAnonymousMessage);
-        ca.a().a(k.b(k.this), paramAnonymousMessage, k.this.a, k.c(k.this));
+        cb.a().a(k.b(k.this), paramAnonymousMessage, k.this.a, k.c(k.this));
         return;
         k.a(k.this).dismissDialog();
         if (paramAnonymousMessage.arg1 == 0)
@@ -79,7 +79,7 @@ public class k
         k.a(k.this, arrayOfByte);
         if ((i == 0) && (arrayOfByte != null))
         {
-          ca.a().a(k.b(k.this), arrayOfByte, k.this.a, k.c(k.this));
+          cb.a().a(k.b(k.this), arrayOfByte, k.this.a, k.c(k.this));
           return;
         }
         if (i != 2) {
@@ -128,7 +128,7 @@ public class k
       return;
       if (i == 0)
       {
-        ca.a().a(k.b(k.this), k.e(k.this), k.this.a, k.c(k.this), 1);
+        cb.a().a(k.b(k.this), k.e(k.this), k.this.a, k.c(k.this), 1);
         return;
       }
       paramAnonymousMessage = (e)paramAnonymousMessage.obj;
@@ -197,15 +197,15 @@ public class k
   {
     public void onClick(View paramAnonymousView)
     {
-      paramAnonymousView = cq.a().e();
+      paramAnonymousView = cr.a().e();
       if (paramAnonymousView == null) {
         return;
       }
       paramAnonymousView = "" + paramAnonymousView.mRealUin;
-      by localby = by.a(RqdApplication.l());
-      if (!localby.b(paramAnonymousView, 523005419L))
+      bz localbz = bz.a(RqdApplication.l());
+      if (!localbz.b(paramAnonymousView, 523005419L))
       {
-        localby.a(paramAnonymousView, k.this.a, 523005419L);
+        localbz.a(paramAnonymousView, k.this.a, 523005419L);
         k.a(k.this).showProDialog(k.a(k.this), 2131230843, 2131231298, null);
         k.a(k.this, 1);
         return;
@@ -230,7 +230,7 @@ public class k
   
   private void a()
   {
-    if (cq.a().e() == null) {
+    if (cr.a().e() == null) {
       return;
     }
     b();
@@ -238,11 +238,11 @@ public class k
   
   private void b()
   {
-    QQUser localQQUser = cq.a().e();
+    QQUser localQQUser = cr.a().e();
     if ((localQQUser == null) || (localQQUser.mRealUin <= 0L)) {
       return;
     }
-    by.a(this.b).a(this.b, 523005419L, this.a, "" + localQQUser.b());
+    bz.a(this.b).a(this.b, 523005419L, this.a, "" + localQQUser.b());
   }
   
   private void c()
@@ -283,7 +283,7 @@ public class k
     for (;;)
     {
       this.j.setOnClickListener(this.t);
-      localObject = cq.a().e();
+      localObject = cr.a().e();
       if (localObject != null) {
         this.o = ((QQUser)localObject).mRealUin;
       }
@@ -302,9 +302,9 @@ public class k
   
   private void setActiveSucc(boolean paramBoolean)
   {
-    Object localObject = cb.c();
-    ((cb)localObject).i();
-    ((cb)localObject).n();
+    Object localObject = cc.c();
+    ((cc)localObject).i();
+    ((cc)localObject).n();
     localObject = new Intent(this.b, VerifySuccActivity.class);
     ((Intent)localObject).putExtra("mRealUin", this.o);
     this.b.startActivity((Intent)localObject);

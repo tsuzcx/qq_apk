@@ -1,31 +1,40 @@
 package com.tencent.token;
 
+import java.net.Socket;
+import javax.net.ssl.SSLSocket;
+import okhttp3.a;
+import okhttp3.ab;
+import okhttp3.internal.connection.c;
+import okhttp3.internal.connection.d;
+import okhttp3.internal.connection.f;
+import okhttp3.j;
+import okhttp3.k;
+import okhttp3.r.a;
+import okhttp3.z.a;
+
 public abstract class fa
-  implements Runnable
 {
-  protected final String b;
+  public static fa a;
   
-  public fa(String paramString, Object... paramVarArgs)
-  {
-    this.b = fb.a(paramString, paramVarArgs);
-  }
+  public abstract int a(z.a parama);
   
-  protected abstract void c();
+  public abstract Socket a(j paramj, a parama, f paramf);
   
-  public final void run()
-  {
-    String str = Thread.currentThread().getName();
-    Thread.currentThread().setName(this.b);
-    try
-    {
-      c();
-      return;
-    }
-    finally
-    {
-      Thread.currentThread().setName(str);
-    }
-  }
+  public abstract c a(j paramj, a parama, f paramf, ab paramab);
+  
+  public abstract d a(j paramj);
+  
+  public abstract void a(k paramk, SSLSocket paramSSLSocket, boolean paramBoolean);
+  
+  public abstract void a(r.a parama, String paramString);
+  
+  public abstract void a(r.a parama, String paramString1, String paramString2);
+  
+  public abstract boolean a(a parama1, a parama2);
+  
+  public abstract boolean a(j paramj, c paramc);
+  
+  public abstract void b(j paramj, c paramc);
 }
 
 

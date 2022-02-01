@@ -1,10 +1,10 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.bz;
-import com.tencent.token.cb;
+import com.tencent.token.ca;
+import com.tencent.token.cc;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -21,33 +21,33 @@ public class ProtoRealNameCardCheck
   private String f;
   private long g;
   
-  public static void a(dn paramdn, long paramLong1, long paramLong2, int paramInt, String paramString)
+  public static void a(do paramdo, long paramLong1, long paramLong2, int paramInt, String paramString)
   {
-    paramdn.c.put("param.uinhash", Long.valueOf(paramLong1));
-    paramdn.c.put("param.realuin", Long.valueOf(paramLong2));
-    paramdn.c.put("param.idnumber", paramString);
-    paramdn.j = paramInt;
+    paramdo.c.put("param.uinhash", Long.valueOf(paramLong1));
+    paramdo.c.put("param.realuin", Long.valueOf(paramLong2));
+    paramdo.c.put("param.idnumber", paramString);
+    paramdo.j = paramInt;
   }
   
   protected String a()
   {
-    String str1 = bz.a().b();
+    String str1 = ca.a().b();
     if (str1 == null)
     {
       this.a.b(104);
       return null;
     }
-    String str2 = l.a(new Object[] { "real_uin", Long.valueOf(this.d), "seq_id", Integer.valueOf(this.e), "op_time", Long.valueOf(cb.c().s() / 1000L), "id_number", this.f });
+    String str2 = l.a(new Object[] { "real_uin", Long.valueOf(this.d), "seq_id", Integer.valueOf(this.e), "op_time", Long.valueOf(cc.c().s() / 1000L), "id_number", this.f });
     str1 = "?aq_base_sid=" + str1 + "&data=" + str2;
     return c.e() + "/cn/mbtoken3/mbtoken3_card_check" + str1;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.g = ((Long)paramdn.c.get("param.uinhash")).longValue();
-    this.d = ((Long)paramdn.c.get("param.realuin")).longValue();
-    this.e = paramdn.j;
-    this.f = ((String)paramdn.c.get("param.idnumber"));
+    this.g = ((Long)paramdo.c.get("param.uinhash")).longValue();
+    this.d = ((Long)paramdo.c.get("param.realuin")).longValue();
+    this.e = paramdo.j;
+    this.f = ((String)paramdo.c.get("param.idnumber"));
   }
   
   protected void a(JSONObject paramJSONObject)

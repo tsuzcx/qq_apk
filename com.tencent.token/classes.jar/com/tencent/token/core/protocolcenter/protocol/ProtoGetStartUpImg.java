@@ -3,7 +3,7 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.graphics.Bitmap;
 import com.tencent.token.core.bean.ConfigResult;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.e;
 import com.tencent.token.utils.m;
 import java.util.HashMap;
@@ -14,9 +14,9 @@ public class ProtoGetStartUpImg
 {
   private ConfigResult d;
   
-  public static void a(dn paramdn, ConfigResult paramConfigResult)
+  public static void a(do paramdo, ConfigResult paramConfigResult)
   {
-    paramdn.c.put("param.startup.img.result", paramConfigResult);
+    paramdo.c.put("param.startup.img.result", paramConfigResult);
   }
   
   protected String a()
@@ -27,9 +27,9 @@ public class ProtoGetStartUpImg
     return this.d.mStartUpImgUrl;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.d = ((ConfigResult)paramdn.c.get("param.startup.img.result"));
+    this.d = ((ConfigResult)paramdo.c.get("param.startup.img.result"));
   }
   
   protected void a(JSONObject paramJSONObject)

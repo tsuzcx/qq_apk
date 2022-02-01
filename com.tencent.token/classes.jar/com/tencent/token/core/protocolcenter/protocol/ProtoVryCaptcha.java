@@ -3,11 +3,11 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.bz;
 import com.tencent.token.ca;
 import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -27,19 +27,19 @@ public class ProtoVryCaptcha
   private String h = "";
   private int i;
   
-  public static void a(dn paramdn, long paramLong, int paramInt, String paramString1, String paramString2)
+  public static void a(do paramdo, long paramLong, int paramInt, String paramString1, String paramString2)
   {
-    paramdn.c.put("param.realuin", Long.valueOf(paramLong));
-    paramdn.c.put("param.scene.id", Integer.valueOf(paramInt));
-    paramdn.c.put("param.scene.id", Integer.valueOf(paramInt));
-    paramdn.c.put("param.ticket", paramString1);
-    paramdn.c.put("param.randstr", paramString2);
+    paramdo.c.put("param.realuin", Long.valueOf(paramLong));
+    paramdo.c.put("param.scene.id", Integer.valueOf(paramInt));
+    paramdo.c.put("param.scene.id", Integer.valueOf(paramInt));
+    paramdo.c.put("param.ticket", paramString1);
+    paramdo.c.put("param.randstr", paramString2);
   }
   
   protected String a()
   {
     Object localObject1 = null;
-    String str = bz.a().b();
+    String str = ca.a().b();
     if (str == null)
     {
       this.a.b(104);
@@ -49,11 +49,11 @@ public class ProtoVryCaptcha
     {
       Object localObject2 = new JSONObject();
       ((JSONObject)localObject2).put("uin", this.d);
-      int j = ca.a + 1;
-      ca.a = j;
+      int j = cb.a + 1;
+      cb.a = j;
       this.i = j;
       ((JSONObject)localObject2).put("seq_id", this.i);
-      ((JSONObject)localObject2).put("op_time", cb.c().s() / 1000L);
+      ((JSONObject)localObject2).put("op_time", cc.c().s() / 1000L);
       ((JSONObject)localObject2).put("scenario_id", this.e);
       ((JSONObject)localObject2).put("ticket", this.f);
       ((JSONObject)localObject2).put("randstr", this.g);
@@ -74,12 +74,12 @@ public class ProtoVryCaptcha
     return c.e() + "/cn/mbtoken3/mbtoken3_verify_captcha_v3" + (String)localObject1;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.d = ((Long)paramdn.c.get("param.realuin")).longValue();
-    this.e = ((Integer)paramdn.c.get("param.scene.id")).intValue();
-    this.f = ((String)paramdn.c.get("param.ticket"));
-    this.g = ((String)paramdn.c.get("param.randstr"));
+    this.d = ((Long)paramdo.c.get("param.realuin")).longValue();
+    this.e = ((Integer)paramdo.c.get("param.scene.id")).intValue();
+    this.f = ((String)paramdo.c.get("param.ticket"));
+    this.g = ((String)paramdo.c.get("param.randstr"));
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -98,7 +98,7 @@ public class ProtoVryCaptcha
       if (j != this.i)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + j + ",right = " + ca.a().b());
+        g.c("parseJSON error seq is wrong seq=" + j + ",right = " + cb.a().b());
         return;
       }
       if (this.e == 5L) {
@@ -113,7 +113,7 @@ public class ProtoVryCaptcha
   
   protected void b()
   {
-    if (!this.b.e)
+    if ((!this.b.e) && (this.b.d != null))
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;

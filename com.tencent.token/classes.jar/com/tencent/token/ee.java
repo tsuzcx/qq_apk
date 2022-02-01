@@ -1,10 +1,8 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceStruct;
-
-public abstract interface ee
+public class ee
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct);
+  public static int a = 0;
 }
 
 

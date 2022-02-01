@@ -1,9 +1,9 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.bz;
+import com.tencent.token.ca;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -22,20 +22,20 @@ public class ProtoFaceVryOnOff
   private String h;
   private final String i = "/cn/mbtoken3/mbtoken3_face_verify_on_off";
   
-  public static void a(dn paramdn, long paramLong, int paramInt1, int paramInt2, boolean paramBoolean, String paramString)
+  public static void a(do paramdo, long paramLong, int paramInt1, int paramInt2, boolean paramBoolean, String paramString)
   {
-    paramdn.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdn.c.put("param.scene_id", Integer.valueOf(paramInt1));
-    paramdn.c.put("param.verifyonoff", Boolean.valueOf(paramBoolean));
-    paramdn.c.put("param.wtlogin.a2", paramString);
-    paramdn.j = paramInt2;
+    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdo.c.put("param.scene_id", Integer.valueOf(paramInt1));
+    paramdo.c.put("param.verifyonoff", Boolean.valueOf(paramBoolean));
+    paramdo.c.put("param.wtlogin.a2", paramString);
+    paramdo.j = paramInt2;
   }
   
   protected String a()
   {
     int k = 1;
     int j = 1;
-    String str2 = bz.a().b();
+    String str2 = ca.a().b();
     if (str2 == null)
     {
       this.a.b(104);
@@ -63,13 +63,13 @@ public class ProtoFaceVryOnOff
     }
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.d = ((Long)paramdn.c.get("param.uinhash")).longValue();
-    this.f = ((Integer)paramdn.c.get("param.scene_id")).intValue();
-    this.g = ((Boolean)paramdn.c.get("param.verifyonoff")).booleanValue();
-    this.h = ((String)paramdn.c.get("param.wtlogin.a2"));
-    this.e = paramdn.j;
+    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
+    this.f = ((Integer)paramdo.c.get("param.scene_id")).intValue();
+    this.g = ((Boolean)paramdo.c.get("param.verifyonoff")).booleanValue();
+    this.h = ((String)paramdo.c.get("param.wtlogin.a2"));
+    this.e = paramdo.j;
   }
   
   protected void a(JSONObject paramJSONObject)

@@ -8,12 +8,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import com.tencent.token.by;
 import com.tencent.token.bz;
-import com.tencent.token.cb;
+import com.tencent.token.ca;
+import com.tencent.token.cc;
 import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -34,19 +34,19 @@ public class ProtoGetDeterminVerifyFactors
   private int h;
   private int i;
   
-  public static void a(dn paramdn, long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  public static void a(do paramdo, long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramdn.c.put("param.realuin", Long.valueOf(paramLong));
-    paramdn.c.put("param.wtlogin.a2", paramArrayOfByte);
-    paramdn.c.put("param.common.seq", Integer.valueOf(paramInt1));
-    paramdn.c.put("param.wtlogin.type", Integer.valueOf(paramInt2));
-    paramdn.c.put("param.scene_id", Integer.valueOf(paramInt3));
+    paramdo.c.put("param.realuin", Long.valueOf(paramLong));
+    paramdo.c.put("param.wtlogin.a2", paramArrayOfByte);
+    paramdo.c.put("param.common.seq", Integer.valueOf(paramInt1));
+    paramdo.c.put("param.wtlogin.type", Integer.valueOf(paramInt2));
+    paramdo.c.put("param.scene_id", Integer.valueOf(paramInt3));
   }
   
   protected String a()
   {
     g.c("upgrade url: ");
-    String str3 = bz.a().b();
+    String str3 = ca.a().b();
     if (str3 == null)
     {
       this.a.b(104);
@@ -54,7 +54,7 @@ public class ProtoGetDeterminVerifyFactors
       return null;
     }
     g.c("upgrade url: ");
-    String str2 = cb.c().j().replaceAll("-", "");
+    String str2 = cc.c().j().replaceAll("-", "");
     String str1 = "";
     DisplayMetrics localDisplayMetrics = RqdApplication.l().getResources().getDisplayMetrics();
     try
@@ -62,12 +62,12 @@ public class ProtoGetDeterminVerifyFactors
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("uin", this.e);
       localJSONObject.put("seq_id", this.g);
-      localJSONObject.put("op_time", (int)(cb.c().s() / 1000L));
+      localJSONObject.put("op_time", (int)(cc.c().s() / 1000L));
       localJSONObject.put("scene", this.i);
       localJSONObject.put("tkn_seq", str2);
       localJSONObject.put("wtlogin_sig", l.a(this.d));
       localJSONObject.put("wtlogin_type", Integer.toString(this.h));
-      localJSONObject.put("guid", l.a(by.a(RqdApplication.l()).b()));
+      localJSONObject.put("guid", l.a(bz.a(RqdApplication.l()).b()));
       localJSONObject.put("android_id", l.a(RqdApplication.l()));
       localJSONObject.put("mac", l.c(RqdApplication.l()));
       localJSONObject.put("device_id", l.b(RqdApplication.l()));
@@ -106,13 +106,13 @@ public class ProtoGetDeterminVerifyFactors
     return null;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.e = ((Long)paramdn.c.get("param.realuin")).longValue();
-    this.d = ((byte[])paramdn.c.get("param.wtlogin.a2"));
-    this.g = ((Integer)paramdn.c.get("param.common.seq")).intValue();
-    this.h = ((Integer)paramdn.c.get("param.wtlogin.type")).intValue();
-    this.i = ((Integer)paramdn.c.get("param.scene_id")).intValue();
+    this.e = ((Long)paramdo.c.get("param.realuin")).longValue();
+    this.d = ((byte[])paramdo.c.get("param.wtlogin.a2"));
+    this.g = ((Integer)paramdo.c.get("param.common.seq")).intValue();
+    this.h = ((Integer)paramdo.c.get("param.wtlogin.type")).intValue();
+    this.i = ((Integer)paramdo.c.get("param.scene_id")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -146,7 +146,7 @@ public class ProtoGetDeterminVerifyFactors
       try
       {
         l = paramJSONObject.getLong("server_time");
-        cb.c().b(l);
+        cc.c().b(l);
         this.a.c();
         return;
       }
@@ -164,7 +164,7 @@ public class ProtoGetDeterminVerifyFactors
   
   protected void b()
   {
-    if (!this.b.e)
+    if ((!this.b.e) && (this.b.d != null))
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;

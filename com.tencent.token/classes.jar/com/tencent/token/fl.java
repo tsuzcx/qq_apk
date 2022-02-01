@@ -1,71 +1,24 @@
 package com.tencent.token;
 
-import java.text.DateFormat;
-import java.text.ParsePosition;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import okhttp3.aa;
+import okhttp3.x;
+import okhttp3.z;
+import okhttp3.z.a;
+import okio.p;
 
-public final class fl
+public abstract interface fl
 {
-  private static final ThreadLocal<DateFormat> a = new ThreadLocal()
-  {
-    protected DateFormat a()
-    {
-      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss 'GMT'", Locale.US);
-      localSimpleDateFormat.setLenient(false);
-      localSimpleDateFormat.setTimeZone(fb.g);
-      return localSimpleDateFormat;
-    }
-  };
-  private static final String[] b = { "EEE, dd MMM yyyy HH:mm:ss zzz", "EEEE, dd-MMM-yy HH:mm:ss zzz", "EEE MMM d HH:mm:ss yyyy", "EEE, dd-MMM-yyyy HH:mm:ss z", "EEE, dd-MMM-yyyy HH-mm-ss z", "EEE, dd MMM yy HH:mm:ss z", "EEE dd-MMM-yyyy HH:mm:ss z", "EEE dd MMM yyyy HH:mm:ss z", "EEE dd-MMM-yyyy HH-mm-ss z", "EEE dd-MMM-yy HH:mm:ss z", "EEE dd MMM yy HH:mm:ss z", "EEE,dd-MMM-yy HH:mm:ss z", "EEE,dd-MMM-yyyy HH:mm:ss z", "EEE, dd-MM-yyyy HH:mm:ss z", "EEE MMM d yyyy HH:mm:ss z" };
-  private static final DateFormat[] c = new DateFormat[b.length];
+  public abstract aa a(z paramz);
   
-  public static String a(Date paramDate)
-  {
-    return ((DateFormat)a.get()).format(paramDate);
-  }
+  public abstract z.a a(boolean paramBoolean);
   
-  public static Date a(String paramString)
-  {
-    int i = 0;
-    Object localObject;
-    if (paramString.length() == 0) {
-      localObject = null;
-    }
-    ParsePosition localParsePosition;
-    do
-    {
-      return localObject;
-      localParsePosition = new ParsePosition(0);
-      localObject = ((DateFormat)a.get()).parse(paramString, localParsePosition);
-    } while (localParsePosition.getIndex() == paramString.length());
-    for (;;)
-    {
-      synchronized (b)
-      {
-        int j = b.length;
-        if (i >= j) {
-          break;
-        }
-        DateFormat localDateFormat = c[i];
-        localObject = localDateFormat;
-        if (localDateFormat == null)
-        {
-          localObject = new SimpleDateFormat(b[i], Locale.US);
-          ((DateFormat)localObject).setTimeZone(fb.g);
-          c[i] = localObject;
-        }
-        localParsePosition.setIndex(0);
-        localObject = ((DateFormat)localObject).parse(paramString, localParsePosition);
-        if (localParsePosition.getIndex() != 0) {
-          return localObject;
-        }
-      }
-      i += 1;
-    }
-    return null;
-  }
+  public abstract p a(x paramx, long paramLong);
+  
+  public abstract void a();
+  
+  public abstract void a(x paramx);
+  
+  public abstract void b();
 }
 
 

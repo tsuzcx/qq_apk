@@ -10,7 +10,7 @@ import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.RectF;
-import com.tencent.token.gn;
+import com.tencent.token.go;
 import java.util.ArrayList;
 import java.util.List;
 import uilib.doraemon.e;
@@ -111,7 +111,7 @@ abstract class bq
           f3 = (f5 - f1) / f7;
           label331:
           f4 = Math.min((f6 - f1) / f7, 1.0F);
-          gn.a(this.e, f3, f4, 0.0F);
+          go.a(this.e, f3, f4, 0.0F);
           paramCanvas.drawPath(this.e, this.b);
         }
       }
@@ -142,7 +142,7 @@ abstract class bq
       label509:
       for (float f4 = 1.0F;; f4 = (f6 - f2) / f7)
       {
-        gn.a(this.e, f3, f4, 0.0F);
+        go.a(this.e, f3, f4, 0.0F);
         paramCanvas.drawPath(this.e, this.b);
         break;
         f3 = (f5 - f2) / f7;
@@ -160,7 +160,7 @@ abstract class bq
       g.b("StrokeContent#applyDashPattern");
       return;
     }
-    float f1 = gn.a(paramMatrix);
+    float f1 = go.a(paramMatrix);
     int m = 0;
     if (m < this.k.size())
     {
@@ -196,7 +196,7 @@ abstract class bq
     float f1 = paramInt / 255.0F;
     paramInt = (int)(((Integer)this.j.b()).intValue() * f1 / 100.0F * 255.0F);
     this.b.setAlpha(paramInt);
-    this.b.setStrokeWidth(((Float)this.i.b()).floatValue() * gn.a(paramMatrix));
+    this.b.setStrokeWidth(((Float)this.i.b()).floatValue() * go.a(paramMatrix));
     if (this.b.getStrokeWidth() <= 0.0F)
     {
       g.b("StrokeContent#draw");

@@ -1,17 +1,20 @@
 package com.tencent.token;
 
-import com.tencent.wcdb.DatabaseErrorHandler;
-import com.tencent.wcdb.DefaultDatabaseErrorHandler;
-import com.tencent.wcdb.database.SQLiteDatabase;
+import com.tencent.token.global.g;
 
-public final class el
-  implements DatabaseErrorHandler
+public class el
 {
-  private DefaultDatabaseErrorHandler a = new DefaultDatabaseErrorHandler();
-  
-  public void onCorruption(SQLiteDatabase paramSQLiteDatabase)
+  public static void a(String paramString)
   {
-    this.a.onCorruption(paramSQLiteDatabase);
+    try
+    {
+      er.a(paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      g.c("delete database table failed: " + paramString.toString());
+    }
   }
 }
 

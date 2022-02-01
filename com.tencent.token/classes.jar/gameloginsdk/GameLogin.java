@@ -4,9 +4,9 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.ed;
-import com.tencent.token.ef;
-import com.tencent.token.ei;
+import com.tencent.token.ee;
+import com.tencent.token.eg;
+import com.tencent.token.ej;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -27,12 +27,12 @@ public class GameLogin
   long b = 10000L;
   boolean c = false;
   boolean d = false;
-  ei e = null;
+  ej e = null;
   IGameLoginCallback f;
   o g = new o();
   AtomicInteger h = new AtomicInteger();
   Handler i = new Handler(Looper.getMainLooper());
-  ef j = new c(this);
+  eg j = new c(this);
   private Object k = new Object();
   private long l = -1L;
   private Stack m = new Stack();
@@ -189,7 +189,7 @@ public class GameLogin
   void a(p paramp)
   {
     b.a.c localc = (b.a.c)paramp.c;
-    int i1 = ed.a;
+    int i1 = ee.a;
     long l1 = localc.a;
     l1 = localc.c;
     a(localc.d);
@@ -213,7 +213,7 @@ public class GameLogin
   void b(p paramp)
   {
     b.a.a locala = (b.a.a)paramp.c;
-    int i1 = ed.a;
+    int i1 = ee.a;
     long l1 = locala.b;
     l1 = locala.a;
     i1 = locala.f;
@@ -238,7 +238,7 @@ public class GameLogin
   void c(p paramp)
   {
     b.a.b localb = (b.a.b)paramp.c;
-    int i1 = ed.a;
+    int i1 = ee.a;
     long l1 = localb.b;
     l1 = localb.a;
     this.e.a(656, localb, new b.a.f(), 0, paramp);
@@ -279,7 +279,7 @@ public class GameLogin
     locala.e = this.q.a();
     locala.f = j.d(paramInt);
     this.g.a(locala.a, this.b);
-    paramInt = ed.a;
+    paramInt = ee.a;
     long l1 = locala.b;
     l1 = locala.a;
     paramInt = locala.f;
@@ -328,7 +328,7 @@ public class GameLogin
       }
       paramString1 = ((b.a.c)???).g;
       this.s.add(paramString1);
-      int i2 = ed.a;
+      int i2 = ee.a;
       long l1 = ((b.a.c)???).a;
       l1 = ((b.a.c)???).c;
       a(((b.a.c)???).d);
@@ -354,7 +354,7 @@ public class GameLogin
     localb.a = i1;
     new StringBuilder().append("appid : ").append(localb.b).toString();
     new StringBuilder().append("reqid : ").append(localb.a).toString();
-    int i2 = ed.a;
+    int i2 = ee.a;
     long l1 = localb.b;
     l1 = localb.a;
     this.g.a(localb.a, this.b);

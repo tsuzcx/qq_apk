@@ -30,10 +30,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.token.bv;
-import com.tencent.token.cd;
+import com.tencent.token.bw;
+import com.tencent.token.ce;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cq;
+import com.tencent.token.cr;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.ui.IndexActivity;
 import com.tencent.token.utils.l;
@@ -131,7 +131,7 @@ public class GameLoginSndConfirmView
       return;
     }
     f();
-    this.u = (paramCallbackPushStruct.expirtTime + 1 - bv.a(RqdApplication.l()).c());
+    this.u = (paramCallbackPushStruct.expirtTime + 1 - bw.a(RqdApplication.l()).c());
     this.a.setText(2131231089);
     if (paramCallbackPushStruct.player.length() > 10)
     {
@@ -152,7 +152,7 @@ public class GameLoginSndConfirmView
         this.b.setText(Html.fromHtml(((StringBuffer)localObject).toString()));
         this.d.setText(getResources().getString(2131231075) + "(" + this.u + ")");
         this.e.setText(getResources().getString(2131231086));
-        paramCallbackPushStruct = cq.a().d(Long.parseLong(paramCallbackPushStruct.uin));
+        paramCallbackPushStruct = cr.a().d(Long.parseLong(paramCallbackPushStruct.uin));
         if (paramCallbackPushStruct == null) {
           break label431;
         }
@@ -221,7 +221,7 @@ public class GameLoginSndConfirmView
   public void b()
   {
     this.x.post(new b(this.j, this.k, this.l, this.m));
-    cd.a(RqdApplication.l()).a();
+    ce.a(RqdApplication.l()).a();
   }
   
   public void c()

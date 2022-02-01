@@ -1,41 +1,32 @@
 package com.tencent.token;
 
-import java.net.Proxy.Type;
-import okhttp3.s;
-import okhttp3.x;
+import javax.annotation.Nullable;
+import okhttp3.aa;
+import okio.e;
 
 public final class fq
+  extends aa
 {
-  public static String a(s params)
+  @Nullable
+  private final String a;
+  private final long b;
+  private final e c;
+  
+  public fq(@Nullable String paramString, long paramLong, e parame)
   {
-    String str1 = params.h();
-    String str2 = params.j();
-    params = str1;
-    if (str2 != null) {
-      params = str1 + '?' + str2;
-    }
-    return params;
+    this.a = paramString;
+    this.b = paramLong;
+    this.c = parame;
   }
   
-  public static String a(x paramx, Proxy.Type paramType)
+  public long a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramx.b());
-    localStringBuilder.append(' ');
-    if (b(paramx, paramType)) {
-      localStringBuilder.append(paramx.a());
-    }
-    for (;;)
-    {
-      localStringBuilder.append(" HTTP/1.1");
-      return localStringBuilder.toString();
-      localStringBuilder.append(a(paramx.a()));
-    }
+    return this.b;
   }
   
-  private static boolean b(x paramx, Proxy.Type paramType)
+  public e c()
   {
-    return (!paramx.g()) && (paramType == Proxy.Type.HTTP);
+    return this.c;
   }
 }
 

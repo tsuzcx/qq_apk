@@ -1,6 +1,6 @@
 package okhttp3.internal.connection;
 
-import com.tencent.token.ez;
+import com.tencent.token.fa;
 import java.io.IOException;
 import java.io.InterruptedIOException;
 import java.net.ProtocolException;
@@ -60,7 +60,7 @@ public final class b
         break;
       }
       this.c = b(paramSSLSocket);
-      ez.a.a(localk, paramSSLSocket, this.d);
+      fa.a.a(localk, paramSSLSocket, this.d);
       return localk;
       localk = null;
     }

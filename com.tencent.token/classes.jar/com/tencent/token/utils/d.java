@@ -1,6 +1,6 @@
 package com.tencent.token.utils;
 
-import com.tencent.token.cb;
+import com.tencent.token.cc;
 import java.io.File;
 import java.io.FileFilter;
 import java.text.SimpleDateFormat;
@@ -123,7 +123,7 @@ public class d
   
   public File a()
   {
-    return d(cb.c().s());
+    return d(cc.c().s());
   }
   
   public File a(long paramLong)

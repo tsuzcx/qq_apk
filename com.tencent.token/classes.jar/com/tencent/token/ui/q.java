@@ -16,8 +16,8 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.token.core.bean.SafeMsgItem;
-import com.tencent.token.cu;
-import com.tencent.token.dj;
+import com.tencent.token.cv;
+import com.tencent.token.dk;
 import com.tencent.token.global.g;
 import com.tencent.token.utils.l;
 
@@ -25,7 +25,7 @@ class q
   extends BaseAdapter
 {
   View.OnClickListener a = null;
-  dj b;
+  dk b;
   int c;
   int d;
   int e;
@@ -87,7 +87,7 @@ class q
   {
     this.h = paramOpreateMsgActivity;
     this.i = LayoutInflater.from(paramOpreateMsgActivity);
-    this.b = cu.a().f;
+    this.b = cv.a().f;
     this.c = this.h.getResources().getColor(2131493067);
     this.d = this.h.getResources().getColor(2131493067);
     this.e = this.h.getResources().getColor(2131492933);

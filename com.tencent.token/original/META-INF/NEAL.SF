@@ -1,10 +1,10 @@
 Signature-Version: 1.0
 Created-By: tencent
-SHA1-Digest-Manifest: hdd/+EfGYcuHLmPsSlojv8NQlNg=
+SHA1-Digest-Manifest: k0hB844/m+E70QaeIrR9M7yDTuc=
 X-Android-APK-Signed: 2
 
 Name: AndroidManifest.xml
-SHA1-Digest: 5WN2JnI4CgnX4yEX8sSC734Ut44=
+SHA1-Digest: H0BsQ2CDGRM4dlFjzHc58T9tVtA=
 
 Name: META-INF/android.arch.core_runtime.version
 SHA1-Digest: OPQCkzMXJVPQryHeMowVNZmfRMw=
@@ -88,7 +88,7 @@ Name: assets/tcaptcha_webview.html
 SHA1-Digest: h2EaZFkzQKhTnJaKBv16vhWXKoo=
 
 Name: classes.dex
-SHA1-Digest: Fen2DxHv6+lC+eBq1t6wOPn5Fcs=
+SHA1-Digest: /QAVJJyO+mEATM+ezJEecOXbJMU=
 
 Name: lib/armeabi/libFaceAlgClinet.so
 SHA1-Digest: MvGVRVePfmDwoqOy8c5l88a8yO4=

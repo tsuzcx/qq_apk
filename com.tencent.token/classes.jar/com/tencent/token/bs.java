@@ -15,7 +15,7 @@ public class bs
       g.c("encrypt pwd failed");
       return null;
     }
-    return ci.a(paramArrayOfByte1);
+    return cj.a(paramArrayOfByte1);
   }
   
   protected String a(byte[] paramArrayOfByte, String... paramVarArgs)

@@ -2,11 +2,11 @@ package com.tencent.token.upload.useraction;
 
 import android.content.ContentValues;
 import android.view.MotionEvent;
-import com.tencent.token.ca;
 import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cq;
-import com.tencent.token.ey;
+import com.tencent.token.cr;
+import com.tencent.token.ez;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -44,7 +44,7 @@ public class a
   private e a(String paramString)
   {
     e locale = new e();
-    if (!cq.a().o())
+    if (!cr.a().o())
     {
       if (this.r) {
         e();
@@ -58,18 +58,18 @@ public class a
       Object localObject = l.b(paramString.getBytes());
       paramString = c.e() + "/cn/mbtoken3/mbtoken3_user_action_report_encrypt";
       ContentValues localContentValues = new ContentValues(3);
-      localContentValues.put("aq_base_sid", cq.c);
+      localContentValues.put("aq_base_sid", cr.c);
       localContentValues.put("data", (String)localObject);
-      g.a("useraction aq_base_sid=" + cq.c);
+      g.a("useraction aq_base_sid=" + cr.c);
       g.a("useraction data=" + (String)localObject);
-      localObject = new ey();
-      paramString = ((ey)localObject).a(paramString, localContentValues);
+      localObject = new ez();
+      paramString = ((ez)localObject).a(paramString, localContentValues);
       if (paramString == null)
       {
         if (this.r) {
           e();
         }
-        locale.a(((ey)localObject).a());
+        locale.a(((ez)localObject).a());
         return locale;
       }
       try
@@ -160,7 +160,7 @@ public class a
         try
         {
           localJSONObject = new JSONObject();
-          this.q = cq.a().e();
+          this.q = cr.a().e();
           if (this.q != null)
           {
             localJSONObject.put("real_uin", this.q.b());
@@ -279,8 +279,8 @@ public class a
       return;
       this.r = paramBoolean;
     } while ((this.o) || (!this.a) || (this.g.length() == 0));
-    int i1 = ca.a + 1;
-    ca.a = i1;
+    int i1 = cb.a + 1;
+    cb.a = i1;
     this.i = i1;
     this.o = true;
     JSONArray localJSONArray = new JSONArray();
@@ -307,12 +307,12 @@ public class a
       JSONObject localJSONObject = new JSONObject();
       try
       {
-        if (cq.a().e() != null) {
-          localJSONObject.put("uin", cq.a().e().mUin);
+        if (cr.a().e() != null) {
+          localJSONObject.put("uin", cr.a().e().mUin);
         }
         localJSONObject.put("seq_id", this.i);
-        localJSONObject.put("op_time", (int)(cb.c().s() / 1000L));
-        localJSONObject.put("token_seq", cb.c().k());
+        localJSONObject.put("op_time", (int)(cc.c().s() / 1000L));
+        localJSONObject.put("token_seq", cc.c().k());
         localJSONObject.put("action_list", localJSONArray);
       }
       catch (Exception localException1)

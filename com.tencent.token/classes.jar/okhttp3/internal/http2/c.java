@@ -1,6 +1,6 @@
 package okhttp3.internal.http2;
 
-import com.tencent.token.fb;
+import com.tencent.token.fc;
 import java.io.IOException;
 import okio.ByteString;
 
@@ -21,7 +21,7 @@ public final class c
     int i = 0;
     while (i < c.length)
     {
-      c[i] = fb.a("%8s", new Object[] { Integer.toBinaryString(i) }).replace(' ', '0');
+      c[i] = fc.a("%8s", new Object[] { Integer.toBinaryString(i) }).replace(' ', '0');
       i += 1;
     }
     b[0] = "";
@@ -79,7 +79,7 @@ public final class c
   
   static IllegalArgumentException a(String paramString, Object... paramVarArgs)
   {
-    throw new IllegalArgumentException(fb.a(paramString, paramVarArgs));
+    throw new IllegalArgumentException(fc.a(paramString, paramVarArgs));
   }
   
   static String a(byte paramByte1, byte paramByte2)
@@ -133,15 +133,15 @@ public final class c
     label91:
     for (String str2 = "<<";; str2 = ">>")
     {
-      return fb.a("%s 0x%08x %5d %-13s %s", new Object[] { str2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str1, str3 });
-      str1 = fb.a("0x%02x", new Object[] { Byte.valueOf(paramByte1) });
+      return fc.a("%s 0x%08x %5d %-13s %s", new Object[] { str2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str1, str3 });
+      str1 = fc.a("0x%02x", new Object[] { Byte.valueOf(paramByte1) });
       break;
     }
   }
   
   static IOException b(String paramString, Object... paramVarArgs)
   {
-    throw new IOException(fb.a(paramString, paramVarArgs));
+    throw new IOException(fc.a(paramString, paramVarArgs));
   }
 }
 

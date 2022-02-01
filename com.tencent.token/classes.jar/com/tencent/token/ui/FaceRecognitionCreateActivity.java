@@ -15,7 +15,7 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cq;
+import com.tencent.token.cr;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.g;
 import com.tencent.token.utils.l;
@@ -96,14 +96,14 @@ public class FaceRecognitionCreateActivity
       {
         if (FaceRecognitionCreateActivity.this.chk.isChecked())
         {
-          if (cq.a().e() == null) {
+          if (cr.a().e() == null) {
             FaceRecognitionCreateActivity.this.showNoAccountTipDialog(FaceRecognitionCreateActivity.this, 3, 0);
           }
         }
         else {
           return;
         }
-        if (!cq.a().e().mIsBinded)
+        if (!cr.a().e().mIsBinded)
         {
           FaceRecognitionCreateActivity.this.showNoAccountTipDialog(FaceRecognitionCreateActivity.this, 3, 1);
           return;

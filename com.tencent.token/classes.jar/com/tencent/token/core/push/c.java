@@ -1,6 +1,6 @@
 package com.tencent.token.core.push;
 
-import com.tencent.token.ci;
+import com.tencent.token.cj;
 import com.tencent.token.global.g;
 
 public class c
@@ -37,21 +37,21 @@ public class c
       this.h = System.currentTimeMillis();
       byte[] arrayOfByte = new byte[this.a];
       arrayOfByte[0] = 2;
-      ci.a(arrayOfByte, 1, this.a);
-      ci.a(arrayOfByte, 3, this.b);
-      ci.a(arrayOfByte, 5, this.c);
-      ci.a(arrayOfByte, 9, d);
-      ci.a(arrayOfByte, 13, this.e);
-      ci.a(arrayOfByte, 15, this.f);
-      ci.a(arrayOfByte, 17, this.g);
-      ci.a(arrayOfByte, 19, this.h);
+      cj.a(arrayOfByte, 1, this.a);
+      cj.a(arrayOfByte, 3, this.b);
+      cj.a(arrayOfByte, 5, this.c);
+      cj.a(arrayOfByte, 9, d);
+      cj.a(arrayOfByte, 13, this.e);
+      cj.a(arrayOfByte, 15, this.f);
+      cj.a(arrayOfByte, 17, this.g);
+      cj.a(arrayOfByte, 19, this.h);
       arrayOfByte[23] = this.i;
       arrayOfByte[24] = this.j;
-      ci.a(arrayOfByte, 25, k, 0, k.length);
+      cj.a(arrayOfByte, 25, k, 0, k.length);
       int n = k.length + 25;
       if (m > 0)
       {
-        ci.a(arrayOfByte, n, this.l, 0, m);
+        cj.a(arrayOfByte, n, this.l, 0, m);
         m += n;
       }
       for (;;)

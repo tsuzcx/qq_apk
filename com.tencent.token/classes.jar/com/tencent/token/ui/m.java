@@ -16,7 +16,7 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.token.ca;
+import com.tencent.token.cb;
 import com.tencent.token.core.bean.LoginProtectResult;
 import com.tencent.token.core.bean.LoginProtectResult.a;
 import com.tencent.token.global.e;
@@ -218,7 +218,7 @@ class m
               if (m.a.a(m.a.this).f.e) {}
               for (paramAnonymousInt = 0;; paramAnonymousInt = 1)
               {
-                paramAnonymousDialogInterface = ca.a();
+                paramAnonymousDialogInterface = cb.a();
                 String str = m.a(m.this).mA2;
                 Handler localHandler = m.a(m.this).mHandler;
                 paramAnonymousDialogInterface.a(0L, new int[] { 71, 82 }, new int[] { paramAnonymousInt, 0 }, str, localHandler);
@@ -239,7 +239,7 @@ class m
         if (paramCompoundButton.f.e) {}
         for (i = 0;; i = 1)
         {
-          paramCompoundButton = ca.a();
+          paramCompoundButton = cb.a();
           localObject = m.a(m.this).mA2;
           localHandler = m.a(m.this).mHandler;
           paramCompoundButton.a(0L, new int[] { 71 }, new int[] { i }, (String)localObject, localHandler);
@@ -261,7 +261,7 @@ class m
             if (m.a.a(m.a.this).f.c) {}
             for (paramAnonymousInt = 0;; paramAnonymousInt = 1)
             {
-              paramAnonymousDialogInterface = ca.a();
+              paramAnonymousDialogInterface = cb.a();
               String str = m.a(m.this).mA2;
               Handler localHandler = m.a(m.this).mHandler;
               paramAnonymousDialogInterface.a(0L, new int[] { i, 71 }, new int[] { paramAnonymousInt, 1 }, str, localHandler);
@@ -282,7 +282,7 @@ class m
       if (paramCompoundButton.f.c) {
         i = 0;
       }
-      paramCompoundButton = ca.a();
+      paramCompoundButton = cb.a();
       localObject = m.a(m.this).mA2;
       Handler localHandler = m.a(m.this).mHandler;
       paramCompoundButton.a(0L, new int[] { j }, new int[] { i }, (String)localObject, localHandler);

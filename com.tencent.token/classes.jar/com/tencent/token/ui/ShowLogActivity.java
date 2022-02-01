@@ -12,7 +12,7 @@ import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.tencent.token.dw;
+import com.tencent.token.dx;
 import com.tencent.token.global.g;
 import com.tencent.token.ui.base.PullToRefreshListView;
 import com.tencent.token.ui.base.PullToRefreshListView.a;
@@ -193,7 +193,7 @@ public class ShowLogActivity
         return;
         locald = (d)this.mLogs.get(this.mCurrType);
       } while (locald.b + 1 >= 2);
-      localBufferedReader = dw.b(locald.b + 1);
+      localBufferedReader = dx.b(locald.b + 1);
     } while (localBufferedReader == null);
     addData(localBufferedReader);
     locald.b += 1;
@@ -311,7 +311,7 @@ public class ShowLogActivity
     
     protected Void a(Void... paramVarArgs)
     {
-      dw.h();
+      dx.h();
       paramVarArgs = ShowLogActivity.this.mLogs.iterator();
       while (paramVarArgs.hasNext())
       {

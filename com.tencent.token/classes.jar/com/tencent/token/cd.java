@@ -1,170 +1,231 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.media.AudioManager;
-import android.media.SoundPool;
-import android.os.AsyncTask;
-import android.os.Handler;
-import android.os.Message;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.g;
-import java.util.HashMap;
 
 public class cd
 {
-  private static cd a = null;
-  private SoundPool b = null;
+  private static cd b = null;
+  public int a = 0;
   private Context c = null;
-  private HashMap<Integer, Integer> d = null;
-  private boolean e = false;
-  private Handler f = null;
+  private String d = null;
   
-  public static cd a(Context paramContext)
+  public static cd a()
   {
-    if (a == null) {
-      a = new cd();
+    if (b == null) {
+      b = new cd();
     }
-    try
-    {
-      a.b(paramContext);
-      return a;
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-      }
-    }
+    b.d(RqdApplication.l());
+    return b;
   }
   
-  private void b(Context paramContext)
+  public static void b()
   {
-    if (this.c == paramContext) {
-      return;
-    }
-    this.c = paramContext;
-    this.b = new SoundPool(1, 3, 100);
-    this.d = new HashMap();
-    int i = 1;
-    if (i <= 10)
+    b = null;
+  }
+  
+  private String c(String paramString)
+  {
+    return com.tencent.token.utils.encrypt.c.c(com.tencent.token.utils.encrypt.c.a(paramString));
+  }
+  
+  private void d(Context paramContext)
+  {
+    if (this.c == paramContext) {}
+    label36:
+    label105:
+    label110:
+    label124:
+    for (;;)
     {
-      int j = this.b.load(this.c, 2131165185 + (i - 1), 1);
-      if (j == 0) {
-        g.c("load audio number=" + i + " fail");
-      }
-      for (;;)
+      return;
+      this.c = paramContext;
+      boolean bool;
+      if (paramContext != null)
       {
-        i += 1;
+        bool = true;
+        g.a(bool);
+        paramContext = c(paramContext);
+        if (paramContext == null) {
+          break label105;
+        }
+        bool = true;
+        g.a(bool);
+        this.a = paramContext.getInt("pwd_type", 0);
+        if (this.a != 2) {
+          break label110;
+        }
+      }
+      for (this.d = paramContext.getString("pwd3g", null);; this.d = paramContext.getString("pwd", null))
+      {
+        if (this.a != 0) {
+          break label124;
+        }
+        a(this.c, this.d);
+        this.a = 1;
+        return;
+        bool = false;
         break;
-        this.d.put(Integer.valueOf(i), Integer.valueOf(j));
+        bool = false;
+        break label36;
       }
     }
-    i = this.b.load(this.c, 2131165184, 100);
-    if (i == 0)
+  }
+  
+  public void a(Context paramContext)
+  {
+    b(paramContext, null);
+    a(paramContext, 0L);
+  }
+  
+  public void a(Context paramContext, int paramInt)
+  {
+    paramContext = c(paramContext);
+    if (paramContext != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      g.c("load audio door_open fail");
+      g.a(bool);
+      paramContext = paramContext.edit();
+      paramContext.putInt("lock_time", paramInt);
+      paramContext.commit();
       return;
     }
-    this.d.put(Integer.valueOf(11), Integer.valueOf(i));
   }
   
-  public int a(int paramInt)
+  public void a(Context paramContext, long paramLong)
   {
-    AudioManager localAudioManager = (AudioManager)this.c.getSystemService("audio");
-    float f1 = localAudioManager.getStreamVolume(3) / localAudioManager.getStreamMaxVolume(3);
-    return this.b.play(paramInt, f1, f1, 1, 0, 1.0F);
-  }
-  
-  public void a()
-  {
-    if (!this.e)
+    paramContext = c(paramContext);
+    if (paramContext != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.e = true;
-      new AsyncTask()
-      {
-        public String a(String... paramAnonymousVarArgs)
-        {
-          try
-          {
-            paramAnonymousVarArgs = (Integer)cd.a(cd.this).get(Integer.valueOf(11));
-            if (paramAnonymousVarArgs == null) {
-              return null;
-            }
-            int i = cd.this.a(paramAnonymousVarArgs.intValue());
-            Thread.sleep(600L);
-            cd.b(cd.this).stop(i);
-            cd.a(cd.this, false);
-            return null;
-          }
-          catch (Exception paramAnonymousVarArgs) {}
-          return null;
-        }
-      }.execute(new String[] { "" });
+      g.a(bool);
+      paramContext = paramContext.edit();
+      paramContext.putLong("last_lock", paramLong);
+      paramContext.commit();
+      return;
     }
   }
   
-  public void a(final int[] paramArrayOfInt, int paramInt)
+  public boolean a(Context paramContext, String paramString)
   {
-    g.a("start play token1");
-    if (!this.e)
+    paramContext = c(paramContext);
+    boolean bool;
+    if (paramContext != null)
     {
-      this.e = true;
-      g.a("start play token2");
-      new AsyncTask()
-      {
-        private int c = 0;
-        
-        public String a(String... paramAnonymousVarArgs)
-        {
-          try
-          {
-            if (paramAnonymousVarArgs.length > 0) {
-              this.c = Integer.parseInt(paramAnonymousVarArgs[0]);
-            }
-            g.a("start play token3");
-            int i = 0;
-            while (i < paramArrayOfInt.length)
-            {
-              paramAnonymousVarArgs = (Integer)cd.a(cd.this).get(Integer.valueOf(paramArrayOfInt[i] + 1));
-              if (paramAnonymousVarArgs == null)
-              {
-                g.c("token number index=" + i + ",value=" + paramArrayOfInt[i] + " get sound error");
-                return "";
-              }
-              int j = cd.this.a(paramAnonymousVarArgs.intValue());
-              Thread.sleep(600L);
-              cd.b(cd.this).stop(j);
-              i += 1;
-            }
-            cd.a(cd.this, false);
-          }
-          catch (Exception paramAnonymousVarArgs)
-          {
-            for (;;)
-            {
-              paramAnonymousVarArgs.printStackTrace();
-              g.c("run exception msg=" + paramAnonymousVarArgs.getMessage());
-            }
-          }
-          return "";
-        }
-        
-        public void a(String paramAnonymousString)
-        {
-          if ((cd.c(cd.this) != null) && (1 == this.c))
-          {
-            paramAnonymousString = new Message();
-            paramAnonymousString.what = 200;
-            cd.c(cd.this).sendMessage(paramAnonymousString);
-          }
-        }
-      }.execute(new String[] { Integer.toString(paramInt) });
+      bool = true;
+      g.a(bool);
+      paramContext = paramContext.edit();
+      if ((paramString != null) && (paramString.length() > 0)) {
+        break label62;
+      }
+      this.d = null;
+      paramContext.remove("pwd");
+    }
+    for (;;)
+    {
+      paramContext.commit();
+      return true;
+      bool = false;
+      break;
+      label62:
+      this.d = c(paramString);
+      paramContext.putString("pwd", this.d);
+      paramContext.putInt("pwd_type", 1);
+      this.a = 1;
     }
   }
   
-  public void b()
+  public boolean a(String paramString)
   {
-    this.b.release();
+    if ((paramString == null) || (this.d == null)) {}
+    while (1 > this.a) {
+      return false;
+    }
+    return this.d.equals(c(paramString));
+  }
+  
+  public int b(Context paramContext)
+  {
+    paramContext = c(paramContext);
+    if (paramContext != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      g.a(bool);
+      return paramContext.getInt("lock_time", 0);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("startpwd_gesture_new_tip", 0).edit();
+    localEditor.putBoolean(paramString, false);
+    localEditor.commit();
+  }
+  
+  public boolean b(Context paramContext, String paramString)
+  {
+    Object localObject = c(paramContext);
+    boolean bool;
+    if (localObject != null)
+    {
+      bool = true;
+      g.a(bool);
+      localObject = ((SharedPreferences)localObject).edit();
+      if ((paramString != null) && (paramString.length() > 0)) {
+        break label68;
+      }
+      this.d = null;
+      ((SharedPreferences.Editor)localObject).remove("pwd3g");
+    }
+    for (;;)
+    {
+      ((SharedPreferences.Editor)localObject).commit();
+      return true;
+      bool = false;
+      break;
+      label68:
+      if (this.a == 1) {
+        a(paramContext, null);
+      }
+      this.d = c(paramString);
+      this.a = 2;
+      ((SharedPreferences.Editor)localObject).putString("pwd3g", this.d);
+      ((SharedPreferences.Editor)localObject).putInt("pwd_type", 2);
+    }
+  }
+  
+  public SharedPreferences c(Context paramContext)
+  {
+    switch ()
+    {
+    default: 
+      return RqdApplication.l().getSharedPreferences("token_pwd_file", 0);
+    case 0: 
+      return RqdApplication.l().getSharedPreferences("token_pwd_file_test", 0);
+    case 1: 
+      return RqdApplication.l().getSharedPreferences("token_pwd_file", 0);
+    case 2: 
+      return RqdApplication.l().getSharedPreferences("token_pwd_file_exp", 0);
+    }
+    return RqdApplication.l().getSharedPreferences("token_pwd_file_gray", 0);
+  }
+  
+  public boolean c()
+  {
+    return (this.d != null) && (this.d.length() > 0);
+  }
+  
+  public boolean d()
+  {
+    return (this.d != null) && (this.d.length() > 0) && (this.a == 2);
+  }
+  
+  public int e()
+  {
+    return this.a;
   }
 }
 

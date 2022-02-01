@@ -1,6 +1,6 @@
 package taiji;
 
-import com.tencent.token.gm;
+import com.tencent.token.gn;
 import java.util.List;
 
 public class f
@@ -16,7 +16,7 @@ public class f
     if ((paramo.a == null) || (paramo.b == null)) {
       throw new IllegalStateException("Missing values for keyframe.");
     }
-    return Integer.valueOf(gm.a(((Integer)paramo.a).intValue(), ((Integer)paramo.b).intValue(), paramFloat));
+    return Integer.valueOf(gn.a(((Integer)paramo.a).intValue(), ((Integer)paramo.b).intValue(), paramFloat));
   }
 }
 

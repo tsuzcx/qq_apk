@@ -1,10 +1,10 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
-import com.tencent.token.bz;
 import com.tencent.token.ca;
 import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
 import com.tencent.token.utils.l;
@@ -19,25 +19,25 @@ public class ProtoDoVerifySmscode
   private int f;
   private int g;
   
-  public static void a(dn paramdn, long paramLong, String paramString, int paramInt)
+  public static void a(do paramdo, long paramLong, String paramString, int paramInt)
   {
-    paramdn.c.put("param.realuin", Long.valueOf(paramLong));
-    paramdn.c.put("param.smscode", paramString);
-    paramdn.c.put("param.type", Integer.valueOf(paramInt));
+    paramdo.c.put("param.realuin", Long.valueOf(paramLong));
+    paramdo.c.put("param.smscode", paramString);
+    paramdo.c.put("param.type", Integer.valueOf(paramInt));
   }
   
   protected String a()
   {
-    String str1 = bz.a().b();
+    String str1 = ca.a().b();
     if (str1 == null)
     {
       this.a.b(104);
       return null;
     }
-    int i = ca.a + 1;
-    ca.a = i;
+    int i = cb.a + 1;
+    cb.a = i;
     this.f = i;
-    String str2 = l.a(new Object[] { "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cb.c().s() / 1000L), "uin", Long.valueOf(this.e), "mobile_code", this.d, "verify_type_id", Integer.valueOf(this.g) });
+    String str2 = l.a(new Object[] { "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cc.c().s() / 1000L), "uin", Long.valueOf(this.e), "mobile_code", this.d, "verify_type_id", Integer.valueOf(this.g) });
     if (str2 == null)
     {
       this.a.a(10000, "encrypt qqtoken code failed");
@@ -47,11 +47,11 @@ public class ProtoDoVerifySmscode
     return c.e() + "/cn/mbtoken3/mbtoken3_verify_mobile_code_v2" + str1;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.e = ((Long)paramdn.c.get("param.realuin")).longValue();
-    this.d = ((String)paramdn.c.get("param.smscode"));
-    this.g = ((Integer)paramdn.c.get("param.type")).intValue();
+    this.e = ((Long)paramdo.c.get("param.realuin")).longValue();
+    this.d = ((String)paramdo.c.get("param.smscode"));
+    this.g = ((Integer)paramdo.c.get("param.type")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)

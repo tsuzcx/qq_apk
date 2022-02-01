@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.cw;
+import com.tencent.token.cx;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.ui.BaseActivity;
 import com.tencent.token.ui.qqpim.ProgressTextView;
@@ -78,7 +78,7 @@ public class GalleryActivity
   private void downloadApk()
   {
     TMSDKContext.saveActionData(170016);
-    a.f().a(new cw()
+    a.f().a(new cx()
     {
       public void a()
       {

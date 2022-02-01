@@ -1,12 +1,12 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.bz;
 import com.tencent.token.ca;
 import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.cr;
-import com.tencent.token.dn;
+import com.tencent.token.cs;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -29,21 +29,21 @@ public class ProtoGetDeviceLock
   private String j;
   private String k;
   
-  public static void a(dn paramdn, long paramLong, int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2, String paramString3, int paramInt4)
+  public static void a(do paramdo, long paramLong, int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2, String paramString3, int paramInt4)
   {
-    paramdn.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdn.c.put("param.device.lock.id", Integer.valueOf(paramInt1));
-    paramdn.c.put("param.device.lock.guid", paramString1);
-    paramdn.c.put("param.device.lock.appid", Integer.valueOf(paramInt2));
-    paramdn.c.put("param.device.lock.subappid", Integer.valueOf(paramInt3));
-    paramdn.c.put("param.device.lock.appname", paramString2);
-    paramdn.c.put("param.wtlogin.a2", paramString3);
-    paramdn.c.put("param.common.seq", Integer.valueOf(paramInt4));
+    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdo.c.put("param.device.lock.id", Integer.valueOf(paramInt1));
+    paramdo.c.put("param.device.lock.guid", paramString1);
+    paramdo.c.put("param.device.lock.appid", Integer.valueOf(paramInt2));
+    paramdo.c.put("param.device.lock.subappid", Integer.valueOf(paramInt3));
+    paramdo.c.put("param.device.lock.appname", paramString2);
+    paramdo.c.put("param.wtlogin.a2", paramString3);
+    paramdo.c.put("param.common.seq", Integer.valueOf(paramInt4));
   }
   
   protected String a()
   {
-    String str = bz.a().b();
+    String str = ca.a().b();
     g.c("sessId=" + str);
     if (str == null)
     {
@@ -62,7 +62,7 @@ public class ProtoGetDeviceLock
       ((JSONObject)localObject2).put("appname", this.j);
       ((JSONObject)localObject2).put("A2", this.k);
       ((JSONObject)localObject2).put("seq_id", this.h);
-      ((JSONObject)localObject2).put("op_time", (int)(cb.c().s() / 1000L));
+      ((JSONObject)localObject2).put("op_time", (int)(cc.c().s() / 1000L));
       g.a("devicelock data=" + localObject2);
       localObject2 = l.b(((JSONObject)localObject2).toString().getBytes());
       localObject1 = localObject2;
@@ -80,16 +80,16 @@ public class ProtoGetDeviceLock
     return localObject1;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.d = ((Long)paramdn.c.get("param.uinhash")).longValue();
-    this.e = ((Integer)paramdn.c.get("param.device.lock.id")).intValue();
-    this.i = ((String)paramdn.c.get("param.device.lock.guid"));
-    this.f = ((Integer)paramdn.c.get("param.device.lock.appid")).intValue();
-    this.g = ((Integer)paramdn.c.get("param.device.lock.subappid")).intValue();
-    this.j = ((String)paramdn.c.get("param.device.lock.appname"));
-    this.k = ((String)paramdn.c.get("param.wtlogin.a2"));
-    this.h = ((Integer)paramdn.c.get("param.common.seq")).intValue();
+    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
+    this.e = ((Integer)paramdo.c.get("param.device.lock.id")).intValue();
+    this.i = ((String)paramdo.c.get("param.device.lock.guid"));
+    this.f = ((Integer)paramdo.c.get("param.device.lock.appid")).intValue();
+    this.g = ((Integer)paramdo.c.get("param.device.lock.subappid")).intValue();
+    this.j = ((String)paramdo.c.get("param.device.lock.appname"));
+    this.k = ((String)paramdo.c.get("param.wtlogin.a2"));
+    this.h = ((Integer)paramdo.c.get("param.common.seq")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -109,7 +109,7 @@ public class ProtoGetDeviceLock
       if (m != this.h)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + m + ",right = " + ca.a().b());
+        g.c("parseJSON error seq is wrong seq=" + m + ",right = " + cb.a().b());
         return;
       }
     }
@@ -121,7 +121,7 @@ public class ProtoGetDeviceLock
         paramJSONObject = paramJSONObject.getJSONArray("result");
         if (m == 70)
         {
-          cr.a().d(paramJSONObject);
+          cs.a().d(paramJSONObject);
           this.a.c();
           return;
         }
@@ -134,7 +134,7 @@ public class ProtoGetDeviceLock
       }
       if (m == 71)
       {
-        cr.a().e(paramJSONObject);
+        cs.a().e(paramJSONObject);
       }
       else if ((m == 80) && (paramJSONObject != null) && (paramJSONObject.length() > 0))
       {
@@ -144,7 +144,7 @@ public class ProtoGetDeviceLock
           JSONObject localJSONObject = paramJSONObject.getJSONObject(m);
           if (localJSONObject.getInt("id") == 71)
           {
-            cr.a().a(localJSONObject);
+            cs.a().a(localJSONObject);
           }
           else
           {

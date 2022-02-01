@@ -15,12 +15,12 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.token.by;
-import com.tencent.token.ca;
+import com.tencent.token.bz;
+import com.tencent.token.cb;
 import com.tencent.token.core.bean.OnlineDeviceResult;
 import com.tencent.token.core.bean.OnlineDeviceResult.a;
 import com.tencent.token.core.bean.SafeMsgItem;
-import com.tencent.token.dj;
+import com.tencent.token.dk;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.g;
 import com.tencent.token.utils.l;
@@ -42,7 +42,7 @@ class p
   private View j;
   private View k;
   private View l;
-  private dj m;
+  private dk m;
   private OnlineDeviceResult n;
   
   public p(LoginMsgActivity paramLoginMsgActivity)
@@ -77,13 +77,13 @@ class p
       {
         public void onClick(View paramAnonymousView)
         {
-          paramAnonymousView = ca.a();
+          paramAnonymousView = cb.a();
           String str1 = parama.a;
           String str2 = parama.d;
           int i = parama.e;
           int j = parama.f;
           String str3 = parama.g;
-          String str4 = l.a(by.a(RqdApplication.l()).b());
+          String str4 = l.a(bz.a(RqdApplication.l()).b());
           p.a(p.this);
           paramAnonymousView.a(0L, str1, str2, i, j, str3, str4, 523005419, 1, "com.tencent.token", LoginMsgActivity.mSkey, p.a(p.this).mHandler);
           this.b.setVisibility(0);
@@ -305,9 +305,9 @@ class p
     localImageView2.setVisibility(4);
   }
   
-  public void a(dj paramdj, OnlineDeviceResult paramOnlineDeviceResult)
+  public void a(dk paramdk, OnlineDeviceResult paramOnlineDeviceResult)
   {
-    this.m = paramdj;
+    this.m = paramdk;
     this.n = paramOnlineDeviceResult;
   }
   

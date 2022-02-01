@@ -7,9 +7,9 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Message;
 import android.util.DisplayMetrics;
-import com.tencent.token.bz;
+import com.tencent.token.ca;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -33,15 +33,15 @@ public class ProtoLiveFaceDetect
   private int i;
   private int[] j;
   
-  public static void a(dn paramdn, long paramLong, int paramInt)
+  public static void a(do paramdo, long paramLong, int paramInt)
   {
-    paramdn.c.put("param.realuin", Long.valueOf(paramLong));
-    paramdn.c.put("param.scene.id", Integer.valueOf(paramInt));
+    paramdo.c.put("param.realuin", Long.valueOf(paramLong));
+    paramdo.c.put("param.scene.id", Integer.valueOf(paramInt));
   }
   
   protected String a()
   {
-    String str = bz.a().b();
+    String str = ca.a().b();
     if (str == null)
     {
       this.a.b(104);
@@ -56,10 +56,10 @@ public class ProtoLiveFaceDetect
     return c.e() + "/cn/mbtoken3/mbtoken3_live_video_detect" + str;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.g = ((Long)paramdn.c.get("param.realuin")).longValue();
-    this.h = ((Integer)paramdn.c.get("param.scene.id")).intValue();
+    this.g = ((Long)paramdo.c.get("param.realuin")).longValue();
+    this.h = ((Integer)paramdo.c.get("param.scene.id")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -127,7 +127,7 @@ public class ProtoLiveFaceDetect
   
   protected void b()
   {
-    if (!this.b.e)
+    if ((!this.b.e) && (this.b.d != null))
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;

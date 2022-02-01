@@ -1,109 +1,107 @@
 package com.tencent.token;
 
-import java.net.ProtocolException;
+import java.util.List;
 import okhttp3.aa;
+import okhttp3.l;
+import okhttp3.m;
+import okhttp3.r;
+import okhttp3.r.a;
 import okhttp3.t;
 import okhttp3.t.a;
+import okhttp3.u;
 import okhttp3.x;
+import okhttp3.x.a;
 import okhttp3.y;
 import okhttp3.z;
 import okhttp3.z.a;
-import okio.d;
+import okio.i;
 import okio.k;
+import okio.q;
 
 public final class fj
   implements t
 {
-  private final boolean a;
+  private final m a;
   
-  public fj(boolean paramBoolean)
+  public fj(m paramm)
   {
-    this.a = paramBoolean;
+    this.a = paramm;
+  }
+  
+  private String a(List<l> paramList)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    int j = paramList.size();
+    int i = 0;
+    while (i < j)
+    {
+      if (i > 0) {
+        localStringBuilder.append("; ");
+      }
+      l locall = (l)paramList.get(i);
+      localStringBuilder.append(locall.a()).append('=').append(locall.b());
+      i += 1;
+    }
+    return localStringBuilder.toString();
   }
   
   public z a(t.a parama)
   {
-    fo localfo = (fo)parama;
-    fk localfk = localfo.g();
-    okhttp3.internal.connection.f localf = localfo.f();
-    Object localObject = (okhttp3.internal.connection.c)localfo.e();
-    x localx = localfo.a();
-    long l = System.currentTimeMillis();
-    localfo.i().c(localfo.h());
-    localfk.a(localx);
-    localfo.i().a(localfo.h(), localx);
-    parama = null;
-    if ((fn.c(localx.b())) && (localx.d() != null))
+    int j = 0;
+    Object localObject1 = parama.a();
+    Object localObject2 = ((x)localObject1).e();
+    Object localObject3 = ((x)localObject1).d();
+    if (localObject3 != null)
     {
-      if ("100-continue".equalsIgnoreCase(localx.a("Expect")))
-      {
-        localfk.a();
-        localfo.i().e(localfo.h());
-        parama = localfk.a(true);
+      u localu = ((y)localObject3).a();
+      if (localu != null) {
+        ((x.a)localObject2).a("Content-Type", localu.toString());
       }
-      if (parama == null)
-      {
-        localfo.i().d(localfo.h());
-        localObject = new a(localfk.a(localx, localx.d().b()));
-        d locald = k.a((okio.p)localObject);
-        localx.d().a(locald);
-        locald.close();
-        localfo.i().a(localfo.h(), ((a)localObject).a);
+      long l = ((y)localObject3).b();
+      if (l == -1L) {
+        break label374;
       }
+      ((x.a)localObject2).a("Content-Length", Long.toString(l));
+      ((x.a)localObject2).b("Transfer-Encoding");
     }
     for (;;)
     {
-      localfk.b();
-      localObject = parama;
-      if (parama == null)
-      {
-        localfo.i().e(localfo.h());
-        localObject = localfk.a(false);
+      if (((x)localObject1).a("Host") == null) {
+        ((x.a)localObject2).a("Host", fc.a(((x)localObject1).a(), false));
       }
-      parama = ((z.a)localObject).a(localx).a(localf.c().c()).a(l).b(System.currentTimeMillis()).a();
-      int j = parama.b();
+      if (((x)localObject1).a("Connection") == null) {
+        ((x.a)localObject2).a("Connection", "Keep-Alive");
+      }
       int i = j;
-      if (j == 100)
+      if (((x)localObject1).a("Accept-Encoding") == null)
       {
-        parama = localfk.a(false).a(localx).a(localf.c().c()).a(l).b(System.currentTimeMillis()).a();
-        i = parama.b();
+        i = j;
+        if (((x)localObject1).a("Range") == null)
+        {
+          i = 1;
+          ((x.a)localObject2).a("Accept-Encoding", "gzip");
+        }
       }
-      localfo.i().a(localfo.h(), parama);
-      if ((this.a) && (i == 101)) {}
-      for (parama = parama.f().a(fb.c).a();; parama = parama.f().a(localfk.a(parama)).a())
+      localObject3 = this.a.a(((x)localObject1).a());
+      if (!((List)localObject3).isEmpty()) {
+        ((x.a)localObject2).a("Cookie", a((List)localObject3));
+      }
+      if (((x)localObject1).a("User-Agent") == null) {
+        ((x.a)localObject2).a("User-Agent", fd.a());
+      }
+      parama = parama.a(((x.a)localObject2).a());
+      fn.a(this.a, ((x)localObject1).a(), parama.d());
+      localObject1 = parama.f().a((x)localObject1);
+      if ((i != 0) && ("gzip".equalsIgnoreCase(parama.a("Content-Encoding"))) && (fn.b(parama)))
       {
-        if (("close".equalsIgnoreCase(parama.a().a("Connection"))) || ("close".equalsIgnoreCase(parama.a("Connection")))) {
-          localf.e();
-        }
-        if (((i != 204) && (i != 205)) || (parama.e().a() <= 0L)) {
-          break label539;
-        }
-        throw new ProtocolException("HTTP " + i + " had non-zero Content-Length: " + parama.e().a());
-        if (!((okhttp3.internal.connection.c)localObject).d()) {
-          localf.e();
-        }
-        break;
+        localObject2 = new i(parama.e().c());
+        ((z.a)localObject1).a(parama.d().b().b("Content-Encoding").b("Content-Length").a());
+        ((z.a)localObject1).a(new fq(parama.a("Content-Type"), -1L, k.a((q)localObject2)));
       }
-      label539:
-      return parama;
-      parama = null;
-    }
-  }
-  
-  static final class a
-    extends okio.f
-  {
-    long a;
-    
-    a(okio.p paramp)
-    {
-      super();
-    }
-    
-    public void a_(okio.c paramc, long paramLong)
-    {
-      super.a_(paramc, paramLong);
-      this.a += paramLong;
+      return ((z.a)localObject1).a();
+      label374:
+      ((x.a)localObject2).a("Transfer-Encoding", "chunked");
+      ((x.a)localObject2).b("Content-Length");
     }
   }
 }

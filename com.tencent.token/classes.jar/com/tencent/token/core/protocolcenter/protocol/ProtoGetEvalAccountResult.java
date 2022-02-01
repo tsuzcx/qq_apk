@@ -3,12 +3,12 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.bz;
 import com.tencent.token.ca;
 import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.bean.EvalAccountResult;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -25,16 +25,16 @@ public class ProtoGetEvalAccountResult
   private long e;
   private int f;
   
-  public static void a(dn paramdn, long paramLong)
+  public static void a(do paramdo, long paramLong)
   {
-    paramdn.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
     g.c("account page ProtoGetEvalAccountResult packet params: user =" + paramLong);
   }
   
   protected String a()
   {
     Object localObject1 = null;
-    String str = bz.a().b();
+    String str = ca.a().b();
     g.c("account page generateUrl sessId =" + str);
     if (str == null)
     {
@@ -46,11 +46,11 @@ public class ProtoGetEvalAccountResult
     {
       Object localObject2 = new JSONObject();
       ((JSONObject)localObject2).put("uin", this.e);
-      int i = ca.a + 1;
-      ca.a = i;
+      int i = cb.a + 1;
+      cb.a = i;
       this.f = i;
       ((JSONObject)localObject2).put("seq_id", this.f);
-      ((JSONObject)localObject2).put("op_time", cb.c().s() / 1000L);
+      ((JSONObject)localObject2).put("op_time", cc.c().s() / 1000L);
       localObject2 = ((JSONObject)localObject2).toString();
       g.a("plain:" + (String)localObject2);
       localObject2 = l.b(((String)localObject2).getBytes());
@@ -69,9 +69,9 @@ public class ProtoGetEvalAccountResult
     return localObject1;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.e = ((Long)paramdn.c.get("param.uinhash")).longValue();
+    this.e = ((Long)paramdo.c.get("param.uinhash")).longValue();
     g.c("account page ProtoGetEvalAccountResult unpacketParams: user =" + this.e);
   }
   
@@ -91,7 +91,7 @@ public class ProtoGetEvalAccountResult
       if (i != this.f)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + ca.a().b());
+        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + cb.a().b());
         return;
       }
       this.d = new EvalAccountResult(paramJSONObject.getJSONObject("result"), paramJSONObject);
@@ -104,7 +104,7 @@ public class ProtoGetEvalAccountResult
   
   protected void b()
   {
-    if (!this.b.e)
+    if ((!this.b.e) && (this.b.d != null))
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;

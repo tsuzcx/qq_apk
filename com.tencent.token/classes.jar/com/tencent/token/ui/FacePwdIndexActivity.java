@@ -9,9 +9,9 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cq;
+import com.tencent.token.cr;
 import com.tencent.token.ui.base.FacePwdVerifySelDialog;
 import com.tencent.token.ui.base.SwitchButton;
 import com.tencent.token.utils.m;
@@ -34,7 +34,7 @@ public class FacePwdIndexActivity
     this.mFacePwdVerifyTipTextView = ((TextView)findViewById(2131558836));
     this.mDivider = findViewById(2131558837);
     this.mSwitchVerifySet = ((SwitchButton)findViewById(2131558835));
-    cq.a().a(this.mRegisterFacePwdUserList);
+    cr.a().a(this.mRegisterFacePwdUserList);
     if (this.mRegisterFacePwdUserList.size() > 0)
     {
       QQUser localQQUser = m.f();
@@ -111,7 +111,7 @@ public class FacePwdIndexActivity
   
   private void showGesturePwdDialog()
   {
-    if (!cc.a().c()) {
+    if (!cd.a().c()) {
       showUserDialog(2131230994, getString(2131230991), 2131230993, 2131230992, new DialogInterface.OnClickListener()
       {
         public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)

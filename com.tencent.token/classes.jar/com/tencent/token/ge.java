@@ -1,59 +1,83 @@
 package com.tencent.token;
 
-import java.security.PublicKey;
+import java.security.GeneralSecurityException;
+import java.security.Principal;
+import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Set;
-import javax.security.auth.x500.X500Principal;
+import java.util.List;
+import javax.net.ssl.SSLPeerUnverifiedException;
 
 public final class ge
-  implements gh
+  extends gg
 {
-  private final Map<X500Principal, Set<X509Certificate>> a = new LinkedHashMap();
+  private final gi a;
   
-  public ge(X509Certificate... paramVarArgs)
+  public ge(gi paramgi)
   {
-    int j = paramVarArgs.length;
-    int i = 0;
-    while (i < j)
-    {
-      X509Certificate localX509Certificate = paramVarArgs[i];
-      X500Principal localX500Principal = localX509Certificate.getSubjectX500Principal();
-      Set localSet = (Set)this.a.get(localX500Principal);
-      Object localObject = localSet;
-      if (localSet == null)
-      {
-        localObject = new LinkedHashSet(1);
-        this.a.put(localX500Principal, localObject);
-      }
-      ((Set)localObject).add(localX509Certificate);
-      i += 1;
-    }
+    this.a = paramgi;
   }
   
-  public X509Certificate a(X509Certificate paramX509Certificate)
+  private boolean a(X509Certificate paramX509Certificate1, X509Certificate paramX509Certificate2)
   {
-    Object localObject = paramX509Certificate.getIssuerX500Principal();
-    localObject = (Set)this.a.get(localObject);
-    if (localObject == null) {
-      return null;
+    if (!paramX509Certificate1.getIssuerDN().equals(paramX509Certificate2.getSubjectDN())) {
+      return false;
     }
-    localObject = ((Set)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    try
     {
-      X509Certificate localX509Certificate = (X509Certificate)((Iterator)localObject).next();
-      PublicKey localPublicKey = localX509Certificate.getPublicKey();
-      try
-      {
-        paramX509Certificate.verify(localPublicKey);
-        return localX509Certificate;
-      }
-      catch (Exception localException) {}
+      paramX509Certificate1.verify(paramX509Certificate2.getPublicKey());
+      return true;
     }
-    return null;
+    catch (GeneralSecurityException paramX509Certificate1) {}
+    return false;
+  }
+  
+  public List<Certificate> a(List<Certificate> paramList, String paramString)
+  {
+    paramList = new ArrayDeque(paramList);
+    paramString = new ArrayList();
+    paramString.add(paramList.removeFirst());
+    int j = 0;
+    int i = 0;
+    if (j < 9)
+    {
+      X509Certificate localX509Certificate1 = (X509Certificate)paramString.get(paramString.size() - 1);
+      Object localObject = this.a.a(localX509Certificate1);
+      if (localObject != null)
+      {
+        if ((paramString.size() > 1) || (!localX509Certificate1.equals(localObject))) {
+          paramString.add(localObject);
+        }
+        if (a((X509Certificate)localObject, (X509Certificate)localObject)) {
+          return paramString;
+        }
+        i = 1;
+      }
+      for (;;)
+      {
+        j += 1;
+        break;
+        localObject = paramList.iterator();
+        X509Certificate localX509Certificate2;
+        do
+        {
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          localX509Certificate2 = (X509Certificate)((Iterator)localObject).next();
+        } while (!a(localX509Certificate1, localX509Certificate2));
+        ((Iterator)localObject).remove();
+        paramString.add(localX509Certificate2);
+      }
+      if (i != 0) {
+        return paramString;
+      }
+      throw new SSLPeerUnverifiedException("Failed to find a trusted cert that signed " + localX509Certificate1);
+    }
+    throw new SSLPeerUnverifiedException("Certificate chain too long: " + paramString);
   }
   
   public boolean equals(Object paramObject)

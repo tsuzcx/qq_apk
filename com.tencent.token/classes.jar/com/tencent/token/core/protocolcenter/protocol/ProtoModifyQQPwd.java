@@ -1,11 +1,11 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.bz;
 import com.tencent.token.ca;
 import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -21,26 +21,26 @@ public class ProtoModifyQQPwd
   public long e;
   public int f;
   
-  public static void a(dn paramdn, long paramLong, String paramString, int paramInt)
+  public static void a(do paramdo, long paramLong, String paramString, int paramInt)
   {
-    paramdn.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdn.c.put("param.qqpwd", paramString);
-    paramdn.c.put("param.scene.id", Integer.valueOf(paramInt));
+    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdo.c.put("param.qqpwd", paramString);
+    paramdo.c.put("param.scene.id", Integer.valueOf(paramInt));
   }
   
   protected String a()
   {
-    String str2 = bz.a().b();
+    String str2 = ca.a().b();
     if (str2 == null)
     {
       this.a.b(104);
       return null;
     }
-    int i = ca.a + 1;
-    ca.a = i;
+    int i = cb.a + 1;
+    cb.a = i;
     this.c = i;
     if (this.f == 0) {}
-    for (String str1 = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "pwd", this.d, "op_time", Long.valueOf(cb.c().s() / 1000L) }); str1 == null; str1 = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "pwd", this.d, "op_time", Long.valueOf(cb.c().s() / 1000L), "scene_id", Integer.valueOf(this.f) }))
+    for (String str1 = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "pwd", this.d, "op_time", Long.valueOf(cc.c().s() / 1000L) }); str1 == null; str1 = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "pwd", this.d, "op_time", Long.valueOf(cc.c().s() / 1000L), "scene_id", Integer.valueOf(this.f) }))
     {
       this.a.a(10000, "encrypt qqtoken code failed");
       return null;
@@ -49,11 +49,11 @@ public class ProtoModifyQQPwd
     return c.e() + "/cn/mbtoken3/mbtoken3_modify_pwd_encrypt" + str1;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.e = ((Long)paramdn.c.get("param.uinhash")).longValue();
-    this.d = ((String)paramdn.c.get("param.qqpwd"));
-    this.f = ((Integer)paramdn.c.get("param.scene.id")).intValue();
+    this.e = ((Long)paramdo.c.get("param.uinhash")).longValue();
+    this.d = ((String)paramdo.c.get("param.qqpwd"));
+    this.f = ((Integer)paramdo.c.get("param.scene.id")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)

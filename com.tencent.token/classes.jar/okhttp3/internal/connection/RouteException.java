@@ -1,6 +1,6 @@
 package okhttp3.internal.connection;
 
-import com.tencent.token.fb;
+import com.tencent.token.fc;
 import java.io.IOException;
 
 public final class RouteException
@@ -23,7 +23,7 @@ public final class RouteException
   
   public void a(IOException paramIOException)
   {
-    fb.a(this.firstException, paramIOException);
+    fc.a(this.firstException, paramIOException);
     this.lastException = paramIOException;
   }
   

@@ -1,43 +1,91 @@
 package com.tencent.token;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import android.annotation.TargetApi;
+
+@TargetApi(11)
 public class gk
+  extends ValueAnimator
 {
-  private static float a(float paramFloat)
+  private boolean a = false;
+  private float b = 0.0F;
+  private float c = 1.0F;
+  private long d;
+  
+  public gk()
   {
-    if (paramFloat <= 0.0031308F) {
-      return 12.92F * paramFloat;
-    }
-    return (float)(Math.pow(paramFloat, 0.416666656732559D) * 1.054999947547913D - 0.05499999970197678D);
+    setFloatValues(new float[] { 0.0F, 1.0F });
+    addListener(new AnimatorListenerAdapter()
+    {
+      public void onAnimationCancel(Animator paramAnonymousAnimator)
+      {
+        gk.a(gk.this);
+      }
+      
+      public void onAnimationEnd(Animator paramAnonymousAnimator)
+      {
+        gk.a(gk.this);
+      }
+    });
   }
   
-  public static int a(float paramFloat, int paramInt1, int paramInt2)
+  private void a()
   {
-    float f1 = (paramInt1 >> 24 & 0xFF) / 255.0F;
-    float f4 = (paramInt1 >> 16 & 0xFF) / 255.0F;
-    float f5 = (paramInt1 >> 8 & 0xFF) / 255.0F;
-    float f6 = (paramInt1 & 0xFF) / 255.0F;
-    float f2 = (paramInt2 >> 24 & 0xFF) / 255.0F;
-    float f8 = (paramInt2 >> 16 & 0xFF) / 255.0F;
-    float f7 = (paramInt2 >> 8 & 0xFF) / 255.0F;
-    float f3 = (paramInt2 & 0xFF) / 255.0F;
-    f4 = b(f4);
-    f5 = b(f5);
-    f6 = b(f6);
-    f8 = b(f8);
-    f7 = b(f7);
-    f3 = b(f3);
-    f4 = a(f4 + (f8 - f4) * paramFloat);
-    f5 = a(f5 + (f7 - f5) * paramFloat);
-    f3 = a(f6 + (f3 - f6) * paramFloat);
-    return Math.round((f1 + (f2 - f1) * paramFloat) * 255.0F) << 24 | Math.round(f4 * 255.0F) << 16 | Math.round(f5 * 255.0F) << 8 | Math.round(f3 * 255.0F);
+    a(this.b, this.c);
   }
   
-  private static float b(float paramFloat)
+  public void a(float paramFloat)
   {
-    if (paramFloat <= 0.04045F) {
-      return paramFloat / 12.92F;
+    this.b = paramFloat;
+    a();
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    float f1 = Math.min(paramFloat1, paramFloat2);
+    paramFloat1 = Math.max(paramFloat1, paramFloat2);
+    if (this.a)
+    {
+      paramFloat2 = paramFloat1;
+      if (!this.a) {
+        break label68;
+      }
     }
-    return (float)Math.pow((0.055F + paramFloat) / 1.055F, 2.400000095367432D);
+    label68:
+    for (float f2 = f1;; f2 = paramFloat1)
+    {
+      setFloatValues(new float[] { paramFloat2, f2 });
+      super.setDuration(((float)this.d * (paramFloat1 - f1)));
+      return;
+      paramFloat2 = f1;
+      break;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a = paramBoolean;
+    a();
+  }
+  
+  public void b(float paramFloat)
+  {
+    this.c = paramFloat;
+    a();
+  }
+  
+  public long getDuration()
+  {
+    return this.d;
+  }
+  
+  public ValueAnimator setDuration(long paramLong)
+  {
+    this.d = paramLong;
+    a();
+    return this;
   }
 }
 

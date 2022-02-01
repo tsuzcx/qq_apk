@@ -15,13 +15,14 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.tencent.token.ca;
+import com.tencent.token.bv;
 import com.tencent.token.cb;
-import com.tencent.token.cl;
+import com.tencent.token.cc;
+import com.tencent.token.cm;
 import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
 import com.tencent.token.core.bean.DeterminVerifyFactorsResult.VerifyTypeItem;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cq;
+import com.tencent.token.cr;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
 
@@ -90,7 +91,7 @@ public class GeneralVerifyMobileUpActivity
         }
         if (GeneralVerifyMobileUpActivity.this.mVerifyResult.b())
         {
-          ca.a().b(GeneralVerifyMobileUpActivity.this.mUser.mRealUin, GeneralVerifyMobileUpActivity.this.mVerifyType.a(), GeneralVerifyMobileUpActivity.this.mMobile, GeneralVerifyMobileUpActivity.this.mCountryCode, GeneralVerifyMobileUpActivity.this.mHandler);
+          cb.a().b(GeneralVerifyMobileUpActivity.this.mUser.mRealUin, GeneralVerifyMobileUpActivity.this.mVerifyType.a(), GeneralVerifyMobileUpActivity.this.mMobile, GeneralVerifyMobileUpActivity.this.mCountryCode, GeneralVerifyMobileUpActivity.this.mHandler);
           return;
         }
         GeneralVerifyMobileUpActivity.this.dismissDialog();
@@ -135,7 +136,7 @@ public class GeneralVerifyMobileUpActivity
       if (GeneralVerifyMobileUpActivity.this.mVerifyType != null) {
         i = GeneralVerifyMobileUpActivity.this.mVerifyType.a();
       }
-      ca.a().a(0L, GeneralVerifyMobileUpActivity.this.mUser.mRealUin, 1007, i, GeneralVerifyMobileUpActivity.this.mHandler);
+      cb.a().a(0L, GeneralVerifyMobileUpActivity.this.mUser.mRealUin, 1007, i, GeneralVerifyMobileUpActivity.this.mHandler);
       GeneralVerifyMobileUpActivity.access$308(GeneralVerifyMobileUpActivity.this);
     }
   };
@@ -143,12 +144,12 @@ public class GeneralVerifyMobileUpActivity
   
   private void setActiveSucc()
   {
-    Object localObject = cb.c();
-    ((cb)localObject).i();
-    ((cb)localObject).n();
+    Object localObject = cc.c();
+    ((cc)localObject).i();
+    ((cc)localObject).n();
     localObject = this.mUser.mRealUin + "";
-    cq.a().f(Long.parseLong((String)localObject));
-    ca.a().b(this.mHandler);
+    cr.a().f(Long.parseLong((String)localObject));
+    bv.a().e(this.mHandler);
   }
   
   private void showBindFailDialog(String paramString)
@@ -291,13 +292,13 @@ public class GeneralVerifyMobileUpActivity
   public void onResume()
   {
     super.onResume();
-    cb.c().a.a(this.mHandler);
+    cc.c().a.a(this.mHandler);
   }
   
   public void onStop()
   {
     super.onStop();
-    cb.c().a.a(null);
+    cc.c().a.a(null);
   }
   
   public void removeTimeTask()

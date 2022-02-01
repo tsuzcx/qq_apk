@@ -14,11 +14,11 @@ import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.token.bu;
-import com.tencent.token.by;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.bv;
+import com.tencent.token.bz;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cq;
+import com.tencent.token.cr;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
@@ -72,7 +72,7 @@ public class StartPwdGestureModifyActivity
         if (paramAnonymousMessage.arg1 == 0)
         {
           StartPwdGestureModifyActivity.this.dismissDialog();
-          paramAnonymousMessage = cq.a().e();
+          paramAnonymousMessage = cr.a().e();
           if (paramAnonymousMessage == null)
           {
             bu.a().a(System.currentTimeMillis(), 23);
@@ -80,7 +80,7 @@ public class StartPwdGestureModifyActivity
             return;
           }
           StartPwdGestureModifyActivity.this.dismissDialog();
-          by.a(StartPwdGestureModifyActivity.this.getApplicationContext()).a(StartPwdGestureModifyActivity.this, 523005419L, StartPwdGestureModifyActivity.this.mHandler, paramAnonymousMessage.mRealUin + "");
+          bz.a(StartPwdGestureModifyActivity.this.getApplicationContext()).a(StartPwdGestureModifyActivity.this, 523005419L, StartPwdGestureModifyActivity.this.mHandler, paramAnonymousMessage.mRealUin + "");
           return;
         }
         StartPwdGestureModifyActivity.this.dismissDialog();
@@ -110,14 +110,14 @@ public class StartPwdGestureModifyActivity
   
   private void gotoQuickLoginWb()
   {
-    QQUser localQQUser = cq.a().e();
+    QQUser localQQUser = cr.a().e();
     if ((localQQUser == null) || (localQQUser.mRealUin <= 0L))
     {
-      ca.a().b(this.mHandler);
+      bv.a().e(this.mHandler);
       showProDialog(this, 2131230843, 2131231298, null);
       return;
     }
-    by.a(getApplicationContext()).a(this, 523005419L, this.mHandler, "" + localQQUser.b());
+    bz.a(getApplicationContext()).a(this, 523005419L, this.mHandler, "" + localQQUser.b());
   }
   
   private void initUI()
@@ -175,7 +175,7 @@ public class StartPwdGestureModifyActivity
         StartPwdGestureModifyActivity.this.mLockPatternView.b();
         StartPwdGestureModifyActivity.this.mSmallView.b = 3;
         StartPwdGestureModifyActivity.this.mSmallView.b(paramAnonymousList);
-        cc.a().b(StartPwdGestureModifyActivity.this, StartPwdGestureModifyActivity.this.mStage1String);
+        cd.a().b(StartPwdGestureModifyActivity.this, StartPwdGestureModifyActivity.this.mStage1String);
         StartPwdGestureModifyActivity.this.mLockPatternView.postDelayed(StartPwdGestureModifyActivity.this.mFinishTask, 1000L);
       }
     });
@@ -189,10 +189,10 @@ public class StartPwdGestureModifyActivity
   {
     dismissDialog();
     bu.a().a(System.currentTimeMillis(), 25);
-    cc.a().a(this);
+    cd.a().a(this);
     RqdApplication.i();
     l.a(null, FaceRecognitionCameraActivity.LANUCH_RETRY_COUNT, 0);
-    cc.a().a(this, 0);
+    cd.a().a(this, 0);
     if (this.mVV != null) {
       this.mVV.d();
     }
@@ -205,7 +205,7 @@ public class StartPwdGestureModifyActivity
       {
         public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          cc.a().a(paramContext);
+          cd.a().a(paramContext);
           RqdApplication.i();
           StartPwdGestureModifyActivity.this.setResult(35);
           StartPwdGestureModifyActivity.this.finish();
@@ -246,7 +246,7 @@ public class StartPwdGestureModifyActivity
     while ((paramInt1 != 1201) && (paramInt1 != 1202)) {
       return;
     }
-    by.a(getApplicationContext()).a(paramIntent);
+    bz.a(getApplicationContext()).a(paramIntent);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -254,7 +254,7 @@ public class StartPwdGestureModifyActivity
     super.onCreate(paramBundle);
     setNeverShowLockVerifyView();
     setContentView(2130968768);
-    if (cc.a().c())
+    if (cd.a().c())
     {
       ((ViewStub)findViewById(2131559319)).inflate();
       this.mVV = ((LockPatternVerifyView)findViewById(2131559463));

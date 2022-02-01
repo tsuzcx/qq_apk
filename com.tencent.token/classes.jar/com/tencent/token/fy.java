@@ -1,82 +1,80 @@
 package com.tencent.token;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.security.NoSuchAlgorithmException;
+import java.security.Provider;
 import java.util.List;
 import javax.annotation.Nullable;
-import javax.net.ssl.SSLParameters;
+import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
 import okhttp3.Protocol;
+import org.conscrypt.Conscrypt;
+import org.conscrypt.OpenSSLProvider;
 
-final class fy
-  extends gb
+public class fy
+  extends gc
 {
-  final Method a;
-  final Method b;
-  
-  fy(Method paramMethod1, Method paramMethod2)
-  {
-    this.a = paramMethod1;
-    this.b = paramMethod2;
-  }
-  
-  public static fy a()
+  public static gc a()
   {
     try
     {
-      fy localfy = new fy(SSLParameters.class.getMethod("setApplicationProtocols", new Class[] { [Ljava.lang.String.class }), SSLSocket.class.getMethod("getApplicationProtocol", new Class[0]));
+      Class.forName("org.conscrypt.ConscryptEngineSocket");
+      if (!Conscrypt.isAvailable()) {
+        return null;
+      }
+      fy localfy = new fy();
       return localfy;
     }
-    catch (NoSuchMethodException localNoSuchMethodException) {}
+    catch (ClassNotFoundException localClassNotFoundException) {}
     return null;
+  }
+  
+  private Provider e()
+  {
+    return new OpenSSLProvider();
   }
   
   @Nullable
   public String a(SSLSocket paramSSLSocket)
   {
-    try
-    {
-      paramSSLSocket = (String)this.b.invoke(paramSSLSocket, new Object[0]);
-      if (paramSSLSocket != null)
-      {
-        boolean bool = paramSSLSocket.equals("");
-        if (!bool) {}
-      }
-      else
-      {
-        paramSSLSocket = null;
-      }
-      return paramSSLSocket;
+    if (Conscrypt.isConscrypt(paramSSLSocket)) {
+      return Conscrypt.getApplicationProtocol(paramSSLSocket);
     }
-    catch (IllegalAccessException paramSSLSocket)
-    {
-      throw fb.a("unable to get selected protocols", paramSSLSocket);
-    }
-    catch (InvocationTargetException paramSSLSocket)
-    {
-      label36:
-      break label36;
-    }
+    return super.a(paramSSLSocket);
   }
   
   public void a(SSLSocket paramSSLSocket, String paramString, List<Protocol> paramList)
   {
-    try
+    if (Conscrypt.isConscrypt(paramSSLSocket))
     {
-      paramString = paramSSLSocket.getSSLParameters();
-      paramList = a(paramList);
-      this.a.invoke(paramString, new Object[] { paramList.toArray(new String[paramList.size()]) });
-      paramSSLSocket.setSSLParameters(paramString);
+      if (paramString != null)
+      {
+        Conscrypt.setUseSessionTickets(paramSSLSocket, true);
+        Conscrypt.setHostname(paramSSLSocket, paramString);
+      }
+      Conscrypt.setApplicationProtocols(paramSSLSocket, (String[])gc.a(paramList).toArray(new String[0]));
       return;
     }
-    catch (IllegalAccessException paramSSLSocket)
-    {
-      throw fb.a("unable to set ssl parameters", paramSSLSocket);
+    super.a(paramSSLSocket, paramString, paramList);
+  }
+  
+  public void a(SSLSocketFactory paramSSLSocketFactory)
+  {
+    if (Conscrypt.isConscrypt(paramSSLSocketFactory)) {
+      Conscrypt.setUseEngineSocket(paramSSLSocketFactory, true);
     }
-    catch (InvocationTargetException paramSSLSocket)
+  }
+  
+  public SSLContext b()
+  {
+    try
     {
-      label48:
-      break label48;
+      SSLContext localSSLContext = SSLContext.getInstance("TLS", e());
+      return localSSLContext;
+    }
+    catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
+    {
+      throw new IllegalStateException("No TLS provider", localNoSuchAlgorithmException);
     }
   }
 }

@@ -1,6 +1,6 @@
 package okhttp3;
 
-import com.tencent.token.fm;
+import com.tencent.token.fn;
 import java.util.concurrent.TimeUnit;
 import javax.annotation.Nullable;
 
@@ -106,7 +106,7 @@ public final class d
         if (i8 >= str1.length()) {
           break label633;
         }
-        i2 = fm.a(str1, i8, "=,;");
+        i2 = fn.a(str1, i8, "=,;");
         String str2 = str1.substring(i8, i2).trim();
         if ((i2 == str1.length()) || (str1.charAt(i2) == ',') || (str1.charAt(i2) == ';'))
         {
@@ -128,17 +128,17 @@ public final class d
           }
           i1 = 0;
           break;
-          i8 = fm.a(str1, i2 + 1);
+          i8 = fn.a(str1, i2 + 1);
           if ((i8 < str1.length()) && (str1.charAt(i8) == '"'))
           {
             i2 = i8 + 1;
-            i8 = fm.a(str1, i2, "\"");
+            i8 = fn.a(str1, i2, "\"");
             localObject2 = str1.substring(i2, i8);
             i2 = i8 + 1;
           }
           else
           {
-            i2 = fm.a(str1, i8, ",;");
+            i2 = fn.a(str1, i8, ",;");
             localObject2 = str1.substring(i8, i2).trim();
           }
         }
@@ -150,12 +150,12 @@ public final class d
         }
         else if ("max-age".equalsIgnoreCase(str2))
         {
-          i6 = fm.b((String)localObject2, -1);
+          i6 = fn.b((String)localObject2, -1);
           i8 = i2;
         }
         else if ("s-maxage".equalsIgnoreCase(str2))
         {
-          i5 = fm.b((String)localObject2, -1);
+          i5 = fn.b((String)localObject2, -1);
           i8 = i2;
         }
         else if ("private".equalsIgnoreCase(str2))
@@ -175,12 +175,12 @@ public final class d
         }
         else if ("max-stale".equalsIgnoreCase(str2))
         {
-          i4 = fm.b((String)localObject2, 2147483647);
+          i4 = fn.b((String)localObject2, 2147483647);
           i8 = i2;
         }
         else if ("min-fresh".equalsIgnoreCase(str2))
         {
-          i3 = fm.b((String)localObject2, -1);
+          i3 = fn.b((String)localObject2, -1);
           i8 = i2;
         }
         else if ("only-if-cached".equalsIgnoreCase(str2))

@@ -24,15 +24,15 @@ import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
-import com.tencent.token.bw;
-import com.tencent.token.cb;
+import com.tencent.token.bx;
 import com.tencent.token.cc;
-import com.tencent.token.ci;
+import com.tencent.token.cd;
+import com.tencent.token.cj;
 import com.tencent.token.core.bean.ConfigResult;
 import com.tencent.token.core.bean.FaceRecognitionParamResult;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.bean.ZzbIntroItem;
-import com.tencent.token.cq;
+import com.tencent.token.cr;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.g;
 import com.tencent.token.utils.encrypt.a;
@@ -236,7 +236,7 @@ public class m
       a.mStartUpImgStartTime = localSharedPreferences.getLong("startup_start_time", 0L);
       a.mStartUpImgEndTime = localSharedPreferences.getLong("startup_end_time", 0L);
       a.mStartUpImgUrl = localSharedPreferences.getString("startup_img_url", "");
-      long l = cb.c().s() / 1000L;
+      long l = cc.c().s() / 1000L;
       if ((a.mStartUpImgStartTime != 0L) && (a.mStartUpImgEndTime != 0L) && (l >= a.mStartUpImgStartTime) && (l <= a.mStartUpImgEndTime)) {}
       for (a.mStartUpImg = f.b(f.c("startup_img"));; a.mStartUpImg = null)
       {
@@ -663,8 +663,8 @@ public class m
   {
     try
     {
-      SharedPreferences.Editor localEditor = cc.a().c(RqdApplication.l()).edit();
-      String str1 = bw.d();
+      SharedPreferences.Editor localEditor = cd.a().c(RqdApplication.l()).edit();
+      String str1 = bx.d();
       a locala = new a();
       String str2 = Long.toString(paramLong);
       byte[] arrayOfByte = locala.b(str2.getBytes("UTF8"), com.tencent.token.utils.encrypt.c.a(str1));
@@ -672,7 +672,7 @@ public class m
       if (arrayOfByte == null) {
         localObject = locala.b(str2.getBytes("UTF8"), com.tencent.token.utils.encrypt.c.a(str1));
       }
-      localObject = ci.a((byte[])localObject);
+      localObject = cj.a((byte[])localObject);
       g.a("verify_face_pwd_uin, hex=" + (String)localObject + ", key=" + str1);
       localEditor.putString("verify_face_pwd_uin", (String)localObject);
       localEditor.putString("verify_face_pwd_key", str1);
@@ -910,7 +910,7 @@ public class m
   {
     try
     {
-      Object localObject = cc.a().c(RqdApplication.l());
+      Object localObject = cd.a().c(RqdApplication.l());
       a locala = new a();
       String str = ((SharedPreferences)localObject).getString("verify_face_pwd_key", "");
       localObject = ((SharedPreferences)localObject).getString("verify_face_pwd_uin", "");
@@ -921,7 +921,7 @@ public class m
       }
       if ((str != null) && (str.length() != 0) && (localObject != null) && (((String)localObject).length() != 0))
       {
-        byte[] arrayOfByte2 = ci.a((String)localObject);
+        byte[] arrayOfByte2 = cj.a((String)localObject);
         byte[] arrayOfByte1 = locala.a(arrayOfByte2, com.tencent.token.utils.encrypt.c.a(str));
         localObject = arrayOfByte1;
         if (arrayOfByte1 == null) {
@@ -951,7 +951,7 @@ public class m
       if (l == 0L) {
         return null;
       }
-      QQUser localQQUser = cq.a().d(l);
+      QQUser localQQUser = cr.a().d(l);
       return localQQUser;
     }
     catch (Exception localException)
@@ -969,7 +969,7 @@ public class m
       if (l == 0L) {
         return null;
       }
-      QQUser localQQUser = cq.a().c(l.f(l));
+      QQUser localQQUser = cr.a().c(l.f(l));
       return localQQUser;
     }
     catch (Exception localException)

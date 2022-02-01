@@ -2,11 +2,11 @@ package com.tencent.token.core.protocolcenter.protocol;
 
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.bz;
 import com.tencent.token.ca;
 import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
 import com.tencent.token.utils.l;
@@ -20,7 +20,7 @@ public class ProtoQryBindNotifyMsg
   
   protected String a()
   {
-    String str = bz.a().b();
+    String str = ca.a().b();
     if (str == null)
     {
       this.a.b(104);
@@ -30,11 +30,11 @@ public class ProtoQryBindNotifyMsg
     try
     {
       Object localObject2 = new JSONObject();
-      int i = ca.a + 1;
-      ca.a = i;
+      int i = cb.a + 1;
+      cb.a = i;
       this.c = i;
       ((JSONObject)localObject2).put("seq_id", this.c);
-      ((JSONObject)localObject2).put("op_time", (int)(cb.c().s() / 1000L));
+      ((JSONObject)localObject2).put("op_time", (int)(cc.c().s() / 1000L));
       localObject2 = l.b(((JSONObject)localObject2).toString().getBytes());
       localObject1 = localObject2;
     }
@@ -49,7 +49,7 @@ public class ProtoQryBindNotifyMsg
     return c.e() + "/cn/mbtoken3/mbtoken3_qry_bind_notify_msg_encrypt" + (String)localObject1;
   }
   
-  protected void a(dn paramdn) {}
+  protected void a(do paramdo) {}
   
   protected void a(JSONObject paramJSONObject)
   {
@@ -81,7 +81,7 @@ public class ProtoQryBindNotifyMsg
   
   protected void b()
   {
-    if (!this.b.e)
+    if ((!this.b.e) && (this.b.d != null))
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;

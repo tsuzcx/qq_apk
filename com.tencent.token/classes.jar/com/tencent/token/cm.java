@@ -1,160 +1,159 @@
 package com.tencent.token;
 
-import android.content.Context;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.a;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.c;
-import com.tencent.token.global.e;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.token.global.g;
-import com.tencent.token.utils.l;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class cm
-  extends cn
+  implements cf
 {
-  static cm a;
-  private final String e = "/cn/mbtoken3/mbtoken3_scan_qrcode_v2";
-  private String f;
-  private int g;
-  private int h;
+  public long a = 0L;
+  public ck b = null;
+  private Handler d = null;
+  private ew e = null;
   
-  private cm()
+  static
   {
-    super(2);
+    if (!cm.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      c = bool;
+      return;
+    }
   }
   
-  public static cm a()
+  public cm()
   {
-    if (a == null) {
-      a = new cm();
-    }
-    return a;
+    d();
   }
   
-  public e a(String paramString)
+  public void a()
   {
-    this.b.clear();
-    this.f = "";
-    this.g = 0;
-    e locale = new e();
-    Object localObject3 = cq.a();
-    if ((localObject3 == null) || (((cq)localObject3).e() == null))
-    {
-      locale.b(110);
-      return locale;
+    if (this.d == null) {
+      return;
     }
-    long l = ((cq)localObject3).f();
-    if (l == 0L)
-    {
-      locale.b(10029);
-      return locale;
+    this.d.sendEmptyMessage(10);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.d == null) {
+      return;
     }
-    if (((cq)localObject3).e().mIsBinded) {
-      l = ((cq)localObject3).e().mUin;
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("serTime", paramInt);
+    localMessage.what = 13;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (this.d == null) {
+      return;
     }
-    ey localey = new ey();
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("errCode", paramInt);
+    localBundle.putString("error", paramString);
+    localMessage.what = 9;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
+  }
+  
+  public void a(Handler paramHandler)
+  {
+    this.d = paramHandler;
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("error", paramString);
+    localMessage.what = 14;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
+  }
+  
+  public void b()
+  {
+    if (this.d == null) {
+      return;
+    }
+    this.d.sendEmptyMessage(12);
+  }
+  
+  public void b(int paramInt, String paramString)
+  {
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("errCode", paramInt);
+    localBundle.putString("error", paramString);
+    localMessage.what = 11;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
+  }
+  
+  public void b(String paramString)
+  {
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("ucSmsPort", paramString);
+    localMessage.what = 1;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
+  }
+  
+  public void c()
+  {
+    if (this.d == null) {
+      return;
+    }
+    this.d.sendEmptyMessage(15);
+  }
+  
+  public void c(String paramString)
+  {
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("error", paramString);
+    localMessage.what = 2;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
+  }
+  
+  public void d()
+  {
     try
     {
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("uin", l);
-      i = ca.a + 1;
-      ca.a = i;
-      this.h = i;
-      ((JSONObject)localObject1).put("seq_id", this.h);
-      ((JSONObject)localObject1).put("op_time", cb.c().s() / 1000L);
-      if (paramString != null) {
-        ((JSONObject)localObject1).put("url_data", paramString);
+      this.e = ev.a();
+      if ((!c) && (this.e == null)) {
+        throw new AssertionError();
       }
-      localObject1 = ((JSONObject)localObject1).toString();
-      g.a("plain:" + (String)localObject1);
-      localObject1 = l.b(((String)localObject1).getBytes());
     }
-    catch (JSONException localJSONException)
+    catch (Exception localException)
     {
-      int i;
-      Object localObject2;
-      for (;;)
-      {
-        Object localObject1;
-        g.c("JSONException:" + localJSONException.getMessage());
-        localObject2 = null;
-      }
-      for (;;)
-      {
-        try
-        {
-          localObject2 = new JSONObject(new String((byte[])localObject3));
-          i = ((JSONObject)localObject2).getInt("err");
-          if (i != 0)
-          {
-            paramString = ((JSONObject)localObject2).getString("info");
-            locale.a(i, paramString, paramString);
-            break label822;
-          }
-          localObject2 = l.c(((JSONObject)localObject2).getString("data"));
-          if (localObject2 == null) {
-            break;
-          }
-          localObject2 = new JSONObject(new String((byte[])localObject2));
-          i = ((JSONObject)localObject2).getInt("seq_id");
-          if (i != this.h)
-          {
-            locale.b(10030);
-            g.c("parseJSON error seq is wrong seq=" + i + ",right = " + ca.a().b());
-            return locale;
-          }
-          this.g = ((JSONObject)localObject2).getInt("type");
-          if (1 != this.g) {
-            break label750;
-          }
-          paramString = ((JSONObject)localObject2).getJSONObject("msg");
-          localObject2 = new a();
-          if (((a)localObject2).a(paramString)) {
-            continue;
-          }
-          g.c("object item parse failed ");
-        }
-        catch (JSONException paramString)
-        {
-          paramString.printStackTrace();
-          g.c("parse json failed: " + paramString.toString());
-          locale.a(10020, "JSONException:" + paramString.toString());
-          break label822;
-          this.b.add(localObject2);
-          continue;
-        }
-        catch (Exception paramString)
-        {
-          paramString.printStackTrace();
-          g.c("unknown err: " + paramString.toString());
-          locale.a(10021, "JSONException:" + paramString.toString());
-        }
-        cq.a().m();
-        locale.c();
-        break label822;
-        if (2 == this.g) {
-          this.f = ((JSONObject)localObject2).getString("text");
-        } else {
-          this.f = paramString;
-        }
-      }
-      g.c("parseJSON error decodeData=" + localObject2);
-      locale.a(10022, RqdApplication.l().getString(2131230925));
+      localException.printStackTrace();
+      g.c("RESULT_ERROR!!!" + localException.getMessage());
+      return;
     }
-    localObject1 = "?aq_base_sid=" + ((cq)localObject3).g() + "&data=" + (String)localObject1;
-    localObject1 = c.e() + "/cn/mbtoken3/mbtoken3_scan_qrcode_v2" + (String)localObject1;
-    localObject3 = localey.a((String)localObject1);
-    if (localObject3 == null)
-    {
-      locale.a(localey.a());
-      g.c("client request url: " + (String)localObject1 + " failed, reason: " + locale.a + ":" + locale.b);
-      return locale;
-    }
-    label750:
-    return locale;
+    this.b = new ck(this);
+    this.b.a(this.e);
   }
 }
 

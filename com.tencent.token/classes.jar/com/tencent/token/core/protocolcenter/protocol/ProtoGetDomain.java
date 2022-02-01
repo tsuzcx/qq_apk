@@ -3,9 +3,9 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.bz;
+import com.tencent.token.ca;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -21,14 +21,14 @@ public class ProtoGetDomain
   private long d;
   private JSONArray e;
   
-  public static void a(dn paramdn, long paramLong)
+  public static void a(do paramdo, long paramLong)
   {
-    paramdn.c.put("param.realuin", Long.valueOf(paramLong));
+    paramdo.c.put("param.realuin", Long.valueOf(paramLong));
   }
   
   protected String a()
   {
-    String str1 = bz.a().b();
+    String str1 = ca.a().b();
     if (str1 == null)
     {
       this.a.b(104);
@@ -44,9 +44,9 @@ public class ProtoGetDomain
     return c.e() + "/cn/mbtoken3/mbtoken3_get_domain_v2" + str1;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.d = ((Long)paramdn.c.get("param.realuin")).longValue();
+    this.d = ((Long)paramdo.c.get("param.realuin")).longValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -72,7 +72,7 @@ public class ProtoGetDomain
   
   protected void b()
   {
-    if (!this.b.e)
+    if ((!this.b.e) && (this.b.d != null))
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;

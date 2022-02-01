@@ -8,7 +8,7 @@ import android.provider.Settings.Global;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageView;
-import com.tencent.token.gi;
+import com.tencent.token.gj;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
@@ -226,9 +226,9 @@ public class DoraemonAnimationView
     }
   }
   
-  public void setShapeStrokeDelegate(gi paramgi)
+  public void setShapeStrokeDelegate(gj paramgj)
   {
-    this.d.a(paramgi);
+    this.d.a(paramgj);
   }
   
   public void setSpeed(float paramFloat)

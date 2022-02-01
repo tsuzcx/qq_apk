@@ -3,10 +3,10 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.bz;
-import com.tencent.token.cb;
+import com.tencent.token.ca;
+import com.tencent.token.cc;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -28,18 +28,18 @@ public class ProtoQuerySpecialVerify
   private final String j = "/cn/mbtoken3/mbtoken3_qry_spec_verify";
   private final String k = "/cn/mbtoken3/mbtoken3_qry_face_verify_on_off";
   
-  public static void a(dn paramdn, long paramLong1, long paramLong2, int paramInt1, int paramInt2)
+  public static void a(do paramdo, long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    paramdn.c.put("param.realuin", Long.valueOf(paramLong2));
-    paramdn.c.put("param.scene_id", Integer.valueOf(paramInt1));
-    paramdn.c.put("param.op_time", Long.valueOf(cb.c().s() / 1000L));
-    paramdn.c.put("param.uinhash", Long.valueOf(paramLong1));
-    paramdn.j = paramInt2;
+    paramdo.c.put("param.realuin", Long.valueOf(paramLong2));
+    paramdo.c.put("param.scene_id", Integer.valueOf(paramInt1));
+    paramdo.c.put("param.op_time", Long.valueOf(cc.c().s() / 1000L));
+    paramdo.c.put("param.uinhash", Long.valueOf(paramLong1));
+    paramdo.j = paramInt2;
   }
   
   protected String a()
   {
-    String str1 = bz.a().b();
+    String str1 = ca.a().b();
     if (str1 == null)
     {
       this.a.b(104);
@@ -55,13 +55,13 @@ public class ProtoQuerySpecialVerify
     }
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.e = ((Long)paramdn.c.get("param.realuin")).longValue();
-    this.g = ((Integer)paramdn.c.get("param.scene_id")).intValue();
-    this.h = ((Long)paramdn.c.get("param.op_time")).longValue();
-    this.f = paramdn.j;
-    this.d = ((Long)paramdn.c.get("param.uinhash")).longValue();
+    this.e = ((Long)paramdo.c.get("param.realuin")).longValue();
+    this.g = ((Integer)paramdo.c.get("param.scene_id")).intValue();
+    this.h = ((Long)paramdo.c.get("param.op_time")).longValue();
+    this.f = paramdo.j;
+    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -94,7 +94,7 @@ public class ProtoQuerySpecialVerify
   
   protected void b()
   {
-    if (!this.b.e)
+    if ((!this.b.e) && (this.b.d != null))
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;

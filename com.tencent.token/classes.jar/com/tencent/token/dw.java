@@ -1,193 +1,103 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import android.os.Environment;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.c.a;
-import com.tencent.token.utils.c;
-import com.tencent.token.utils.d;
-import com.tencent.token.utils.i;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.Writer;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class dw
-  implements SharedPreferences.OnSharedPreferenceChangeListener
+  implements Iterable<String>
 {
-  public static d a;
-  private static dw c = null;
-  protected c b;
-  private volatile boolean d = c.a.a;
-  private volatile boolean e = c.a.b;
-  private volatile boolean f = c.a.d;
-  private volatile boolean g = c.a.e;
+  private ConcurrentLinkedQueue<String> a = null;
+  private AtomicInteger b = null;
   
-  static
+  public int a()
   {
-    int i = i.a("debug.file.blockcount", 24);
-    long l = i.a("debug.file.keepperiod", 604800000L);
-    a = new d(b(), i, 262144, 8192, "Sec.File.Tracer", 10000L, 10, ".sec.log", l);
+    return this.b.get();
   }
   
-  public dw()
+  public int a(String paramString)
   {
-    i.a(this);
-    this.b = new c(a);
+    int i = paramString.length();
+    this.a.add(paramString);
+    return this.b.addAndGet(i);
   }
   
-  public static dw a()
+  public void a(Writer paramWriter, char[] paramArrayOfChar)
   {
-    if (c == null) {}
-    try
-    {
-      if (c == null) {
-        c = new dw();
-      }
-      return c;
+    if ((paramWriter == null) || (paramArrayOfChar == null) || (paramArrayOfChar.length == 0)) {
+      return;
     }
-    finally {}
-  }
-  
-  public static void a(int paramInt)
-  {
-    int i;
-    if (paramInt <= 63)
-    {
-      i = paramInt;
-      if (paramInt >= 0) {}
-    }
-    else
-    {
-      i = c.a.h;
-    }
-    i.b("debug.file.tracelevel", i).commit();
-  }
-  
-  public static void a(File paramFile)
-  {
-    if ((paramFile == null) || (!paramFile.exists())) {}
+    int n = paramArrayOfChar.length;
     for (;;)
     {
-      return;
-      if (paramFile.isFile())
-      {
-        paramFile.delete();
-        return;
-      }
-      paramFile = paramFile.listFiles();
-      int j = paramFile.length;
-      int i = 0;
-      while (i < j)
-      {
-        a(paramFile[i]);
-        i += 1;
-      }
-    }
-  }
-  
-  public static BufferedReader b(int paramInt)
-  {
-    Object localObject = a.a(System.currentTimeMillis());
-    if ((localObject == null) || (!((File)localObject).isDirectory())) {
-      return null;
-    }
-    localObject = a.b((File)localObject);
-    localObject = a.a((File[])localObject);
-    if ((paramInt >= 0) && (paramInt < localObject.length))
-    {
-      localObject = localObject[(localObject.length - paramInt - 1)];
+      int j;
+      int k;
+      int i1;
+      int i2;
       try
       {
-        localObject = new BufferedReader(new FileReader((File)localObject));
-        return localObject;
+        Iterator localIterator = iterator();
+        j = 0;
+        i = n;
+        if (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          k = str.length();
+          m = 0;
+          break label169;
+          str.getChars(m, m + i1, paramArrayOfChar, j);
+          i2 = i - i1;
+          k -= i1;
+          i = i1 + m;
+          if (i2 == 0)
+          {
+            paramWriter.write(paramArrayOfChar, 0, n);
+            i1 = 0;
+            j = n;
+            m = i;
+            i = j;
+            j = i1;
+            break label169;
+          }
+        }
+        else
+        {
+          if (j > 0) {
+            paramWriter.write(paramArrayOfChar, 0, j);
+          }
+          paramWriter.flush();
+          return;
+        }
       }
-      catch (FileNotFoundException localFileNotFoundException)
+      catch (Exception paramWriter)
       {
-        return null;
+        paramWriter.printStackTrace();
+        return;
       }
-    }
-    return null;
-  }
-  
-  public static File b()
-  {
-    String str = c.a.g;
-    if (c()) {
-      return new File(Environment.getExternalStorageDirectory(), str);
-    }
-    return new File(RqdApplication.l().getFilesDir(), str);
-  }
-  
-  public static boolean c()
-  {
-    String str = Environment.getExternalStorageState();
-    return ("mounted".equals(str)) || ("mounted_ro".equals(str));
-  }
-  
-  public static void h()
-  {
-    Object localObject = a.a(System.currentTimeMillis());
-    localObject = a.b((File)localObject);
-    if (localObject != null)
-    {
-      int i = 0;
-      while (i < localObject.length)
-      {
-        a(localObject[i]);
-        i += 1;
+      j += i1;
+      int m = i;
+      int i = i2;
+      label169:
+      if (k > 0) {
+        if (i > k) {
+          i1 = k;
+        } else {
+          i1 = i;
+        }
       }
     }
   }
   
-  public void a(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
+  public void b()
   {
-    if ((d()) && (e()) && (this.b != null)) {
-      this.b.b(paramInt, Thread.currentThread(), cb.c().s(), paramString1, paramString2, paramThrowable);
-    }
+    this.a.clear();
+    this.b.set(0);
   }
   
-  public final boolean d()
+  public Iterator<String> iterator()
   {
-    return this.d;
-  }
-  
-  public final boolean e()
-  {
-    return this.e;
-  }
-  
-  public final boolean f()
-  {
-    return this.f;
-  }
-  
-  public final boolean g()
-  {
-    return this.g;
-  }
-  
-  public boolean i()
-  {
-    return i.a("debug.file.uploadfiledate", -1) >= 0;
-  }
-  
-  public int j()
-  {
-    return i.a("debug.file.uploadfiledate", -1);
-  }
-  
-  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
-  {
-    if (("debug.file.tracelevel".equals(paramString)) || (paramString == null))
-    {
-      int i = i.a("debug.file.tracelevel", c.a.h);
-      a(16, "SecTracer", "File Trace Level Changed = " + i, null);
-      this.b.a(i);
-    }
+    return this.a.iterator();
   }
 }
 

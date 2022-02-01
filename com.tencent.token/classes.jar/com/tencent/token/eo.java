@@ -1,49 +1,50 @@
 package com.tencent.token;
 
-import android.content.ContentValues;
-import com.tencent.wcdb.Cursor;
+import android.content.Context;
+import com.tencent.wcdb.database.SQLiteCipherSpec;
 import com.tencent.wcdb.database.SQLiteDatabase;
+import com.tencent.wcdb.database.SQLiteOpenHelper;
 
 public class eo
-  implements es
+  extends SQLiteOpenHelper
 {
-  public String a;
-  public String b;
+  Context a;
   
-  public es a(Cursor paramCursor)
+  eo(Context paramContext, String paramString, int paramInt, SQLiteCipherSpec paramSQLiteCipherSpec)
   {
-    eo localeo = new eo();
-    localeo.a = paramCursor.getString(paramCursor.getColumnIndex("uinhash"));
-    localeo.b = paramCursor.getString(paramCursor.getColumnIndex("filename"));
-    return localeo;
+    super(paramContext, a(paramInt), paramString.getBytes(), paramSQLiteCipherSpec, null, 1, new em());
+    this.a = paramContext;
   }
   
-  public void a(SQLiteDatabase paramSQLiteDatabase)
+  public static String a(int paramInt)
   {
-    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS qqface(uinhash TEXT PRIMARY KEY,filename TEXT);");
+    switch (paramInt)
+    {
+    default: 
+      return "mobiletoken.db";
+    case 0: 
+      return "mobiletoken_test.db";
+    case 1: 
+      return "mobiletoken.db";
+    case 2: 
+      return "mobiletoken_exp.db";
+    }
+    return "mobiletoken_gray.db";
   }
   
-  public long b(SQLiteDatabase paramSQLiteDatabase)
+  protected void finalize()
   {
-    a(paramSQLiteDatabase);
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("uinhash", this.a);
-    localContentValues.put("filename", this.b);
-    return paramSQLiteDatabase.insert("qqface", null, localContentValues);
+    try
+    {
+      close();
+      return;
+    }
+    catch (Exception localException) {}
   }
   
-  public String b()
-  {
-    return "qqface";
-  }
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase) {}
   
-  public ContentValues c()
-  {
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("uinhash", this.a);
-    localContentValues.put("filename", this.b);
-    return localContentValues;
-  }
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
 }
 
 

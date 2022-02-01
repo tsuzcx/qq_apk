@@ -42,7 +42,7 @@ public class bu
   private e a(String paramString)
   {
     e locale = new e();
-    if (!cq.a().o())
+    if (!cr.a().o())
     {
       if (this.j) {
         b();
@@ -55,18 +55,18 @@ public class bu
       Object localObject = l.b(paramString.getBytes());
       paramString = c.e() + "/cn/mbtoken3/mbtoken3_click_flow_encrypt";
       ContentValues localContentValues = new ContentValues(3);
-      localContentValues.put("aq_base_sid", cq.c);
+      localContentValues.put("aq_base_sid", cr.c);
       localContentValues.put("data", (String)localObject);
-      g.a("clickflow aq_base_sid=" + cq.c);
+      g.a("clickflow aq_base_sid=" + cr.c);
       g.a("clickflow data=" + (String)localObject);
-      localObject = new ey();
-      paramString = ((ey)localObject).a(paramString, localContentValues);
+      localObject = new ez();
+      paramString = ((ez)localObject).a(paramString, localContentValues);
       if (paramString == null)
       {
         if (this.j) {
           b();
         }
-        locale.a(((ey)localObject).a());
+        locale.a(((ez)localObject).a());
         return locale;
       }
       try
@@ -142,7 +142,7 @@ public class bu
           localJSONObject = new JSONObject();
           localJSONObject.put("t", paramLong / 1000L);
           localJSONObject.put("e", paramInt);
-          localObject2 = cq.a().e();
+          localObject2 = cr.a().e();
           if (localObject2 != null) {
             localJSONObject.put("u", ((QQUser)localObject2).mUin);
           }
@@ -250,10 +250,10 @@ public class bu
     //   117: astore 7
     //   119: lconst_0
     //   120: lstore 4
-    //   122: invokestatic 78	com/tencent/token/cq:a	()Lcom/tencent/token/cq;
+    //   122: invokestatic 78	com/tencent/token/cr:a	()Lcom/tencent/token/cr;
     //   125: astore 8
     //   127: aload 8
-    //   129: invokevirtual 235	com/tencent/token/cq:k	()Lcom/tencent/token/core/bean/QQUser;
+    //   129: invokevirtual 235	com/tencent/token/cr:k	()Lcom/tencent/token/core/bean/QQUser;
     //   132: astore 9
     //   134: aload 9
     //   136: ifnull +123 -> 259
@@ -262,19 +262,19 @@ public class bu
     //   144: lstore 4
     //   146: aload 7
     //   148: ldc 237
-    //   150: invokestatic 242	com/tencent/token/cb:c	()Lcom/tencent/token/cb;
-    //   153: invokevirtual 246	com/tencent/token/cb:s	()J
+    //   150: invokestatic 242	com/tencent/token/cc:c	()Lcom/tencent/token/cc;
+    //   153: invokevirtual 246	com/tencent/token/cc:s	()J
     //   156: ldc2_w 203
     //   159: ldiv
     //   160: l2i
     //   161: invokevirtual 211	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   164: pop
-    //   165: getstatic 250	com/tencent/token/ca:a	I
+    //   165: getstatic 250	com/tencent/token/cb:a	I
     //   168: iconst_1
     //   169: iadd
     //   170: istore_2
     //   171: iload_2
-    //   172: putstatic 250	com/tencent/token/ca:a	I
+    //   172: putstatic 250	com/tencent/token/cb:a	I
     //   175: aload 7
     //   177: ldc 252
     //   179: iload_2
@@ -287,8 +287,8 @@ public class bu
     //   193: pop
     //   194: aload 7
     //   196: ldc_w 256
-    //   199: invokestatic 242	com/tencent/token/cb:c	()Lcom/tencent/token/cb;
-    //   202: invokevirtual 258	com/tencent/token/cb:k	()J
+    //   199: invokestatic 242	com/tencent/token/cc:c	()Lcom/tencent/token/cc;
+    //   202: invokevirtual 258	com/tencent/token/cc:k	()J
     //   205: invokestatic 262	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   208: invokevirtual 265	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   211: pop
@@ -317,7 +317,7 @@ public class bu
     //   257: pop
     //   258: return
     //   259: aload 8
-    //   261: invokevirtual 214	com/tencent/token/cq:e	()Lcom/tencent/token/core/bean/QQUser;
+    //   261: invokevirtual 214	com/tencent/token/cr:e	()Lcom/tencent/token/core/bean/QQUser;
     //   264: astore 8
     //   266: aload 8
     //   268: ifnull -122 -> 146

@@ -2,12 +2,12 @@ package com.tencent.token.upload;
 
 import android.content.ContentValues;
 import android.content.Context;
-import com.tencent.token.bz;
 import com.tencent.token.ca;
 import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cq;
-import com.tencent.token.ey;
+import com.tencent.token.cr;
+import com.tencent.token.ez;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.upload.useraction.a;
 import org.json.JSONException;
@@ -132,32 +132,32 @@ public class d
     com.tencent.token.global.e locale = new com.tencent.token.global.e();
     try
     {
-      Object localObject1 = cq.a();
+      Object localObject1 = cr.a();
       com.tencent.token.global.g.c("====上报信息开始====");
-      i = ca.a + 1;
-      ca.a = i;
+      i = cb.a + 1;
+      cb.a = i;
       this.b = i;
       Object localObject4 = new JSONObject();
       try
       {
-        ((JSONObject)localObject4).put("uin", ((cq)localObject1).e().mUin);
-        com.tencent.token.global.g.a("mRealUin=" + ((cq)localObject1).e().mRealUin + ",uinHash=" + ((cq)localObject1).e().mUin);
+        ((JSONObject)localObject4).put("uin", ((cr)localObject1).e().mUin);
+        com.tencent.token.global.g.a("mRealUin=" + ((cr)localObject1).e().mRealUin + ",uinHash=" + ((cr)localObject1).e().mUin);
         ((JSONObject)localObject4).put("seq_id", this.b);
-        ((JSONObject)localObject4).put("op_time", (int)(cb.c().s() / 1000L));
-        ((JSONObject)localObject4).put("token_seq", cb.c().k());
+        ((JSONObject)localObject4).put("op_time", (int)(cc.c().s() / 1000L));
+        ((JSONObject)localObject4).put("token_seq", cc.c().k());
         a((JSONObject)localObject4);
         localObject1 = com.tencent.token.utils.l.b(((JSONObject)localObject4).toString().getBytes());
         localObject4 = com.tencent.token.global.c.e() + "/cn/mbtoken3/mbtoken3_device_info_report_encrypt";
         ContentValues localContentValues = new ContentValues(3);
-        localContentValues.put("aq_base_sid", bz.a().b());
+        localContentValues.put("aq_base_sid", ca.a().b());
         localContentValues.put("data", (String)localObject1);
-        com.tencent.token.global.g.a("deviceinfo aq_base_sid=" + bz.a().b());
+        com.tencent.token.global.g.a("deviceinfo aq_base_sid=" + ca.a().b());
         com.tencent.token.global.g.a("deviceinfo data=" + (String)localObject1);
-        localObject1 = new ey();
-        localObject4 = ((ey)localObject1).a((String)localObject4, localContentValues);
+        localObject1 = new ez();
+        localObject4 = ((ez)localObject1).a((String)localObject4, localContentValues);
         if (localObject4 == null)
         {
-          locale.a(((ey)localObject1).a());
+          locale.a(((ez)localObject1).a());
           return locale;
         }
       }

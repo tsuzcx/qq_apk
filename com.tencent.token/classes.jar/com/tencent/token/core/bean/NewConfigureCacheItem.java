@@ -1,7 +1,7 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.cr;
-import com.tencent.token.dk;
+import com.tencent.token.cs;
+import com.tencent.token.dl;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -28,7 +28,7 @@ public class NewConfigureCacheItem
     if (this.mConfIDs != null) {
       this.mConfIDs.clear();
     }
-    cr.a().h.a();
+    cs.a().h.a();
   }
 }
 

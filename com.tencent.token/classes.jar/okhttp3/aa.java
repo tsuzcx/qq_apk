@@ -1,6 +1,6 @@
 package okhttp3;
 
-import com.tencent.token.fb;
+import com.tencent.token.fc;
 import java.io.Closeable;
 import java.io.InputStream;
 import javax.annotation.Nullable;
@@ -46,7 +46,7 @@ public abstract class aa
   
   public void close()
   {
-    fb.a(c());
+    fc.a(c());
   }
 }
 

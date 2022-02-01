@@ -1,11 +1,11 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.bz;
 import com.tencent.token.ca;
 import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -21,15 +21,15 @@ public class ProtoDelMbInfo
   private long d;
   private int e;
   
-  public static void a(dn paramdn, long paramLong, int paramInt)
+  public static void a(do paramdo, long paramLong, int paramInt)
   {
-    paramdn.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdn.c.put("param.mbinfo.id", Integer.valueOf(paramInt));
+    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdo.c.put("param.mbinfo.id", Integer.valueOf(paramInt));
   }
   
   protected String a()
   {
-    String str1 = bz.a().b();
+    String str1 = ca.a().b();
     if (str1 == null)
     {
       this.a.b(104);
@@ -40,11 +40,11 @@ public class ProtoDelMbInfo
     {
       ((JSONObject)localObject).put("uin", this.d);
       ((JSONObject)localObject).put("item_id", this.e);
-      int i = ca.a + 1;
-      ca.a = i;
+      int i = cb.a + 1;
+      cb.a = i;
       this.c = i;
       ((JSONObject)localObject).put("seq_id", this.c);
-      ((JSONObject)localObject).put("op_time", (int)(cb.c().s() / 1000L));
+      ((JSONObject)localObject).put("op_time", (int)(cc.c().s() / 1000L));
       localObject = l.b(((JSONObject)localObject).toString().getBytes());
       if (localObject == null)
       {
@@ -70,10 +70,10 @@ public class ProtoDelMbInfo
     return c.e() + "/cn/mbtoken3/mbtoken3_del_mbitem_encrypt" + (String)localObject;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.d = ((Long)paramdn.c.get("param.uinhash")).longValue();
-    this.e = ((Integer)paramdn.c.get("param.mbinfo.id")).intValue();
+    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
+    this.e = ((Integer)paramdo.c.get("param.mbinfo.id")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)

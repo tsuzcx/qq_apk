@@ -1,231 +1,208 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.g;
+import com.tencent.token.core.protocolcenter.protocol.ProtoModSeed;
+import com.tencent.token.utils.encrypt.c;
+import com.tencent.token.utils.j;
+import com.tencent.token.utils.l;
+import com.tmsdk.common.util.TmsLog;
 
 public class cc
 {
   private static cc b = null;
-  public int a = 0;
-  private Context c = null;
-  private String d = null;
+  private static String d = "";
+  private static String e = "https://aq.qq.com";
+  public cm a = null;
+  private bx c = null;
   
-  public static cc a()
+  static
+  {
+    if (j.c == 0) {
+      e = "http://test.aq.qq.com";
+    }
+  }
+  
+  public static String a()
+  {
+    return e;
+  }
+  
+  public static void a(String paramString)
+  {
+    e = paramString;
+  }
+  
+  public static String b()
+  {
+    return d;
+  }
+  
+  public static void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString.length() > 15) {
+      str = paramString.substring(0, 15);
+    }
+    d = c.c(c.b(str.getBytes()));
+  }
+  
+  public static cc c()
   {
     if (b == null) {
       b = new cc();
     }
-    b.d(RqdApplication.l());
     return b;
   }
   
-  public static void b()
+  public void a(long paramLong)
+  {
+    this.c.a(paramLong);
+  }
+  
+  public void a(dq paramdq)
+  {
+    this.c.a(paramdq);
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    this.c.a = paramArrayOfByte;
+    TmsLog.i("mod_seed", "recv initCode, hexStr: " + l.a(paramArrayOfByte));
+    if (paramArrayOfByte != null) {
+      ProtoModSeed.a(false);
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    paramLong = 1000L * paramLong;
+    if (paramLong > 0L)
+    {
+      long l = System.currentTimeMillis();
+      c().a(paramLong - l);
+      c().i();
+      c().n();
+    }
+  }
+  
+  public void c(long paramLong)
+  {
+    this.c.b(paramLong);
+  }
+  
+  public void c(String paramString)
+  {
+    this.c.a(paramString);
+  }
+  
+  public void d()
   {
     b = null;
   }
   
-  private String c(String paramString)
+  public void e()
   {
-    return com.tencent.token.utils.encrypt.c.c(com.tencent.token.utils.encrypt.c.a(paramString));
+    this.c.b();
   }
   
-  private void d(Context paramContext)
+  public byte[] f()
   {
-    if (this.c == paramContext) {}
-    label36:
-    label105:
-    label110:
-    label124:
-    for (;;)
+    return this.c.a;
+  }
+  
+  public boolean g()
+  {
+    return this.c.a();
+  }
+  
+  public String h()
+  {
+    return this.c.f();
+  }
+  
+  public void i()
+  {
+    this.c.c();
+  }
+  
+  public String j()
+  {
+    return this.c.g();
+  }
+  
+  public long k()
+  {
+    return this.c.h();
+  }
+  
+  public int[] l()
+  {
+    int[] arrayOfInt = new int[6];
+    System.arraycopy(this.c.b, 0, arrayOfInt, 0, 6);
+    return arrayOfInt;
+  }
+  
+  public void m()
+  {
+    this.c.i();
+  }
+  
+  public void n()
+  {
+    this.c.j();
+  }
+  
+  public String o()
+  {
+    return this.c.k();
+  }
+  
+  public String p()
+  {
+    String str2 = "0000";
+    String str3 = this.c.a(0);
+    String str1 = str2;
+    if (str3 != null)
     {
-      return;
-      this.c = paramContext;
-      boolean bool;
-      if (paramContext != null)
+      str1 = str2;
+      if (str3.length() != 0)
       {
-        bool = true;
-        g.a(bool);
-        paramContext = c(paramContext);
-        if (paramContext == null) {
-          break label105;
-        }
-        bool = true;
-        g.a(bool);
-        this.a = paramContext.getInt("pwd_type", 0);
-        if (this.a != 2) {
-          break label110;
+        str1 = str2;
+        if (str3.length() >= 4) {
+          str1 = str3.substring(0, 4);
         }
       }
-      for (this.d = paramContext.getString("pwd3g", null);; this.d = paramContext.getString("pwd", null))
-      {
-        if (this.a != 0) {
-          break label124;
-        }
-        a(this.c, this.d);
-        this.a = 1;
-        return;
-        bool = false;
-        break;
-        bool = false;
-        break label36;
-      }
     }
+    return str1;
   }
   
-  public void a(Context paramContext)
+  public long q()
   {
-    b(paramContext, null);
-    a(paramContext, 0L);
+    return this.c.l();
   }
   
-  public void a(Context paramContext, int paramInt)
+  public long r()
   {
-    paramContext = c(paramContext);
-    if (paramContext != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      g.a(bool);
-      paramContext = paramContext.edit();
-      paramContext.putInt("lock_time", paramInt);
-      paramContext.commit();
-      return;
-    }
+    return 30000L - s() % 30000L;
   }
   
-  public void a(Context paramContext, long paramLong)
+  public long s()
   {
-    paramContext = c(paramContext);
-    if (paramContext != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      g.a(bool);
-      paramContext = paramContext.edit();
-      paramContext.putLong("last_lock", paramLong);
-      paramContext.commit();
-      return;
-    }
+    return System.currentTimeMillis() + q();
   }
   
-  public boolean a(Context paramContext, String paramString)
+  public boolean t()
   {
-    paramContext = c(paramContext);
-    boolean bool;
-    if (paramContext != null)
-    {
-      bool = true;
-      g.a(bool);
-      paramContext = paramContext.edit();
-      if ((paramString != null) && (paramString.length() > 0)) {
-        break label62;
-      }
-      this.d = null;
-      paramContext.remove("pwd");
-    }
-    for (;;)
-    {
-      paramContext.commit();
-      return true;
-      bool = false;
-      break;
-      label62:
-      this.d = c(paramString);
-      paramContext.putString("pwd", this.d);
-      paramContext.putInt("pwd_type", 1);
-      this.a = 1;
-    }
+    return this.c.m();
   }
   
-  public boolean a(String paramString)
+  public void u()
   {
-    if ((paramString == null) || (this.d == null)) {}
-    while (1 > this.a) {
-      return false;
-    }
-    return this.d.equals(c(paramString));
+    this.c.a(false);
   }
   
-  public int b(Context paramContext)
+  public void v()
   {
-    paramContext = c(paramContext);
-    if (paramContext != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      g.a(bool);
-      return paramContext.getInt("lock_time", 0);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("startpwd_gesture_new_tip", 0).edit();
-    localEditor.putBoolean(paramString, false);
-    localEditor.commit();
-  }
-  
-  public boolean b(Context paramContext, String paramString)
-  {
-    Object localObject = c(paramContext);
-    boolean bool;
-    if (localObject != null)
-    {
-      bool = true;
-      g.a(bool);
-      localObject = ((SharedPreferences)localObject).edit();
-      if ((paramString != null) && (paramString.length() > 0)) {
-        break label68;
-      }
-      this.d = null;
-      ((SharedPreferences.Editor)localObject).remove("pwd3g");
-    }
-    for (;;)
-    {
-      ((SharedPreferences.Editor)localObject).commit();
-      return true;
-      bool = false;
-      break;
-      label68:
-      if (this.a == 1) {
-        a(paramContext, null);
-      }
-      this.d = c(paramString);
-      this.a = 2;
-      ((SharedPreferences.Editor)localObject).putString("pwd3g", this.d);
-      ((SharedPreferences.Editor)localObject).putInt("pwd_type", 2);
-    }
-  }
-  
-  public SharedPreferences c(Context paramContext)
-  {
-    switch ()
-    {
-    default: 
-      return RqdApplication.l().getSharedPreferences("token_pwd_file", 0);
-    case 0: 
-      return RqdApplication.l().getSharedPreferences("token_pwd_file_test", 0);
-    case 1: 
-      return RqdApplication.l().getSharedPreferences("token_pwd_file", 0);
-    case 2: 
-      return RqdApplication.l().getSharedPreferences("token_pwd_file_exp", 0);
-    }
-    return RqdApplication.l().getSharedPreferences("token_pwd_file_gray", 0);
-  }
-  
-  public boolean c()
-  {
-    return (this.d != null) && (this.d.length() > 0);
-  }
-  
-  public boolean d()
-  {
-    return (this.d != null) && (this.d.length() > 0) && (this.a == 2);
-  }
-  
-  public int e()
-  {
-    return this.a;
+    this.c.o();
   }
 }
 

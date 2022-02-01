@@ -25,10 +25,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.token.cd;
+import com.tencent.token.ce;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.bean.a;
-import com.tencent.token.cq;
+import com.tencent.token.cr;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.ui.IndexActivity;
 import com.tencent.token.utils.g;
@@ -130,7 +130,7 @@ public class DualMsgView
     this.d.setText(Html.fromHtml(parama.g()));
     this.h.setText(a(parama.h(), " "));
     this.i.setText(a(parama.i(), " "));
-    parama = cq.a().c(parama.c());
+    parama = cr.a().c(parama.c());
     if (parama != null)
     {
       this.j.setImageDrawable(g.a(parama.b() + "", parama.mUin + ""));
@@ -208,7 +208,7 @@ public class DualMsgView
     this.f.setText(Html.fromHtml(parama.g()));
     this.h.setText("  " + Html.fromHtml(parama.h()));
     this.i.setText("  " + Html.fromHtml(parama.i()));
-    parama = cq.a().c(parama.c());
+    parama = cr.a().c(parama.c());
     if (parama != null)
     {
       this.j.setImageDrawable(g.a(parama.b() + "", parama.mUin + ""));
@@ -231,7 +231,7 @@ public class DualMsgView
   public void c()
   {
     this.y.post(new c(this.p, this.q, this.r, this.s));
-    cd.a(RqdApplication.l()).a();
+    ce.a(RqdApplication.l()).a();
   }
   
   public void d()

@@ -2,10 +2,10 @@ package com.tencent.token.core.push;
 
 import android.os.Handler;
 import android.os.HandlerThread;
-import com.tencent.token.cb;
-import com.tencent.token.ci;
-import com.tencent.token.cp;
-import com.tencent.token.dp;
+import com.tencent.token.cc;
+import com.tencent.token.cj;
+import com.tencent.token.cq;
+import com.tencent.token.dq;
 import com.tencent.token.utils.UserTask;
 import com.tencent.token.utils.encrypt.a;
 import java.io.IOException;
@@ -33,8 +33,8 @@ public class b
   HandlerThread e;
   Handler f;
   private final long g = 2L;
-  private final dp h = new dp("B8008767A628A4F53BCB84C13C961A55BF87607DAA5BE0BA3AC2E0CB778E494579BD444F699885F4968CD9028BB3FC6FA657D532F1718F581669BDC333F83DC3", 16);
-  private dp i = new dp("-1");
+  private final dq h = new dq("B8008767A628A4F53BCB84C13C961A55BF87607DAA5BE0BA3AC2E0CB778E494579BD444F699885F4968CD9028BB3FC6FA657D532F1718F581669BDC333F83DC3", 16);
+  private dq i = new dq("-1");
   private byte[] j;
   private String k = "";
   private final int l = 0;
@@ -73,13 +73,13 @@ public class b
       }
       arrayOfByte = new byte[5];
       paramInputStream.read(arrayOfByte);
-      i3 = ci.a(arrayOfByte, 1);
+      i3 = cj.a(arrayOfByte, 1);
       if (i3 <= 42)
       {
         com.tencent.token.global.g.c("socket rsp msg len not correct: " + i3);
         return -1;
       }
-      i2 = ci.a(arrayOfByte, 3);
+      i2 = cj.a(arrayOfByte, 3);
       localObject = new byte[i3];
       i1 = 0;
     }
@@ -100,7 +100,7 @@ public class b
           i1 = i2;
           if (i2 == 0)
           {
-            paramInputStream = new dp(new String(paramInputStream.m), 16);
+            paramInputStream = new dq(new String(paramInputStream.m), 16);
             this.j = com.tencent.token.utils.encrypt.b.a(this.i, paramInputStream, this.h);
             i1 = i2;
             if (this.j == null)
@@ -117,9 +117,9 @@ public class b
                 {
                   l1 = System.currentTimeMillis();
                   l2 = paramInputStream.n;
-                  localObject = cb.c();
-                  ((cb)localObject).a(l2 * 1000L - l1);
-                  ((cb)localObject).i();
+                  localObject = cc.c();
+                  ((cc)localObject).a(l2 * 1000L - l1);
+                  ((cc)localObject).i();
                 }
                 i1 = i2;
                 if (i2 == 0)
@@ -315,13 +315,13 @@ public class b
           //   192: getfield 18	com/tencent/token/core/push/b$5:b	Lcom/tencent/token/core/push/b;
           //   195: getfield 39	com/tencent/token/core/push/b:d	[B
           //   198: iconst_0
-          //   199: invokestatic 123	com/tencent/token/ci:c	([BI)J
+          //   199: invokestatic 123	com/tencent/token/cj:c	([BI)J
           //   202: putfield 126	com/tencent/token/core/push/f:a	J
           //   205: aload_0
           //   206: getfield 18	com/tencent/token/core/push/b$5:b	Lcom/tencent/token/core/push/b;
           //   209: getfield 39	com/tencent/token/core/push/b:d	[B
           //   212: bipush 8
-          //   214: invokestatic 129	com/tencent/token/ci:a	([BI)S
+          //   214: invokestatic 129	com/tencent/token/cj:a	([BI)S
           //   217: istore_1
           //   218: aload 5
           //   220: iload_1
@@ -334,7 +334,7 @@ public class b
           //   235: aload 5
           //   237: getfield 131	com/tencent/token/core/push/f:b	[B
           //   240: iload_1
-          //   241: invokestatic 134	com/tencent/token/ci:b	([BI[BI)V
+          //   241: invokestatic 134	com/tencent/token/cj:b	([BI[BI)V
           //   244: iload_1
           //   245: bipush 10
           //   247: iadd
@@ -344,7 +344,7 @@ public class b
           //   252: getfield 18	com/tencent/token/core/push/b$5:b	Lcom/tencent/token/core/push/b;
           //   255: getfield 39	com/tencent/token/core/push/b:d	[B
           //   258: iload_1
-          //   259: invokestatic 136	com/tencent/token/ci:b	([BI)J
+          //   259: invokestatic 136	com/tencent/token/cj:b	([BI)J
           //   262: putfield 138	com/tencent/token/core/push/f:c	J
           //   265: iload_1
           //   266: iconst_4
@@ -377,7 +377,7 @@ public class b
           //   308: getfield 18	com/tencent/token/core/push/b$5:b	Lcom/tencent/token/core/push/b;
           //   311: getfield 39	com/tencent/token/core/push/b:d	[B
           //   314: iload_1
-          //   315: invokestatic 136	com/tencent/token/ci:b	([BI)J
+          //   315: invokestatic 136	com/tencent/token/cj:b	([BI)J
           //   318: putfield 147	com/tencent/token/core/push/f:f	J
           //   321: iload_1
           //   322: iconst_4
@@ -387,7 +387,7 @@ public class b
           //   326: getfield 18	com/tencent/token/core/push/b$5:b	Lcom/tencent/token/core/push/b;
           //   329: getfield 39	com/tencent/token/core/push/b:d	[B
           //   332: iload_2
-          //   333: invokestatic 129	com/tencent/token/ci:a	([BI)S
+          //   333: invokestatic 129	com/tencent/token/cj:a	([BI)S
           //   336: istore_1
           //   337: iload_2
           //   338: iconst_2
@@ -404,7 +404,7 @@ public class b
           //   357: aload 5
           //   359: getfield 150	com/tencent/token/core/push/f:g	[B
           //   362: iload_1
-          //   363: invokestatic 134	com/tencent/token/ci:b	([BI[BI)V
+          //   363: invokestatic 134	com/tencent/token/cj:b	([BI[BI)V
           //   366: iload_2
           //   367: iload_1
           //   368: iadd
@@ -413,7 +413,7 @@ public class b
           //   371: getfield 18	com/tencent/token/core/push/b$5:b	Lcom/tencent/token/core/push/b;
           //   374: getfield 39	com/tencent/token/core/push/b:d	[B
           //   377: iload_1
-          //   378: invokestatic 129	com/tencent/token/ci:a	([BI)S
+          //   378: invokestatic 129	com/tencent/token/cj:a	([BI)S
           //   381: istore_2
           //   382: aload 5
           //   384: iload_2
@@ -428,7 +428,7 @@ public class b
           //   400: aload 5
           //   402: getfield 153	com/tencent/token/core/push/f:h	[B
           //   405: iload_2
-          //   406: invokestatic 134	com/tencent/token/ci:b	([BI[BI)V
+          //   406: invokestatic 134	com/tencent/token/cj:b	([BI[BI)V
           //   409: new 65	java/lang/StringBuilder
           //   412: dup
           //   413: invokespecial 66	java/lang/StringBuilder:<init>	()V
@@ -654,7 +654,7 @@ public class b
       {
         public com.tencent.token.global.e a(String... paramAnonymousVarArgs)
         {
-          return cp.a().b();
+          return cq.a().b();
         }
         
         public void a(com.tencent.token.global.e paramAnonymouse)
@@ -828,22 +828,22 @@ public class b
           for (;;)
           {
             return;
-            Object localObject2 = cb.c();
-            ((cb)localObject2).m();
-            long l = ((cb)localObject2).k();
-            Object localObject1 = cb.b();
-            localObject2 = ((cb)localObject2).o();
+            Object localObject2 = cc.c();
+            ((cc)localObject2).m();
+            long l = ((cc)localObject2).k();
+            Object localObject1 = cc.b();
+            localObject2 = ((cc)localObject2).o();
             Object localObject3 = new byte[((String)localObject2).length() + 10 + 2 + ((String)localObject1).length() + 2 + b.i(b.this).length()];
-            ci.b((byte[])localObject3, 0, l);
-            ci.a((byte[])localObject3, 8, (short)((String)localObject2).length());
-            ci.a((byte[])localObject3, 10, ((String)localObject2).getBytes(), ((String)localObject2).length());
+            cj.b((byte[])localObject3, 0, l);
+            cj.a((byte[])localObject3, 8, (short)((String)localObject2).length());
+            cj.a((byte[])localObject3, 10, ((String)localObject2).getBytes(), ((String)localObject2).length());
             int i = ((String)localObject2).length() + 10;
-            ci.a((byte[])localObject3, i, (short)((String)localObject1).length());
+            cj.a((byte[])localObject3, i, (short)((String)localObject1).length());
             i += 2;
-            ci.a((byte[])localObject3, i, ((String)localObject1).getBytes(), ((String)localObject1).length());
+            cj.a((byte[])localObject3, i, ((String)localObject1).getBytes(), ((String)localObject1).length());
             i += ((String)localObject1).length();
-            ci.a((byte[])localObject3, i, (short)b.i(b.this).length());
-            ci.a((byte[])localObject3, i + 2, b.i(b.this).getBytes(), b.i(b.this).length());
+            cj.a((byte[])localObject3, i, (short)b.i(b.this).length());
+            cj.a((byte[])localObject3, i + 2, b.i(b.this).getBytes(), b.i(b.this).length());
             localObject2 = b.a(b.this, (byte[])localObject3);
             localObject1 = localObject2;
             if (localObject2 == null) {

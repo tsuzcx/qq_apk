@@ -7,9 +7,9 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Message;
 import android.util.DisplayMetrics;
-import com.tencent.token.bz;
+import com.tencent.token.ca;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -28,14 +28,14 @@ public class ProtoAutoIDCardDetect
   private long f;
   private int g;
   
-  public static void a(dn paramdn, long paramLong)
+  public static void a(do paramdo, long paramLong)
   {
-    paramdn.c.put("param.realuin", Long.valueOf(paramLong));
+    paramdo.c.put("param.realuin", Long.valueOf(paramLong));
   }
   
   protected String a()
   {
-    String str = bz.a().b();
+    String str = ca.a().b();
     if (str == null)
     {
       this.a.b(104);
@@ -47,9 +47,9 @@ public class ProtoAutoIDCardDetect
     return c.e() + "/cn/mbtoken3/mbtoken3_idcard_auto_detect" + str;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.f = ((Long)paramdn.c.get("param.realuin")).longValue();
+    this.f = ((Long)paramdo.c.get("param.realuin")).longValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -88,7 +88,7 @@ public class ProtoAutoIDCardDetect
   
   protected void b()
   {
-    if (!this.b.e)
+    if ((!this.b.e) && (this.b.d != null))
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;

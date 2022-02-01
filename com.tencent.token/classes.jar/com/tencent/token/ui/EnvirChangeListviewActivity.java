@@ -11,12 +11,12 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.bz;
-import com.tencent.token.cb;
+import com.tencent.token.ca;
 import com.tencent.token.cc;
-import com.tencent.token.cq;
-import com.tencent.token.cs;
-import com.tencent.token.eq;
+import com.tencent.token.cd;
+import com.tencent.token.cr;
+import com.tencent.token.ct;
+import com.tencent.token.er;
 import com.tencent.token.global.c;
 import com.tencent.token.global.g;
 import java.util.ArrayList;
@@ -37,35 +37,35 @@ public class EnvirChangeListviewActivity
       paramAnonymousAdapterView = (com.tencent.token.core.bean.b)EnvirChangeListviewActivity.this.envirDataList.get(paramAnonymousInt);
       Toast.makeText(EnvirChangeListviewActivity.this.getApplicationContext(), paramAnonymousAdapterView.b(), 0).show();
       c.a(paramAnonymousInt);
-      paramAnonymousAdapterView = cb.c();
+      paramAnonymousAdapterView = cc.c();
       paramAnonymousAdapterView.e();
       paramAnonymousAdapterView.d();
-      eq.b();
-      cb.c();
-      paramAnonymousAdapterView = cq.a();
-      bz.a().c();
+      er.b();
+      cc.c();
+      paramAnonymousAdapterView = cr.a();
+      ca.a().c();
       paramAnonymousAdapterView.b();
       paramAnonymousInt = c.a();
-      paramAnonymousAdapterView = cq.a();
+      paramAnonymousAdapterView = cr.a();
       if (paramAnonymousInt == 0) {
-        cq.c = cq.d;
+        cr.c = cr.d;
       }
       for (;;)
       {
-        g.c("sessionId : " + cq.c);
+        g.c("sessionId : " + cr.c);
         g.c("UserAgent.isInit():---" + paramAnonymousAdapterView.p());
-        cc.b();
+        cd.b();
         com.tencent.token.core.push.b.b();
         AccountPageActivity.mNeedRefreshEval = true;
-        cs.b();
+        ct.b();
         EnvirChangeListviewActivity.this.finish();
         return;
         if (1 == paramAnonymousInt) {
-          cq.c = cq.e;
+          cr.c = cr.e;
         } else if (2 == paramAnonymousInt) {
-          cq.c = cq.f;
+          cr.c = cr.f;
         } else if (3 == paramAnonymousInt) {
-          cq.c = cq.g;
+          cr.c = cr.g;
         }
       }
     }

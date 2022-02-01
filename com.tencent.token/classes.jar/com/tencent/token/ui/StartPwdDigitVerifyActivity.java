@@ -10,7 +10,7 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.global.g;
 
 public class StartPwdDigitVerifyActivity
@@ -44,7 +44,7 @@ public class StartPwdDigitVerifyActivity
     if (this.mTokenPwdInpuText != null) {
       this.mTokenPwdInpuText.clearFocus();
     }
-    if (cc.a().a(this.mTokenPwdInpuText.getText().toString()))
+    if (cd.a().a(this.mTokenPwdInpuText.getText().toString()))
     {
       hideKeyBoard();
       g.a("verify_token_pwd: " + this.mEnterType);

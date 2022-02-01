@@ -1,373 +1,175 @@
 package com.tencent.token;
 
-import android.os.Looper;
+import com.tencent.token.core.bean.MbInfoResult;
+import com.tencent.token.core.bean.MbInfoResult.MbInfoItem;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.SafeMsgItem;
-import com.tencent.token.global.e;
-import com.tencent.token.global.g;
-import com.tencent.token.ui.LoginMsgActivity;
-import com.tencent.token.utils.l;
-import com.tencent.token.utils.m;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class dj
 {
-  public er a = null;
-  public boolean b;
-  long c = 0L;
-  public int d = -1;
-  public long e = 0L;
-  private List<SafeMsgItem> f = null;
-  private int g = 0;
-  private boolean h = false;
+  static dj d = null;
+  public MbInfoResult a;
+  String b;
+  long c;
   
-  public dj(String paramString)
+  public static dj a()
   {
-    this.a = new er(paramString);
-  }
-  
-  private void a(List<SafeMsgItem> paramList)
-  {
-    l();
-    this.f.clear();
-    if (paramList != null) {
-      this.f.addAll(paramList);
+    if (d == null)
+    {
+      d = new dj();
+      return d;
     }
-  }
-  
-  private void l()
-  {
-    if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) {
-      return;
-    }
-    g.c("should run in mainthread");
-    g.d("should run in mainthread");
+    return d;
   }
   
   public int a(int paramInt)
   {
-    this.b = false;
-    int i = paramInt;
-    if (this.d > -1) {
-      i = Math.max(paramInt, this.d);
-    }
-    try
-    {
-      ArrayList localArrayList = new ArrayList();
-      Object localObject = cq.a().e();
-      if ((localObject == null) || (i <= 0))
-      {
-        a(null);
-        return 0;
-      }
-      long l2 = ((QQUser)localObject).mUin;
-      long l1 = l2;
-      if (!((QQUser)localObject).mIsBinded)
-      {
-        l1 = l2;
-        if (((QQUser)localObject).mUin == ((QQUser)localObject).mRealUin) {
-          l1 = l.f(((QQUser)localObject).mRealUin);
-        }
-      }
-      localObject = this.a.a(l1, i + 1);
-      if (localObject != null)
-      {
-        if (((List)localObject).size() > i)
-        {
-          this.b = true;
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localArrayList.add(((List)localObject).get(paramInt));
-            paramInt += 1;
-          }
-        }
-        localArrayList.addAll((Collection)localObject);
-      }
-      a(localArrayList);
-      paramInt = g();
-      return paramInt;
-    }
-    catch (Exception localException)
-    {
-      g.c("Exception:" + localException.toString());
-      a(null);
-    }
-    return 0;
-  }
-  
-  public SafeMsgItem a()
-  {
-    try
-    {
-      Object localObject = cq.a().e();
-      if (localObject == null) {
-        return null;
-      }
-      if ((this.e != 0L) && (this.e != ((QQUser)localObject).mRealUin))
-      {
-        k();
-        com.tencent.token.ui.AccountPageActivity.mNeedShowIpcMsg = false;
-      }
-      long l2 = ((QQUser)localObject).mUin;
-      long l1 = l2;
-      if (!((QQUser)localObject).mIsBinded)
-      {
-        l1 = l2;
-        if (((QQUser)localObject).mUin == ((QQUser)localObject).mRealUin) {
-          l1 = l.f(((QQUser)localObject).mRealUin);
-        }
-      }
-      localObject = this.a.a(l1, 1);
-      if ((localObject != null) && (((List)localObject).size() > 0))
-      {
-        localObject = (SafeMsgItem)((List)localObject).get(0);
-        return localObject;
-      }
-      return null;
-    }
-    catch (Exception localException) {}
-    return null;
-  }
-  
-  public e a(JSONObject paramJSONObject, long paramLong, int paramInt)
-  {
-    e locale = new e();
-    long l1 = m.a(paramInt, paramLong);
     for (;;)
     {
-      int i;
-      long l2;
       try
       {
-        i = paramJSONObject.getInt("is_have_msg");
-        m = paramJSONObject.getInt("rsp_msg_num");
-        JSONArray localJSONArray = paramJSONObject.getJSONArray("msgs");
-        if ((i <= 0) || (m <= 0)) {
-          break label508;
-        }
-        bool = true;
-        this.h = bool;
-        g.a("is need again=" + i + ", msg cnt=" + m);
-        if ((m > 0) && (localJSONArray != null))
+        MbInfoResult localMbInfoResult = c();
+        if (localMbInfoResult == null)
         {
-          c(m);
-          this.a.c(paramLong);
-          j = 0;
-          i = 0;
-          if (i >= localJSONArray.length()) {
-            continue;
-          }
-          JSONObject localJSONObject = localJSONArray.getJSONObject(i);
-          if (localJSONObject == null) {
-            break label514;
-          }
-          bool = true;
-          g.a(bool);
-          SafeMsgItem localSafeMsgItem = new SafeMsgItem();
-          localSafeMsgItem.mUin = paramLong;
-          if (!localSafeMsgItem.a(localJSONObject)) {
-            g.c("object item parse failed: " + i);
-          }
-          if ((this.d == -1) && (localSafeMsgItem.q()))
+          paramInt = -1;
+          return paramInt;
+        }
+        int i;
+        if (this.a.mMbInfoItems == null)
+        {
+          paramInt = -1;
+          continue;
+          if (i < this.a.mMbInfoItems.size())
           {
-            a(LoginMsgActivity.mNewMsgCntSetByAccount + i + 1, cq.a().e().mRealUin);
-            if (paramInt == 1) {
-              com.tencent.token.ui.AccountPageActivity.mNeedShowIpcMsg = true;
-            }
-            g.c("setlist got IPC msg,index = " + (LoginMsgActivity.mNewMsgCntSetByAccount + i + 1));
-          }
-          if (this.a.a(localSafeMsgItem))
-          {
-            int k = j + 1;
-            j = k;
-            l2 = l1;
-            if (localSafeMsgItem.mTime + 1L > l1)
-            {
-              l2 = localSafeMsgItem.mTime + 1L;
-              j = k;
+            int j = ((MbInfoResult.MbInfoItem)this.a.mMbInfoItems.get(i)).mId;
+            if (j == paramInt) {
+              paramInt = i;
+            } else {
+              i += 1;
             }
           }
           else
           {
-            g.d("msg store to db is wrong" + localJSONObject);
-            l2 = l1;
+            paramInt = -1;
           }
         }
-      }
-      catch (JSONException paramJSONObject)
-      {
-        int m;
-        int j;
-        locale.a(10020, "JSONException:" + paramJSONObject.toString());
-        locale.c();
-        return locale;
-        if (j != m)
+        else
         {
-          c(j);
-          g.c("msg cnt is wrong");
-          g.d("msg cnt is wrong" + paramJSONObject);
+          i = 0;
         }
-        m.a(paramInt, paramLong, l1);
-        locale.c();
-        return locale;
       }
-      catch (Exception paramJSONObject)
-      {
-        locale.a(10021, "JSONException:" + paramJSONObject.toString());
-        continue;
-      }
-      i += 1;
-      l1 = l2;
-      continue;
-      label508:
-      boolean bool = false;
-      continue;
-      label514:
-      bool = false;
+      finally {}
     }
   }
   
-  public void a(int paramInt, long paramLong)
+  public void a(MbInfoResult paramMbInfoResult)
   {
-    this.d = paramInt;
-    this.e = paramLong;
-  }
-  
-  public void a(long paramLong)
-  {
-    l();
-    if (paramLong != 0L)
+    try
     {
-      this.a.a(paramLong);
-      this.f.clear();
+      this.a = paramMbInfoResult;
+      cr.a();
+      this.b = cr.c;
+      if (cr.a().e() != null) {
+        this.c = cr.a().e().mUin;
+      }
+      return;
     }
-  }
-  
-  public void a(SafeMsgItem paramSafeMsgItem)
-  {
-    paramSafeMsgItem.mIsRead = true;
-    this.a.d(paramSafeMsgItem.a());
-  }
-  
-  public SafeMsgItem b(int paramInt)
-  {
-    int i = this.f.size();
-    if ((paramInt < 0) || (paramInt >= i)) {
-      return null;
+    finally
+    {
+      paramMbInfoResult = finally;
+      throw paramMbInfoResult;
     }
-    return (SafeMsgItem)this.f.get(paramInt);
   }
   
   public void b()
   {
-    Iterator localIterator = this.f.iterator();
-    while (localIterator.hasNext()) {
-      ((SafeMsgItem)localIterator.next()).mIsChecked = true;
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    this.c = paramLong;
-  }
-  
-  public void c()
-  {
-    Iterator localIterator = this.f.iterator();
-    while (localIterator.hasNext()) {
-      ((SafeMsgItem)localIterator.next()).mIsChecked = false;
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    this.g = paramInt;
-  }
-  
-  public boolean d()
-  {
-    Iterator localIterator = this.f.iterator();
-    while (localIterator.hasNext()) {
-      if (!((SafeMsgItem)localIterator.next()).mIsChecked) {
-        return false;
-      }
-    }
-    return true;
-  }
-  
-  public int e()
-  {
-    Iterator localIterator = this.f.iterator();
-    int i = 0;
-    if (localIterator.hasNext())
+    try
     {
-      if (((SafeMsgItem)localIterator.next()).mIsChecked) {
-        i += 1;
-      }
-      for (;;)
-      {
-        break;
-      }
+      this.a = null;
+      return;
     }
-    return i;
-  }
-  
-  public void f()
-  {
-    l();
-    Iterator localIterator = this.f.iterator();
-    while (localIterator.hasNext())
+    finally
     {
-      SafeMsgItem localSafeMsgItem = (SafeMsgItem)localIterator.next();
-      if ((localSafeMsgItem != null) && (localSafeMsgItem.mIsChecked))
-      {
-        this.a.b(localSafeMsgItem.a());
-        localIterator.remove();
-      }
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public int g()
+  /* Error */
+  public MbInfoResult c()
   {
-    return this.f.size();
-  }
-  
-  public int h()
-  {
-    return this.g;
-  }
-  
-  public boolean i()
-  {
-    boolean bool2 = false;
-    QQUser localQQUser = cq.a().e();
-    boolean bool1 = bool2;
-    if (localQQUser != null)
-    {
-      bool1 = bool2;
-      if (localQQUser.mUin == this.c) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public boolean j()
-  {
-    return this.h;
-  }
-  
-  public void k()
-  {
-    this.d = -1;
-    this.e = 0L;
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_2
+    //   2: aload_0
+    //   3: monitorenter
+    //   4: invokestatic 56	com/tencent/token/cr:a	()Lcom/tencent/token/cr;
+    //   7: invokevirtual 64	com/tencent/token/cr:e	()Lcom/tencent/token/core/bean/QQUser;
+    //   10: astore_3
+    //   11: aload_2
+    //   12: astore_1
+    //   13: aload_0
+    //   14: getfield 60	com/tencent/token/dj:b	Ljava/lang/String;
+    //   17: ifnull +20 -> 37
+    //   20: aload_2
+    //   21: astore_1
+    //   22: aload_3
+    //   23: ifnull +14 -> 37
+    //   26: aload_0
+    //   27: getfield 28	com/tencent/token/dj:a	Lcom/tencent/token/core/bean/MbInfoResult;
+    //   30: astore_1
+    //   31: aload_1
+    //   32: ifnonnull +9 -> 41
+    //   35: aload_2
+    //   36: astore_1
+    //   37: aload_0
+    //   38: monitorexit
+    //   39: aload_1
+    //   40: areturn
+    //   41: aload_0
+    //   42: getfield 60	com/tencent/token/dj:b	Ljava/lang/String;
+    //   45: astore 4
+    //   47: invokestatic 56	com/tencent/token/cr:a	()Lcom/tencent/token/cr;
+    //   50: pop
+    //   51: aload_2
+    //   52: astore_1
+    //   53: aload 4
+    //   55: getstatic 58	com/tencent/token/cr:c	Ljava/lang/String;
+    //   58: invokevirtual 77	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   61: ifeq -24 -> 37
+    //   64: aload_2
+    //   65: astore_1
+    //   66: aload_0
+    //   67: getfield 71	com/tencent/token/dj:c	J
+    //   70: aload_3
+    //   71: getfield 69	com/tencent/token/core/bean/QQUser:mUin	J
+    //   74: lcmp
+    //   75: ifne -38 -> 37
+    //   78: aload_0
+    //   79: getfield 28	com/tencent/token/dj:a	Lcom/tencent/token/core/bean/MbInfoResult;
+    //   82: astore_1
+    //   83: goto -46 -> 37
+    //   86: astore_1
+    //   87: aload_0
+    //   88: monitorexit
+    //   89: aload_1
+    //   90: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	91	0	this	dj
+    //   12	71	1	localObject1	Object
+    //   86	4	1	localObject2	Object
+    //   1	64	2	localObject3	Object
+    //   10	61	3	localQQUser	QQUser
+    //   45	9	4	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   4	11	86	finally
+    //   13	20	86	finally
+    //   26	31	86	finally
+    //   41	51	86	finally
+    //   53	64	86	finally
+    //   66	83	86	finally
   }
 }
 

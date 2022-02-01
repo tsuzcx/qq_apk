@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.tencent.halley.downloader.DownloaderTaskStatus;
 import com.tencent.service.a.a;
 import com.tencent.service.a.c;
-import com.tencent.token.ec;
+import com.tencent.token.ed;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.ui.qqpim.ProgressTextView;
 import com.tencent.token.upload.i;
@@ -161,7 +161,7 @@ public class DownloadAppActivity
     paramBundle = getIntent().getStringExtra("downloadurl");
     this.mDownloadInfo = com.tencent.service.a.a().a(paramBundle);
     if (this.mDownloadInfo == null) {
-      this.mDownloadInfo = ec.a(getIntent().getStringExtra("pkg"), paramBundle);
+      this.mDownloadInfo = ed.a(getIntent().getStringExtra("pkg"), paramBundle);
     }
     if (com.tencent.service.a.a().a(this.mDownloadInfo)) {
       this.mDownloadInfo.f = DownloaderTaskStatus.COMPLETE;

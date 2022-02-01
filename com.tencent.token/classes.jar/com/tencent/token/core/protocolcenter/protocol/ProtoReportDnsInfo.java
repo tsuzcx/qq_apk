@@ -1,12 +1,12 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
-import com.tencent.token.bz;
 import com.tencent.token.ca;
 import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.cq;
-import com.tencent.token.dn;
+import com.tencent.token.cr;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -27,15 +27,15 @@ public class ProtoReportDnsInfo
   private JSONArray d;
   private int e;
   
-  public static void a(dn paramdn, JSONArray paramJSONArray)
+  public static void a(do paramdo, JSONArray paramJSONArray)
   {
-    paramdn.c.put("param.reportdns.domain", paramJSONArray);
+    paramdo.c.put("param.reportdns.domain", paramJSONArray);
   }
   
   protected String a()
   {
     int j = 0;
-    String str1 = bz.a().b();
+    String str1 = ca.a().b();
     if (str1 == null)
     {
       this.a.b(104);
@@ -68,15 +68,15 @@ public class ProtoReportDnsInfo
         i += 1;
       }
       long l = 0L;
-      Object localObject3 = cq.a().e();
+      Object localObject3 = cr.a().e();
       if (localObject3 == null) {
         break label239;
       }
       l = ((QQUser)localObject3).mRealUin;
-      i = ca.a + 1;
-      ca.a = i;
+      i = cb.a + 1;
+      cb.a = i;
       this.e = i;
-      localObject1 = l.a(new Object[] { "seq_id", Integer.valueOf(this.e), "op_time", Long.valueOf(cb.c().s() / 1000L), "uin", Long.valueOf(l), "dns_ip1", localObject1[0], "dns_ip2", localObject1[1], "domain_list", this.d, "ret_ip_list", localObject2, "MNC", i.l(RqdApplication.l()), "MCC", i.k(RqdApplication.l()), "net_type", l.k() });
+      localObject1 = l.a(new Object[] { "seq_id", Integer.valueOf(this.e), "op_time", Long.valueOf(cc.c().s() / 1000L), "uin", Long.valueOf(l), "dns_ip1", localObject1[0], "dns_ip2", localObject1[1], "domain_list", this.d, "ret_ip_list", localObject2, "MNC", i.l(RqdApplication.l()), "MCC", i.k(RqdApplication.l()), "net_type", l.k() });
       if (localObject1 != null) {
         break label439;
       }
@@ -108,9 +108,9 @@ public class ProtoReportDnsInfo
     return str2;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.d = ((JSONArray)paramdn.c.get("param.reportdns.domain"));
+    this.d = ((JSONArray)paramdo.c.get("param.reportdns.domain"));
   }
   
   protected void a(JSONObject paramJSONObject)

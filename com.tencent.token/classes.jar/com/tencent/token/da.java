@@ -1,44 +1,31 @@
 package com.tencent.token;
 
-import java.util.concurrent.TimeUnit;
-import okhttp3.e;
-import okhttp3.f;
-import okhttp3.v;
-import okhttp3.v.a;
-import okhttp3.x;
-import okhttp3.x.a;
-
 public class da
 {
-  private static da b;
-  private v a = new v.a().a(60L, TimeUnit.SECONDS).c(60L, TimeUnit.SECONDS).b(60L, TimeUnit.SECONDS).a();
+  private String a;
+  private String b;
+  private String c;
   
-  public static da a()
+  public da(String paramString1, String paramString2, String paramString3)
   {
-    if (b == null) {}
-    try
-    {
-      if (b == null) {
-        b = new da();
-      }
-      return b;
-    }
-    finally {}
+    this.b = paramString1;
+    this.c = paramString2;
+    this.a = paramString3;
   }
   
-  private void a(x paramx, f paramf)
+  public String a()
   {
-    this.a.a(paramx).a(paramf);
+    return this.a;
   }
   
-  public void a(String paramString, long paramLong1, long paramLong2, f paramf)
+  public String b()
   {
-    a(new x.a().a("RANGE", "bytes=" + paramLong1 + "-" + paramLong2).a(paramString).a(), paramf);
+    return this.b;
   }
   
-  public void a(String paramString, f paramf)
+  public String c()
   {
-    a(new x.a().a(paramString).a(), paramf);
+    return this.c;
   }
 }
 

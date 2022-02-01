@@ -48,13 +48,13 @@ public class i
   
   private void a(boolean paramBoolean)
   {
-    this.a = h.a("key_dialog_cofig_6348", ec.c("key_dialog_cofig_6348", null));
+    this.a = h.a("key_dialog_cofig_6348", ed.c("key_dialog_cofig_6348", null));
     TmsLog.i("GuideMgr", "dialog config fromCloud(" + paramBoolean + "): " + this.a);
-    this.b = h.a("key_tips1_cofig_6348", ec.c("key_tips1_cofig_6348", null));
+    this.b = h.a("key_tips1_cofig_6348", ed.c("key_tips1_cofig_6348", null));
     TmsLog.i("GuideMgr", "tips1 config fromCloud(" + paramBoolean + "): " + this.b);
-    this.c = h.a("key_tips2_cofig_6348", ec.c("key_tips2_cofig_6348", null));
+    this.c = h.a("key_tips2_cofig_6348", ed.c("key_tips2_cofig_6348", null));
     TmsLog.i("GuideMgr", "tips2 config fromCloud(" + paramBoolean + "): " + this.c);
-    this.d = h.a("key_eval_cofig_6348", ec.c("key_eval_cofig_6348", null));
+    this.d = h.a("key_eval_cofig_6348", ed.c("key_eval_cofig_6348", null));
     TmsLog.i("GuideMgr", "eval config fromCloud(" + paramBoolean + "): " + this.d);
   }
   
@@ -316,7 +316,7 @@ public class i
         //   7: invokestatic 33	com/tmsdk/common/util/TmsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
         //   10: ldc 35
         //   12: ldc 37
-        //   14: invokestatic 43	com/tencent/token/ec:c	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+        //   14: invokestatic 43	com/tencent/token/ed:c	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
         //   17: astore_1
         //   18: new 45	java/io/File
         //   21: dup
@@ -366,11 +366,11 @@ public class i
         //   129: aload_2
         //   130: invokevirtual 93	java/io/File:mkdirs	()Z
         //   133: pop
-        //   134: new 95	com/tencent/token/ey
+        //   134: new 95	com/tencent/token/ez
         //   137: dup
-        //   138: invokespecial 96	com/tencent/token/ey:<init>	()V
+        //   138: invokespecial 96	com/tencent/token/ez:<init>	()V
         //   141: aload_1
-        //   142: invokevirtual 99	com/tencent/token/ey:a	(Ljava/lang/String;)[B
+        //   142: invokevirtual 99	com/tencent/token/ez:a	(Ljava/lang/String;)[B
         //   145: astore_3
         //   146: aload_3
         //   147: ifnull +49 -> 196
@@ -396,7 +396,7 @@ public class i
         //   180: astore_1
         //   181: ldc 35
         //   183: ldc 37
-        //   185: invokestatic 112	com/tencent/token/ec:b	(Ljava/lang/String;Ljava/lang/String;)V
+        //   185: invokestatic 112	com/tencent/token/ed:b	(Ljava/lang/String;Ljava/lang/String;)V
         //   188: aload_2
         //   189: ifnull +7 -> 196
         //   192: aload_2
@@ -497,25 +497,25 @@ public class i
         //   379: iconst_0
         //   380: invokevirtual 155	java/util/ArrayList:get	(I)Ljava/lang/Object;
         //   383: checkcast 157	java/lang/String
-        //   386: invokestatic 112	com/tencent/token/ec:b	(Ljava/lang/String;Ljava/lang/String;)V
+        //   386: invokestatic 112	com/tencent/token/ed:b	(Ljava/lang/String;Ljava/lang/String;)V
         //   389: ldc 159
         //   391: aload 7
         //   393: iconst_1
         //   394: invokevirtual 155	java/util/ArrayList:get	(I)Ljava/lang/Object;
         //   397: checkcast 157	java/lang/String
-        //   400: invokestatic 112	com/tencent/token/ec:b	(Ljava/lang/String;Ljava/lang/String;)V
+        //   400: invokestatic 112	com/tencent/token/ed:b	(Ljava/lang/String;Ljava/lang/String;)V
         //   403: ldc 161
         //   405: aload 7
         //   407: iconst_2
         //   408: invokevirtual 155	java/util/ArrayList:get	(I)Ljava/lang/Object;
         //   411: checkcast 157	java/lang/String
-        //   414: invokestatic 112	com/tencent/token/ec:b	(Ljava/lang/String;Ljava/lang/String;)V
+        //   414: invokestatic 112	com/tencent/token/ed:b	(Ljava/lang/String;Ljava/lang/String;)V
         //   417: ldc 163
         //   419: aload 7
         //   421: iconst_3
         //   422: invokevirtual 155	java/util/ArrayList:get	(I)Ljava/lang/Object;
         //   425: checkcast 157	java/lang/String
-        //   428: invokestatic 112	com/tencent/token/ec:b	(Ljava/lang/String;Ljava/lang/String;)V
+        //   428: invokestatic 112	com/tencent/token/ed:b	(Ljava/lang/String;Ljava/lang/String;)V
         //   431: aload_0
         //   432: getfield 17	com/tencent/token/i$1:a	Lcom/tencent/token/i;
         //   435: iconst_1
@@ -747,7 +747,7 @@ public class i
         ad localad = (ad)cp.a(paramAnonymousConchPushInfo.mConch.aZ, new ad(), false);
         if ((localad.bm != null) && (localad.bm.size() >= 1))
         {
-          ec.b("key_guide_cofig_file_url", (String)localad.bm.get(0));
+          ed.b("key_guide_cofig_file_url", (String)localad.bm.get(0));
           i.this.b();
         }
         ConchServiceProxy.getInstance().reportConchResult(paramAnonymousConchPushInfo, 10, 1);

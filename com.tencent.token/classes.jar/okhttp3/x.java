@@ -1,7 +1,7 @@
 package okhttp3;
 
-import com.tencent.token.fb;
-import com.tencent.token.fn;
+import com.tencent.token.fc;
+import com.tencent.token.fo;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -23,7 +23,7 @@ public final class x
     this.b = parama.b;
     this.c = parama.c.a();
     this.d = parama.d;
-    this.e = fb.a(parama.e);
+    this.e = fc.a(parama.e);
   }
   
   @Nullable
@@ -140,10 +140,10 @@ public final class x
       if (paramString.length() == 0) {
         throw new IllegalArgumentException("method.length() == 0");
       }
-      if ((paramy != null) && (!fn.c(paramString))) {
+      if ((paramy != null) && (!fo.c(paramString))) {
         throw new IllegalArgumentException("method " + paramString + " must not have a request body.");
       }
-      if ((paramy == null) && (fn.b(paramString))) {
+      if ((paramy == null) && (fo.b(paramString))) {
         throw new IllegalArgumentException("method " + paramString + " must have a request body.");
       }
       this.b = paramString;

@@ -12,13 +12,13 @@ import com.tencent.feedback.anr.ANRReport;
 import com.tencent.feedback.eup.CrashReport;
 import com.tencent.feedback.eup.CrashStrategyBean;
 import com.tencent.service.a;
-import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cq;
-import com.tencent.token.dc;
+import com.tencent.token.cr;
 import com.tencent.token.dd;
-import com.tencent.token.dw;
-import com.tencent.token.eq;
+import com.tencent.token.de;
+import com.tencent.token.dx;
+import com.tencent.token.er;
 import com.tencent.token.utils.l;
 import com.tencent.token.utils.m;
 import com.tmsdk.TMSDKContext;
@@ -37,7 +37,7 @@ public class RqdApplication
   public static final boolean g = com.tencent.token.utils.j.d;
   public static boolean h = false;
   private static Context i;
-  private static dc j;
+  private static dd j;
   private static int k = -1;
   
   public static void a()
@@ -89,8 +89,8 @@ public class RqdApplication
   {
     int n = 1;
     Object localObject = "testUserId";
-    if ((cq.a().e() != null) && (cq.a().e().mRealUin != 0L)) {
-      return "" + cq.a().e().mRealUin;
+    if ((cr.a().e() != null) && (cr.a().e().mRealUin != 0L)) {
+      return "" + cr.a().e().mRealUin;
     }
     String str1 = l.b(i);
     String str2 = l.c(i);
@@ -137,7 +137,7 @@ public class RqdApplication
   public static void e()
   {
     a = 0;
-    if ((cc.a().c()) && (cc.a().e() == 2)) {
+    if ((cd.a().c()) && (cd.a().e() == 2)) {
       a |= 0x1;
     }
     if (m.e() != 0L) {
@@ -172,8 +172,8 @@ public class RqdApplication
   
   public static boolean h()
   {
-    cq localcq = cq.a();
-    if ((localcq == null) || (localcq.e() == null)) {
+    cr localcr = cr.a();
+    if ((localcr == null) || (localcr.e() == null)) {
       m.b(0L);
     }
     while ((a & 0x2) != 2) {
@@ -202,12 +202,12 @@ public class RqdApplication
     return localObject1;
   }
   
-  public static dc k()
+  public static dd k()
   {
     if (j != null) {
       return j;
     }
-    j = new dd(l());
+    j = new de(l());
     return j;
   }
   
@@ -256,12 +256,12 @@ public class RqdApplication
     super.onCreate();
     i = getApplicationContext();
     c.a(getApplicationContext());
-    eq.a(getApplicationContext());
+    er.a(getApplicationContext());
     CrashReport.setLogAble(com.tencent.token.utils.j.l, com.tencent.token.utils.j.m);
     CrashReport.setUserId(i, "testUserId");
     Object localObject = m();
     CrashReport.initCrashReport(i, null, null, true, (CrashStrategyBean)localObject);
-    localObject = dw.b().getAbsolutePath();
+    localObject = dx.b().getAbsolutePath();
     CrashReport.initNativeCrashReport(i, (String)localObject, com.tencent.token.utils.j.p);
     if (com.tencent.token.utils.j.n) {
       ANRReport.startANRMonitor(i);
@@ -290,7 +290,7 @@ public class RqdApplication
         {
           try
           {
-            if ((!cc.a().d()) && (m.e() == 0L)) {
+            if ((!cd.a().d()) && (m.e() == 0L)) {
               break label82;
             }
             if (RqdApplication.d < 60)

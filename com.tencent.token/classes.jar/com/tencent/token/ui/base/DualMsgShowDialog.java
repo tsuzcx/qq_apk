@@ -12,11 +12,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.cm;
 import com.tencent.token.cn;
 import com.tencent.token.co;
 import com.tencent.token.core.bean.a;
-import com.tencent.token.ek;
+import com.tencent.token.cp;
+import com.tencent.token.el;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
 import com.tencent.token.ui.IndexActivity;
@@ -70,9 +70,9 @@ public class DualMsgShowDialog
       public e a(String... paramAnonymousVarArgs)
       {
         if (DualMsgShowDialog.d(DualMsgShowDialog.this) == 0) {
-          return co.a().a(parama, paramInt);
+          return cp.a().a(parama, paramInt);
         }
-        return cm.a().a(parama, paramInt);
+        return cn.a().a(parama, paramInt);
       }
       
       public void a(e paramAnonymouse) {}
@@ -92,7 +92,7 @@ public class DualMsgShowDialog
       }
     }
     label264:
-    for (parama = co.a();; parama = cm.a())
+    for (parama = cp.a();; parama = cn.a())
     {
       if (this.e != parama.b()) {
         break label271;
@@ -131,7 +131,7 @@ public class DualMsgShowDialog
   private void c()
   {
     if (this.d == 0) {}
-    for (this.g = co.a().a(this.e);; this.g = cm.a().a(this.e))
+    for (this.g = cp.a().a(this.e);; this.g = cn.a().a(this.e))
     {
       if ((this.g == null) || (this.g.f() == null) || (this.g.g() == null) || (this.g.h() == null) || (this.g.i() == null))
       {
@@ -150,8 +150,8 @@ public class DualMsgShowDialog
       {
         try
         {
-          ek.a("tbl_dual_msg");
-          ek.a("tbl_barcode_msg");
+          el.a("tbl_dual_msg");
+          el.a("tbl_barcode_msg");
           label10:
           return null;
         }
@@ -201,7 +201,7 @@ public class DualMsgShowDialog
       public void a(int paramAnonymousInt)
       {
         if (DualMsgShowDialog.d(DualMsgShowDialog.this) == 0) {}
-        for (a locala = co.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));; locala = cm.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this)))
+        for (a locala = cp.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));; locala = cn.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this)))
         {
           DualMsgShowDialog.a(DualMsgShowDialog.this, locala, paramAnonymousInt);
           return;

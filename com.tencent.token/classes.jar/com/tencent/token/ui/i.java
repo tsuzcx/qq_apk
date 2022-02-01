@@ -12,10 +12,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.token.ca;
+import com.tencent.token.cb;
 import com.tencent.token.core.bean.f;
-import com.tencent.token.cr;
-import com.tencent.token.cv;
+import com.tencent.token.cs;
+import com.tencent.token.cw;
 import com.tencent.token.global.e;
 import com.tencent.token.ui.base.SwitchButton;
 import com.tencent.token.ui.base.l;
@@ -119,12 +119,12 @@ class i
     if (localf.f) {
       paraml.setVisibility(0);
     }
-    while ((localf.e) || (!cr.a().o()))
+    while ((localf.e) || (!cs.a().o()))
     {
       localProgressBar.setVisibility(0);
       localSwitchButton.setVisibility(0);
       localSwitchButton.setEnabled(false);
-      if (!cr.a().o()) {
+      if (!cs.a().o()) {
         this.d.queryGameLockStatus();
       }
       localTextView.setText(localf.b);
@@ -158,20 +158,20 @@ class i
       if ((arrayOfInt != null) && (arrayOfInt.length > 0) && (arrayOfInt[0] == 1)) {
         b = true;
       }
-      ca localca = ca.a();
+      cb localcb = cb.a();
       Handler localHandler = this.j;
-      localca.a(0L, new int[] { n }, arrayOfInt, "", localHandler);
+      localcb.a(0L, new int[] { n }, arrayOfInt, "", localHandler);
       return;
     }
   }
   
   public void c()
   {
-    int n = cr.a().d();
+    int n = cs.a().d();
     int m = 0;
     while (m < n)
     {
-      f localf = cr.a().a(m);
+      f localf = cs.a().a(m);
       if (localf != null) {
         localf.e = false;
       }
@@ -182,9 +182,9 @@ class i
   public int getCount()
   {
     if (this.a) {
-      return cr.a().c();
+      return cs.a().c();
     }
-    return cr.a().d();
+    return cs.a().d();
   }
   
   public Object getItem(int paramInt)
@@ -203,7 +203,7 @@ class i
     if (paramView == null) {
       localView = this.e.inflate(2130968790, paramViewGroup, false);
     }
-    paramView = new l(localView, cr.a().a(paramInt));
+    paramView = new l(localView, cs.a().a(paramInt));
     paramView.b().setTag(paramView);
     paramView.b().setOnCheckedChangeListener(this.c);
     a(paramView, false);
@@ -224,13 +224,13 @@ class i
       {
         return;
         localf = paramCompoundButton.a();
-      } while ((localf == null) || (paramCompoundButton.h() == null) || (!cr.a().o()) || (paramBoolean != localf.c) || (localf.e) || (i.a(i.this)));
+      } while ((localf == null) || (paramCompoundButton.h() == null) || (!cs.a().o()) || (paramBoolean != localf.c) || (localf.e) || (i.a(i.this)));
       i.a(i.this, localf);
       i.a(i.this, paramCompoundButton);
       localf.e = true;
       i.a(i.this, true);
       i.this.a(paramCompoundButton, false);
-      cv.a().a(3, i.b(i.this).getHandler());
+      cw.a().a(3, i.b(i.this).getHandler());
     }
   }
 }

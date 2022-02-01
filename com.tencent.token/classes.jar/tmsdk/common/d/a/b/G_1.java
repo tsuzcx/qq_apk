@@ -4,7 +4,7 @@ import a.e.d;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.token.eh;
+import com.tencent.token.ei;
 import tmsdk.common.d.a.c.n;
 import tmsdk.common.d.a.c.s;
 
@@ -39,7 +39,7 @@ class G
         }
       }
       this.b = paramMessage.d;
-      eh localeh = paramMessage.e;
+      ei localei = paramMessage.e;
       d locald = z.a(this.a, paramMessage.b);
       if (locald == null)
       {
@@ -48,7 +48,7 @@ class G
       }
       locald.b = paramMessage.a;
       int i;
-      if (localeh == null) {
+      if (localei == null) {
         i = z.d(this.a).a(locald);
       }
       for (;;)
@@ -58,12 +58,12 @@ class G
         }
         z.a(this.a, paramMessage, i - 3);
         return;
-        localeh.a(1);
-        if (localeh.a()) {
+        localei.a(1);
+        if (localei.a()) {
           break;
         }
         i = z.d(this.a).a(locald);
-        localeh.a(2);
+        localei.a(2);
       }
     } while (this.b);
     z.d(this.a).g();

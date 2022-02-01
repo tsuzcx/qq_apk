@@ -11,7 +11,7 @@ import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.ca;
+import com.tencent.token.cb;
 import com.tencent.token.global.g;
 
 public class ProDialogWithShutDown
@@ -35,7 +35,7 @@ public class ProDialogWithShutDown
   {
     g.c("dismiss and cancel request");
     if (this.a != null) {
-      ca.a().a(this.a.getClass().getName());
+      cb.a().a(this.a.getClass().getName());
     }
   }
   

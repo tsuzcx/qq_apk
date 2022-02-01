@@ -1,10 +1,10 @@
 package tmsdk.common.d.a.b;
 
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.ee;
+import com.tencent.token.ef;
 
 class A
-  implements ee
+  implements ef
 {
   int a = 0;
   final int b = 3;

@@ -16,8 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.cw;
 import com.tencent.token.cx;
+import com.tencent.token.cy;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.ui.BaseActivity;
 import com.tencent.token.upload.i;
@@ -65,8 +65,8 @@ public class QQPimNewActivity
         do
         {
           return;
-        } while (!cx.f().g());
-        cx.f().c();
+        } while (!cy.f().g());
+        cy.f().c();
         QQPimNewActivity.this.tvQqpimDownload.setVisibility(0);
         QQPimNewActivity.this.qqpimFlProgressNew.setVisibility(4);
         QQPimNewActivity.this.tvQqpimDownload.setText(QQPimNewActivity.this.getResources().getText(2131231311));
@@ -85,11 +85,11 @@ public class QQPimNewActivity
   
   private void downloadApk()
   {
-    this.isApkDownload = cx.f().d();
+    this.isApkDownload = cy.f().d();
     if (this.isApkDownload) {
       return;
     }
-    cx.f().b(new cw()
+    cy.f().b(new cx()
     {
       public void a()
       {
@@ -166,14 +166,14 @@ public class QQPimNewActivity
       return;
     }
     this.tvQqpimDownload.setText(getResources().getText(2131231312));
-    cx.f().a();
+    cy.f().a();
   }
   
   private void initStatus()
   {
-    this.isApkDownload = cx.f().d();
+    this.isApkDownload = cy.f().d();
     this.isInstall = a.b(this, "com.tencent.qqpim");
-    this.filePath = cx.f().e();
+    this.filePath = cy.f().e();
   }
   
   private void initView()
@@ -294,9 +294,9 @@ public class QQPimNewActivity
     TMSDKContext.saveActionData(170022);
     if (i.a())
     {
-      if (cx.f().g())
+      if (cy.f().g())
       {
-        cx.f().c();
+        cy.f().c();
         return;
       }
       if ("4G".equals(i.o(this)))

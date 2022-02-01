@@ -8,7 +8,7 @@ import android.util.Log;
 import com.tencent.jni.FaceDetector;
 import com.tencent.jni.FaceInfo;
 import com.tencent.jni.FaceThreshold;
-import com.tencent.token.eb;
+import com.tencent.token.ec;
 import java.util.ArrayList;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.RejectedExecutionHandler;
@@ -64,7 +64,7 @@ public class e
     int i1 = 0;
     while (i1 < c)
     {
-      eb.a(this.j);
+      ec.a(this.j);
       FaceDetector localFaceDetector = new FaceDetector();
       localFaceDetector.Initial(this.l, this.s);
       this.d.add(localFaceDetector);

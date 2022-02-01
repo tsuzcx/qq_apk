@@ -17,8 +17,8 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat.Builder;
 import android.support.v4.content.LocalBroadcastManager;
-import com.tencent.token.ca;
-import com.tencent.token.co;
+import com.tencent.token.cb;
+import com.tencent.token.cp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.g;
 import com.tencent.token.ui.BaseActivity;
@@ -46,7 +46,7 @@ public class PushService
           do
           {
             return;
-          } while ((paramAnonymousMessage.arg1 != 0) || (co.a().b() <= 0));
+          } while ((paramAnonymousMessage.arg1 != 0) || (cp.a().b() <= 0));
           g.b("push:getIsAppForeground" + BaseActivity.getIsAppForeground());
           if (!BaseActivity.getIsAppForeground()) {
             break;
@@ -203,7 +203,7 @@ public class PushService
       if ((!BaseActivity.getIsAppForeground()) || (paramf.d != 2)) {
         break label55;
       }
-      ca.a().a(0L, co.e, this.a);
+      cb.a().a(0L, cp.e, this.a);
       g.c("dualmsg::pushservice: query=true");
     }
     label55:
@@ -251,7 +251,7 @@ public class PushService
         return;
       }
       g.c("push time=" + paramf.f);
-    } while (co.a().d() >= paramf.f);
+    } while (cp.a().d() >= paramf.f);
     Object localObject = PendingIntent.getActivity(this, 0, this.e, 134217728);
     new a(this).a(2, getResources().getString(2131230844), new String(paramf.h), (PendingIntent)localObject);
     this.l = SystemClock.elapsedRealtime();

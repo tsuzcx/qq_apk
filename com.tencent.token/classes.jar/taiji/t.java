@@ -1,6 +1,6 @@
 package taiji;
 
-import com.tencent.token.gm;
+import com.tencent.token.gn;
 import java.util.List;
 
 public class t
@@ -18,7 +18,7 @@ public class t
     }
     az localaz = (az)paramo.a;
     paramo = (az)paramo.b;
-    return new az(gm.a(localaz.a(), paramo.a(), paramFloat), gm.a(localaz.b(), paramo.b(), paramFloat));
+    return new az(gn.a(localaz.a(), paramo.a(), paramFloat), gn.a(localaz.b(), paramo.b(), paramFloat));
   }
 }
 

@@ -3,13 +3,13 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.bz;
 import com.tencent.token.ca;
 import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.bean.MbInfoResult;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.di;
-import com.tencent.token.dn;
+import com.tencent.token.dj;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -24,30 +24,30 @@ public class ProtoGetMbInfo
   MbInfoResult d;
   private long e;
   
-  public static void a(dn paramdn, long paramLong)
+  public static void a(do paramdo, long paramLong)
   {
-    paramdn.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
   }
   
   protected String a()
   {
-    String str1 = bz.a().b();
+    String str1 = ca.a().b();
     if (str1 == null)
     {
       this.a.b(104);
       return null;
     }
-    int i = ca.a + 1;
-    ca.a = i;
+    int i = cb.a + 1;
+    cb.a = i;
     this.c = i;
-    String str2 = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "op_time", Long.valueOf(cb.c().s() / 1000L) });
+    String str2 = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "op_time", Long.valueOf(cc.c().s() / 1000L) });
     str1 = "?data=" + str2 + "&aq_base_sid=" + str1;
     return c.e() + "/cn/mbtoken3/mbtoken3_get_mbinfo_encrypt" + str1;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.e = ((Long)paramdn.c.get("param.uinhash")).longValue();
+    this.e = ((Long)paramdo.c.get("param.uinhash")).longValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -70,7 +70,7 @@ public class ProtoGetMbInfo
         return;
       }
       this.d = new MbInfoResult(paramJSONObject.getJSONArray("mb_list"));
-      di.a().a(this.d);
+      dj.a().a(this.d);
       this.a.c();
       return;
     }
@@ -80,7 +80,7 @@ public class ProtoGetMbInfo
   
   protected void b()
   {
-    if (!this.b.e)
+    if ((!this.b.e) && (this.b.d != null))
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;

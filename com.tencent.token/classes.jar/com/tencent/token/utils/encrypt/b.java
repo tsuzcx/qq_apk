@@ -1,14 +1,14 @@
 package com.tencent.token.utils.encrypt;
 
-import com.tencent.token.ci;
-import com.tencent.token.dp;
+import com.tencent.token.cj;
+import com.tencent.token.dq;
 import com.tencent.token.utils.encrypt.random.PRNGFixes;
 import com.tencent.token.utils.encrypt.random.SecureRandom;
 import oicq.wlogin_sdk.tools.MD5;
 
 public class b
 {
-  public static dp a()
+  public static dq a()
   {
     byte[] arrayOfByte = new byte[14];
     Object localObject2 = System.getProperty("microedition.platform");
@@ -45,49 +45,49 @@ public class b
       }
       arrayOfByte[0] = ((byte)(Math.abs(localException.nextInt()) % 64));
     }
-    return new dp(arrayOfByte);
+    return new dq(arrayOfByte);
   }
   
-  public static String a(dp paramdp1, long paramLong, dp paramdp2)
+  public static String a(dq paramdq1, long paramLong, dq paramdq2)
   {
-    if ((paramdp1 == null) || (paramdp2 == null)) {
+    if ((paramdq1 == null) || (paramdq2 == null)) {
       return null;
     }
-    dp localdp = new dp(paramLong + "");
+    dq localdq = new dq(paramLong + "");
     try
     {
-      paramdp1 = localdp.a(paramdp1, paramdp2);
-      return paramdp1.e().toUpperCase();
+      paramdq1 = localdq.a(paramdq1, paramdq2);
+      return paramdq1.e().toUpperCase();
     }
-    catch (Exception paramdp1)
+    catch (Exception paramdq1)
     {
-      paramdp1.printStackTrace();
+      paramdq1.printStackTrace();
     }
     return null;
   }
   
-  public static byte[] a(dp paramdp1, dp paramdp2, dp paramdp3)
+  public static byte[] a(dq paramdq1, dq paramdq2, dq paramdq3)
   {
-    paramdp1 = b(paramdp1, paramdp2, paramdp3);
-    if (paramdp1 == null) {
+    paramdq1 = b(paramdq1, paramdq2, paramdq3);
+    if (paramdq1 == null) {
       return null;
     }
-    return MD5.toMD5Byte(ci.a(paramdp1.e()));
+    return MD5.toMD5Byte(cj.a(paramdq1.e()));
   }
   
-  public static dp b(dp paramdp1, dp paramdp2, dp paramdp3)
+  public static dq b(dq paramdq1, dq paramdq2, dq paramdq3)
   {
-    if ((paramdp1 == null) || (paramdp2 == null) || (paramdp3 == null)) {
+    if ((paramdq1 == null) || (paramdq2 == null) || (paramdq3 == null)) {
       return null;
     }
     try
     {
-      paramdp1 = paramdp2.a(paramdp1, paramdp3);
-      return paramdp1;
+      paramdq1 = paramdq2.a(paramdq1, paramdq3);
+      return paramdq1;
     }
-    catch (Exception paramdp1)
+    catch (Exception paramdq1)
     {
-      paramdp1.printStackTrace();
+      paramdq1.printStackTrace();
     }
     return null;
   }

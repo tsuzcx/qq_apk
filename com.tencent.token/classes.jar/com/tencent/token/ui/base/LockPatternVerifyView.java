@@ -25,8 +25,8 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.token.bu;
-import com.tencent.token.cc;
 import com.tencent.token.cd;
+import com.tencent.token.ce;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.utils.m;
 import java.util.List;
@@ -176,7 +176,7 @@ public class LockPatternVerifyView
   
   private void c(Context paramContext)
   {
-    this.n = cc.a().b(paramContext);
+    this.n = cd.a().b(paramContext);
   }
   
   public void a()
@@ -198,14 +198,14 @@ public class LockPatternVerifyView
   public void b(List<LockPatternView.a> paramList)
   {
     paramList = this.k.getPatternString();
-    if (cc.a().a(paramList))
+    if (cd.a().a(paramList))
     {
       RqdApplication.i();
       RqdApplication.d();
       a(2131231110, false);
       this.k.b();
       d();
-      cc.a().a(this.j, 0);
+      cd.a().a(this.j, 0);
       return;
     }
     if (this.r != null) {
@@ -214,7 +214,7 @@ public class LockPatternVerifyView
     this.u.postDelayed(this.b, 500L);
     if (this.n >= 4)
     {
-      cc.a().a(this.j, this.n + 1);
+      cd.a().a(this.j, this.n + 1);
       this.k.a();
       this.o.a(false);
       return;
@@ -223,7 +223,7 @@ public class LockPatternVerifyView
     this.k.setDisplayMode(LockPatternView.DisplayMode.Wrong);
     a(this.j.getString(2131231112) + (5 - this.n) + "次！");
     this.k.b();
-    cc.a().a(this.j, this.n);
+    cd.a().a(this.j, this.n);
     this.k.postDelayed(this.a, 500L);
   }
   
@@ -351,7 +351,7 @@ public class LockPatternVerifyView
           LockPatternVerifyView.a.a(LockPatternVerifyView.a.this).setVisibility(4);
           LockPatternVerifyView.a.b(LockPatternVerifyView.a.this).startAnimation(LockPatternVerifyView.g(LockPatternVerifyView.this));
           LockPatternVerifyView.a.c(LockPatternVerifyView.a.this).startAnimation(LockPatternVerifyView.i(LockPatternVerifyView.this));
-          cd.a(RqdApplication.l()).a();
+          ce.a(RqdApplication.l()).a();
         }
         
         public void onAnimationRepeat(Animation paramAnonymousAnimation) {}

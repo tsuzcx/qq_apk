@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cq;
+import com.tencent.token.cr;
 import com.tencent.token.utils.g;
 import com.tencent.token.utils.l;
 
@@ -79,7 +79,7 @@ class r
   
   public int getCount()
   {
-    int i = cq.a().d();
+    int i = cr.a().d();
     if (i >= 3) {
       return 3;
     }
@@ -98,7 +98,7 @@ class r
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int i = cq.a().d();
+    int i = cr.a().d();
     if ((paramInt != 0) || (i == 0)) {}
     try
     {
@@ -115,7 +115,7 @@ class r
     paramViewGroup = this.b.inflate(2130968745, paramViewGroup, false);
     for (paramView = paramViewGroup;; paramView = paramViewGroup)
     {
-      QQUser localQQUser = cq.a().a(paramInt);
+      QQUser localQQUser = cr.a().a(paramInt);
       paramViewGroup = paramView;
       if (localQQUser == null) {
         return paramViewGroup;

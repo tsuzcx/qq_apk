@@ -2,7 +2,7 @@ package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -25,7 +25,7 @@ public class ProtoUploadRealNameFile
     return c.e() + "/cn/mbtoken3/mbtoken3_realname_check";
   }
   
-  protected void a(dn paramdn) {}
+  protected void a(do paramdo) {}
   
   protected void a(JSONObject paramJSONObject)
   {

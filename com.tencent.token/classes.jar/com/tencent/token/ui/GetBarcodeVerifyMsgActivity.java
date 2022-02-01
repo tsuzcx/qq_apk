@@ -9,8 +9,8 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.token.cm;
-import com.tencent.token.cq;
+import com.tencent.token.cn;
+import com.tencent.token.cr;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
 import com.tencent.token.ui.base.DualMsgShowDialog;
@@ -57,17 +57,17 @@ public class GetBarcodeVerifyMsgActivity
       public e a(String... paramAnonymousVarArgs)
       {
         paramAnonymousVarArgs = new e();
-        if (!cq.a().o())
+        if (!cr.a().o())
         {
-          e locale = cq.a().q();
+          e locale = cr.a().q();
           paramAnonymousVarArgs = locale;
           if (!locale.b()) {
             return locale;
           }
         }
-        g.c("barcode user: " + cq.a().d());
-        if (cq.a().d() > 0) {
-          return cm.a().a(GetBarcodeVerifyMsgActivity.this.mAqVerifyBarcodeContent);
+        g.c("barcode user: " + cr.a().d());
+        if (cr.a().d() > 0) {
+          return cn.a().a(GetBarcodeVerifyMsgActivity.this.mAqVerifyBarcodeContent);
         }
         paramAnonymousVarArgs.b(110);
         return paramAnonymousVarArgs;
@@ -89,7 +89,7 @@ public class GetBarcodeVerifyMsgActivity
         GetBarcodeVerifyMsgActivity.this.mPreparePro.setVisibility(4);
         if (paramAnonymouse.b())
         {
-          if (cm.a().b() > 0)
+          if (cn.a().b() > 0)
           {
             GetBarcodeVerifyMsgActivity.this.dismissDualDialog();
             GetBarcodeVerifyMsgActivity.access$502(GetBarcodeVerifyMsgActivity.this, new DualMsgShowDialog(GetBarcodeVerifyMsgActivity.this, 2131362156, 1));

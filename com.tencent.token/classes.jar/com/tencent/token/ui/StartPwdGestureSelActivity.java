@@ -14,7 +14,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.token.bu;
-import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.ui.base.SwitchButton;
 import com.tencent.token.utils.l;
@@ -133,7 +133,7 @@ public class StartPwdGestureSelActivity
         do
         {
           return;
-        } while (cc.a().c());
+        } while (cd.a().c());
         finish();
         return;
       } while (paramInt1 != 258);
@@ -143,7 +143,7 @@ public class StartPwdGestureSelActivity
         showOrangeToast(2131231091, 2130838018);
         return;
       }
-    } while (cc.a().c());
+    } while (cd.a().c());
     finish();
   }
   

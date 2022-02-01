@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import com.tencent.token.ca;
+import com.tencent.token.cb;
 import com.tencent.token.global.g;
 
 public class ProDialog
@@ -34,7 +34,7 @@ public class ProDialog
   {
     g.c("dismiss and cancel request");
     if (this.a != null) {
-      ca.a().a(this.a.getClass().getName());
+      cb.a().a(this.a.getClass().getName());
     }
   }
   

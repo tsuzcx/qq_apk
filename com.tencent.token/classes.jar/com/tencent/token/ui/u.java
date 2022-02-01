@@ -3,11 +3,11 @@ package com.tencent.token.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
-import com.tencent.token.ca;
+import com.tencent.token.cb;
 import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
 import com.tencent.token.core.bean.DeterminVerifyFactorsResult.VerifyTypeItem;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cq;
+import com.tencent.token.cr;
 import com.tmsdk.TMSDKContext;
 import java.util.List;
 
@@ -40,7 +40,7 @@ public class u
     case 1: 
       if (paramDeterminVerifyFactorsResult.b())
       {
-        ca.a().b(paramQQUser.mRealUin, paramVerifyTypeItem.a(), "", "", paramHandler);
+        cb.a().b(paramQQUser.mRealUin, paramVerifyTypeItem.a(), "", "", paramHandler);
         this.b = null;
         return;
       }
@@ -124,7 +124,7 @@ public class u
     {
       return;
       this.b = paramActivity;
-      localObject1 = cq.a().e();
+      localObject1 = cr.a().e();
       if (paramDeterminVerifyFactorsResult.c() == 2) {
         localObject1 = this.d;
       }
@@ -148,7 +148,7 @@ public class u
     do
     {
       return;
-      localQQUser = cq.a().e();
+      localQQUser = cr.a().e();
       if (paramDeterminVerifyFactorsResult.c() == 2) {
         localQQUser = this.d;
       }
@@ -162,7 +162,7 @@ public class u
     for (;;)
     {
       return;
-      QQUser localQQUser = cq.a().e();
+      QQUser localQQUser = cr.a().e();
       if (paramDeterminVerifyFactorsResult.c() == 2) {
         localQQUser = this.d;
       }

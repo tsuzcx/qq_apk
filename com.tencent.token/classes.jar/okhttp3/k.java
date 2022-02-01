@@ -1,6 +1,6 @@
 package okhttp3;
 
-import com.tencent.token.fb;
+import com.tencent.token.fc;
 import java.util.Arrays;
 import java.util.List;
 import javax.annotation.Nullable;
@@ -34,22 +34,22 @@ public final class k
     String[] arrayOfString1;
     if (this.g != null)
     {
-      arrayOfString1 = fb.a(h.a, paramSSLSocket.getEnabledCipherSuites(), this.g);
+      arrayOfString1 = fc.a(h.a, paramSSLSocket.getEnabledCipherSuites(), this.g);
       if (this.h == null) {
         break label118;
       }
     }
     label118:
-    for (String[] arrayOfString2 = fb.a(fb.h, paramSSLSocket.getEnabledProtocols(), this.h);; arrayOfString2 = paramSSLSocket.getEnabledProtocols())
+    for (String[] arrayOfString2 = fc.a(fc.h, paramSSLSocket.getEnabledProtocols(), this.h);; arrayOfString2 = paramSSLSocket.getEnabledProtocols())
     {
       String[] arrayOfString3 = paramSSLSocket.getSupportedCipherSuites();
-      int k = fb.a(h.a, arrayOfString3, "TLS_FALLBACK_SCSV");
+      int k = fc.a(h.a, arrayOfString3, "TLS_FALLBACK_SCSV");
       paramSSLSocket = arrayOfString1;
       if (paramBoolean)
       {
         paramSSLSocket = arrayOfString1;
         if (k != -1) {
-          paramSSLSocket = fb.a(arrayOfString1, arrayOfString3[k]);
+          paramSSLSocket = fc.a(arrayOfString1, arrayOfString3[k]);
         }
       }
       return new a(this).a(paramSSLSocket).b(arrayOfString2).a();
@@ -77,7 +77,7 @@ public final class k
   public boolean a(SSLSocket paramSSLSocket)
   {
     if (!this.e) {}
-    while (((this.h != null) && (!fb.b(fb.h, this.h, paramSSLSocket.getEnabledProtocols()))) || ((this.g != null) && (!fb.b(h.a, this.g, paramSSLSocket.getEnabledCipherSuites())))) {
+    while (((this.h != null) && (!fc.b(fc.h, this.h, paramSSLSocket.getEnabledProtocols()))) || ((this.g != null) && (!fc.b(h.a, this.g, paramSSLSocket.getEnabledCipherSuites())))) {
       return false;
     }
     return true;

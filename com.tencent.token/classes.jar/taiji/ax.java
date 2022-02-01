@@ -6,7 +6,7 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.RectF;
-import com.tencent.token.gn;
+import com.tencent.token.go;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -117,7 +117,7 @@ class ax
   private void a(am paramam, Matrix paramMatrix, aq paramaq, Canvas paramCanvas)
   {
     float f3 = paramam.c / 100.0F;
-    float f4 = gn.a(paramMatrix);
+    float f4 = go.a(paramMatrix);
     String str = paramam.a;
     float f1 = paramam.e / 10.0F;
     if (this.q != null) {
@@ -182,7 +182,7 @@ class ax
   
   private void a(am paramam, aq paramaq, Matrix paramMatrix, Canvas paramCanvas)
   {
-    float f3 = gn.a(paramMatrix);
+    float f3 = go.a(paramMatrix);
     float f1 = paramam.e / 10.0F;
     if (this.q != null) {
       f1 = ((Float)this.q.b()).floatValue() + f1;
@@ -299,7 +299,7 @@ class ax
       this.i.setColor(localam.h);
       break label114;
       label212:
-      float f1 = gn.a(paramMatrix);
+      float f1 = go.a(paramMatrix);
       this.i.setStrokeWidth(f1 * (localam.i * this.m.j()));
       break label141;
       label245:

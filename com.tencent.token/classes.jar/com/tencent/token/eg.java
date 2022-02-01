@@ -1,16 +1,11 @@
 package com.tencent.token;
 
-public class eg
+import android.util.Pair;
+import com.qq.taf.jce.JceStruct;
+
+public abstract interface eg
 {
-  public static final int a(int paramInt)
-  {
-    return paramInt & 0x18;
-  }
-  
-  public static final int b(int paramInt)
-  {
-    return paramInt & 0x60;
-  }
+  public abstract Pair a(int paramInt1, int paramInt2, JceStruct paramJceStruct);
 }
 
 

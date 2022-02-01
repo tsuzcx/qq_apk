@@ -16,11 +16,11 @@ import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.token.bu;
-import com.tencent.token.by;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.bv;
+import com.tencent.token.bz;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cq;
+import com.tencent.token.cr;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
@@ -47,7 +47,7 @@ public class StartPwdGestureDeleteActivity
         if (paramAnonymousMessage.arg1 == 0)
         {
           StartPwdGestureDeleteActivity.this.dismissDialog();
-          paramAnonymousMessage = cq.a().e();
+          paramAnonymousMessage = cr.a().e();
           if (paramAnonymousMessage == null)
           {
             bu.a().a(System.currentTimeMillis(), 23);
@@ -55,7 +55,7 @@ public class StartPwdGestureDeleteActivity
             return;
           }
           StartPwdGestureDeleteActivity.this.dismissDialog();
-          by.a(StartPwdGestureDeleteActivity.this.getApplicationContext()).a(StartPwdGestureDeleteActivity.this, 523005419L, StartPwdGestureDeleteActivity.this.mHandler, paramAnonymousMessage.mRealUin + "");
+          bz.a(StartPwdGestureDeleteActivity.this.getApplicationContext()).a(StartPwdGestureDeleteActivity.this, 523005419L, StartPwdGestureDeleteActivity.this.mHandler, paramAnonymousMessage.mRealUin + "");
           return;
         }
         StartPwdGestureDeleteActivity.this.dismissDialog();
@@ -79,12 +79,12 @@ public class StartPwdGestureDeleteActivity
   {
     public void a()
     {
-      cc.a().a(StartPwdGestureDeleteActivity.this);
+      cd.a().a(StartPwdGestureDeleteActivity.this);
       StartPwdGestureDeleteActivity.this.setResult(257);
       SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("start_pwd_config", 0).edit();
       localEditor.clear();
       localEditor.commit();
-      if (!cc.a().c()) {
+      if (!cd.a().c()) {
         StartPwdGestureDeleteActivity.this.pwdIsDelete();
       }
     }
@@ -110,28 +110,28 @@ public class StartPwdGestureDeleteActivity
   
   private void gotoQuickLoginWb()
   {
-    QQUser localQQUser = cq.a().e();
+    QQUser localQQUser = cr.a().e();
     if ((localQQUser == null) || (localQQUser.mRealUin <= 0L))
     {
-      ca.a().b(this.mHandler);
+      bv.a().e(this.mHandler);
       showProDialog(this, 2131230843, 2131231298, null);
       return;
     }
-    by.a(getApplicationContext()).a(this, 523005419L, this.mHandler, "" + localQQUser.b());
+    bz.a(getApplicationContext()).a(this, 523005419L, this.mHandler, "" + localQQUser.b());
   }
   
   private void judgeNextStep()
   {
     dismissDialog();
-    cc.a().a(this);
+    cd.a().a(this);
     RqdApplication.i();
     l.a(null, FaceRecognitionCameraActivity.LANUCH_RETRY_COUNT, 0);
-    cc.a().a(this, 0);
+    cd.a().a(this, 0);
     setResult(257);
     SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("start_pwd_config", 0).edit();
     localEditor.clear();
     localEditor.commit();
-    if (!cc.a().c()) {
+    if (!cd.a().c()) {
       pwdIsDelete();
     }
   }
@@ -143,7 +143,7 @@ public class StartPwdGestureDeleteActivity
       {
         public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          cc.a().a(paramContext);
+          cd.a().a(paramContext);
           RqdApplication.i();
           StartPwdGestureDeleteActivity.this.setResult(35);
           StartPwdGestureDeleteActivity.this.finish();
@@ -169,7 +169,7 @@ public class StartPwdGestureDeleteActivity
     while ((paramInt1 != 1201) && (paramInt1 != 1202)) {
       return;
     }
-    by.a(getApplicationContext()).a(paramIntent);
+    bz.a(getApplicationContext()).a(paramIntent);
   }
   
   public void onCreate(Bundle paramBundle)

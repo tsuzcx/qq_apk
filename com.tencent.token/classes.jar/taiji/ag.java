@@ -1,7 +1,7 @@
 package taiji;
 
 import android.graphics.Path;
-import com.tencent.token.gm;
+import com.tencent.token.gn;
 
 public class ag
   extends al<ao, Path>
@@ -11,7 +11,7 @@ public class ag
   Path a(ao paramao)
   {
     this.c.reset();
-    gm.a(paramao, this.c);
+    gn.a(paramao, this.c);
     return this.c;
   }
   

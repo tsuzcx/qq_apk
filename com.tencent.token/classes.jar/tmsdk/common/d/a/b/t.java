@@ -1,8 +1,8 @@
 package tmsdk.common.d.a.b;
 
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.ee;
-import com.tencent.token.eh;
+import com.tencent.token.ef;
+import com.tencent.token.ei;
 
 class t
 {
@@ -11,20 +11,20 @@ class t
   public JceStruct c;
   public JceStruct d;
   public int e;
-  public ee f;
+  public ef f;
   public int g;
-  public eh h;
+  public ei h;
   public long i = -1L;
   
-  t(r paramr, long paramLong, int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, ee paramee)
+  t(r paramr, long paramLong, int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, ef paramef)
   {
     this.a = paramLong;
     this.b = paramInt1;
     this.c = paramJceStruct1;
     this.d = paramJceStruct2;
     this.e = paramInt2;
-    this.f = paramee;
-    this.h = new eh();
+    this.f = paramef;
+    this.h = new ei();
   }
 }
 

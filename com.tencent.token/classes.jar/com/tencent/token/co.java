@@ -1,296 +1,144 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.bean.a;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
 import com.tencent.token.utils.l;
+import java.util.ArrayList;
 import java.util.List;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class co
-  extends cn
 {
-  public static byte a = 1;
-  public static byte e = 2;
-  public static byte f = 3;
-  public static byte g = 4;
-  static co h;
-  private final String i = "/cn/mbtoken3/mbtoken3_get_dual_msg_list_v2";
-  private int j;
+  private final String a = "/cn/mbtoken3/mbtoken3_update_dual_msg_status_encrypt";
+  protected List<a> b = new ArrayList();
+  protected long c;
+  int d;
+  private int e;
   
-  private co()
+  protected co(int paramInt)
   {
-    super(1);
+    this.e = paramInt;
   }
   
-  public static co a()
+  private String b(a parama, int paramInt)
   {
-    if (h == null) {
-      h = new co();
-    }
-    return h;
-  }
-  
-  private e b(byte paramByte, long paramLong)
-  {
-    this.b.clear();
-    Object localObject1 = new e();
-    Object localObject4 = cq.a();
-    Object localObject2;
-    if (!((cq)localObject4).o()) {
-      if (!((cq)localObject4).p())
-      {
-        localObject2 = ((cq)localObject4).q();
-        localObject1 = localObject2;
-        if (((e)localObject2).b()) {}
-      }
-      else
-      {
-        do
-        {
-          return localObject2;
-          localObject1 = ((cq)localObject4).u();
-          localObject2 = localObject1;
-        } while (!((e)localObject1).b());
-      }
-    }
-    for (;;)
-    {
-      int k;
-      if (paramLong > 0L)
-      {
-        k = 0;
-        for (;;)
-        {
-          if (k < ((cq)localObject4).d())
-          {
-            localObject2 = ((cq)localObject4).a(k);
-            g.c("other app: hash=" + paramLong + ", uin=" + ((QQUser)localObject2).mUin + ", real=" + ((QQUser)localObject2).mRealUin + ", bind=" + ((QQUser)localObject2).mIsBinded);
-            if ((!((QQUser)localObject2).mIsBinded) || (((QQUser)localObject2).mUin != paramLong)) {}
-          }
-          else
-          {
-            if (k != ((cq)localObject4).d()) {
-              break;
-            }
-            ((e)localObject1).b(110);
-            return localObject1;
-          }
-          if ((!((QQUser)localObject2).mIsBinded) && (l.f(((QQUser)localObject2).mRealUin) == paramLong))
-          {
-            ((e)localObject1).b(10029);
-            return localObject1;
-          }
-          k += 1;
-        }
-      }
-      long l = ((cq)localObject4).f();
-      if ((((cq)localObject4).e() == null) || (l == 0L))
-      {
-        ((e)localObject1).b(110);
-        return localObject1;
-      }
-      if (((cq)localObject4).e().mIsBinded) {
-        l = ((cq)localObject4).e().mUin;
-      }
-      ey localey = new ey();
-      try
-      {
-        localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("uin", l);
-        k = ca.a + 1;
-        ca.a = k;
-        this.j = k;
-        ((JSONObject)localObject2).put("seq_id", this.j);
-        ((JSONObject)localObject2).put("op_time", cb.c().s() / 1000L);
-        ((JSONObject)localObject2).put("tkn_seq", cb.c().j().replaceAll("-", ""));
-        ((JSONObject)localObject2).put("source", paramByte);
-        localObject2 = ((JSONObject)localObject2).toString();
-        g.a("plain:" + (String)localObject2);
-        localObject2 = l.b(((String)localObject2).getBytes());
-        localObject2 = "?aq_base_sid=" + ((cq)localObject4).g() + "&data=" + (String)localObject2;
-        localObject2 = c.e() + "/cn/mbtoken3/mbtoken3_get_dual_msg_list_v2" + (String)localObject2;
-        localObject4 = localey.a((String)localObject2);
-        if (localObject4 == null)
-        {
-          ((e)localObject1).a(localey.a());
-          g.c("client request url: " + (String)localObject2 + " failed, reason: " + ((e)localObject1).a + ":" + ((e)localObject1).b);
-          return localObject1;
-        }
-      }
-      catch (JSONException localJSONException1)
-      {
-        Object localObject3;
-        for (;;)
-        {
-          g.c("JSONException:" + localJSONException1.getMessage());
-          localObject3 = null;
-        }
-        try
-        {
-          localObject3 = new JSONObject(new String((byte[])localObject4));
-          paramByte = ((JSONObject)localObject3).getInt("err");
-          if (paramByte != 0)
-          {
-            localObject3 = ((JSONObject)localObject3).getString("info");
-            ((e)localObject1).a(paramByte, (String)localObject3, (String)localObject3);
-          }
-          else
-          {
-            localObject3 = l.c(((JSONObject)localObject3).getString("data"));
-            if (localObject3 != null)
-            {
-              localObject3 = new JSONObject(new String((byte[])localObject3));
-              paramByte = ((JSONObject)localObject3).getInt("seq_id");
-              if (paramByte != this.j)
-              {
-                ((e)localObject1).b(10030);
-                g.c("parseJSON error seq is wrong seq=" + paramByte + ",right = " + ca.a().b());
-                return localObject1;
-              }
-              localObject3 = ((JSONObject)localObject3).getJSONArray("msgs");
-              if (!a((JSONArray)localObject3, paramLong)) {
-                ((e)localObject1).a(10000, "update conf list failed:" + ((JSONArray)localObject3).toString());
-              }
-            }
-          }
-        }
-        catch (JSONException localJSONException2)
-        {
-          g.c("parse json failed: " + localJSONException2.toString());
-          ((e)localObject1).a(10020, "JSONException:" + localJSONException2.toString());
-          break;
-          cq.a().m();
-          ((e)localObject1).c();
-        }
-        catch (Exception localException)
-        {
-          g.c("unknown err: " + localException.toString());
-          ((e)localObject1).a(10021, "JSONException:" + localException.toString());
-        }
-        g.c("parseJSON error decodeData=" + localException);
-        ((e)localObject1).a(10022, RqdApplication.l().getString(2131230925));
-      }
-    }
-    return localObject1;
-  }
-  
-  private void e()
-  {
-    Object localObject = RqdApplication.l();
     try
     {
-      localObject = ((Context)localObject).getSharedPreferences("dualmsgtime", 0).edit();
-      ((SharedPreferences.Editor)localObject).putLong("time", this.c);
-      ((SharedPreferences.Editor)localObject).commit();
-      g.c("save mLastItemTime=" + this.c);
-      return;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("app_id", parama.b());
+      localJSONObject.put("msg_type", parama.d());
+      localJSONObject.put("msg_id", parama.a());
+      localJSONObject.put("msg_status", paramInt);
+      localJSONObject.put("uin", parama.c());
+      localJSONObject.put("msg_uin", parama.c());
+      localJSONObject.put("type", this.e);
+      paramInt = cb.a + 1;
+      cb.a = paramInt;
+      this.d = paramInt;
+      localJSONObject.put("seq_id", this.d);
+      localJSONObject.put("op_time", (int)(cc.c().s() / 1000L));
+      parama = localJSONObject.toString();
+      g.a("palin: " + parama);
+      parama = l.b(parama.getBytes());
+      return parama;
     }
-    catch (Exception localException)
+    catch (JSONException parama)
     {
-      g.c("SharedPreferences msg " + localException.getMessage());
+      parama.printStackTrace();
     }
+    return null;
   }
   
-  public e a(byte paramByte, long paramLong)
+  public a a(int paramInt)
   {
-    e locale = b(paramByte, paramLong);
-    if (locale.b()) {}
-    while (locale.a != 104) {
+    if (this.b == null) {}
+    int i;
+    do
+    {
+      return null;
+      i = b();
+    } while ((paramInt < 0) || (paramInt >= i));
+    return (a)this.b.get(paramInt);
+  }
+  
+  public e a(a parama, int paramInt)
+  {
+    e locale = new e();
+    ez localez = new ez();
+    Object localObject = cr.a();
+    if (parama == null)
+    {
+      locale.b(10023);
       return locale;
     }
-    cq.a().n();
-    return b(paramByte, paramLong);
-  }
-  
-  public boolean a(JSONArray paramJSONArray, long paramLong)
-  {
-    this.b.clear();
-    if (paramJSONArray != null) {}
-    for (boolean bool = true;; bool = false)
+    parama = b(parama, paramInt);
+    if (parama == null)
     {
-      g.a(bool);
-      if (paramJSONArray != null) {}
-      for (;;)
-      {
-        int k;
-        try
-        {
-          if (paramJSONArray.length() > 0)
-          {
-            k = 0;
-            if (k < paramJSONArray.length())
-            {
-              JSONObject localJSONObject = paramJSONArray.getJSONObject(k);
-              a locala = new a();
-              if (!locala.a(localJSONObject)) {
-                g.c("object item parse failed: " + k);
-              }
-              g.c("server item time=" + locala.e());
-              if (this.c < locala.e())
-              {
-                this.c = locala.e();
-                g.c("get mLastItemTime=" + this.c);
-                e();
-              }
-              if (paramLong == 0L) {
-                this.b.add(locala);
-              } else if ((paramLong > 0L) && (paramLong == locala.c())) {
-                this.b.add(locala);
-              }
-            }
-          }
-        }
-        catch (JSONException paramJSONArray)
-        {
-          paramJSONArray.printStackTrace();
-          return false;
-        }
-        return true;
-        k += 1;
-      }
+      locale.a(10000, "encrypt msg status failed");
+      return locale;
     }
-  }
-  
-  public long c()
-  {
-    Context localContext = RqdApplication.l();
+    parama = "?aq_base_sid=" + ((cr)localObject).g() + "&data=" + parama;
+    parama = c.e() + "/cn/mbtoken3/mbtoken3_update_dual_msg_status_encrypt" + parama;
+    localObject = localez.a(parama);
+    if (localObject == null)
+    {
+      locale.a(localez.a());
+      g.c("client request url: " + parama + " failed, reason: " + locale.a + ":" + locale.b);
+      return locale;
+    }
     try
     {
-      l = localContext.getSharedPreferences("dualmsgtime", 0).getLong("time", 0L);
-      g.c("SharedPreferences msg " + localException1.getMessage());
+      parama = new JSONObject(new String((byte[])localObject));
+      paramInt = parama.getInt("err");
+      if (paramInt != 0)
+      {
+        parama = parama.getString("info");
+        locale.a(paramInt, parama, parama);
+        return locale;
+      }
     }
-    catch (Exception localException1)
+    catch (JSONException parama)
     {
-      try
-      {
-        g.c("load mLastItemTime=" + l);
-        return l;
+      g.c("parse json failed: " + parama.toString());
+      locale.a(10020, "JSONException:" + parama.toString());
+      return locale;
+      parama = l.c(parama.getString("data"));
+      if (parama == null) {
+        break label408;
       }
-      catch (Exception localException2)
+      paramInt = new JSONObject(new String(parama)).getInt("seq_id");
+      if (this.d != paramInt)
       {
-        long l;
-        break label50;
+        locale.b(10030);
+        return locale;
       }
-      localException1 = localException1;
-      l = 0L;
     }
-    label50:
-    return l;
+    catch (Exception parama)
+    {
+      g.c("unknown err: " + parama.toString());
+      locale.a(10021, "JSONException:" + parama.toString());
+      return locale;
+    }
+    cr.a().m();
+    locale.c();
+    return locale;
+    label408:
+    g.c("parseJSON error decodeData=" + parama);
+    locale.a(10022, RqdApplication.l().getString(2131230925));
+    return locale;
   }
   
-  public long d()
+  public int b()
   {
-    this.c = c();
-    return this.c;
+    if (this.b == null) {
+      return 0;
+    }
+    return this.b.size();
   }
 }
 

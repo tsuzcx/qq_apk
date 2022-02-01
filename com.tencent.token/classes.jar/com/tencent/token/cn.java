@@ -1,144 +1,160 @@
 package com.tencent.token;
 
 import android.content.Context;
+import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.bean.a;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
 import com.tencent.token.utils.l;
-import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class cn
+  extends co
 {
-  private final String a = "/cn/mbtoken3/mbtoken3_update_dual_msg_status_encrypt";
-  protected List<a> b = new ArrayList();
-  protected long c;
-  int d;
-  private int e;
+  static cn a;
+  private final String e = "/cn/mbtoken3/mbtoken3_scan_qrcode_v2";
+  private String f;
+  private int g;
+  private int h;
   
-  protected cn(int paramInt)
+  private cn()
   {
-    this.e = paramInt;
+    super(2);
   }
   
-  private String b(a parama, int paramInt)
+  public static cn a()
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("app_id", parama.b());
-      localJSONObject.put("msg_type", parama.d());
-      localJSONObject.put("msg_id", parama.a());
-      localJSONObject.put("msg_status", paramInt);
-      localJSONObject.put("uin", parama.c());
-      localJSONObject.put("msg_uin", parama.c());
-      localJSONObject.put("type", this.e);
-      paramInt = ca.a + 1;
-      ca.a = paramInt;
-      this.d = paramInt;
-      localJSONObject.put("seq_id", this.d);
-      localJSONObject.put("op_time", (int)(cb.c().s() / 1000L));
-      parama = localJSONObject.toString();
-      g.a("palin: " + parama);
-      parama = l.b(parama.getBytes());
-      return parama;
+    if (a == null) {
+      a = new cn();
     }
-    catch (JSONException parama)
-    {
-      parama.printStackTrace();
-    }
-    return null;
+    return a;
   }
   
-  public a a(int paramInt)
+  public e a(String paramString)
   {
-    if (this.b == null) {}
-    int i;
-    do
-    {
-      return null;
-      i = b();
-    } while ((paramInt < 0) || (paramInt >= i));
-    return (a)this.b.get(paramInt);
-  }
-  
-  public e a(a parama, int paramInt)
-  {
+    this.b.clear();
+    this.f = "";
+    this.g = 0;
     e locale = new e();
-    ey localey = new ey();
-    Object localObject = cq.a();
-    if (parama == null)
+    Object localObject3 = cr.a();
+    if ((localObject3 == null) || (((cr)localObject3).e() == null))
     {
-      locale.b(10023);
+      locale.b(110);
       return locale;
     }
-    parama = b(parama, paramInt);
-    if (parama == null)
+    long l = ((cr)localObject3).f();
+    if (l == 0L)
     {
-      locale.a(10000, "encrypt msg status failed");
+      locale.b(10029);
       return locale;
     }
-    parama = "?aq_base_sid=" + ((cq)localObject).g() + "&data=" + parama;
-    parama = c.e() + "/cn/mbtoken3/mbtoken3_update_dual_msg_status_encrypt" + parama;
-    localObject = localey.a(parama);
-    if (localObject == null)
-    {
-      locale.a(localey.a());
-      g.c("client request url: " + parama + " failed, reason: " + locale.a + ":" + locale.b);
-      return locale;
+    if (((cr)localObject3).e().mIsBinded) {
+      l = ((cr)localObject3).e().mUin;
     }
+    ez localez = new ez();
     try
     {
-      parama = new JSONObject(new String((byte[])localObject));
-      paramInt = parama.getInt("err");
-      if (paramInt != 0)
-      {
-        parama = parama.getString("info");
-        locale.a(paramInt, parama, parama);
-        return locale;
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("uin", l);
+      i = cb.a + 1;
+      cb.a = i;
+      this.h = i;
+      ((JSONObject)localObject1).put("seq_id", this.h);
+      ((JSONObject)localObject1).put("op_time", cc.c().s() / 1000L);
+      if (paramString != null) {
+        ((JSONObject)localObject1).put("url_data", paramString);
       }
+      localObject1 = ((JSONObject)localObject1).toString();
+      g.a("plain:" + (String)localObject1);
+      localObject1 = l.b(((String)localObject1).getBytes());
     }
-    catch (JSONException parama)
+    catch (JSONException localJSONException)
     {
-      g.c("parse json failed: " + parama.toString());
-      locale.a(10020, "JSONException:" + parama.toString());
-      return locale;
-      parama = l.c(parama.getString("data"));
-      if (parama == null) {
-        break label408;
-      }
-      paramInt = new JSONObject(new String(parama)).getInt("seq_id");
-      if (this.d != paramInt)
+      int i;
+      Object localObject2;
+      for (;;)
       {
-        locale.b(10030);
-        return locale;
+        Object localObject1;
+        g.c("JSONException:" + localJSONException.getMessage());
+        localObject2 = null;
       }
+      for (;;)
+      {
+        try
+        {
+          localObject2 = new JSONObject(new String((byte[])localObject3));
+          i = ((JSONObject)localObject2).getInt("err");
+          if (i != 0)
+          {
+            paramString = ((JSONObject)localObject2).getString("info");
+            locale.a(i, paramString, paramString);
+            break label822;
+          }
+          localObject2 = l.c(((JSONObject)localObject2).getString("data"));
+          if (localObject2 == null) {
+            break;
+          }
+          localObject2 = new JSONObject(new String((byte[])localObject2));
+          i = ((JSONObject)localObject2).getInt("seq_id");
+          if (i != this.h)
+          {
+            locale.b(10030);
+            g.c("parseJSON error seq is wrong seq=" + i + ",right = " + cb.a().b());
+            return locale;
+          }
+          this.g = ((JSONObject)localObject2).getInt("type");
+          if (1 != this.g) {
+            break label750;
+          }
+          paramString = ((JSONObject)localObject2).getJSONObject("msg");
+          localObject2 = new a();
+          if (((a)localObject2).a(paramString)) {
+            continue;
+          }
+          g.c("object item parse failed ");
+        }
+        catch (JSONException paramString)
+        {
+          paramString.printStackTrace();
+          g.c("parse json failed: " + paramString.toString());
+          locale.a(10020, "JSONException:" + paramString.toString());
+          break label822;
+          this.b.add(localObject2);
+          continue;
+        }
+        catch (Exception paramString)
+        {
+          paramString.printStackTrace();
+          g.c("unknown err: " + paramString.toString());
+          locale.a(10021, "JSONException:" + paramString.toString());
+        }
+        cr.a().m();
+        locale.c();
+        break label822;
+        if (2 == this.g) {
+          this.f = ((JSONObject)localObject2).getString("text");
+        } else {
+          this.f = paramString;
+        }
+      }
+      g.c("parseJSON error decodeData=" + localObject2);
+      locale.a(10022, RqdApplication.l().getString(2131230925));
     }
-    catch (Exception parama)
+    localObject1 = "?aq_base_sid=" + ((cr)localObject3).g() + "&data=" + (String)localObject1;
+    localObject1 = c.e() + "/cn/mbtoken3/mbtoken3_scan_qrcode_v2" + (String)localObject1;
+    localObject3 = localez.a((String)localObject1);
+    if (localObject3 == null)
     {
-      g.c("unknown err: " + parama.toString());
-      locale.a(10021, "JSONException:" + parama.toString());
+      locale.a(localez.a());
+      g.c("client request url: " + (String)localObject1 + " failed, reason: " + locale.a + ":" + locale.b);
       return locale;
     }
-    cq.a().m();
-    locale.c();
+    label750:
     return locale;
-    label408:
-    g.c("parseJSON error decodeData=" + parama);
-    locale.a(10022, RqdApplication.l().getString(2131230925));
-    return locale;
-  }
-  
-  public int b()
-  {
-    if (this.b == null) {
-      return 0;
-    }
-    return this.b.size();
   }
 }
 

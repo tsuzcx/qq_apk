@@ -1,11 +1,11 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.bz;
 import com.tencent.token.ca;
 import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -21,15 +21,15 @@ public class ProtoVryMbMobileCode
   private long d;
   private String e;
   
-  public static void a(dn paramdn, long paramLong, String paramString)
+  public static void a(do paramdo, long paramLong, String paramString)
   {
-    paramdn.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdn.c.put("param.mbmobile.vrycode", paramString);
+    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdo.c.put("param.mbmobile.vrycode", paramString);
   }
   
   protected String a()
   {
-    String str1 = bz.a().b();
+    String str1 = ca.a().b();
     if (str1 == null)
     {
       this.a.b(104);
@@ -39,11 +39,11 @@ public class ProtoVryMbMobileCode
     try
     {
       ((JSONObject)localObject).put("uin", this.d);
-      int i = ca.a + 1;
-      ca.a = i;
+      int i = cb.a + 1;
+      cb.a = i;
       this.c = i;
       ((JSONObject)localObject).put("seq_id", this.c);
-      ((JSONObject)localObject).put("op_time", (int)(cb.c().s() / 1000L));
+      ((JSONObject)localObject).put("op_time", (int)(cc.c().s() / 1000L));
       ((JSONObject)localObject).put("mobile_code", this.e);
       localObject = l.b(((JSONObject)localObject).toString().getBytes());
       if (localObject == null)
@@ -70,10 +70,10 @@ public class ProtoVryMbMobileCode
     return c.e() + "/cn/mbtoken3/mbtoken3_mbop_verify_mobile_code_encrypt" + (String)localObject;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.d = ((Long)paramdn.c.get("param.uinhash")).longValue();
-    this.e = ((String)paramdn.c.get("param.mbmobile.vrycode"));
+    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
+    this.e = ((String)paramdo.c.get("param.mbmobile.vrycode"));
   }
   
   protected void a(JSONObject paramJSONObject)

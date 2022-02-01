@@ -3,11 +3,12 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
-import com.tencent.token.bz;
-import com.tencent.token.cb;
+import com.tencent.token.bv;
+import com.tencent.token.ca;
+import com.tencent.token.cc;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.cq;
-import com.tencent.token.dn;
+import com.tencent.token.cr;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -19,15 +20,15 @@ import org.json.JSONObject;
 public class ProtoGetUinList
   extends d
 {
-  cb d = cb.c();
-  cq e = cq.a();
+  cc d = cc.c();
+  cr e = cr.a();
   
   protected String a()
   {
     this.d.m();
     String str1 = this.d.o();
     str1 = this.e.a(this.d.k(), str1);
-    String str2 = bz.a().b();
+    String str2 = ca.a().b();
     if (str2 == null)
     {
       this.a.b(104);
@@ -39,7 +40,7 @@ public class ProtoGetUinList
     return str1;
   }
   
-  protected void a(dn paramdn) {}
+  protected void a(do paramdo) {}
   
   protected void a(JSONObject paramJSONObject)
   {
@@ -52,7 +53,7 @@ public class ProtoGetUinList
       if ((i == 122) || (i == 205)) {
         ProtoModSeed.a(true);
       }
-      cq.a().n();
+      cr.a().n();
       return;
     }
     paramJSONObject = l.c(paramJSONObject.getString("data"));
@@ -63,7 +64,7 @@ public class ProtoGetUinList
       try
       {
         long l = paramJSONObject.getLong("seed_expire_time");
-        cb.c().c(l);
+        cc.c().c(l);
         TmsLog.i("mod_seed", "@getuin seed_expire_time:" + l);
         try
         {
@@ -73,11 +74,12 @@ public class ProtoGetUinList
             localObject = l.d((String)localObject);
             if (localObject != null)
             {
-              cb.c().e();
-              cb.c().a((byte[])localObject);
-              cb.c().v();
-              cb.c().i();
+              cc.c().e();
+              cc.c().a((byte[])localObject);
+              cc.c().v();
+              cc.c().i();
               ProtoModSeed.a(false);
+              bv.a().a(null);
             }
             TmsLog.i("mod_seed", "decode seed & compute seed @getuin sucess.");
           }

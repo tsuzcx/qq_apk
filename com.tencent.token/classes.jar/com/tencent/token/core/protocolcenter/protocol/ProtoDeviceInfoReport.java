@@ -2,10 +2,10 @@ package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.ContentValues;
 import android.content.Context;
-import com.tencent.token.bz;
-import com.tencent.token.cb;
+import com.tencent.token.ca;
+import com.tencent.token.cc;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.upload.b;
 import com.tencent.token.upload.f;
@@ -127,7 +127,7 @@ public class ProtoDeviceInfoReport
   
   protected String a()
   {
-    if (bz.a().b() == null)
+    if (ca.a().b() == null)
     {
       this.a.b(104);
       return null;
@@ -135,11 +135,11 @@ public class ProtoDeviceInfoReport
     return com.tencent.token.global.c.e() + "/cn/mbtoken3/mbtoken3_device_info_report_encrypt";
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.d = paramdn.j;
-    this.e = ((Long)paramdn.c.get("param.realuin")).longValue();
-    this.f = ((Long)paramdn.c.get("param.uinhash")).longValue();
+    this.d = paramdo.j;
+    this.e = ((Long)paramdo.c.get("param.realuin")).longValue();
+    this.f = ((Long)paramdo.c.get("param.uinhash")).longValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -179,30 +179,30 @@ public class ProtoDeviceInfoReport
     a(10022, RqdApplication.l().getString(2131230925));
   }
   
-  public dn b(dn paramdn)
+  public do b(do paramdo)
   {
-    int i = paramdn.j;
-    paramdn.m = 1;
-    paramdn.n = new ContentValues(3);
-    paramdn.n.put("aq_base_sid", bz.a().b());
+    int i = paramdo.j;
+    paramdo.m = 1;
+    paramdo.n = new ContentValues(3);
+    paramdo.n.put("aq_base_sid", ca.a().b());
     Object localObject = new JSONObject();
     try
     {
       ((JSONObject)localObject).put("uin", this.f);
       com.tencent.token.global.g.a("mRealUin=" + this.e + ",uinHash=" + this.f);
       ((JSONObject)localObject).put("seq_id", i);
-      ((JSONObject)localObject).put("op_time", (int)(cb.c().s() / 1000L));
-      ((JSONObject)localObject).put("token_seq", cb.c().k());
+      ((JSONObject)localObject).put("op_time", (int)(cc.c().s() / 1000L));
+      ((JSONObject)localObject).put("token_seq", cc.c().k());
       b((JSONObject)localObject);
       localObject = com.tencent.token.utils.l.b(((JSONObject)localObject).toString().getBytes());
-      paramdn.n.put("data", (String)localObject);
-      return paramdn;
+      paramdo.n.put("data", (String)localObject);
+      return paramdo;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
     }
-    return paramdn;
+    return paramdo;
   }
 }
 

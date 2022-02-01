@@ -1,10 +1,10 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
-import com.tencent.token.bz;
 import com.tencent.token.ca;
+import com.tencent.token.cb;
 import com.tencent.token.core.bean.DeterminVerifyFactorsResult.QuesInfoItem;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
 import com.tencent.token.utils.l;
@@ -20,23 +20,23 @@ public class ProtoDoVerifyQuestion
   public List<DeterminVerifyFactorsResult.QuesInfoItem> f;
   private int g;
   
-  public static void a(dn paramdn, long paramLong, List<DeterminVerifyFactorsResult.QuesInfoItem> paramList, String[] paramArrayOfString)
+  public static void a(do paramdo, long paramLong, List<DeterminVerifyFactorsResult.QuesInfoItem> paramList, String[] paramArrayOfString)
   {
-    paramdn.c.put("param.realuin", Long.valueOf(paramLong));
-    paramdn.c.put("param.qqquestion", paramList);
-    paramdn.c.put("param.qqquestionanswer", paramArrayOfString);
+    paramdo.c.put("param.realuin", Long.valueOf(paramLong));
+    paramdo.c.put("param.qqquestion", paramList);
+    paramdo.c.put("param.qqquestionanswer", paramArrayOfString);
   }
   
   protected String a()
   {
-    String str1 = bz.a().b();
+    String str1 = ca.a().b();
     if (str1 == null)
     {
       this.a.b(104);
       return null;
     }
-    int i = ca.a + 1;
-    ca.a = i;
+    int i = cb.a + 1;
+    cb.a = i;
     this.g = i;
     String str2 = l.a(this.g, this.e, this.f, this.d);
     if (str2 == null)
@@ -48,11 +48,11 @@ public class ProtoDoVerifyQuestion
     return c.e() + "/cn/mbtoken3/mbtoken3_vry_ques_v2" + str1;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.e = ((Long)paramdn.c.get("param.realuin")).longValue();
-    this.f = ((List)paramdn.c.get("param.qqquestion"));
-    this.d = ((String[])paramdn.c.get("param.qqquestionanswer"));
+    this.e = ((Long)paramdo.c.get("param.realuin")).longValue();
+    this.f = ((List)paramdo.c.get("param.qqquestion"));
+    this.d = ((String[])paramdo.c.get("param.qqquestionanswer"));
   }
   
   protected void a(JSONObject paramJSONObject)

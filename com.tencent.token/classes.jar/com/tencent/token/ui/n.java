@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.tencent.token.core.bean.MbInfoResult;
 import com.tencent.token.core.bean.MbInfoResult.MbInfoItem;
 import com.tencent.token.core.bean.MbInfoResult.MbInfoItemDetail;
-import com.tencent.token.di;
+import com.tencent.token.dj;
 import java.util.ArrayList;
 
 class n
@@ -28,7 +28,7 @@ class n
   
   private void a(View paramView, final int paramInt)
   {
-    Object localObject = di.a().c();
+    Object localObject = dj.a().c();
     if ((localObject == null) && (!this.a.mIsIniting)) {
       this.a.getMbInfo();
     }
@@ -70,7 +70,7 @@ class n
   
   public int getCount()
   {
-    MbInfoResult localMbInfoResult = di.a().c();
+    MbInfoResult localMbInfoResult = dj.a().c();
     if ((localMbInfoResult == null) || (localMbInfoResult.mMbInfoItems == null)) {
       return 0;
     }

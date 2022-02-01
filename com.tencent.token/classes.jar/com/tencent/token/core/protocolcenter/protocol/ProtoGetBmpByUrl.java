@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import com.tencent.token.core.bean.CommonImgResult;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.e;
 import java.util.HashMap;
 import org.json.JSONObject;
@@ -21,9 +21,9 @@ public class ProtoGetBmpByUrl
     return this.d;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.d = ((String)paramdn.c.get("param.common.img.url"));
+    this.d = ((String)paramdo.c.get("param.common.img.url"));
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -40,7 +40,7 @@ public class ProtoGetBmpByUrl
   
   protected void b()
   {
-    if (!this.b.e)
+    if ((!this.b.e) && (this.b.d != null))
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;

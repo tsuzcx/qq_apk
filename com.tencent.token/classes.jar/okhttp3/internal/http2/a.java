@@ -1,6 +1,6 @@
 package okhttp3.internal.http2;
 
-import com.tencent.token.fb;
+import com.tencent.token.fc;
 import okio.ByteString;
 
 public final class a
@@ -58,7 +58,7 @@ public final class a
   
   public String toString()
   {
-    return fb.a("%s: %s", new Object[] { this.g.a(), this.h.a() });
+    return fc.a("%s: %s", new Object[] { this.g.a(), this.h.a() });
   }
 }
 

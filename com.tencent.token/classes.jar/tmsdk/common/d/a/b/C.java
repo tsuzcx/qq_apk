@@ -1,6 +1,6 @@
 package tmsdk.common.d.a.b;
 
-import com.tencent.token.eg;
+import com.tencent.token.eh;
 import java.util.Comparator;
 
 class C
@@ -10,7 +10,7 @@ class C
   
   public int a(j paramj1, j paramj2)
   {
-    return eg.b(paramj2.c) - eg.b(paramj1.c);
+    return eh.b(paramj2.c) - eh.b(paramj1.c);
   }
 }
 

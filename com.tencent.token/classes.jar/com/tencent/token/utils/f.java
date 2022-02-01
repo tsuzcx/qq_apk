@@ -2,7 +2,7 @@ package com.tencent.token.utils;
 
 import android.net.Uri;
 import android.os.Environment;
-import com.tencent.token.ey;
+import com.tencent.token.ez;
 import com.tencent.token.global.g;
 import com.tencent.token.utils.encrypt.c;
 import java.io.File;
@@ -32,7 +32,7 @@ public class f
         return Uri.fromFile(localFile);
       }
       g.b("fromnet" + paramString);
-      paramString = new ey().a(paramString);
+      paramString = new ez().a(paramString);
     } while (paramString == null);
     localObject = new FileOutputStream(localFile);
     ((FileOutputStream)localObject).write(paramString, 0, paramString.length);

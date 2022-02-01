@@ -4,13 +4,13 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
-import com.tencent.token.bz;
 import com.tencent.token.ca;
 import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.cq;
-import com.tencent.token.dn;
-import com.tencent.token.ec;
+import com.tencent.token.cr;
+import com.tencent.token.do;
+import com.tencent.token.ed;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -30,10 +30,10 @@ public class ProtoModSeed
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      ec.a("mod_seed_err_111", i);
+      ed.a("mod_seed_err_111", i);
       if (paramBoolean)
       {
-        cq.a().t();
+        cr.a().t();
         Handler localHandler = new Handler(Looper.getMainLooper());
         localHandler.post(new Runnable()
         {
@@ -57,7 +57,7 @@ public class ProtoModSeed
   public static boolean e()
   {
     boolean bool = false;
-    if (ec.b("mod_seed_err_111", 0) != 0) {
+    if (ed.b("mod_seed_err_111", 0) != 0) {
       bool = true;
     }
     return bool;
@@ -65,27 +65,27 @@ public class ProtoModSeed
   
   protected String a()
   {
-    String str1 = bz.a().b();
+    String str1 = ca.a().b();
     if (str1 == null)
     {
       this.a.b(104);
       return null;
     }
     Object localObject1 = "";
-    Object localObject2 = cb.c();
-    ((cb)localObject2).m();
-    String str2 = ((cb)localObject2).o();
+    Object localObject2 = cc.c();
+    ((cc)localObject2).m();
+    String str2 = ((cc)localObject2).o();
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      int i = ca.a + 1;
-      ca.a = i;
+      int i = cb.a + 1;
+      cb.a = i;
       this.c = i;
       localJSONObject.put("seq_id", this.c);
       localJSONObject.put("tkn_code", str2);
-      localJSONObject.put("tkn_seq", String.valueOf(((cb)localObject2).k()));
+      localJSONObject.put("tkn_seq", String.valueOf(((cc)localObject2).k()));
       localJSONObject.put("turingd_ticket_id", k.c());
-      TmsLog.i("mod_seed", "seed mod seq_id: " + this.c + " token_code: " + str2 + " tkn_seq:" + String.valueOf(((cb)localObject2).k()) + " ticket_id:" + k.c() + " seed hex:" + l.a(((cb)localObject2).f()) + " seed base64:" + b.a(((cb)localObject2).f()));
+      TmsLog.i("mod_seed", "seed mod seq_id: " + this.c + " token_code: " + str2 + " tkn_seq:" + String.valueOf(((cc)localObject2).k()) + " ticket_id:" + k.c() + " seed hex:" + l.a(((cc)localObject2).f()) + " seed base64:" + b.a(((cc)localObject2).f()));
       localObject2 = l.b(localJSONObject.toString().getBytes());
       localObject1 = localObject2;
     }
@@ -102,7 +102,7 @@ public class ProtoModSeed
     return localObject1;
   }
   
-  protected void a(dn paramdn) {}
+  protected void a(do paramdo) {}
   
   protected void a(JSONObject paramJSONObject)
   {
@@ -123,22 +123,22 @@ public class ProtoModSeed
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
       long l1 = paramJSONObject.getLong("seed_expire_time");
-      cb.c().c(l1);
+      cc.c().c(l1);
       TmsLog.i("mod_seed", "@mod_seed seed recv, String: " + l.a(paramJSONObject.getString("seed").getBytes()));
       byte[] arrayOfByte = l.d(paramJSONObject.getString("seed"));
       if (arrayOfByte != null)
       {
         TmsLog.i("mod_seed", "@mod_seed seed recv, hex: " + l.a(arrayOfByte));
-        cb.c().e();
-        cb.c().a(arrayOfByte);
-        cb.c().i();
+        cc.c().e();
+        cc.c().a(arrayOfByte);
+        cc.c().i();
       }
       for (;;)
       {
         long l2 = paramJSONObject.getLong("server_time");
-        cb.c().b(l2);
+        cc.c().b(l2);
         TmsLog.i("mod_seed", "@mod_seed recv data, servertime: " + l2 + " seedExpireTime: " + l1);
-        cb.c().u();
+        cc.c().u();
         a(false);
         this.a.c();
         return;

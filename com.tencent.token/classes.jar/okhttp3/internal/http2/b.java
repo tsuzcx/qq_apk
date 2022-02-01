@@ -1,6 +1,6 @@
 package okhttp3.internal.http2;
 
-import com.tencent.token.fb;
+import com.tencent.token.fc;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -461,7 +461,7 @@ final class b
         if ((m <= 1) || (m >= 8)) {
           break label441;
         }
-        if (fb.a(b.a[(m - 1)].h, localByteString2)) {
+        if (fc.a(b.a[(m - 1)].h, localByteString2)) {
           k = m;
         }
       }
@@ -481,10 +481,10 @@ final class b
           if (i1 < i5)
           {
             i2 = m;
-            if (!fb.a(this.c[i1].g, localByteString1)) {
+            if (!fc.a(this.c[i1].g, localByteString1)) {
               break label326;
             }
-            if (!fb.a(this.c[i1].h, localByteString2)) {
+            if (!fc.a(this.c[i1].h, localByteString2)) {
               break label304;
             }
             i3 = i1 - this.d + b.a.length;
@@ -498,7 +498,7 @@ final class b
         {
           n += 1;
           break;
-          if (!fb.a(b.a[m].h, localByteString2)) {
+          if (!fc.a(b.a[m].h, localByteString2)) {
             break label441;
           }
           k = m + 1;

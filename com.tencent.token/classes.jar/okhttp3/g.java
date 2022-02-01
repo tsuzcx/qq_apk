@@ -1,7 +1,7 @@
 package okhttp3;
 
-import com.tencent.token.fb;
-import com.tencent.token.gf;
+import com.tencent.token.fc;
+import com.tencent.token.gg;
 import java.security.Principal;
 import java.security.PublicKey;
 import java.security.cert.Certificate;
@@ -22,12 +22,12 @@ public final class g
   public static final g a = new a().a();
   private final Set<b> b;
   @Nullable
-  private final gf c;
+  private final gg c;
   
-  g(Set<b> paramSet, @Nullable gf paramgf)
+  g(Set<b> paramSet, @Nullable gg paramgg)
   {
     this.b = paramSet;
-    this.c = paramgf;
+    this.c = paramgg;
   }
   
   public static String a(Certificate paramCertificate)
@@ -68,12 +68,12 @@ public final class g
     return localObject1;
   }
   
-  g a(@Nullable gf paramgf)
+  g a(@Nullable gg paramgg)
   {
-    if (fb.a(this.c, paramgf)) {
+    if (fc.a(this.c, paramgg)) {
       return this;
     }
-    return new g(this.b, paramgf);
+    return new g(this.b, paramgg);
   }
   
   public void a(String paramString, List<Certificate> paramList)
@@ -160,7 +160,7 @@ public final class g
     if (paramObject == this) {
       return true;
     }
-    if (((paramObject instanceof g)) && (fb.a(this.c, ((g)paramObject).c)) && (this.b.equals(((g)paramObject).b))) {}
+    if (((paramObject instanceof g)) && (fc.a(this.c, ((g)paramObject).c)) && (this.b.equals(((g)paramObject).b))) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }

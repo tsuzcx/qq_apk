@@ -1,10 +1,22 @@
 package com.tencent.token;
 
-import tmsdk.common.d.a.b.x;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract interface ei
-  extends x
-{}
+public class ei
+{
+  boolean a = false;
+  AtomicInteger b = new AtomicInteger();
+  
+  public void a(int paramInt)
+  {
+    this.b.set(paramInt);
+  }
+  
+  public boolean a()
+  {
+    return this.a;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

@@ -1,8 +1,8 @@
 package okhttp3;
 
-import com.tencent.token.fb;
-import com.tencent.token.fl;
-import com.tencent.token.gc;
+import com.tencent.token.fc;
+import com.tencent.token.fm;
+import com.tencent.token.gd;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -221,7 +221,7 @@ public final class l
     if ((i4 < 0) || (i4 > 59)) {
       throw new IllegalArgumentException();
     }
-    paramString = new GregorianCalendar(fb.g);
+    paramString = new GregorianCalendar(fc.g);
     paramString.setLenient(false);
     paramString.set(1, paramInt1);
     paramString.set(2, i3 - 1);
@@ -271,17 +271,17 @@ public final class l
   static l a(long paramLong, s params, String paramString)
   {
     int i1 = paramString.length();
-    int n = fb.a(paramString, 0, i1, ';');
-    int i2 = fb.a(paramString, 0, n, '=');
+    int n = fc.a(paramString, 0, i1, ';');
+    int i2 = fc.a(paramString, 0, n, '=');
     if (i2 == n) {
       return null;
     }
-    String str4 = fb.c(paramString, 0, i2);
-    if ((str4.isEmpty()) || (fb.b(str4) != -1)) {
+    String str4 = fc.c(paramString, 0, i2);
+    if ((str4.isEmpty()) || (fc.b(str4) != -1)) {
       return null;
     }
-    String str5 = fb.c(paramString, i2 + 1, n);
-    if (fb.b(str5) != -1) {
+    String str5 = fc.c(paramString, i2 + 1, n);
+    if (fc.b(str5) != -1) {
       return null;
     }
     long l1 = 253402300799999L;
@@ -297,12 +297,12 @@ public final class l
     String str1;
     if (n < i1)
     {
-      i2 = fb.a(paramString, n, i1, ';');
-      int i3 = fb.a(paramString, n, i2, '=');
-      str6 = fb.c(paramString, n, i3);
+      i2 = fc.a(paramString, n, i1, ';');
+      int i3 = fc.a(paramString, n, i2, '=');
+      str6 = fc.c(paramString, n, i3);
       if (i3 < i2)
       {
-        str1 = fb.c(paramString, i3 + 1, i2);
+        str1 = fc.c(paramString, i3 + 1, i2);
         label182:
         if (!str6.equalsIgnoreCase("expires")) {
           break label233;
@@ -371,7 +371,7 @@ public final class l
           }
           for (;;)
           {
-            if ((str3.length() != paramString.length()) && (gc.a().a(paramString) == null))
+            if ((str3.length() != paramString.length()) && (gd.a().a(paramString) == null))
             {
               return null;
               if (l2 == -1L) {
@@ -427,7 +427,7 @@ public final class l
   private static boolean a(String paramString1, String paramString2)
   {
     if (paramString1.equals(paramString2)) {}
-    while ((paramString1.endsWith(paramString2)) && (paramString1.charAt(paramString1.length() - paramString2.length() - 1) == '.') && (!fb.c(paramString1))) {
+    while ((paramString1.endsWith(paramString2)) && (paramString1.charAt(paramString1.length() - paramString2.length() - 1) == '.') && (!fc.c(paramString1))) {
       return true;
     }
     return false;
@@ -442,7 +442,7 @@ public final class l
     if (paramString.startsWith(".")) {
       str = paramString.substring(1);
     }
-    paramString = fb.a(str);
+    paramString = fc.a(str);
     if (paramString == null) {
       throw new IllegalArgumentException();
     }
@@ -486,7 +486,7 @@ public final class l
       }
       return localStringBuilder.toString();
       label145:
-      localStringBuilder.append("; expires=").append(fl.a(new Date(this.g)));
+      localStringBuilder.append("; expires=").append(fm.a(new Date(this.g)));
     }
   }
   

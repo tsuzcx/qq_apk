@@ -2,16 +2,16 @@ package com.tencent.token.ui.gallery;
 
 import android.os.Environment;
 import android.text.TextUtils;
-import com.tencent.token.cw;
-import com.tencent.token.cy;
+import com.tencent.token.cx;
 import com.tencent.token.cz;
+import com.tencent.token.da;
 import java.io.File;
 
 public class a
 {
   private static a c;
   private String a;
-  private cy b;
+  private cz b;
   
   public static a f()
   {
@@ -42,12 +42,12 @@ public class a
     this.b.a();
   }
   
-  public void a(cw paramcw)
+  public void a(cx paramcx)
   {
-    a("http://qqwx.qq.com/s?aid=index&p=14&c=102322&vt=1&pf=0", null, null, paramcw);
+    a("http://qqwx.qq.com/s?aid=index&p=14&c=102322&vt=1&pf=0", null, null, paramcx);
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, cw paramcw)
+  public void a(String paramString1, String paramString2, String paramString3, cx paramcx)
   {
     String str = paramString2;
     if (TextUtils.isEmpty(paramString2)) {
@@ -57,7 +57,7 @@ public class a
     if (TextUtils.isEmpty(paramString3)) {
       paramString2 = b();
     }
-    this.b = new cy(new cz(paramString1, str, paramString2), paramcw);
+    this.b = new cz(new da(paramString1, str, paramString2), paramcx);
   }
   
   public String b()

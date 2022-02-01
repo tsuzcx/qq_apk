@@ -1,9 +1,9 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
-import com.tencent.token.bz;
-import com.tencent.token.cb;
+import com.tencent.token.ca;
+import com.tencent.token.cc;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
@@ -18,29 +18,29 @@ public class ProtoDoUnbindToken
   private int e;
   private int f;
   
-  public static void a(dn paramdn, long paramLong1, long paramLong2, int paramInt1, int paramInt2)
+  public static void a(do paramdo, long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    paramdn.c.put("param.realuin", Long.valueOf(paramLong2));
-    paramdn.c.put("param.uinhash", Long.valueOf(paramLong1));
-    paramdn.c.put("param.unbind.type", Integer.valueOf(paramInt1));
-    paramdn.j = paramInt2;
+    paramdo.c.put("param.realuin", Long.valueOf(paramLong2));
+    paramdo.c.put("param.uinhash", Long.valueOf(paramLong1));
+    paramdo.c.put("param.unbind.type", Integer.valueOf(paramInt1));
+    paramdo.j = paramInt2;
   }
   
   protected String a()
   {
-    String str1 = bz.a().b();
+    String str1 = ca.a().b();
     if (str1 == null)
     {
       this.a.b(104);
       return null;
     }
-    Object localObject2 = cb.c();
-    ((cb)localObject2).m();
-    String str2 = ((cb)localObject2).j().replaceAll("-", "");
+    Object localObject2 = cc.c();
+    ((cc)localObject2).m();
+    String str2 = ((cc)localObject2).j().replaceAll("-", "");
     Object localObject1 = "";
     try
     {
-      localObject2 = l.a(new Object[] { "real_uin", Long.valueOf(this.d), "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cb.c().s() / 1000L), "token_seq", str2, "token_code", ((cb)localObject2).o(), "imei", cb.b(), "unbind_type", String.valueOf(this.e) });
+      localObject2 = l.a(new Object[] { "real_uin", Long.valueOf(this.d), "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cc.c().s() / 1000L), "token_seq", str2, "token_code", ((cc)localObject2).o(), "imei", cc.b(), "unbind_type", String.valueOf(this.e) });
       localObject1 = localObject2;
     }
     catch (Exception localException)
@@ -55,11 +55,11 @@ public class ProtoDoUnbindToken
     return c.e() + "/cn/mbtoken3/mbtoken3_unbind_token" + (String)localObject1;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.d = ((Long)paramdn.c.get("param.realuin")).longValue();
-    this.e = ((Integer)paramdn.c.get("param.unbind.type")).intValue();
-    this.f = paramdn.j;
+    this.d = ((Long)paramdo.c.get("param.realuin")).longValue();
+    this.e = ((Integer)paramdo.c.get("param.unbind.type")).intValue();
+    this.f = paramdo.j;
   }
   
   protected void a(JSONObject paramJSONObject)

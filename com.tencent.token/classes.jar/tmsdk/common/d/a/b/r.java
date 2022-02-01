@@ -6,8 +6,8 @@ import android.os.Looper;
 import android.os.Process;
 import android.util.Pair;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.ee;
 import com.tencent.token.ef;
+import com.tencent.token.eg;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.TreeMap;
@@ -42,32 +42,32 @@ public class r
     return b(paramInt, 4);
   }
   
-  public ef a(int paramInt1, int paramInt2)
+  public eg a(int paramInt1, int paramInt2)
   {
-    ef localef = null;
+    eg localeg = null;
     if (c(paramInt2)) {
       return z.a().a(paramInt1, null);
     }
     synchronized (this.g)
     {
       if (this.g.containsKey(Integer.valueOf(paramInt1))) {
-        localef = (ef)((Pair)this.g.remove(Integer.valueOf(paramInt1))).second;
+        localeg = (eg)((Pair)this.g.remove(Integer.valueOf(paramInt1))).second;
       }
-      return localef;
+      return localeg;
     }
   }
   
-  public WeakReference a(long paramLong, int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, ee paramee)
+  public WeakReference a(long paramLong, int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, ef paramef)
   {
-    return a(paramLong, paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramee, -1L);
+    return a(paramLong, paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramef, -1L);
   }
   
-  public WeakReference a(long paramLong1, int paramInt1, JceStruct arg4, JceStruct paramJceStruct2, int paramInt2, ee paramee, long paramLong2)
+  public WeakReference a(long paramLong1, int paramInt1, JceStruct arg4, JceStruct paramJceStruct2, int paramInt2, ef paramef, long paramLong2)
   {
     if (c(paramInt2)) {
-      return z.a().a(this.e, paramInt1, paramInt2, ???, paramJceStruct2, paramee, paramLong2);
+      return z.a().a(this.e, paramInt1, paramInt2, ???, paramJceStruct2, paramef, paramLong2);
     }
-    paramJceStruct2 = new t(this, paramLong1, paramInt1, ???, paramJceStruct2, paramInt2, paramee);
+    paramJceStruct2 = new t(this, paramLong1, paramInt1, ???, paramJceStruct2, paramInt2, paramef);
     paramJceStruct2.g = this.e.c().a();
     paramJceStruct2.i = paramLong2;
     synchronized (this.h)
@@ -89,13 +89,13 @@ public class r
     }
   }
   
-  public void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, ef paramef)
+  public void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, eg parameg)
   {
-    if (paramef == null) {
+    if (parameg == null) {
       throw new NullPointerException();
     }
     if (c(paramInt2)) {
-      z.a().a(paramInt2, paramInt1, paramJceStruct, paramef);
+      z.a().a(paramInt2, paramInt1, paramJceStruct, parameg);
     }
     for (;;)
     {
@@ -105,7 +105,7 @@ public class r
       {
         if (!this.g.containsKey(Integer.valueOf(paramInt1)))
         {
-          this.g.put(Integer.valueOf(paramInt1), new Pair(paramJceStruct, paramef));
+          this.g.put(Integer.valueOf(paramInt1), new Pair(paramJceStruct, parameg));
           paramJceStruct = localObject;
           if (paramJceStruct == null) {
             continue;

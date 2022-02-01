@@ -1,6 +1,6 @@
 package okhttp3;
 
-import com.tencent.token.fb;
+import com.tencent.token.fc;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
@@ -184,7 +184,7 @@ public final class s
           if (localObject1 == null) {
             localObject2 = new c();
           }
-          if ((paramCharset == null) || (paramCharset.equals(fb.e))) {
+          if ((paramCharset == null) || (paramCharset.equals(fc.e))) {
             ((c)localObject2).a(k);
           }
           for (;;)
@@ -214,8 +214,8 @@ public final class s
       int k = paramString.codePointAt(paramInt1);
       if ((k == 37) && (paramInt1 + 2 < paramInt2))
       {
-        int m = fb.a(paramString.charAt(paramInt1 + 1));
-        int n = fb.a(paramString.charAt(paramInt1 + 2));
+        int m = fc.a(paramString.charAt(paramInt1 + 1));
+        int n = fc.a(paramString.charAt(paramInt1 + 2));
         if ((m == -1) || (n == -1)) {
           break label111;
         }
@@ -238,7 +238,7 @@ public final class s
   
   static boolean a(String paramString, int paramInt1, int paramInt2)
   {
-    return (paramInt1 + 2 < paramInt2) && (paramString.charAt(paramInt1) == '%') && (fb.a(paramString.charAt(paramInt1 + 1)) != -1) && (fb.a(paramString.charAt(paramInt1 + 2)) != -1);
+    return (paramInt1 + 2 < paramInt2) && (paramString.charAt(paramInt1) == '%') && (fc.a(paramString.charAt(paramInt1 + 1)) != -1) && (fc.a(paramString.charAt(paramInt1 + 2)) != -1);
   }
   
   static List<String> b(String paramString)
@@ -343,7 +343,7 @@ public final class s
       return "";
     }
     int k = this.a.length() + 3;
-    int m = fb.a(this.j, k, this.j.length(), ":@");
+    int m = fc.a(this.j, k, this.j.length(), ":@");
     return this.j.substring(k, m);
   }
   
@@ -387,7 +387,7 @@ public final class s
   public String h()
   {
     int k = this.j.indexOf('/', this.a.length() + 3);
-    int m = fb.a(this.j, k, this.j.length(), "?#");
+    int m = fc.a(this.j, k, this.j.length(), "?#");
     return this.j.substring(k, m);
   }
   
@@ -399,12 +399,12 @@ public final class s
   public List<String> i()
   {
     int k = this.j.indexOf('/', this.a.length() + 3);
-    int m = fb.a(this.j, k, this.j.length(), "?#");
+    int m = fc.a(this.j, k, this.j.length(), "?#");
     ArrayList localArrayList = new ArrayList();
     while (k < m)
     {
       int n = k + 1;
-      k = fb.a(this.j, n, m, '/');
+      k = fc.a(this.j, n, m, '/');
       localArrayList.add(this.j.substring(n, k));
     }
     return localArrayList;
@@ -417,7 +417,7 @@ public final class s
       return null;
     }
     int k = this.j.indexOf('?') + 1;
-    int m = fb.a(this.j, k, this.j.length(), '#');
+    int m = fc.a(this.j, k, this.j.length(), '#');
     return this.j.substring(k, m);
   }
   
@@ -506,7 +506,7 @@ public final class s
         if (paramInt1 >= paramInt2) {
           break label127;
         }
-        i = fb.a(paramString, paramInt1, paramInt2, "/\\");
+        i = fc.a(paramString, paramInt1, paramInt2, "/\\");
         if (i >= paramInt2) {
           break label129;
         }
@@ -640,7 +640,7 @@ public final class s
     
     private static String e(String paramString, int paramInt1, int paramInt2)
     {
-      return fb.a(s.a(paramString, paramInt1, paramInt2, false));
+      return fc.a(s.a(paramString, paramInt1, paramInt2, false));
     }
     
     private static int f(String paramString, int paramInt1, int paramInt2)
@@ -704,8 +704,8 @@ public final class s
     
     a a(@Nullable s params, String paramString)
     {
-      int i = fb.a(paramString, 0, paramString.length());
-      int i1 = fb.b(paramString, i, paramString.length());
+      int i = fc.a(paramString, 0, paramString.length());
+      int i1 = fc.b(paramString, i, paramString.length());
       int j = b(paramString, i, i1);
       label64:
       int k;
@@ -725,7 +725,7 @@ public final class s
           m = i + m;
           i = k;
           k = m;
-          n = fb.a(paramString, k, i1, "@/\\?#");
+          n = fc.a(paramString, k, i1, "@/\\?#");
           if (n == i1) {
             break label320;
           }
@@ -760,7 +760,7 @@ public final class s
       }
       if (i == 0)
       {
-        m = fb.a(paramString, k, n, ':');
+        m = fc.a(paramString, k, n, ':');
         String str = s.a(paramString, k, m, " \"':;<=>@[]^`{}|/\\?#", true, false, false, true, null);
         params = str;
         if (j != 0) {
@@ -800,11 +800,11 @@ public final class s
         throw new IllegalArgumentException("Invalid URL host: \"" + paramString.substring(k, i) + '"');
       }
       j = n;
-      i = fb.a(paramString, j, i1, "?#");
+      i = fc.a(paramString, j, i1, "?#");
       a(paramString, j, i);
       if ((i < i1) && (paramString.charAt(i) == '?'))
       {
-        j = fb.a(paramString, i, i1, '#');
+        j = fc.a(paramString, i, i1, '#');
         this.g = s.b(s.a(paramString, i + 1, j, " \"'<>#", true, false, true, true, null));
         i = j;
       }

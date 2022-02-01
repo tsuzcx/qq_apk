@@ -1,8 +1,8 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
-import com.tencent.token.bz;
+import com.tencent.token.ca;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
 import com.tencent.token.utils.l;
@@ -15,15 +15,15 @@ public class ProtoFeedbackAbnormalLogin
   private long d;
   private long e;
   
-  public static void a(dn paramdn, long paramLong1, long paramLong2)
+  public static void a(do paramdo, long paramLong1, long paramLong2)
   {
-    paramdn.c.put("param.uinhash", Long.valueOf(paramLong1));
-    paramdn.c.put("param.feedback.msgid", Long.valueOf(paramLong2));
+    paramdo.c.put("param.uinhash", Long.valueOf(paramLong1));
+    paramdo.c.put("param.feedback.msgid", Long.valueOf(paramLong2));
   }
   
   protected String a()
   {
-    String str1 = bz.a().b();
+    String str1 = ca.a().b();
     if (str1 == null)
     {
       this.a.b(104);
@@ -39,10 +39,10 @@ public class ProtoFeedbackAbnormalLogin
     return c.e() + "/cn/mbtoken3/mbtoken3_feedback_abnormal_login_v2" + str1;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.d = ((Long)paramdn.c.get("param.uinhash")).longValue();
-    this.e = ((Long)paramdn.c.get("param.feedback.msgid")).longValue();
+    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
+    this.e = ((Long)paramdo.c.get("param.feedback.msgid")).longValue();
   }
   
   protected void a(JSONObject paramJSONObject)

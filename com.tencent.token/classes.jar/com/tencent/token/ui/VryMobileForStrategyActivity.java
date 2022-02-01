@@ -15,7 +15,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.tencent.token.ca;
+import com.tencent.token.cb;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.bean.UpgradeDeterminResult;
 import com.tencent.token.core.protocolcenter.protocol.ProtoGeneralGetMobileCode;
@@ -135,7 +135,7 @@ public class VryMobileForStrategyActivity
       VryMobileForStrategyActivity.this.checkAndGetSMS();
     }
   };
-  private ca mTokenCore = ca.a();
+  private cb mTokenCore = cb.a();
   private UpgradeDeterminResult mUpDetermin;
   private QQUser mUser;
   private boolean nextpage = false;

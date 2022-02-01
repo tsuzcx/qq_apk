@@ -1,822 +1,716 @@
 package com.tencent.token;
 
 import android.content.ContentValues;
-import com.tencent.token.core.bean.SafeMsgItem;
+import android.content.Context;
 import com.tencent.token.global.g;
-import com.tencent.wcdb.Cursor;
 import com.tencent.wcdb.database.SQLiteDatabase;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.StreamCorruptedException;
+import com.tencent.wcdb.database.SQLiteStatement;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 public class er
 {
-  private String b = "tbl_safe_msg";
-  private boolean c = false;
+  private static eo a;
+  private static Context b;
+  private static String c = "token";
   
-  static
-  {
-    if (!er.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a = bool;
-      return;
-    }
-  }
-  
-  public er(String paramString)
-  {
-    if (paramString == null) {
-      return;
-    }
-    this.b = paramString;
-  }
-  
-  private void e(long paramLong)
+  public static int a(et paramet, String paramString)
   {
     try
     {
-      SafeMsgItem localSafeMsgItem = new SafeMsgItem();
-      localSafeMsgItem.mUin = paramLong;
-      localSafeMsgItem.mIsRead = false;
-      localSafeMsgItem.b("test write msg");
-      localSafeMsgItem.b(System.currentTimeMillis() / 1000L);
-      for (paramLong = 0L; paramLong < 10L; paramLong += 1L)
+      a(paramet);
+      paramet = a().query(paramString, new String[] { "count(*)" }, null, null, null, null, null, null);
+      if (paramet.getCount() > 0)
       {
-        localSafeMsgItem.a(paramLong);
-        localSafeMsgItem.a("msg title" + paramLong);
-        a(localSafeMsgItem);
+        paramet.moveToFirst();
+        i = paramet.getInt(0);
+        paramet.close();
+        g.c("test database, tablecount=" + i);
+        return i;
       }
-      return;
     }
-    finally {}
+    catch (Exception paramet)
+    {
+      g.c("status_kk" + paramet.toString() + paramet.getMessage());
+      return 0;
+    }
+    catch (Throwable paramet)
+    {
+      for (;;)
+      {
+        g.c("status_kk" + paramet.toString() + paramet.getMessage());
+        continue;
+        int i = 0;
+      }
+    }
   }
   
-  /* Error */
-  public java.util.List<SafeMsgItem> a(long paramLong, int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: iload_3
-    //   3: ifgt +11 -> 14
-    //   6: aconst_null
-    //   7: astore 5
-    //   9: aload_0
-    //   10: monitorexit
-    //   11: aload 5
-    //   13: areturn
-    //   14: new 6	com/tencent/token/er$a
-    //   17: dup
-    //   18: aload_0
-    //   19: invokespecial 90	com/tencent/token/er$a:<init>	(Lcom/tencent/token/er;)V
-    //   22: astore 5
-    //   24: aload 5
-    //   26: aload_0
-    //   27: getfield 30	com/tencent/token/er:b	Ljava/lang/String;
-    //   30: bipush 13
-    //   32: anewarray 92	java/lang/String
-    //   35: dup
-    //   36: iconst_0
-    //   37: ldc 94
-    //   39: aastore
-    //   40: dup
-    //   41: iconst_1
-    //   42: ldc 96
-    //   44: aastore
-    //   45: dup
-    //   46: iconst_2
-    //   47: ldc 98
-    //   49: aastore
-    //   50: dup
-    //   51: iconst_3
-    //   52: ldc 100
-    //   54: aastore
-    //   55: dup
-    //   56: iconst_4
-    //   57: ldc 102
-    //   59: aastore
-    //   60: dup
-    //   61: iconst_5
-    //   62: ldc 104
-    //   64: aastore
-    //   65: dup
-    //   66: bipush 6
-    //   68: ldc 106
-    //   70: aastore
-    //   71: dup
-    //   72: bipush 7
-    //   74: ldc 108
-    //   76: aastore
-    //   77: dup
-    //   78: bipush 8
-    //   80: ldc 110
-    //   82: aastore
-    //   83: dup
-    //   84: bipush 9
-    //   86: ldc 112
-    //   88: aastore
-    //   89: dup
-    //   90: bipush 10
-    //   92: ldc 114
-    //   94: aastore
-    //   95: dup
-    //   96: bipush 11
-    //   98: ldc 116
-    //   100: aastore
-    //   101: dup
-    //   102: bipush 12
-    //   104: ldc 118
-    //   106: aastore
-    //   107: ldc 120
-    //   109: iconst_1
-    //   110: anewarray 92	java/lang/String
-    //   113: dup
-    //   114: iconst_0
-    //   115: lload_1
-    //   116: invokestatic 124	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   119: aastore
-    //   120: aconst_null
-    //   121: aconst_null
-    //   122: ldc 126
-    //   124: iload_3
-    //   125: invokestatic 129	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   128: invokestatic 134	com/tencent/token/eq:a	(Lcom/tencent/token/es;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
-    //   131: astore 6
-    //   133: aload 6
-    //   135: invokeinterface 140 1 0
-    //   140: astore 7
-    //   142: new 142	java/util/ArrayList
-    //   145: dup
-    //   146: invokespecial 143	java/util/ArrayList:<init>	()V
-    //   149: astore 5
-    //   151: aload 7
-    //   153: invokeinterface 148 1 0
-    //   158: ifeq +114 -> 272
-    //   161: aload 7
-    //   163: invokeinterface 152 1 0
-    //   168: checkcast 6	com/tencent/token/er$a
-    //   171: astore 8
-    //   173: getstatic 21	com/tencent/token/er:a	Z
-    //   176: ifne +57 -> 233
-    //   179: aload 8
-    //   181: ifnonnull +52 -> 233
-    //   184: new 154	java/lang/AssertionError
-    //   187: dup
-    //   188: invokespecial 155	java/lang/AssertionError:<init>	()V
-    //   191: athrow
-    //   192: astore 5
-    //   194: aload_0
-    //   195: monitorexit
-    //   196: aload 5
-    //   198: athrow
-    //   199: astore 5
-    //   201: new 65	java/lang/StringBuilder
-    //   204: dup
-    //   205: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   208: ldc 157
-    //   210: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   213: aload 5
-    //   215: invokevirtual 158	java/lang/Exception:toString	()Ljava/lang/String;
-    //   218: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   221: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   224: invokestatic 162	com/tencent/token/global/g:c	(Ljava/lang/String;)V
-    //   227: aconst_null
-    //   228: astore 5
-    //   230: goto -221 -> 9
-    //   233: aload 8
-    //   235: invokevirtual 165	com/tencent/token/er$a:a	()Lcom/tencent/token/core/bean/SafeMsgItem;
-    //   238: astore 8
-    //   240: getstatic 21	com/tencent/token/er:a	Z
-    //   243: ifne +16 -> 259
-    //   246: aload 8
-    //   248: ifnonnull +11 -> 259
-    //   251: new 154	java/lang/AssertionError
-    //   254: dup
-    //   255: invokespecial 155	java/lang/AssertionError:<init>	()V
-    //   258: athrow
-    //   259: aload 5
-    //   261: aload 8
-    //   263: invokeinterface 169 2 0
-    //   268: pop
-    //   269: goto -118 -> 151
-    //   272: new 65	java/lang/StringBuilder
-    //   275: dup
-    //   276: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   279: ldc 171
-    //   281: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   284: aload_0
-    //   285: getfield 30	com/tencent/token/er:b	Ljava/lang/String;
-    //   288: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   291: ldc 173
-    //   293: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   296: lload_1
-    //   297: invokevirtual 75	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   300: ldc 175
-    //   302: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   305: aload 5
-    //   307: invokeinterface 179 1 0
-    //   312: invokevirtual 182	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   315: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   318: invokestatic 183	com/tencent/token/global/g:b	(Ljava/lang/String;)V
-    //   321: aload 6
-    //   323: ifnull +13 -> 336
-    //   326: aload 6
-    //   328: invokeinterface 186 1 0
-    //   333: ifeq +15 -> 348
-    //   336: aload_0
-    //   337: getfield 32	com/tencent/token/er:c	Z
-    //   340: ifeq +8 -> 348
-    //   343: aload_0
-    //   344: lload_1
-    //   345: invokespecial 188	com/tencent/token/er:e	(J)V
-    //   348: aload 5
-    //   350: invokeinterface 186 1 0
-    //   355: istore 4
-    //   357: iload 4
-    //   359: ifeq +9 -> 368
-    //   362: aconst_null
-    //   363: astore 5
-    //   365: goto -356 -> 9
-    //   368: goto -359 -> 9
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	371	0	this	er
-    //   0	371	1	paramLong	long
-    //   0	371	3	paramInt	int
-    //   355	3	4	bool	boolean
-    //   7	143	5	localObject1	Object
-    //   192	5	5	localObject2	Object
-    //   199	15	5	localException	Exception
-    //   228	136	5	localObject3	Object
-    //   131	196	6	localList	java.util.List
-    //   140	22	7	localIterator	java.util.Iterator
-    //   171	91	8	localObject4	Object
-    // Exception table:
-    //   from	to	target	type
-    //   14	24	192	finally
-    //   24	133	192	finally
-    //   133	151	192	finally
-    //   151	179	192	finally
-    //   184	192	192	finally
-    //   201	227	192	finally
-    //   233	246	192	finally
-    //   251	259	192	finally
-    //   259	269	192	finally
-    //   272	321	192	finally
-    //   326	336	192	finally
-    //   336	348	192	finally
-    //   348	357	192	finally
-    //   24	133	199	java/lang/Exception
-  }
-  
-  /* Error */
-  public boolean a(long paramLong)
-  {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: new 6	com/tencent/token/er$a
-    //   7: dup
-    //   8: aload_0
-    //   9: invokespecial 90	com/tencent/token/er$a:<init>	(Lcom/tencent/token/er;)V
-    //   12: astore 4
-    //   14: aload 4
-    //   16: aload_0
-    //   17: getfield 30	com/tencent/token/er:b	Ljava/lang/String;
-    //   20: ldc 120
-    //   22: iconst_1
-    //   23: anewarray 92	java/lang/String
-    //   26: dup
-    //   27: iconst_0
-    //   28: lload_1
-    //   29: invokestatic 124	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   32: aastore
-    //   33: invokestatic 194	com/tencent/token/eq:a	(Lcom/tencent/token/es;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
-    //   36: pop
-    //   37: aload_0
-    //   38: monitorexit
-    //   39: iload_3
-    //   40: ireturn
-    //   41: astore 4
-    //   43: new 65	java/lang/StringBuilder
-    //   46: dup
-    //   47: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   50: ldc 196
-    //   52: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   55: aload 4
-    //   57: invokevirtual 158	java/lang/Exception:toString	()Ljava/lang/String;
-    //   60: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   63: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   66: invokestatic 162	com/tencent/token/global/g:c	(Ljava/lang/String;)V
-    //   69: iconst_0
-    //   70: istore_3
-    //   71: goto -34 -> 37
-    //   74: astore 4
-    //   76: aload_0
-    //   77: monitorexit
-    //   78: aload 4
-    //   80: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	81	0	this	er
-    //   0	81	1	paramLong	long
-    //   1	70	3	bool	boolean
-    //   12	3	4	locala	a
-    //   41	15	4	localException	Exception
-    //   74	5	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   14	37	41	java/lang/Exception
-    //   4	14	74	finally
-    //   14	37	74	finally
-    //   43	69	74	finally
-  }
-  
-  /* Error */
-  public boolean a(long paramLong, int paramInt, String paramString)
-  {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore 5
-    //   3: aload_0
-    //   4: monitorenter
-    //   5: new 6	com/tencent/token/er$a
-    //   8: dup
-    //   9: aload_0
-    //   10: invokespecial 90	com/tencent/token/er$a:<init>	(Lcom/tencent/token/er;)V
-    //   13: astore 6
-    //   15: new 199	android/content/ContentValues
-    //   18: dup
-    //   19: invokespecial 200	android/content/ContentValues:<init>	()V
-    //   22: astore 7
-    //   24: aload 7
-    //   26: ldc 98
-    //   28: iload_3
-    //   29: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   32: invokevirtual 209	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   35: aload 7
-    //   37: ldc 104
-    //   39: aload 4
-    //   41: invokevirtual 212	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   44: aload 6
-    //   46: aload_0
-    //   47: getfield 30	com/tencent/token/er:b	Ljava/lang/String;
-    //   50: aload 7
-    //   52: ldc 214
-    //   54: iconst_1
-    //   55: anewarray 92	java/lang/String
-    //   58: dup
-    //   59: iconst_0
-    //   60: lload_1
-    //   61: invokestatic 124	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   64: aastore
-    //   65: invokestatic 217	com/tencent/token/eq:a	(Lcom/tencent/token/es;Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
-    //   68: ifgt +30 -> 98
-    //   71: new 65	java/lang/StringBuilder
-    //   74: dup
-    //   75: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   78: ldc 219
-    //   80: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   83: lload_1
-    //   84: invokevirtual 75	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   87: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   90: invokestatic 162	com/tencent/token/global/g:c	(Ljava/lang/String;)V
-    //   93: aload_0
-    //   94: monitorexit
-    //   95: iload 5
-    //   97: ireturn
-    //   98: iconst_1
-    //   99: istore 5
-    //   101: goto -8 -> 93
-    //   104: astore 4
-    //   106: aload_0
-    //   107: monitorexit
-    //   108: aload 4
-    //   110: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	111	0	this	er
-    //   0	111	1	paramLong	long
-    //   0	111	3	paramInt	int
-    //   0	111	4	paramString	String
-    //   1	99	5	bool	boolean
-    //   13	32	6	locala	a
-    //   22	29	7	localContentValues	ContentValues
-    // Exception table:
-    //   from	to	target	type
-    //   5	93	104	finally
-  }
-  
-  /* Error */
-  public boolean a(SafeMsgItem paramSafeMsgItem)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: new 6	com/tencent/token/er$a
-    //   5: dup
-    //   6: aload_0
-    //   7: invokespecial 90	com/tencent/token/er$a:<init>	(Lcom/tencent/token/er;)V
-    //   10: astore_3
-    //   11: aload_3
-    //   12: aload_1
-    //   13: invokevirtual 222	com/tencent/token/er$a:a	(Lcom/tencent/token/core/bean/SafeMsgItem;)V
-    //   16: aload_3
-    //   17: invokestatic 225	com/tencent/token/eq:b	(Lcom/tencent/token/es;)J
-    //   20: lconst_0
-    //   21: lcmp
-    //   22: ifge +34 -> 56
-    //   25: new 65	java/lang/StringBuilder
-    //   28: dup
-    //   29: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   32: ldc 227
-    //   34: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: aload_1
-    //   38: getfield 42	com/tencent/token/core/bean/SafeMsgItem:mUin	J
-    //   41: invokevirtual 75	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   44: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   47: invokestatic 162	com/tencent/token/global/g:c	(Ljava/lang/String;)V
-    //   50: iconst_0
-    //   51: istore_2
-    //   52: aload_0
-    //   53: monitorexit
-    //   54: iload_2
-    //   55: ireturn
-    //   56: iconst_1
-    //   57: istore_2
-    //   58: goto -6 -> 52
-    //   61: astore_1
-    //   62: aload_0
-    //   63: monitorexit
-    //   64: aload_1
-    //   65: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	66	0	this	er
-    //   0	66	1	paramSafeMsgItem	SafeMsgItem
-    //   51	7	2	bool	boolean
-    //   10	7	3	locala	a
-    // Exception table:
-    //   from	to	target	type
-    //   2	50	61	finally
-  }
-  
-  /* Error */
-  public boolean b(long paramLong)
-  {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: new 6	com/tencent/token/er$a
-    //   7: dup
-    //   8: aload_0
-    //   9: invokespecial 90	com/tencent/token/er$a:<init>	(Lcom/tencent/token/er;)V
-    //   12: astore 4
-    //   14: aload 4
-    //   16: aload_0
-    //   17: getfield 30	com/tencent/token/er:b	Ljava/lang/String;
-    //   20: ldc 229
-    //   22: iconst_1
-    //   23: anewarray 92	java/lang/String
-    //   26: dup
-    //   27: iconst_0
-    //   28: lload_1
-    //   29: invokestatic 124	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   32: aastore
-    //   33: invokestatic 194	com/tencent/token/eq:a	(Lcom/tencent/token/es;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
-    //   36: pop
-    //   37: aload_0
-    //   38: monitorexit
-    //   39: iload_3
-    //   40: ireturn
-    //   41: astore 4
-    //   43: new 65	java/lang/StringBuilder
-    //   46: dup
-    //   47: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   50: ldc 196
-    //   52: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   55: aload 4
-    //   57: invokevirtual 158	java/lang/Exception:toString	()Ljava/lang/String;
-    //   60: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   63: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   66: invokestatic 162	com/tencent/token/global/g:c	(Ljava/lang/String;)V
-    //   69: iconst_0
-    //   70: istore_3
-    //   71: goto -34 -> 37
-    //   74: astore 4
-    //   76: aload_0
-    //   77: monitorexit
-    //   78: aload 4
-    //   80: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	81	0	this	er
-    //   0	81	1	paramLong	long
-    //   1	70	3	bool	boolean
-    //   12	3	4	locala	a
-    //   41	15	4	localException	Exception
-    //   74	5	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   14	37	41	java/lang/Exception
-    //   4	14	74	finally
-    //   14	37	74	finally
-    //   43	69	74	finally
-  }
-  
-  public void c(long paramLong)
+  public static int a(et paramet, String paramString1, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString)
   {
     try
     {
-      a locala = new a();
-      try
-      {
-        if (eq.a(locala, this.b) >= 500)
-        {
-          long l = eq.a(locala, this.b, new String[] { "ftime" }, "fuin = ?", new String[] { String.valueOf(paramLong) }, null, null, "ftime asc", String.valueOf(200), false);
-          if (l > 0L) {
-            eq.a(locala, this.b, "fuin = ? and ftime <= ?", new String[] { String.valueOf(paramLong), String.valueOf(l) });
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          g.c("SQLiteManager query Exception:" + localException.toString());
-        }
-      }
-      return;
+      a(paramet);
+      int i = a().update(paramString1, paramContentValues, paramString2, paramArrayOfString);
+      return i;
     }
-    finally {}
+    catch (Exception paramet)
+    {
+      g.c("status_kk" + paramet.toString() + paramet.getMessage());
+      return 0;
+    }
+    catch (Throwable paramet)
+    {
+      for (;;)
+      {
+        g.c("status_kk" + paramet.toString() + paramet.getMessage());
+      }
+    }
+  }
+  
+  public static int a(et paramet, String paramString1, String paramString2, String[] paramArrayOfString)
+  {
+    try
+    {
+      a(paramet);
+      int i = a().delete(paramString1, paramString2, paramArrayOfString);
+      g.c("test database, del=" + i);
+      return i;
+    }
+    catch (Exception paramet)
+    {
+      g.c("status_kk" + paramet.toString() + paramet.getMessage());
+      return 0;
+    }
+    catch (Throwable paramet)
+    {
+      for (;;)
+      {
+        g.c("status_kk" + paramet.toString() + paramet.getMessage());
+      }
+    }
   }
   
   /* Error */
-  public boolean d(long paramLong)
+  public static long a(et paramet, String paramString1, String[] paramArrayOfString1, String paramString2, String[] paramArrayOfString2, String paramString3, String paramString4, String paramString5, String paramString6, boolean paramBoolean)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_3
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: new 6	com/tencent/token/er$a
-    //   7: dup
-    //   8: aload_0
-    //   9: invokespecial 90	com/tencent/token/er$a:<init>	(Lcom/tencent/token/er;)V
-    //   12: astore 4
-    //   14: new 199	android/content/ContentValues
-    //   17: dup
-    //   18: invokespecial 200	android/content/ContentValues:<init>	()V
-    //   21: astore 5
-    //   23: aload 5
-    //   25: ldc 100
-    //   27: iconst_1
-    //   28: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   31: invokevirtual 209	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   34: aload 4
-    //   36: aload_0
-    //   37: getfield 30	com/tencent/token/er:b	Ljava/lang/String;
-    //   40: aload 5
-    //   42: ldc 214
-    //   44: iconst_1
-    //   45: anewarray 92	java/lang/String
-    //   48: dup
+    //   0: aload_0
+    //   1: invokestatic 25	com/tencent/token/er:a	(Lcom/tencent/token/et;)V
+    //   4: invokestatic 28	com/tencent/token/er:a	()Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   7: aload_1
+    //   8: aload_2
+    //   9: aload_3
+    //   10: aload 4
+    //   12: aload 5
+    //   14: aload 6
+    //   16: aload 7
+    //   18: aload 8
+    //   20: invokevirtual 38	com/tencent/wcdb/database/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/wcdb/Cursor;
+    //   23: astore_0
+    //   24: lconst_0
+    //   25: lstore 10
+    //   27: aload_0
+    //   28: invokeinterface 44 1 0
+    //   33: ifle +24 -> 57
+    //   36: iload 9
+    //   38: ifeq +51 -> 89
+    //   41: aload_0
+    //   42: invokeinterface 48 1 0
+    //   47: pop
+    //   48: aload_0
     //   49: iconst_0
-    //   50: lload_1
-    //   51: invokestatic 124	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   54: aastore
-    //   55: invokestatic 217	com/tencent/token/eq:a	(Lcom/tencent/token/es;Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
-    //   58: ifgt +29 -> 87
-    //   61: new 65	java/lang/StringBuilder
-    //   64: dup
-    //   65: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   68: ldc 242
-    //   70: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   73: lload_1
-    //   74: invokevirtual 75	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   77: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   80: invokestatic 162	com/tencent/token/global/g:c	(Ljava/lang/String;)V
-    //   83: aload_0
-    //   84: monitorexit
-    //   85: iload_3
-    //   86: ireturn
-    //   87: iconst_1
-    //   88: istore_3
-    //   89: goto -6 -> 83
-    //   92: astore 4
-    //   94: aload_0
-    //   95: monitorexit
-    //   96: aload 4
-    //   98: athrow
+    //   50: invokeinterface 103 2 0
+    //   55: lstore 10
+    //   57: aload_0
+    //   58: invokeinterface 55 1 0
+    //   63: new 57	java/lang/StringBuilder
+    //   66: dup
+    //   67: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   70: ldc 105
+    //   72: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: lload 10
+    //   77: invokevirtual 108	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   80: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   83: invokestatic 78	com/tencent/token/global/g:c	(Ljava/lang/String;)V
+    //   86: lload 10
+    //   88: lreturn
+    //   89: aload_0
+    //   90: invokeinterface 111 1 0
+    //   95: pop
+    //   96: aload_0
+    //   97: iconst_0
+    //   98: invokeinterface 103 2 0
+    //   103: lstore 10
+    //   105: goto -48 -> 57
+    //   108: astore_0
+    //   109: new 57	java/lang/StringBuilder
+    //   112: dup
+    //   113: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   116: ldc 80
+    //   118: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   121: aload_0
+    //   122: invokevirtual 81	java/lang/Exception:toString	()Ljava/lang/String;
+    //   125: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   128: aload_0
+    //   129: invokevirtual 84	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   132: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   135: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   138: invokestatic 78	com/tencent/token/global/g:c	(Ljava/lang/String;)V
+    //   141: lconst_0
+    //   142: lreturn
+    //   143: astore_0
+    //   144: new 57	java/lang/StringBuilder
+    //   147: dup
+    //   148: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   151: ldc 80
+    //   153: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   156: aload_0
+    //   157: invokevirtual 85	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   160: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   163: aload_0
+    //   164: invokevirtual 86	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   167: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   170: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   173: invokestatic 78	com/tencent/token/global/g:c	(Ljava/lang/String;)V
+    //   176: goto -35 -> 141
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	99	0	this	er
-    //   0	99	1	paramLong	long
-    //   1	88	3	bool	boolean
-    //   12	23	4	locala	a
-    //   92	5	4	localObject	Object
-    //   21	20	5	localContentValues	ContentValues
+    //   0	179	0	paramet	et
+    //   0	179	1	paramString1	String
+    //   0	179	2	paramArrayOfString1	String[]
+    //   0	179	3	paramString2	String
+    //   0	179	4	paramArrayOfString2	String[]
+    //   0	179	5	paramString3	String
+    //   0	179	6	paramString4	String
+    //   0	179	7	paramString5	String
+    //   0	179	8	paramString6	String
+    //   0	179	9	paramBoolean	boolean
+    //   25	79	10	l	long
     // Exception table:
     //   from	to	target	type
-    //   4	83	92	finally
+    //   0	24	108	java/lang/Exception
+    //   27	36	108	java/lang/Exception
+    //   41	57	108	java/lang/Exception
+    //   57	86	108	java/lang/Exception
+    //   89	105	108	java/lang/Exception
+    //   0	24	143	java/lang/Throwable
+    //   27	36	143	java/lang/Throwable
+    //   41	57	143	java/lang/Throwable
+    //   57	86	143	java/lang/Throwable
+    //   89	105	143	java/lang/Throwable
   }
   
-  public class a
-    implements es
+  public static et a(et paramet, String paramString1, String[] paramArrayOfString1, String paramString2, String[] paramArrayOfString2)
   {
-    private long b;
-    private long c;
-    private int d;
-    private int e;
-    private String f;
-    private String g;
-    private long h;
-    private int i;
-    private int j;
-    private int k;
-    private String l;
-    private String m;
-    private byte[] n;
-    
-    public a() {}
-    
-    public SafeMsgItem a()
+    return b(paramet, paramString1, paramArrayOfString1, paramString2, paramArrayOfString2, null, null, null, null);
+  }
+  
+  /* Error */
+  public static SQLiteDatabase a()
+  {
+    // Byte code:
+    //   0: getstatic 117	com/tencent/token/er:a	Lcom/tencent/token/eo;
+    //   3: ifnonnull +181 -> 184
+    //   6: getstatic 119	com/tencent/token/er:b	Landroid/content/Context;
+    //   9: ifnonnull +9 -> 18
+    //   12: invokestatic 125	com/tencent/token/global/RqdApplication:l	()Landroid/content/Context;
+    //   15: putstatic 119	com/tencent/token/er:b	Landroid/content/Context;
+    //   18: getstatic 119	com/tencent/token/er:b	Landroid/content/Context;
+    //   21: ldc 127
+    //   23: invokevirtual 133	android/content/Context:getDatabasePath	(Ljava/lang/String;)Ljava/io/File;
+    //   26: astore_0
+    //   27: aload_0
+    //   28: ifnull +15 -> 43
+    //   31: aload_0
+    //   32: invokevirtual 138	java/io/File:exists	()Z
+    //   35: ifeq +8 -> 43
+    //   38: aload_0
+    //   39: invokevirtual 140	java/io/File:delete	()Z
+    //   42: pop
+    //   43: new 142	com/tencent/wcdb/database/SQLiteCipherSpec
+    //   46: dup
+    //   47: invokespecial 143	com/tencent/wcdb/database/SQLiteCipherSpec:<init>	()V
+    //   50: sipush 1024
+    //   53: invokevirtual 147	com/tencent/wcdb/database/SQLiteCipherSpec:setPageSize	(I)Lcom/tencent/wcdb/database/SQLiteCipherSpec;
+    //   56: iconst_2
+    //   57: invokevirtual 150	com/tencent/wcdb/database/SQLiteCipherSpec:setSQLCipherVersion	(I)Lcom/tencent/wcdb/database/SQLiteCipherSpec;
+    //   60: ldc 152
+    //   62: invokevirtual 156	com/tencent/wcdb/database/SQLiteCipherSpec:setCipher	(Ljava/lang/String;)Lcom/tencent/wcdb/database/SQLiteCipherSpec;
+    //   65: astore 5
+    //   67: getstatic 119	com/tencent/token/er:b	Landroid/content/Context;
+    //   70: ldc 158
+    //   72: invokevirtual 133	android/content/Context:getDatabasePath	(Ljava/lang/String;)Ljava/io/File;
+    //   75: astore_1
+    //   76: aload_1
+    //   77: invokevirtual 138	java/io/File:exists	()Z
+    //   80: ifne +199 -> 279
+    //   83: getstatic 119	com/tencent/token/er:b	Landroid/content/Context;
+    //   86: ldc 160
+    //   88: invokevirtual 133	android/content/Context:getDatabasePath	(Ljava/lang/String;)Ljava/io/File;
+    //   91: astore_0
+    //   92: aload_0
+    //   93: invokevirtual 138	java/io/File:exists	()Z
+    //   96: ifeq +67 -> 163
+    //   99: aload_0
+    //   100: invokevirtual 163	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   103: aconst_null
+    //   104: iconst_1
+    //   105: new 165	com/tencent/token/em
+    //   108: dup
+    //   109: invokespecial 166	com/tencent/token/em:<init>	()V
+    //   112: invokestatic 170	com/tencent/wcdb/database/SQLiteDatabase:openDatabase	(Ljava/lang/String;Lcom/tencent/wcdb/database/SQLiteDatabase$CursorFactory;ILcom/tencent/wcdb/DatabaseErrorHandler;)Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   115: astore_0
+    //   116: aload_1
+    //   117: getstatic 16	com/tencent/token/er:c	Ljava/lang/String;
+    //   120: invokevirtual 174	java/lang/String:getBytes	()[B
+    //   123: aload 5
+    //   125: aconst_null
+    //   126: new 165	com/tencent/token/em
+    //   129: dup
+    //   130: invokespecial 166	com/tencent/token/em:<init>	()V
+    //   133: invokestatic 178	com/tencent/wcdb/database/SQLiteDatabase:openOrCreateDatabase	(Ljava/io/File;[BLcom/tencent/wcdb/database/SQLiteCipherSpec;Lcom/tencent/wcdb/database/SQLiteDatabase$CursorFactory;Lcom/tencent/wcdb/DatabaseErrorHandler;)Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   136: astore_1
+    //   137: aload_1
+    //   138: astore_3
+    //   139: aload_0
+    //   140: astore_2
+    //   141: aload_0
+    //   142: aload_1
+    //   143: invokestatic 181	com/tencent/token/er:a	(Lcom/tencent/wcdb/database/SQLiteDatabase;Lcom/tencent/wcdb/database/SQLiteDatabase;)Z
+    //   146: pop
+    //   147: aload_0
+    //   148: ifnull +7 -> 155
+    //   151: aload_0
+    //   152: invokevirtual 182	com/tencent/wcdb/database/SQLiteDatabase:close	()V
+    //   155: aload_1
+    //   156: ifnull +7 -> 163
+    //   159: aload_1
+    //   160: invokevirtual 182	com/tencent/wcdb/database/SQLiteDatabase:close	()V
+    //   163: new 184	com/tencent/token/eo
+    //   166: dup
+    //   167: getstatic 119	com/tencent/token/er:b	Landroid/content/Context;
+    //   170: getstatic 16	com/tencent/token/er:c	Ljava/lang/String;
+    //   173: invokestatic 188	com/tencent/token/global/c:a	()I
+    //   176: aload 5
+    //   178: invokespecial 191	com/tencent/token/eo:<init>	(Landroid/content/Context;Ljava/lang/String;ILcom/tencent/wcdb/database/SQLiteCipherSpec;)V
+    //   181: putstatic 117	com/tencent/token/er:a	Lcom/tencent/token/eo;
+    //   184: getstatic 117	com/tencent/token/er:a	Lcom/tencent/token/eo;
+    //   187: invokevirtual 194	com/tencent/token/eo:getWritableDatabase	()Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   190: astore_0
+    //   191: aload_0
+    //   192: areturn
+    //   193: astore 4
+    //   195: aconst_null
+    //   196: astore_1
+    //   197: aconst_null
+    //   198: astore_0
+    //   199: aload_1
+    //   200: astore_3
+    //   201: aload_0
+    //   202: astore_2
+    //   203: new 57	java/lang/StringBuilder
+    //   206: dup
+    //   207: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   210: ldc 80
+    //   212: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   215: aload 4
+    //   217: invokevirtual 81	java/lang/Exception:toString	()Ljava/lang/String;
+    //   220: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   223: aload 4
+    //   225: invokevirtual 84	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   228: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   231: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   234: invokestatic 78	com/tencent/token/global/g:c	(Ljava/lang/String;)V
+    //   237: aload_0
+    //   238: ifnull +7 -> 245
+    //   241: aload_0
+    //   242: invokevirtual 182	com/tencent/wcdb/database/SQLiteDatabase:close	()V
+    //   245: aload_1
+    //   246: ifnull -83 -> 163
+    //   249: aload_1
+    //   250: invokevirtual 182	com/tencent/wcdb/database/SQLiteDatabase:close	()V
+    //   253: goto -90 -> 163
+    //   256: astore_1
+    //   257: aconst_null
+    //   258: astore_3
+    //   259: aconst_null
+    //   260: astore_0
+    //   261: aload_0
+    //   262: ifnull +7 -> 269
+    //   265: aload_0
+    //   266: invokevirtual 182	com/tencent/wcdb/database/SQLiteDatabase:close	()V
+    //   269: aload_3
+    //   270: ifnull +7 -> 277
+    //   273: aload_3
+    //   274: invokevirtual 182	com/tencent/wcdb/database/SQLiteDatabase:close	()V
+    //   277: aload_1
+    //   278: athrow
+    //   279: getstatic 119	com/tencent/token/er:b	Landroid/content/Context;
+    //   282: ldc 160
+    //   284: invokevirtual 133	android/content/Context:getDatabasePath	(Ljava/lang/String;)Ljava/io/File;
+    //   287: pop
+    //   288: goto -125 -> 163
+    //   291: astore_0
+    //   292: aload_0
+    //   293: invokevirtual 84	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   296: invokestatic 78	com/tencent/token/global/g:c	(Ljava/lang/String;)V
+    //   299: new 57	java/lang/StringBuilder
+    //   302: dup
+    //   303: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   306: ldc 80
+    //   308: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   311: aload_0
+    //   312: invokevirtual 81	java/lang/Exception:toString	()Ljava/lang/String;
+    //   315: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   318: aload_0
+    //   319: invokevirtual 84	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   322: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   325: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   328: invokestatic 78	com/tencent/token/global/g:c	(Ljava/lang/String;)V
+    //   331: goto -147 -> 184
+    //   334: astore_0
+    //   335: aload_0
+    //   336: invokevirtual 84	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   339: invokestatic 78	com/tencent/token/global/g:c	(Ljava/lang/String;)V
+    //   342: new 57	java/lang/StringBuilder
+    //   345: dup
+    //   346: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   349: ldc 80
+    //   351: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   354: aload_0
+    //   355: invokevirtual 81	java/lang/Exception:toString	()Ljava/lang/String;
+    //   358: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   361: aload_0
+    //   362: invokevirtual 84	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   365: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   368: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   371: invokestatic 78	com/tencent/token/global/g:c	(Ljava/lang/String;)V
+    //   374: aconst_null
+    //   375: areturn
+    //   376: astore_0
+    //   377: new 57	java/lang/StringBuilder
+    //   380: dup
+    //   381: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   384: ldc 80
+    //   386: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   389: aload_0
+    //   390: invokevirtual 85	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   393: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   396: aload_0
+    //   397: invokevirtual 86	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   400: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   403: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   406: invokestatic 78	com/tencent/token/global/g:c	(Ljava/lang/String;)V
+    //   409: aconst_null
+    //   410: areturn
+    //   411: astore_1
+    //   412: aconst_null
+    //   413: astore_3
+    //   414: goto -153 -> 261
+    //   417: astore_1
+    //   418: aload_2
+    //   419: astore_0
+    //   420: goto -159 -> 261
+    //   423: astore 4
+    //   425: aconst_null
+    //   426: astore_1
+    //   427: goto -228 -> 199
+    //   430: astore 4
+    //   432: goto -233 -> 199
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   26	240	0	localObject1	Object
+    //   291	28	0	localException1	Exception
+    //   334	28	0	localException2	Exception
+    //   376	21	0	localThrowable	Throwable
+    //   419	1	0	localObject2	Object
+    //   75	175	1	localObject3	Object
+    //   256	22	1	localObject4	Object
+    //   411	1	1	localObject5	Object
+    //   417	1	1	localObject6	Object
+    //   426	1	1	localObject7	Object
+    //   140	279	2	localObject8	Object
+    //   138	276	3	localObject9	Object
+    //   193	31	4	localException3	Exception
+    //   423	1	4	localException4	Exception
+    //   430	1	4	localException5	Exception
+    //   65	112	5	localSQLiteCipherSpec	com.tencent.wcdb.database.SQLiteCipherSpec
+    // Exception table:
+    //   from	to	target	type
+    //   99	116	193	java/lang/Exception
+    //   99	116	256	finally
+    //   163	184	291	java/lang/Exception
+    //   184	191	334	java/lang/Exception
+    //   184	191	376	java/lang/Throwable
+    //   116	137	411	finally
+    //   141	147	417	finally
+    //   203	237	417	finally
+    //   116	137	423	java/lang/Exception
+    //   141	147	430	java/lang/Exception
+  }
+  
+  public static List<et> a(et paramet, String paramString1, String[] paramArrayOfString1, String paramString2, String[] paramArrayOfString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    ArrayList localArrayList = new ArrayList();
+    try
     {
-      Object localObject1;
-      if (this.n != null) {
-        localObject1 = new ByteArrayInputStream(this.n);
-      }
-      for (;;)
+      a(paramet);
+      paramString1 = a().query(paramString1, paramArrayOfString1, paramString2, paramArrayOfString2, paramString3, paramString4, paramString5, paramString6);
+      if (paramString1.getCount() > 0)
       {
-        boolean bool;
-        try
+        paramString1.moveToFirst();
+        do
         {
-          SafeMsgItem localSafeMsgItem5 = (SafeMsgItem)new ObjectInputStream((InputStream)localObject1).readObject();
-          localObject1 = localSafeMsgItem5;
-          if (localSafeMsgItem5 == null) {
-            localObject1 = new SafeMsgItem();
-          }
-        }
-        catch (StreamCorruptedException localStreamCorruptedException)
-        {
-          localStreamCorruptedException.printStackTrace();
-          if (0 != 0) {
-            break label235;
-          }
-          SafeMsgItem localSafeMsgItem1 = new SafeMsgItem();
-          continue;
-        }
-        catch (IOException localIOException)
-        {
-          localIOException.printStackTrace();
-          if (0 != 0) {
-            break label235;
-          }
-          SafeMsgItem localSafeMsgItem2 = new SafeMsgItem();
-          continue;
-        }
-        catch (ClassNotFoundException localClassNotFoundException)
-        {
-          localClassNotFoundException.printStackTrace();
-          if (0 != 0) {
-            break label235;
-          }
-          SafeMsgItem localSafeMsgItem3 = new SafeMsgItem();
-          continue;
-        }
-        finally
-        {
-          if (0 != 0) {
-            continue;
-          }
-          new SafeMsgItem();
-        }
-        SafeMsgItem localSafeMsgItem4;
-        if (this.e == 0)
-        {
-          bool = false;
-          ((SafeMsgItem)localObject1).mIsRead = bool;
-          ((SafeMsgItem)localObject1).mUin = this.c;
-          ((SafeMsgItem)localObject1).a(this.b);
-          ((SafeMsgItem)localObject1).a(this.d);
-          ((SafeMsgItem)localObject1).a(this.f);
-          ((SafeMsgItem)localObject1).b(this.h);
-          ((SafeMsgItem)localObject1).b(this.g);
-          ((SafeMsgItem)localObject1).c(this.l);
-          ((SafeMsgItem)localObject1).b(this.i);
-          ((SafeMsgItem)localObject1).c(this.j);
-          ((SafeMsgItem)localObject1).d(this.k);
-          return localObject1;
-          localSafeMsgItem4 = new SafeMsgItem();
-        }
-        else
-        {
-          bool = true;
-          continue;
-          label235:
-          localSafeMsgItem4 = null;
-        }
+          localArrayList.add(paramet.a(paramString1));
+        } while (paramString1.moveToNext());
       }
+      paramString1.close();
+      return localArrayList;
     }
-    
-    public es a(Cursor paramCursor)
+    catch (Exception paramet)
     {
-      a locala = new a(er.this);
-      locala.b = paramCursor.getLong(paramCursor.getColumnIndex("fid"));
-      locala.c = paramCursor.getLong(paramCursor.getColumnIndex("fuin"));
-      locala.d = paramCursor.getInt(paramCursor.getColumnIndex("flag"));
-      locala.e = paramCursor.getInt(paramCursor.getColumnIndex("fis_read"));
-      locala.f = paramCursor.getString(paramCursor.getColumnIndex("ftitle"));
-      locala.g = paramCursor.getString(paramCursor.getColumnIndex("fcontent"));
-      locala.h = paramCursor.getLong(paramCursor.getColumnIndex("ftime"));
-      locala.i = paramCursor.getInt(paramCursor.getColumnIndex("ftype"));
-      locala.j = paramCursor.getInt(paramCursor.getColumnIndex("fsub_type"));
-      locala.k = paramCursor.getInt(paramCursor.getColumnIndex("fdetail_type"));
-      locala.l = paramCursor.getString(paramCursor.getColumnIndex("furi"));
-      locala.m = paramCursor.getString(paramCursor.getColumnIndex("faction"));
-      locala.n = paramCursor.getBlob(paramCursor.getColumnIndex("freserved1"));
-      return locala;
+      g.c("status_kk" + paramet.toString() + paramet.getMessage());
+      return localArrayList;
     }
-    
-    public void a(SafeMsgItem paramSafeMsgItem)
+    catch (Throwable paramet)
     {
-      this.c = paramSafeMsgItem.mUin;
-      this.d = paramSafeMsgItem.b();
-      int i1;
-      if (paramSafeMsgItem.mIsRead) {
-        i1 = 1;
-      }
-      for (;;)
+      g.c("status_kk" + paramet.toString() + paramet.getMessage());
+    }
+    return localArrayList;
+  }
+  
+  public static void a(Context paramContext)
+  {
+    b = paramContext;
+  }
+  
+  public static void a(et paramet)
+  {
+    try
+    {
+      paramet.a(a());
+      return;
+    }
+    catch (Exception paramet)
+    {
+      g.c("status_kk" + paramet.toString() + paramet.getMessage());
+      return;
+    }
+    catch (Throwable paramet)
+    {
+      g.c("status_kk" + paramet.toString() + paramet.getMessage());
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    try
+    {
+      SQLiteDatabase localSQLiteDatabase = a();
+      localSQLiteDatabase.execSQL("DROP TABLE IF EXISTS " + paramString);
+      localSQLiteDatabase.close();
+      return;
+    }
+    catch (Exception paramString)
+    {
+      g.c("status_kk" + paramString.toString() + paramString.getMessage());
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      g.c("status_kk" + paramString.toString() + paramString.getMessage());
+    }
+  }
+  
+  private static boolean a(SQLiteDatabase paramSQLiteDatabase1, SQLiteDatabase paramSQLiteDatabase2)
+  {
+    HashSet localHashSet = new HashSet();
+    localHashSet.add("sqlite_sequence");
+    StringBuilder localStringBuilder = new StringBuilder("select DISTINCT  tbl_name from sqlite_master");
+    com.tencent.wcdb.Cursor localCursor1 = paramSQLiteDatabase1.rawQuery(localStringBuilder.toString(), null);
+    if (localCursor1 != null)
+    {
+      int i = localCursor1.getCount();
+      while (localCursor1.moveToNext())
       {
-        this.e = i1;
-        this.f = paramSafeMsgItem.c();
-        this.g = paramSafeMsgItem.d();
-        this.h = paramSafeMsgItem.e();
-        this.i = paramSafeMsgItem.f();
-        this.j = paramSafeMsgItem.g();
-        this.k = paramSafeMsgItem.h();
-        this.l = paramSafeMsgItem.j();
-        ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-        try
+        int j = i - 1;
+        Object localObject1 = localCursor1.getString(0);
+        localStringBuilder.setLength(0);
+        localStringBuilder.append("select sql from sqlite_master where tbl_name = '").append((String)localObject1).append("'");
+        com.tencent.wcdb.Cursor localCursor2 = paramSQLiteDatabase1.rawQuery(localStringBuilder.toString(), null);
+        i = j;
+        if (localCursor2 != null)
         {
-          ObjectOutputStream localObjectOutputStream = new ObjectOutputStream(localByteArrayOutputStream);
-          localObjectOutputStream.writeObject(paramSafeMsgItem);
-          localObjectOutputStream.flush();
-          this.n = localByteArrayOutputStream.toByteArray();
-          return;
-          i1 = 0;
-        }
-        catch (IOException paramSafeMsgItem)
-        {
-          for (;;)
+          if (localCursor2.moveToNext())
           {
-            paramSafeMsgItem.printStackTrace();
+            if (localHashSet.contains(localObject1))
+            {
+              localCursor2.close();
+              i = j;
+              continue;
+            }
+            paramSQLiteDatabase2.execSQL(localCursor2.getString(0));
+            com.tencent.wcdb.Cursor localCursor3 = paramSQLiteDatabase1.rawQuery("select * from " + (String)localObject1, null);
+            if ((localCursor3 != null) && (localCursor3.getCount() > 0))
+            {
+              localStringBuilder.setLength(0);
+              localStringBuilder.append("insert into ").append((String)localObject1).append("(");
+              if (localCursor3.getColumnCount() > 0)
+              {
+                localObject1 = new StringBuilder(" values(");
+                localObject2 = localCursor3.getColumnNames();
+                k = localObject2.length;
+                i = 0;
+                while (i < k)
+                {
+                  localStringBuilder.append(localObject2[i]).append(",");
+                  ((StringBuilder)localObject1).append("?,");
+                  i += 1;
+                }
+                ((StringBuilder)localObject1).deleteCharAt(((StringBuilder)localObject1).length() - 1);
+                localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+                localStringBuilder.append(")").append((CharSequence)localObject1).append(")");
+              }
+              localObject1 = paramSQLiteDatabase2.compileStatement(localStringBuilder.toString());
+              paramSQLiteDatabase2.beginTransaction();
+              int k = localCursor3.getColumnCount();
+              Object localObject2 = new int[k];
+              localCursor3.moveToFirst();
+              i = 0;
+              while (i < k)
+              {
+                localObject2[i] = localCursor3.getType(i);
+                i += 1;
+              }
+              do
+              {
+                i = 0;
+                if (i < k)
+                {
+                  switch (localObject2[i])
+                  {
+                  }
+                  for (;;)
+                  {
+                    i += 1;
+                    break;
+                    Object localObject3 = localCursor3.getString(i);
+                    if (localObject3 != null)
+                    {
+                      ((SQLiteStatement)localObject1).bindString(i + 1, (String)localObject3);
+                    }
+                    else
+                    {
+                      ((SQLiteStatement)localObject1).bindNull(i + 1);
+                      continue;
+                      ((SQLiteStatement)localObject1).bindLong(i + 1, localCursor3.getLong(i));
+                      continue;
+                      localObject3 = localCursor3.getBlob(i);
+                      if (localObject3 != null)
+                      {
+                        ((SQLiteStatement)localObject1).bindBlob(i + 1, (byte[])localObject3);
+                      }
+                      else
+                      {
+                        ((SQLiteStatement)localObject1).bindNull(i + 1);
+                        continue;
+                        ((SQLiteStatement)localObject1).bindDouble(i + 1, localCursor3.getDouble(i));
+                        continue;
+                        ((SQLiteStatement)localObject1).bindNull(i + 1);
+                      }
+                    }
+                  }
+                }
+                ((SQLiteStatement)localObject1).executeInsert();
+              } while (localCursor3.moveToNext());
+              paramSQLiteDatabase2.setTransactionSuccessful();
+              paramSQLiteDatabase2.endTransaction();
+              localCursor3.close();
+            }
           }
+          localCursor2.close();
+          i = j;
         }
       }
+      localCursor1.close();
+      if (i == 0) {
+        return true;
+      }
     }
-    
-    public void a(SQLiteDatabase paramSQLiteDatabase)
+    return false;
+  }
+  
+  public static long b(et paramet)
+  {
+    try
     {
-      paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + er.a(er.this) + " (" + "fid" + " INTEGER PRIMARY KEY autoincrement," + "fuin" + " INTEGER," + "flag" + " INTEGER," + "fis_read" + " INTEGER," + "ftitle" + " TEXT," + "fcontent" + " TEXT," + "ftime" + " INTEGER," + "ftype" + " INTEGER," + "fsub_type" + " INTEGER," + "fdetail_type" + " INTEGER," + "furi" + " TEXT," + "faction" + " TEXT," + "freserved1" + " BLOB);");
+      a(paramet);
+      long l = paramet.b(a());
+      return l;
     }
-    
-    public long b(SQLiteDatabase paramSQLiteDatabase)
+    catch (Exception paramet)
     {
-      a(paramSQLiteDatabase);
-      ContentValues localContentValues = new ContentValues();
-      localContentValues.put("fuin", Long.valueOf(this.c));
-      localContentValues.put("flag", Integer.valueOf(this.d));
-      localContentValues.put("fis_read", Integer.valueOf(this.e));
-      localContentValues.put("ftitle", this.f);
-      localContentValues.put("ftime", Long.valueOf(this.h));
-      localContentValues.put("fcontent", this.g);
-      localContentValues.put("ftype", Integer.valueOf(this.i));
-      localContentValues.put("fsub_type", Integer.valueOf(this.j));
-      localContentValues.put("fdetail_type", Integer.valueOf(this.k));
-      localContentValues.put("furi", this.l);
-      localContentValues.put("faction", this.m);
-      localContentValues.put("freserved1", this.n);
-      return paramSQLiteDatabase.insert(er.a(er.this), null, localContentValues);
+      g.c("status_kk" + paramet.toString() + paramet.getMessage());
+      return 0L;
     }
-    
-    public String b()
+    catch (Throwable paramet)
     {
-      return er.a(er.this);
+      for (;;)
+      {
+        g.c("status_kk" + paramet.toString() + paramet.getMessage());
+      }
     }
-    
-    public ContentValues c()
+  }
+  
+  public static et b(et paramet, String paramString1, String[] paramArrayOfString1, String paramString2, String[] paramArrayOfString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    paramet = a(paramet, paramString1, paramArrayOfString1, paramString2, paramArrayOfString2, paramString3, paramString4, paramString5, paramString6);
+    if ((paramet != null) && (paramet.size() > 0)) {
+      return (et)paramet.get(0);
+    }
+    return null;
+  }
+  
+  public static void b()
+  {
+    if (a != null) {}
+    try
     {
-      return null;
+      a.close();
+      a = null;
+      return;
+    }
+    catch (Exception localException)
+    {
+      g.c("status_kk" + localException.toString() + localException.getMessage());
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      g.c("status_kk" + localThrowable.toString() + localThrowable.getMessage());
+    }
+  }
+  
+  public static long c(et paramet)
+  {
+    try
+    {
+      a(paramet);
+      long l = a().replace(paramet.b(), null, paramet.c());
+      return l;
+    }
+    catch (Exception paramet)
+    {
+      g.c("status_kk" + paramet.toString() + paramet.getMessage());
+      return 0L;
+    }
+    catch (Throwable paramet)
+    {
+      for (;;)
+      {
+        g.c("status_kk" + paramet.toString() + paramet.getMessage());
+      }
     }
   }
 }

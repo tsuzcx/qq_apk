@@ -17,8 +17,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.ci;
-import com.tencent.token.cv;
+import com.tencent.token.cj;
+import com.tencent.token.cw;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
 import com.tencent.token.ui.IndexActivity;
@@ -59,7 +59,7 @@ public class SecondVerifyDialog
     paramBundle = getWindow();
     paramBundle.setBackgroundDrawableResource(2130837730);
     ((ViewGroup.MarginLayoutParams)findViewById(2131559221).getLayoutParams()).width = paramBundle.getWindowManager().getDefaultDisplay().getWidth();
-    paramBundle = cv.a();
+    paramBundle = cw.a();
     this.b = ((TextView)findViewById(2131559223));
     if ((paramBundle.b() != null) && (paramBundle.b().length() > 0)) {
       this.b.setText(paramBundle.b());
@@ -96,8 +96,8 @@ public class SecondVerifyDialog
           {
             public e a(String... paramAnonymous2VarArgs)
             {
-              paramAnonymous2VarArgs = ci.a(c.b(SecondVerifyDialog.b(SecondVerifyDialog.this).getText().toString().trim().getBytes()));
-              return cv.a().a(paramAnonymous2VarArgs, SecondVerifyDialog.d(SecondVerifyDialog.this));
+              paramAnonymous2VarArgs = cj.a(c.b(SecondVerifyDialog.b(SecondVerifyDialog.this).getText().toString().trim().getBytes()));
+              return cw.a().a(paramAnonymous2VarArgs, SecondVerifyDialog.d(SecondVerifyDialog.this));
             }
             
             public void a(e paramAnonymous2e)

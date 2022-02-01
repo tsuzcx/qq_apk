@@ -1,8 +1,8 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
-import com.tencent.token.bz;
+import com.tencent.token.ca;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
@@ -15,14 +15,14 @@ public class ProtoDelUnverifyUin
 {
   private String d;
   
-  public static void a(dn paramdn, long paramLong)
+  public static void a(do paramdo, long paramLong)
   {
-    paramdn.c.put("param.realuin", Long.valueOf(paramLong));
+    paramdo.c.put("param.realuin", Long.valueOf(paramLong));
   }
   
   protected String a()
   {
-    String str1 = bz.a().b();
+    String str1 = ca.a().b();
     String str2 = l.a(new Object[] { "uin", this.d });
     if ((str1 == null) || (str2 == null))
     {
@@ -33,9 +33,9 @@ public class ProtoDelUnverifyUin
     return c.e() + "/cn/mbtoken3/mbtoken3_del_unvfy_uin" + str1;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.d = ("" + paramdn.c.get("param.realuin"));
+    this.d = ("" + paramdo.c.get("param.realuin"));
   }
   
   protected void a(JSONObject paramJSONObject)

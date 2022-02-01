@@ -26,13 +26,13 @@ import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import com.tencent.token.cb;
-import com.tencent.token.ci;
+import com.tencent.token.cc;
+import com.tencent.token.cj;
 import com.tencent.token.core.bean.DeterminVerifyFactorsResult.QuesInfoItem;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.gamelogin.GameLoginService;
 import com.tencent.token.core.push.PushService;
-import com.tencent.token.cq;
+import com.tencent.token.cr;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.g;
@@ -111,7 +111,7 @@ public class l
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("seq_id", paramInt);
-      localJSONObject.put("op_time", cb.c().s() / 1000L);
+      localJSONObject.put("op_time", cc.c().s() / 1000L);
       localJSONObject.put("uin", paramLong);
       localJSONObject.put("ques_id_0", ((DeterminVerifyFactorsResult.QuesInfoItem)paramList.get(0)).a());
       localJSONObject.put("answer_0", paramArrayOfString[0]);
@@ -656,7 +656,7 @@ public class l
   
   public static String b(byte[] paramArrayOfByte)
   {
-    byte[] arrayOfByte = cq.a().c();
+    byte[] arrayOfByte = cr.a().c();
     if ((arrayOfByte == null) || (arrayOfByte.length != 16))
     {
       if (arrayOfByte == null) {}
@@ -672,7 +672,7 @@ public class l
       g.c("encrypt pwd failed");
       return null;
     }
-    return ci.a(paramArrayOfByte);
+    return cj.a(paramArrayOfByte);
   }
   
   public static void b(Context paramContext, String paramString)
@@ -750,7 +750,7 @@ public class l
   
   public static byte[] c(String paramString)
   {
-    byte[] arrayOfByte = cq.a().c();
+    byte[] arrayOfByte = cr.a().c();
     if ((arrayOfByte == null) || (arrayOfByte.length != 16))
     {
       if (arrayOfByte == null) {}
@@ -762,7 +762,7 @@ public class l
     }
     try
     {
-      paramString = new a().a(ci.a(paramString), arrayOfByte);
+      paramString = new a().a(cj.a(paramString), arrayOfByte);
       return paramString;
     }
     catch (Exception paramString)
@@ -774,7 +774,7 @@ public class l
   
   public static byte[] c(byte[] paramArrayOfByte)
   {
-    byte[] arrayOfByte = cq.a().c();
+    byte[] arrayOfByte = cr.a().c();
     boolean bool;
     if ((arrayOfByte == null) || (arrayOfByte.length != 16)) {
       if (arrayOfByte == null)
@@ -856,7 +856,7 @@ public class l
     TmsLog.i("mod_seed", "@decSeedDataV2 data: " + paramString);
     try
     {
-      paramString = new a().a(ci.a(paramString), cb.c().f());
+      paramString = new a().a(cj.a(paramString), cc.c().f());
       return paramString;
     }
     catch (Exception paramString)
@@ -927,11 +927,11 @@ public class l
     {
       Object localObject = RqdApplication.l();
       bool1 = bool3;
-      if (cq.a().e() == null) {
+      if (cr.a().e() == null) {
         return false;
       }
       bool1 = bool3;
-      String str = String.valueOf(cq.a().e().mUin);
+      String str = String.valueOf(cr.a().e().mUin);
       bool1 = bool3;
       if (!TextUtils.isEmpty(str))
       {
@@ -969,7 +969,7 @@ public class l
     do
     {
       return l;
-      str = ci.a(MD5.toMD5Byte(Long.toString(paramLong)));
+      str = cj.a(MD5.toMD5Byte(Long.toString(paramLong)));
       j = Math.min(31, str.length() - 1);
       paramLong = l;
       l = paramLong;

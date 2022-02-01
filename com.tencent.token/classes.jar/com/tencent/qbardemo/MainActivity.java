@@ -26,9 +26,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.qbar.QbarNative;
 import com.tencent.token.bu;
-import com.tencent.token.bv;
-import com.tencent.token.by;
-import com.tencent.token.ca;
+import com.tencent.token.bw;
+import com.tencent.token.bz;
+import com.tencent.token.cb;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.g;
 import com.tencent.token.ui.GetBarcodeVerifyMsgActivity;
@@ -355,11 +355,11 @@ public class MainActivity
   {
     this.mBarcodeResult = paramBundle.getString("dataInfo");
     paramBundle = paramBundle.getString("dataInfo");
-    Object localObject1 = by.a(getApplicationContext());
+    Object localObject1 = bz.a(getApplicationContext());
     Object localObject2;
-    if (((by)localObject1).a(paramBundle))
+    if (((bz)localObject1).a(paramBundle))
     {
-      ((by)localObject1).b(paramBundle);
+      ((bz)localObject1).b(paramBundle);
       localObject2 = new Intent(this, ScanLoginAccountListActivity.class);
       int i = paramBundle.indexOf("?k=") + 3;
       paramBundle = paramBundle.substring(i, i + 32);
@@ -368,7 +368,7 @@ public class MainActivity
     }
     try
     {
-      bv.a(RqdApplication.l()).a(((by)localObject1).a());
+      bw.a(RqdApplication.l()).a(((bz)localObject1).a());
       label113:
       finish();
       return;
@@ -378,7 +378,7 @@ public class MainActivity
         localObject1 = (ImageView)findViewById(2131558691);
         ((ImageView)localObject1).setImageResource(2130837791);
         ((AnimationDrawable)((ImageView)localObject1).getDrawable()).start();
-        ca.a().a(paramBundle, this.uiHandler);
+        cb.a().a(paramBundle, this.uiHandler);
         return;
       }
       paramBundle = new Intent(this, GetBarcodeVerifyMsgActivity.class);

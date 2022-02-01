@@ -3,16 +3,16 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.bz;
 import com.tencent.token.ca;
 import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.bean.AbnormalLoginMsgResult;
 import com.tencent.token.core.bean.OnlineDeviceResult;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.cs;
-import com.tencent.token.cu;
-import com.tencent.token.dj;
-import com.tencent.token.dn;
+import com.tencent.token.ct;
+import com.tencent.token.cv;
+import com.tencent.token.dk;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -26,8 +26,8 @@ import org.json.JSONObject;
 public class ProtoGetMessage
   extends d
 {
-  cs d = cs.a();
-  cu e = cu.a();
+  ct d = ct.a();
+  cv e = cv.a();
   private long f;
   private int g;
   private int h;
@@ -41,39 +41,39 @@ public class ProtoGetMessage
   private String p;
   private int q;
   
-  public static void a(dn paramdn, long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static void a(do paramdo, long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    paramdn.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdn.c.put("param.msg.source", Integer.valueOf(paramInt1));
-    paramdn.c.put("param.msg.type", Integer.valueOf(paramInt2));
-    paramdn.c.put("param.msg.num", Integer.valueOf(paramInt4));
-    paramdn.c.put("param.msg.filter", Integer.valueOf(paramInt3));
+    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdo.c.put("param.msg.source", Integer.valueOf(paramInt1));
+    paramdo.c.put("param.msg.type", Integer.valueOf(paramInt2));
+    paramdo.c.put("param.msg.num", Integer.valueOf(paramInt4));
+    paramdo.c.put("param.msg.filter", Integer.valueOf(paramInt3));
   }
   
-  public static void a(dn paramdn, long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, int paramInt5, int paramInt6, String paramString2, String paramString3)
+  public static void a(do paramdo, long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, int paramInt5, int paramInt6, String paramString2, String paramString3)
   {
-    paramdn.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdn.c.put("param.msg.source", Integer.valueOf(paramInt1));
-    paramdn.c.put("param.msg.type", Integer.valueOf(paramInt2));
-    paramdn.c.put("param.msg.num", Integer.valueOf(paramInt4));
-    paramdn.c.put("param.msg.filter", Integer.valueOf(paramInt3));
-    paramdn.c.put("param.device.lock.guid", paramString1);
-    paramdn.c.put("param.device.lock.appid", Integer.valueOf(paramInt5));
-    paramdn.c.put("param.device.lock.subappid", Integer.valueOf(paramInt6));
-    paramdn.c.put("param.device.lock.appname", paramString2);
-    paramdn.c.put("param.skey", paramString3);
+    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdo.c.put("param.msg.source", Integer.valueOf(paramInt1));
+    paramdo.c.put("param.msg.type", Integer.valueOf(paramInt2));
+    paramdo.c.put("param.msg.num", Integer.valueOf(paramInt4));
+    paramdo.c.put("param.msg.filter", Integer.valueOf(paramInt3));
+    paramdo.c.put("param.device.lock.guid", paramString1);
+    paramdo.c.put("param.device.lock.appid", Integer.valueOf(paramInt5));
+    paramdo.c.put("param.device.lock.subappid", Integer.valueOf(paramInt6));
+    paramdo.c.put("param.device.lock.appname", paramString2);
+    paramdo.c.put("param.skey", paramString3);
   }
   
   protected String a()
   {
-    long l1 = cb.c().s();
+    long l1 = cc.c().s();
     long l2 = System.currentTimeMillis();
     if (l1 > l2) {}
     String str;
     for (;;)
     {
       l2 = 300L + l1 / 1000L;
-      str = bz.a().b();
+      str = ca.a().b();
       if (str != null) {
         break;
       }
@@ -89,11 +89,11 @@ public class ProtoGetMessage
     {
       localObject1 = new JSONObject();
       ((JSONObject)localObject1).put("uin", this.f);
-      int i1 = ca.a + 1;
-      ca.a = i1;
+      int i1 = cb.a + 1;
+      cb.a = i1;
       this.q = i1;
       ((JSONObject)localObject1).put("seq_id", this.q);
-      ((JSONObject)localObject1).put("op_time", cb.c().s() / 1000L);
+      ((JSONObject)localObject1).put("op_time", cc.c().s() / 1000L);
       ((JSONObject)localObject1).put("msg_type", this.i);
       ((JSONObject)localObject1).put("req_msg_num", this.h);
       ((JSONObject)localObject1).put("start_time", l1);
@@ -128,20 +128,20 @@ public class ProtoGetMessage
     return c.e() + "/cn/mbtoken3/mbtoken3_get_message_v2" + (String)localObject1;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.f = ((Long)paramdn.c.get("param.uinhash")).longValue();
-    this.g = ((Integer)paramdn.c.get("param.msg.source")).intValue();
-    this.h = ((Integer)paramdn.c.get("param.msg.num")).intValue();
-    this.i = ((Integer)paramdn.c.get("param.msg.type")).intValue();
-    this.j = ((Integer)paramdn.c.get("param.msg.filter")).intValue();
+    this.f = ((Long)paramdo.c.get("param.uinhash")).longValue();
+    this.g = ((Integer)paramdo.c.get("param.msg.source")).intValue();
+    this.h = ((Integer)paramdo.c.get("param.msg.num")).intValue();
+    this.i = ((Integer)paramdo.c.get("param.msg.type")).intValue();
+    this.j = ((Integer)paramdo.c.get("param.msg.filter")).intValue();
     if ((this.j == 0) && (this.i == 1))
     {
-      this.l = ((String)paramdn.c.get("param.device.lock.guid"));
-      this.m = ((Integer)paramdn.c.get("param.device.lock.appid")).intValue();
-      this.n = ((Integer)paramdn.c.get("param.device.lock.subappid")).intValue();
-      this.o = ((String)paramdn.c.get("param.device.lock.appname"));
-      this.p = ((String)paramdn.c.get("param.skey"));
+      this.l = ((String)paramdo.c.get("param.device.lock.guid"));
+      this.m = ((Integer)paramdo.c.get("param.device.lock.appid")).intValue();
+      this.n = ((Integer)paramdo.c.get("param.device.lock.subappid")).intValue();
+      this.o = ((String)paramdo.c.get("param.device.lock.appname"));
+      this.p = ((String)paramdo.c.get("param.skey"));
     }
   }
   
@@ -196,7 +196,7 @@ public class ProtoGetMessage
   
   protected void b()
   {
-    if (!this.b.e)
+    if ((!this.b.e) && (this.b.d != null))
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;

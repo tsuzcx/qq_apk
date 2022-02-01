@@ -9,9 +9,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
 import android.widget.RemoteViews;
-import com.tencent.token.cb;
 import com.tencent.token.cc;
 import com.tencent.token.cd;
+import com.tencent.token.ce;
 import com.tencent.token.global.g;
 import com.tencent.token.ui.WidgetTransitionActivity;
 import com.tencent.token.utils.m;
@@ -48,16 +48,16 @@ public class TokenService
   private void a()
   {
     int i1 = 0;
-    cb localcb = cb.c();
-    if (!localcb.g())
+    cc localcc = cc.c();
+    if (!localcc.g())
     {
       AppWidgetManager localAppWidgetManager = AppWidgetManager.getInstance(this);
       int[] arrayOfInt = localAppWidgetManager.getAppWidgetIds(this.e);
       this.c.setImageViewResource(2131559338, 2130838055);
       if (!this.f)
       {
-        localcb.m();
-        this.b = localcb.l();
+        localcc.m();
+        this.b = localcc.l();
         if (this.g) {
           this.c.setImageViewResource(2131559338, 2130838052);
         }
@@ -112,7 +112,7 @@ public class TokenService
       this.c.setOnClickPendingIntent(2131559337, this.i);
       this.j = PendingIntent.getBroadcast(this, 0, new Intent("com.tencent.token.widget.SPEECH"), 0);
       this.c.setOnClickPendingIntent(2131559335, this.j);
-      cd.a(this);
+      ce.a(this);
     }
   }
   
@@ -135,7 +135,7 @@ public class TokenService
   public void onDestroy()
   {
     super.onDestroy();
-    cd.a(this).b();
+    ce.a(this).b();
     unregisterReceiver(this.k);
   }
   
@@ -149,9 +149,9 @@ public class TokenService
     {
       try
       {
-        if (!cb.c().g())
+        if (!cc.c().g())
         {
-          if ((!cc.a().c()) && (m.e() == 0L)) {
+          if ((!cd.a().c()) && (m.e() == 0L)) {
             continue;
           }
           this.f = true;
@@ -168,7 +168,7 @@ public class TokenService
       finally {}
       return;
       this.f = false;
-      l1 = cb.c().r();
+      l1 = cc.c().r();
       if (l1 > 5000L)
       {
         l1 -= 5000L;

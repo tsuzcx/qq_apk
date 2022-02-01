@@ -4,9 +4,9 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.token.bz;
+import com.tencent.token.ca;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -25,7 +25,7 @@ public class ProtoSetSuperCode
   
   protected String a()
   {
-    String str = bz.a().b();
+    String str = ca.a().b();
     if (str == null)
     {
       this.a.b(104);
@@ -64,11 +64,11 @@ public class ProtoSetSuperCode
     return null;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.d = ((Long)paramdn.c.get("param.uinhash")).longValue();
-    this.e = ((Integer)paramdn.c.get("param.common.seq")).intValue();
-    this.f = ((Integer)paramdn.c.get("param.set_supercode")).intValue();
+    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
+    this.e = ((Integer)paramdo.c.get("param.common.seq")).intValue();
+    this.f = ((Integer)paramdo.c.get("param.set_supercode")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -102,7 +102,7 @@ public class ProtoSetSuperCode
   
   protected void b()
   {
-    if (!this.b.e)
+    if ((!this.b.e) && (this.b.d != null))
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;

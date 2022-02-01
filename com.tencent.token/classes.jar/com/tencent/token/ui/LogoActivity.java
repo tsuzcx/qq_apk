@@ -32,12 +32,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.cb;
 import com.tencent.token.cc;
-import com.tencent.token.ci;
+import com.tencent.token.cd;
+import com.tencent.token.cj;
 import com.tencent.token.core.bean.ConfigResult;
-import com.tencent.token.cq;
-import com.tencent.token.ec;
+import com.tencent.token.cr;
+import com.tencent.token.ed;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.g;
@@ -90,7 +90,7 @@ public class LogoActivity
           return;
         }
         Object localObject = new a();
-        byte[] arrayOfByte = ci.a(paramString);
+        byte[] arrayOfByte = cj.a(paramString);
         g.b("decryptAndCheck sig=" + paramString + " schemaKey=" + this.schemaKey);
         paramString = ((a)localObject).a(arrayOfByte, this.schemaKey.getBytes());
         localObject = new StringBuilder().append("temp =");
@@ -108,12 +108,12 @@ public class LogoActivity
           }
           int i = Integer.valueOf(paramString[0]).intValue();
           long l = Long.valueOf(paramString[1]).longValue();
-          int j = (int)(cb.c().s() / 1000L);
+          int j = (int)(cc.c().s() / 1000L);
           g.a("timeStamp=" + i + "ad=" + l);
           if (Math.abs(j - i) >= this.schemaTimeout) {
             return;
           }
-          this.success = cq.a().a(l);
+          this.success = cr.a().a(l);
           if (!this.success) {
             break;
           }
@@ -135,9 +135,9 @@ public class LogoActivity
   {
     if ((this.mFromOtherApp) || (this.mFromH5))
     {
-      if (!cb.c().g())
+      if (!cc.c().g())
       {
-        if (cq.a().d() == 0)
+        if (cr.a().d() == 0)
         {
           localIntent = new Intent(this, WtLoginAccountInput.class);
           localIntent.putExtra("page_id", 3);
@@ -197,7 +197,7 @@ public class LogoActivity
   private void gotonext()
   {
     Object localObject;
-    if ((cc.a().c()) && (cc.a().e() == 1))
+    if ((cd.a().c()) && (cd.a().e() == 1))
     {
       localObject = new Intent(this, StartPwdDigitVerifyActivity.class);
       Bundle localBundle = new Bundle();
@@ -343,7 +343,7 @@ public class LogoActivity
     int j = 1;
     boolean bool = RqdApplication.b();
     Log.i("SecureGuideUtil", "是否新用户|" + bool);
-    long l = ec.b("privacy_dialog_agree_time", 0L);
+    long l = ed.b("privacy_dialog_agree_time", 0L);
     Log.i("SecureGuideUtil", "隐私条款上次允许时间戳|" + l);
     int i;
     if (l > 0L)
@@ -376,7 +376,7 @@ public class LogoActivity
         gotonext();
         return;
       }
-      Object localObject2 = ec.c("privacy_dialog_line2_wording", null);
+      Object localObject2 = ed.c("privacy_dialog_line2_wording", null);
       Object localObject1 = localObject2;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         localObject1 = "为了向您提供QQ帐号安全体检、QQ帐号足迹、QQ密保管理、QQ密码管理、动态密码、QQ帐号保护等多项功能和服务，我们需要收集设备信息等个人信息；您可以在相关页面访问、更正、删除您的个人信息并管理您的授权。";
@@ -432,7 +432,7 @@ public class LogoActivity
           {
             this.a.dismiss();
             RqdApplication.a();
-            ec.a("privacy_dialog_agree_time", System.currentTimeMillis());
+            ed.a("privacy_dialog_agree_time", System.currentTimeMillis());
             if (Build.VERSION.SDK_INT >= 23)
             {
               LogoActivity.this.showPermissionDialog();
@@ -451,7 +451,7 @@ public class LogoActivity
         public void onClick(View paramAnonymousView)
         {
           this.a.dismiss();
-          ec.a("privacy_dialog_agree_time", System.currentTimeMillis());
+          ed.a("privacy_dialog_agree_time", System.currentTimeMillis());
           if (Build.VERSION.SDK_INT >= 23)
           {
             LogoActivity.this.showPermissionDialog();
@@ -525,13 +525,13 @@ public class LogoActivity
           gotoWelcomeActivity();
           return;
         }
-        cc.a().a(this, null);
+        cd.a().a(this, null);
         showOldPwdDeleteAlert();
         return;
       }
       if (paramInt1 == 260)
       {
-        if (!cc.a().c())
+        if (!cd.a().c())
         {
           showOldPwdDeleteAlert();
           return;

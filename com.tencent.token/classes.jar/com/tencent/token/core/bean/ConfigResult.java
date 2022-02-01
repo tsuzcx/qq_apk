@@ -2,7 +2,7 @@ package com.tencent.token.core.bean;
 
 import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
-import com.tencent.token.dw;
+import com.tencent.token.dx;
 import com.tencent.token.global.g;
 import com.tencent.token.utils.e;
 import com.tencent.token.utils.i;
@@ -92,7 +92,7 @@ public class ConfigResult
               switch (this.logLevel)
               {
               case 0: 
-                dw.a(48);
+                dx.a(48);
               }
             }
             catch (Exception paramJSONObject)
@@ -107,7 +107,7 @@ public class ConfigResult
               {
                 i.b("debug.file.uploadfiledate", this.uploadDate).commit();
                 g.a("log file upload date=" + this.uploadDate);
-                paramJSONObject = new File(dw.b(), "upload.file");
+                paramJSONObject = new File(dx.b(), "upload.file");
                 if (paramJSONObject.exists()) {
                   e.a(paramJSONObject);
                 }
@@ -119,11 +119,11 @@ public class ConfigResult
               paramJSONObject.printStackTrace();
               return;
             }
-            dw.a(63);
+            dx.a(63);
             continue;
-            dw.a(60);
+            dx.a(60);
             continue;
-            dw.a(48);
+            dx.a(48);
           }
         }
         catch (Exception localException1)

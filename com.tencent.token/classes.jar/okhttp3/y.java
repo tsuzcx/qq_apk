@@ -1,6 +1,6 @@
 package okhttp3;
 
-import com.tencent.token.fb;
+import com.tencent.token.fc;
 import javax.annotation.Nullable;
 import okio.d;
 
@@ -16,7 +16,7 @@ public abstract class y
     if (paramArrayOfByte == null) {
       throw new NullPointerException("content == null");
     }
-    fb.a(paramArrayOfByte.length, paramInt1, paramInt2);
+    fc.a(paramArrayOfByte.length, paramInt1, paramInt2);
     new y()
     {
       @Nullable

@@ -19,7 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.by;
+import com.tencent.token.bz;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.g;
 import com.tencent.token.ui.BaseActivity;
@@ -31,7 +31,7 @@ public class WtloginCaptchaDialog
   extends Dialog
 {
   private static Handler g;
-  by a;
+  bz a;
   Handler b = new Handler()
   {
     public void handleMessage(Message paramAnonymousMessage)
@@ -192,7 +192,7 @@ public class WtloginCaptchaDialog
       return;
     }
     super.onCreate(paramBundle);
-    this.a = by.a(RqdApplication.l());
+    this.a = bz.a(RqdApplication.l());
     setContentView(2130968826);
     paramBundle = getWindow();
     paramBundle.setBackgroundDrawableResource(2130837730);

@@ -16,8 +16,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.bv;
-import com.tencent.token.by;
+import com.tencent.token.bw;
+import com.tencent.token.bz;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.g;
 import com.tencent.token.ui.IndexActivity;
@@ -38,7 +38,7 @@ public class GameLoginSndConfirmDialog
   {
     public void handleMessage(Message paramAnonymousMessage)
     {
-      Object localObject1 = bv.a(RqdApplication.l()).d();
+      Object localObject1 = bw.a(RqdApplication.l()).d();
       int i;
       Object localObject2;
       if ((paramAnonymousMessage.what == 3040) && (localObject1 != null))
@@ -142,11 +142,11 @@ public class GameLoginSndConfirmDialog
       
       public void a(int paramAnonymousInt)
       {
-        bv localbv = bv.a(RqdApplication.l());
-        CallbackPushStruct localCallbackPushStruct = localbv.d();
+        bw localbw = bw.a(RqdApplication.l());
+        CallbackPushStruct localCallbackPushStruct = localbw.d();
         if (localCallbackPushStruct != null)
         {
-          localbv.a(localCallbackPushStruct.uin, by.a(RqdApplication.l()).b(), paramAnonymousInt, GameLoginSndConfirmDialog.d(GameLoginSndConfirmDialog.this));
+          localbw.a(localCallbackPushStruct.uin, bz.a(RqdApplication.l()).b(), paramAnonymousInt, GameLoginSndConfirmDialog.d(GameLoginSndConfirmDialog.this));
           if (GameLoginSndConfirmDialog.a(GameLoginSndConfirmDialog.this) == null) {
             GameLoginSndConfirmDialog.a(GameLoginSndConfirmDialog.this, new ProDialog(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this), 2131362182));
           }
@@ -156,7 +156,7 @@ public class GameLoginSndConfirmDialog
       
       public void b()
       {
-        CallbackPushStruct localCallbackPushStruct = bv.a(RqdApplication.l()).d();
+        CallbackPushStruct localCallbackPushStruct = bw.a(RqdApplication.l()).d();
         if (localCallbackPushStruct != null)
         {
           if (localCallbackPushStruct.schemeFlag != 2) {
@@ -201,14 +201,14 @@ public class GameLoginSndConfirmDialog
       g.a("Dual initView failed!");
       return;
     }
-    this.b.a(bv.a(RqdApplication.l()).d());
+    this.b.a(bw.a(RqdApplication.l()).d());
     setContentView(this.b);
     setOnDismissListener(new DialogInterface.OnDismissListener()
     {
       public void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
         GameLoginSndConfirmDialog.b(GameLoginSndConfirmDialog.this).d();
-        bv.a(RqdApplication.l()).e();
+        bw.a(RqdApplication.l()).e();
         if (GameLoginSndConfirmDialog.a(GameLoginSndConfirmDialog.this) != null) {
           GameLoginSndConfirmDialog.a(GameLoginSndConfirmDialog.this).dismiss();
         }

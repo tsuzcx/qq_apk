@@ -1,6 +1,6 @@
 package okhttp3.internal.http2;
 
-import com.tencent.token.fb;
+import com.tencent.token.fc;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.List;
@@ -293,7 +293,7 @@ final class f
     {
       paramb = this.c.c(c.a.g());
       if (a.isLoggable(Level.FINE)) {
-        a.fine(fb.a("<< CONNECTION %s", new Object[] { paramb.e() }));
+        a.fine(fc.a("<< CONNECTION %s", new Object[] { paramb.e() }));
       }
       if (!c.a.equals(paramb)) {
         throw c.b("Expected a connection header but was %s", new Object[] { paramb.a() });

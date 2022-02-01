@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.Signature;
-import com.tencent.token.ci;
+import com.tencent.token.cj;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.g;
 import org.json.JSONException;
@@ -114,7 +114,7 @@ public class h
     {
       Context localContext = RqdApplication.l();
       if (localContext != null) {
-        this.l = ci.a(com.tencent.token.utils.encrypt.c.b(localContext.getPackageManager().getPackageInfo(localContext.getPackageName(), 64).signatures[0].toByteArray()));
+        this.l = cj.a(com.tencent.token.utils.encrypt.c.b(localContext.getPackageManager().getPackageInfo(localContext.getPackageName(), 64).signatures[0].toByteArray()));
       }
       return;
     }

@@ -1,13 +1,13 @@
 package okhttp3.internal.connection;
 
-import com.tencent.token.ez;
-import com.tencent.token.fb;
+import com.tencent.token.fa;
 import com.tencent.token.fc;
-import com.tencent.token.fk;
-import com.tencent.token.fm;
-import com.tencent.token.fu;
-import com.tencent.token.gb;
-import com.tencent.token.gg;
+import com.tencent.token.fd;
+import com.tencent.token.fl;
+import com.tencent.token.fn;
+import com.tencent.token.fv;
+import com.tencent.token.gc;
+import com.tencent.token.gh;
 import java.io.IOException;
 import java.lang.ref.Reference;
 import java.net.InetSocketAddress;
@@ -69,23 +69,23 @@ public final class c
   
   private x a(int paramInt1, int paramInt2, x paramx, s params)
   {
-    String str = "CONNECT " + fb.a(params, true) + " HTTP/1.1";
+    String str = "CONNECT " + fc.a(params, true) + " HTTP/1.1";
     z localz;
     do
     {
-      params = new fu(null, null, this.n, this.o);
+      params = new fv(null, null, this.n, this.o);
       this.n.a().a(paramInt1, TimeUnit.MILLISECONDS);
       this.o.a().a(paramInt2, TimeUnit.MILLISECONDS);
       params.a(paramx.c(), str);
       params.b();
       localz = params.a(false).a(paramx).a();
-      long l2 = fm.a(localz);
+      long l2 = fn.a(localz);
       long l1 = l2;
       if (l2 == -1L) {
         l1 = 0L;
       }
       paramx = params.b(l1);
-      fb.b(paramx, 2147483647, TimeUnit.MILLISECONDS);
+      fc.b(paramx, 2147483647, TimeUnit.MILLISECONDS);
       paramx.close();
       switch (localz.b())
       {
@@ -130,7 +130,7 @@ public final class c
       {
         return;
       }
-      fb.a(this.i);
+      fc.a(this.i);
       this.i = null;
       this.o = null;
       this.n = null;
@@ -177,14 +177,14 @@ public final class c
     //   72: getfield 249	okhttp3/internal/connection/c:i	Ljava/net/Socket;
     //   75: iload_2
     //   76: invokevirtual 206	java/net/Socket:setSoTimeout	(I)V
-    //   79: invokestatic 299	com/tencent/token/gb:c	()Lcom/tencent/token/gb;
+    //   79: invokestatic 299	com/tencent/token/gc:c	()Lcom/tencent/token/gc;
     //   82: aload_0
     //   83: getfield 249	okhttp3/internal/connection/c:i	Ljava/net/Socket;
     //   86: aload_0
     //   87: getfield 53	okhttp3/internal/connection/c:h	Lokhttp3/ab;
     //   90: invokevirtual 255	okhttp3/ab:c	()Ljava/net/InetSocketAddress;
     //   93: iload_1
-    //   94: invokevirtual 302	com/tencent/token/gb:a	(Ljava/net/Socket;Ljava/net/InetSocketAddress;I)V
+    //   94: invokevirtual 302	com/tencent/token/gc:a	(Ljava/net/Socket;Ljava/net/InetSocketAddress;I)V
     //   97: aload_0
     //   98: aload_0
     //   99: getfield 249	okhttp3/internal/connection/c:i	Ljava/net/Socket;
@@ -288,14 +288,14 @@ public final class c
     //   59: aload 5
     //   61: invokevirtual 365	okhttp3/k:d	()Z
     //   64: ifeq +23 -> 87
-    //   67: invokestatic 299	com/tencent/token/gb:c	()Lcom/tencent/token/gb;
+    //   67: invokestatic 299	com/tencent/token/gc:c	()Lcom/tencent/token/gc;
     //   70: aload_3
     //   71: aload 6
     //   73: invokevirtual 214	okhttp3/a:a	()Lokhttp3/s;
     //   76: invokevirtual 219	okhttp3/s:f	()Ljava/lang/String;
     //   79: aload 6
     //   81: invokevirtual 368	okhttp3/a:e	()Ljava/util/List;
-    //   84: invokevirtual 371	com/tencent/token/gb:a	(Ljavax/net/ssl/SSLSocket;Ljava/lang/String;Ljava/util/List;)V
+    //   84: invokevirtual 371	com/tencent/token/gc:a	(Ljavax/net/ssl/SSLSocket;Ljava/lang/String;Ljava/util/List;)V
     //   87: aload_3
     //   88: invokevirtual 374	javax/net/ssl/SSLSocket:startHandshake	()V
     //   91: aload_3
@@ -343,7 +343,7 @@ public final class c
     //   196: ldc_w 426
     //   199: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   202: aload_1
-    //   203: invokestatic 431	com/tencent/token/gg:a	(Ljava/security/cert/X509Certificate;)Ljava/util/List;
+    //   203: invokestatic 431	com/tencent/token/gh:a	(Ljava/security/cert/X509Certificate;)Ljava/util/List;
     //   206: invokevirtual 324	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   209: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   212: invokespecial 432	javax/net/ssl/SSLPeerUnverifiedException:<init>	(Ljava/lang/String;)V
@@ -356,7 +356,7 @@ public final class c
     //   221: aload_1
     //   222: astore_2
     //   223: aload_3
-    //   224: invokestatic 435	com/tencent/token/fb:a	(Ljava/lang/AssertionError;)Z
+    //   224: invokestatic 435	com/tencent/token/fc:a	(Ljava/lang/AssertionError;)Z
     //   227: ifeq +142 -> 369
     //   230: aload_1
     //   231: astore_2
@@ -368,11 +368,11 @@ public final class c
     //   241: astore_1
     //   242: aload_2
     //   243: ifnull +10 -> 253
-    //   246: invokestatic 299	com/tencent/token/gb:c	()Lcom/tencent/token/gb;
+    //   246: invokestatic 299	com/tencent/token/gc:c	()Lcom/tencent/token/gc;
     //   249: aload_2
-    //   250: invokevirtual 438	com/tencent/token/gb:b	(Ljavax/net/ssl/SSLSocket;)V
+    //   250: invokevirtual 438	com/tencent/token/gc:b	(Ljavax/net/ssl/SSLSocket;)V
     //   253: aload_2
-    //   254: invokestatic 252	com/tencent/token/fb:a	(Ljava/net/Socket;)V
+    //   254: invokestatic 252	com/tencent/token/fc:a	(Ljava/net/Socket;)V
     //   257: aload_1
     //   258: athrow
     //   259: aload 6
@@ -388,9 +388,9 @@ public final class c
     //   282: aload 5
     //   284: invokevirtual 365	okhttp3/k:d	()Z
     //   287: ifeq +11 -> 298
-    //   290: invokestatic 299	com/tencent/token/gb:c	()Lcom/tencent/token/gb;
+    //   290: invokestatic 299	com/tencent/token/gc:c	()Lcom/tencent/token/gc;
     //   293: aload_3
-    //   294: invokevirtual 447	com/tencent/token/gb:a	(Ljavax/net/ssl/SSLSocket;)Ljava/lang/String;
+    //   294: invokevirtual 447	com/tencent/token/gc:a	(Ljavax/net/ssl/SSLSocket;)Ljava/lang/String;
     //   297: astore_1
     //   298: aload_0
     //   299: aload_3
@@ -420,9 +420,9 @@ public final class c
     //   347: putfield 456	okhttp3/internal/connection/c:l	Lokhttp3/Protocol;
     //   350: aload_3
     //   351: ifnull +10 -> 361
-    //   354: invokestatic 299	com/tencent/token/gb:c	()Lcom/tencent/token/gb;
+    //   354: invokestatic 299	com/tencent/token/gc:c	()Lcom/tencent/token/gc;
     //   357: aload_3
-    //   358: invokevirtual 438	com/tencent/token/gb:b	(Ljavax/net/ssl/SSLSocket;)V
+    //   358: invokevirtual 438	com/tencent/token/gc:b	(Ljavax/net/ssl/SSLSocket;)V
     //   361: return
     //   362: getstatic 459	okhttp3/Protocol:HTTP_1_1	Lokhttp3/Protocol;
     //   365: astore_1
@@ -501,10 +501,10 @@ public final class c
   
   private x e()
   {
-    return new x.a().a(this.h.a().a()).a("Host", fb.a(this.h.a().a(), true)).a("Proxy-Connection", "Keep-Alive").a("User-Agent", fc.a()).a();
+    return new x.a().a(this.h.a().a()).a("Host", fc.a(this.h.a().a(), true)).a("Proxy-Connection", "Keep-Alive").a("User-Agent", fd.a()).a();
   }
   
-  public fk a(v paramv, t.a parama, f paramf)
+  public fl a(v paramv, t.a parama, f paramf)
   {
     if (this.m != null) {
       return new okhttp3.internal.http2.d(paramv, parama, paramf, this.m);
@@ -512,7 +512,7 @@ public final class c
     this.j.setSoTimeout(parama.c());
     this.n.a().a(parama.c(), TimeUnit.MILLISECONDS);
     this.o.a().a(parama.d(), TimeUnit.MILLISECONDS);
-    return new fu(paramv, paramf, this.n, this.o);
+    return new fv(paramv, paramf, this.n, this.o);
   }
   
   public ab a()
@@ -533,7 +533,7 @@ public final class c
         throw new RouteException(new UnknownServiceException("CLEARTEXT communication not enabled for client"));
       }
       localObject = this.h.a().a().f();
-      if (!gb.c().b((String)localObject)) {
+      if (!gc.c().b((String)localObject)) {
         throw new RouteException(new UnknownServiceException("CLEARTEXT communication to " + (String)localObject + " not permitted by network security policy"));
       }
     }
@@ -568,8 +568,8 @@ public final class c
       }
       catch (IOException localIOException)
       {
-        fb.a(this.j);
-        fb.a(this.i);
+        fc.a(this.j);
+        fc.a(this.i);
         this.j = null;
         this.i = null;
         this.n = null;
@@ -620,11 +620,11 @@ public final class c
       do
       {
         return false;
-      } while (!ez.a.a(this.h.a(), parama));
+      } while (!fa.a.a(this.h.a(), parama));
       if (parama.a().f().equals(a().a().a().f())) {
         return true;
       }
-    } while ((this.m == null) || (paramab == null) || (paramab.b().type() != Proxy.Type.DIRECT) || (this.h.b().type() != Proxy.Type.DIRECT) || (!this.h.c().equals(paramab.c())) || (paramab.a().j() != gg.a) || (!a(parama.a())));
+    } while ((this.m == null) || (paramab == null) || (paramab.b().type() != Proxy.Type.DIRECT) || (this.h.b().type() != Proxy.Type.DIRECT) || (!this.h.c().equals(paramab.c())) || (paramab.a().j() != gh.a) || (!a(parama.a())));
     try
     {
       parama.k().a(parama.a().f(), c().b());
@@ -641,7 +641,7 @@ public final class c
     }
     if (!params.f().equals(this.h.a().a().f()))
     {
-      if ((this.k != null) && (gg.a.a(params.f(), (X509Certificate)this.k.b().get(0)))) {}
+      if ((this.k != null) && (gh.a.a(params.f(), (X509Certificate)this.k.b().get(0)))) {}
       for (boolean bool = true;; bool = false) {
         return bool;
       }

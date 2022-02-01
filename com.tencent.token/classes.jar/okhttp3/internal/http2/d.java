@@ -1,12 +1,12 @@
 package okhttp3.internal.http2;
 
-import com.tencent.token.ez;
-import com.tencent.token.fb;
-import com.tencent.token.fk;
-import com.tencent.token.fm;
-import com.tencent.token.fp;
+import com.tencent.token.fa;
+import com.tencent.token.fc;
+import com.tencent.token.fl;
+import com.tencent.token.fn;
 import com.tencent.token.fq;
-import com.tencent.token.fs;
+import com.tencent.token.fr;
+import com.tencent.token.ft;
 import java.io.IOException;
 import java.net.ProtocolException;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ import okio.k;
 import okio.q;
 
 public final class d
-  implements fk
+  implements fl
 {
   private static final ByteString b = ByteString.a("connection");
   private static final ByteString c = ByteString.a("host");
@@ -39,8 +39,8 @@ public final class d
   private static final ByteString g = ByteString.a("te");
   private static final ByteString h = ByteString.a("encoding");
   private static final ByteString i = ByteString.a("upgrade");
-  private static final List<ByteString> j = fb.a(new ByteString[] { b, c, d, e, g, f, h, i, a.c, a.d, a.e, a.f });
-  private static final List<ByteString> k = fb.a(new ByteString[] { b, c, d, e, g, f, h, i });
+  private static final List<ByteString> j = fc.a(new ByteString[] { b, c, d, e, g, f, h, i, a.c, a.d, a.e, a.f });
+  private static final List<ByteString> k = fc.a(new ByteString[] { b, c, d, e, g, f, h, i });
   final f a;
   private final t.a l;
   private final e m;
@@ -65,17 +65,17 @@ public final class d
     r.a locala = new r.a();
     int i2 = paramList.size();
     int i1 = 0;
-    fs localfs = null;
+    ft localft = null;
     if (i1 < i2)
     {
       Object localObject = (a)paramList.get(i1);
       if (localObject == null)
       {
-        if ((localfs == null) || (localfs.b != 100)) {
+        if ((localft == null) || (localft.b != 100)) {
           break label161;
         }
         locala = new r.a();
-        localfs = null;
+        localft = null;
       }
       label161:
       for (;;)
@@ -85,16 +85,16 @@ public final class d
         ByteString localByteString = ((a)localObject).g;
         localObject = ((a)localObject).h.a();
         if (localByteString.equals(a.b)) {
-          localfs = fs.a("HTTP/1.1 " + (String)localObject);
+          localft = ft.a("HTTP/1.1 " + (String)localObject);
         } else if (!k.contains(localByteString)) {
-          ez.a.a(locala, localByteString.a(), (String)localObject);
+          fa.a.a(locala, localByteString.a(), (String)localObject);
         }
       }
     }
-    if (localfs == null) {
+    if (localft == null) {
       throw new ProtocolException("Expected ':status' header not present");
     }
-    return new z.a().a(paramProtocol).a(localfs.b).a(localfs.c).a(locala.a());
+    return new z.a().a(paramProtocol).a(localft.b).a(localft.c).a(locala.a());
   }
   
   public static List<a> b(x paramx)
@@ -102,7 +102,7 @@ public final class d
     okhttp3.r localr = paramx.c();
     ArrayList localArrayList = new ArrayList(localr.a() + 4);
     localArrayList.add(new a(a.c, paramx.b()));
-    localArrayList.add(new a(a.d, fq.a(paramx.a())));
+    localArrayList.add(new a(a.d, fr.a(paramx.a())));
     String str = paramx.a("Host");
     if (str != null) {
       localArrayList.add(new a(a.f, str));
@@ -124,7 +124,7 @@ public final class d
   public aa a(z paramz)
   {
     this.a.c.f(this.a.b);
-    return new fp(paramz.a("Content-Type"), fm.a(paramz), k.a(new a(this.n.g())));
+    return new fq(paramz.a("Content-Type"), fn.a(paramz), k.a(new a(this.n.g())));
   }
   
   public z.a a(boolean paramBoolean)
@@ -134,7 +134,7 @@ public final class d
     if (paramBoolean)
     {
       locala1 = locala2;
-      if (ez.a.a(locala2) == 100) {
+      if (fa.a.a(locala2) == 100) {
         locala1 = null;
       }
     }

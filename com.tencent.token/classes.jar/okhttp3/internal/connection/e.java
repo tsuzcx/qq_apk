@@ -1,6 +1,6 @@
 package okhttp3.internal.connection;
 
-import com.tencent.token.fb;
+import com.tencent.token.fc;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
@@ -99,7 +99,7 @@ public final class e
     }
     params = this.a.g().select(params.a());
     if ((params != null) && (!params.isEmpty())) {}
-    for (params = fb.a(params);; params = fb.a(new Proxy[] { Proxy.NO_PROXY }))
+    for (params = fc.a(params);; params = fc.a(new Proxy[] { Proxy.NO_PROXY }))
     {
       this.e = params;
       break;

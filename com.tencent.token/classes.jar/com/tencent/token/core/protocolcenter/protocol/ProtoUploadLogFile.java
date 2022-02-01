@@ -2,7 +2,7 @@ package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.SharedPreferences.Editor;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.c;
 import com.tencent.token.global.g;
 import com.tencent.token.utils.e;
@@ -15,7 +15,7 @@ public class ProtoUploadLogFile
 {
   private static String d;
   
-  public static void a(dn paramdn, String paramString)
+  public static void a(do paramdo, String paramString)
   {
     d = paramString;
   }
@@ -25,7 +25,7 @@ public class ProtoUploadLogFile
     return c.e() + "/cn/mbtoken3/mbtoken3_log_upload";
   }
   
-  protected void a(dn paramdn) {}
+  protected void a(do paramdo) {}
   
   protected void a(JSONObject paramJSONObject)
   {

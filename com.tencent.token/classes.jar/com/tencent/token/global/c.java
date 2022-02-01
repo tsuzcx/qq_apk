@@ -5,7 +5,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build.VERSION;
 import android.telephony.TelephonyManager;
-import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.ui.IndexActivity;
 import com.tencent.token.utils.j;
 import java.io.File;
@@ -70,7 +70,7 @@ public class c
     if (d == 0)
     {
       a("http://test.aq.qq.com");
-      cb.a("http://test.aq.qq.com");
+      cc.a("http://test.aq.qq.com");
     }
     do
     {
@@ -78,18 +78,18 @@ public class c
       if (d == 1)
       {
         a("https://w.aq.qq.com");
-        cb.a("https://aq.qq.com");
+        cc.a("https://aq.qq.com");
         return;
       }
       if (d == 2)
       {
         a("http://exp.aq.qq.com");
-        cb.a("https://aq.qq.com");
+        cc.a("https://aq.qq.com");
         return;
       }
     } while (d != 3);
     a("http://gray.aq.qq.com");
-    cb.a("https://aq.qq.com");
+    cc.a("https://aq.qq.com");
   }
   
   public static void a(Context paramContext)

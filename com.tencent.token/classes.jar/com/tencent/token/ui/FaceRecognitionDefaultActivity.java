@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cq;
+import com.tencent.token.cr;
 import com.tencent.token.global.g;
 import com.tencent.token.utils.l;
 import com.tencent.token.utils.m;
@@ -194,14 +194,14 @@ public class FaceRecognitionDefaultActivity
       this.tv_status.setText(2131231443);
       this.tv_status.setTextAppearance(this, 2131362196);
     }
-    while (cq.a().e() == null)
+    while (cr.a().e() == null)
     {
       showNoAccountTipDialog(this, 3, 0);
       return;
       this.tv_status.setText(2131231442);
       this.tv_status.setTextAppearance(this, 2131362197);
     }
-    if (!cq.a().e().mIsBinded)
+    if (!cr.a().e().mIsBinded)
     {
       showNoAccountTipDialog(this, 3, 1);
       return;

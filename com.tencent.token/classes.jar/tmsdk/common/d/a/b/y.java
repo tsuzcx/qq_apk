@@ -2,8 +2,8 @@ package tmsdk.common.d.a.b;
 
 import android.os.Process;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.ee;
 import com.tencent.token.ef;
+import com.tencent.token.eg;
 import java.lang.ref.WeakReference;
 import tmsdk.common.a.b;
 
@@ -20,19 +20,19 @@ public class y
     new StringBuilder().append("pid: ").append(Process.myPid()).append("SharkQueueProxy mSharkProtocolQueue: ").append(this.b.hashCode()).toString();
   }
   
-  public ef a(int paramInt1, int paramInt2)
+  public eg a(int paramInt1, int paramInt2)
   {
     return this.b.a(paramInt1, paramInt2);
   }
   
-  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, ee paramee)
+  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, ef paramef)
   {
-    return this.b.a(this.a, paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramee);
+    return this.b.a(this.a, paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramef);
   }
   
-  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, ee paramee, long paramLong)
+  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, ef paramef, long paramLong)
   {
-    return this.b.a(this.a, paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramee, paramLong);
+    return this.b.a(this.a, paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramef, paramLong);
   }
   
   public void a(int paramInt)
@@ -40,9 +40,9 @@ public class y
     this.b.a(paramInt);
   }
   
-  public void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, ef paramef)
+  public void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, eg parameg)
   {
-    this.b.a(paramInt1, paramJceStruct, paramInt2, paramef);
+    this.b.a(paramInt1, paramJceStruct, paramInt2, parameg);
   }
   
   public void b(int paramInt)

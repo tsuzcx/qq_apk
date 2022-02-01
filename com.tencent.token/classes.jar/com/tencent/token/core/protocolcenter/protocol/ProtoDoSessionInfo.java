@@ -1,14 +1,14 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.by;
 import com.tencent.token.bz;
 import com.tencent.token.ca;
+import com.tencent.token.cb;
 import com.tencent.token.core.bean.h;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.cr;
-import com.tencent.token.dk;
-import com.tencent.token.dn;
+import com.tencent.token.cs;
+import com.tencent.token.dl;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -29,9 +29,9 @@ public class ProtoDoSessionInfo
     {
       JSONObject localJSONObject = new JSONObject();
       str1 = str2;
-      int i = ca.a + 1;
+      int i = cb.a + 1;
       str1 = str2;
-      ca.a = i;
+      cb.a = i;
       str1 = str2;
       localJSONObject.put("seq_id", i);
       str1 = str2;
@@ -43,7 +43,7 @@ public class ProtoDoSessionInfo
       str1 = str2;
       localJSONObject.put("rmd_last_time", ((h)localObject).i);
       str1 = str2;
-      localJSONObject.put("config_ver", cr.a().h.b);
+      localJSONObject.put("config_ver", cs.a().h.b);
       str1 = str2;
       localObject = RqdApplication.j();
       if (localObject != null)
@@ -54,7 +54,7 @@ public class ProtoDoSessionInfo
       str1 = str2;
       localJSONObject.put("channel_id", l.m());
       str1 = str2;
-      localJSONObject.put("wtsdk_guid", l.a(by.a(RqdApplication.l()).b()));
+      localJSONObject.put("wtsdk_guid", l.a(bz.a(RqdApplication.l()).b()));
       str1 = str2;
       localJSONObject.put("device_name", URLEncoder.encode(m.x()));
       str1 = str2;
@@ -76,7 +76,7 @@ public class ProtoDoSessionInfo
       str1 = c.e() + "/cn/mbtoken3/mbtoken3_session_info" + str1;
       g.c("url:" + str1);
     }
-    str2 = bz.a().b();
+    str2 = ca.a().b();
     if (str2 == null)
     {
       this.a.b(104);
@@ -85,7 +85,7 @@ public class ProtoDoSessionInfo
     return str1;
   }
   
-  protected void a(dn paramdn) {}
+  protected void a(do paramdo) {}
   
   protected void a(JSONObject paramJSONObject)
   {
@@ -104,7 +104,7 @@ public class ProtoDoSessionInfo
       if (paramJSONObject.has("new_config"))
       {
         JSONObject localJSONObject = paramJSONObject.getJSONObject("new_config");
-        cr.a().h.a(localJSONObject);
+        cs.a().h.a(localJSONObject);
       }
       if ((paramJSONObject.has("update")) && (!h.b().a(paramJSONObject.optJSONObject("update")))) {}
       this.a.c();

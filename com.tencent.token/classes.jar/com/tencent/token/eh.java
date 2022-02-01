@@ -1,20 +1,15 @@
 package com.tencent.token;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class eh
 {
-  boolean a = false;
-  AtomicInteger b = new AtomicInteger();
-  
-  public void a(int paramInt)
+  public static final int a(int paramInt)
   {
-    this.b.set(paramInt);
+    return paramInt & 0x18;
   }
   
-  public boolean a()
+  public static final int b(int paramInt)
   {
-    return this.a;
+    return paramInt & 0x60;
   }
 }
 

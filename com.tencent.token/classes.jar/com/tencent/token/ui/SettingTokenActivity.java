@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.token.bu;
-import com.tencent.token.cc;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cq;
+import com.tencent.token.cr;
 import com.tencent.token.utils.m;
 
 public class SettingTokenActivity
@@ -28,11 +28,11 @@ public class SettingTokenActivity
     case 2131559259: 
       bu.a().a(System.currentTimeMillis(), 6);
       com.tencent.token.global.h.a();
-      if ((cc.a().c()) && (cc.a().e() == 1)) {}
+      if ((cd.a().c()) && (cd.a().e() == 1)) {}
       for (paramView = new Intent(this, StartPwdDigitSelActivity.class);; paramView = new Intent(this, StartPwdGestureIndexActivity.class))
       {
         startActivity(paramView);
-        cc.a().b("startpwd_tip_newflag");
+        cd.a().b("startpwd_tip_newflag");
         return;
       }
     case 2131559261: 
@@ -63,7 +63,7 @@ public class SettingTokenActivity
       findViewById(2131559265).setVisibility(4);
     }
     QQUser localQQUser = m.f();
-    if ((cc.a().c()) || ((cq.a().h()) && (localQQUser != null) && (localQQUser.mIsRegisterFacePwd)))
+    if ((cd.a().c()) || ((cr.a().h()) && (localQQUser != null) && (localQQUser.mIsRegisterFacePwd)))
     {
       this.mTokenPwdTxt.setText(2131231443);
       this.mTokenPwdTxt.setTextColor(getResources().getColor(2131492937));

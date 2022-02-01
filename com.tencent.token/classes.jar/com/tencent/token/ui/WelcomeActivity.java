@@ -20,10 +20,11 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import com.tencent.token.ca;
+import com.tencent.token.bv;
 import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.bean.QueryCaptchaResult;
-import com.tencent.token.cq;
+import com.tencent.token.cr;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
 import com.tencent.token.ui.base.ProDialogWithShutDown;
@@ -137,7 +138,7 @@ public class WelcomeActivity
             return;
           }
         } while (paramAnonymousMessage.arg1 != 0);
-        paramAnonymousMessage = cb.c();
+        paramAnonymousMessage = cc.c();
         paramAnonymousMessage.i();
         paramAnonymousMessage.n();
         return;
@@ -195,13 +196,13 @@ public class WelcomeActivity
     {
       public e a(String... paramAnonymousVarArgs)
       {
-        return cq.a().s();
+        return cr.a().s();
       }
       
       public void a(e paramAnonymouse)
       {
         if (paramAnonymouse.b()) {
-          ca.a().d(0L, 3, WelcomeActivity.this.mHandler);
+          bv.a().a(0L, 3, WelcomeActivity.this.mHandler);
         }
       }
     };
@@ -210,7 +211,7 @@ public class WelcomeActivity
   
   private void init()
   {
-    cb.b(c.h());
+    cc.b(c.h());
     try
     {
       com.tencent.token.global.g.b("totalMemory:" + Runtime.getRuntime().totalMemory() + " freeMemory:" + Runtime.getRuntime().freeMemory() + " maxMemory:" + Runtime.getRuntime().maxMemory());
@@ -233,13 +234,13 @@ public class WelcomeActivity
   
   private void nextActivity()
   {
-    Object localObject = cb.c();
+    Object localObject = cc.c();
     if ((this.mActiveTask != null) && (this.mActiveTask.b() != UserTask.Status.FINISHED)) {
       this.mActiveTask.a(true);
     }
-    if (!((cb)localObject).g())
+    if (!((cc)localObject).g())
     {
-      if (cq.a().d() == 0)
+      if (cr.a().d() == 0)
       {
         localObject = new Intent(this, IndexActivity.class);
         ((Intent)localObject).putExtra("index_from", 16);
@@ -250,7 +251,7 @@ public class WelcomeActivity
       localObject = new Intent(this, IndexActivity.class);
       if (this.mFirstInstall)
       {
-        if (cq.a().e() == null) {
+        if (cr.a().e() == null) {
           break label127;
         }
         ((Intent)localObject).putExtra("index_from", 17);
@@ -272,7 +273,7 @@ public class WelcomeActivity
   
   private void sendActiveClient()
   {
-    ca.a().d(this.mHandler);
+    bv.a().c(this.mHandler);
   }
   
   public void dismissDialog()
@@ -340,7 +341,7 @@ public class WelcomeActivity
       this.mPageCurlView.c();
     }
     this.mPageCurlView = null;
-    ca.a().a(getClass().getName());
+    cb.a().a(getClass().getName());
     super.onDestroy();
   }
   

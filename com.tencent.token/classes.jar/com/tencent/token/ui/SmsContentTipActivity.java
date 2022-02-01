@@ -13,20 +13,20 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.token.by;
-import com.tencent.token.ca;
+import com.tencent.token.bz;
 import com.tencent.token.cb;
-import com.tencent.token.cl;
+import com.tencent.token.cc;
+import com.tencent.token.cm;
 import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
 import com.tencent.token.core.bean.DeterminVerifyFactorsResult.VerifyTypeItem;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.bean.UpgradeDeterminResult;
 import com.tencent.token.core.protocolcenter.protocol.ProtoGetSMSChannel;
-import com.tencent.token.cq;
-import com.tencent.token.cs;
-import com.tencent.token.cu;
-import com.tencent.token.di;
+import com.tencent.token.cr;
+import com.tencent.token.ct;
+import com.tencent.token.cv;
 import com.tencent.token.dj;
+import com.tencent.token.dk;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
@@ -51,12 +51,12 @@ public class SmsContentTipActivity
         return;
       }
       g.a("send bind seq request:" + SmsContentTipActivity.this.mBindRetryTimes);
-      cb.c().n();
+      cc.c().n();
       int i = 0;
       if (SmsContentTipActivity.this.mVerifyType != null) {
         i = SmsContentTipActivity.this.mVerifyType.a();
       }
-      ca.a().a(0L, Long.parseLong(SmsContentTipActivity.this.mUin), SmsContentTipActivity.this.mSceneId, i, SmsContentTipActivity.this.mHandler);
+      cb.a().a(0L, Long.parseLong(SmsContentTipActivity.this.mUin), SmsContentTipActivity.this.mSceneId, i, SmsContentTipActivity.this.mHandler);
       SmsContentTipActivity.access$108(SmsContentTipActivity.this);
     }
   };
@@ -111,7 +111,7 @@ public class SmsContentTipActivity
       Object localObject1;
       if ((SmsContentTipActivity.this.upSmsSceneId == 3) || (SmsContentTipActivity.this.upSmsSceneId == 4))
       {
-        paramAnonymousMessage = by.a(RqdApplication.l());
+        paramAnonymousMessage = bz.a(RqdApplication.l());
         localObject1 = paramAnonymousMessage.b(Long.parseLong(SmsContentTipActivity.this.mUin));
         g.a("mailprotect data=" + localObject1);
         if ((localObject1 != null) && (localObject1.length > 0) && (!paramAnonymousMessage.b("" + SmsContentTipActivity.this.mUin, 523005419L)))
@@ -120,7 +120,7 @@ public class SmsContentTipActivity
           SmsContentTipActivity.this.gotoSetMobile();
           return;
         }
-        by.a(RqdApplication.l()).a("" + SmsContentTipActivity.this.mUin, SmsContentTipActivity.this.mHandler, 523005419L, 64);
+        bz.a(RqdApplication.l()).a("" + SmsContentTipActivity.this.mUin, SmsContentTipActivity.this.mHandler, 523005419L, 64);
         return;
       }
       if (SmsContentTipActivity.this.upSmsSceneId == 6)
@@ -171,19 +171,19 @@ public class SmsContentTipActivity
             i = paramAnonymousMessage.getData().getInt("serTime");
             long l = System.currentTimeMillis();
             l = i * 1000L - l;
-            cb.c().a(l);
+            cc.c().a(l);
             g.b("set time plus: " + l);
             return;
             if (paramAnonymousMessage.arg1 == 0)
             {
               if (SmsContentTipActivity.this.upSmsSceneId == 0)
               {
-                ca.a().c(Long.parseLong(SmsContentTipActivity.this.mUin), SmsContentTipActivity.this.mUpDetermin.f(), "", "", SmsContentTipActivity.this.mHandler);
+                cb.a().c(Long.parseLong(SmsContentTipActivity.this.mUin), SmsContentTipActivity.this.mUpDetermin.f(), "", "", SmsContentTipActivity.this.mHandler);
                 return;
               }
               if (SmsContentTipActivity.this.upSmsSceneId == 6)
               {
-                ca.a().a(SmsContentTipActivity.this.mUserToUnbind.mUin, SmsContentTipActivity.this.mUserToUnbind.mRealUin, 1, SmsContentTipActivity.this.mHandler);
+                cb.a().a(SmsContentTipActivity.this.mUserToUnbind.mUin, SmsContentTipActivity.this.mUserToUnbind.mRealUin, 1, SmsContentTipActivity.this.mHandler);
                 return;
               }
               if (SmsContentTipActivity.this.upSmsSceneId == 7)
@@ -204,7 +204,7 @@ public class SmsContentTipActivity
                 }
                 if (SmsContentTipActivity.this.mVerifyResult.b())
                 {
-                  ca.a().b(SmsContentTipActivity.this.mUser.mRealUin, SmsContentTipActivity.this.mVerifyType.a(), SmsContentTipActivity.this.mMobile, SmsContentTipActivity.this.mCountryCode, SmsContentTipActivity.this.mHandler);
+                  cb.a().b(SmsContentTipActivity.this.mUser.mRealUin, SmsContentTipActivity.this.mVerifyType.a(), SmsContentTipActivity.this.mMobile, SmsContentTipActivity.this.mCountryCode, SmsContentTipActivity.this.mHandler);
                   return;
                 }
                 SmsContentTipActivity.this.dismissDialog();
@@ -235,11 +235,11 @@ public class SmsContentTipActivity
               if (paramAnonymousMessage.arg1 == 0)
               {
                 SmsContentTipActivity.access$2102(SmsContentTipActivity.this, true);
-                cq.a().b(SmsContentTipActivity.this.mUserToUnbind);
-                cq.a().n();
-                cq.a().b();
-                cu.a().f.a(SmsContentTipActivity.this.mUserToUnbind.mUin);
-                cs.a().f.a(SmsContentTipActivity.this.mUserToUnbind.mUin);
+                cr.a().b(SmsContentTipActivity.this.mUserToUnbind);
+                cr.a().n();
+                cr.a().b();
+                cv.a().f.a(SmsContentTipActivity.this.mUserToUnbind.mUin);
+                ct.a().f.a(SmsContentTipActivity.this.mUserToUnbind.mUin);
                 AccountPageActivity.mNeedRefreshEval = true;
                 SmsContentTipActivity.this.showUserDialog(0, SmsContentTipActivity.this.getString(2131230763) + Long.toString(SmsContentTipActivity.this.mUserToUnbind.mRealUin) + SmsContentTipActivity.this.getString(2131231511), 2131230897, SmsContentTipActivity.this.mDialogFinishListener, SmsContentTipActivity.this.mDialogCancelListener);
                 return;
@@ -370,7 +370,7 @@ public class SmsContentTipActivity
                   ((TextView)SmsContentTipActivity.this.findViewById(2131559422)).setText(2131231590);
                   ((View)localObject2).setVisibility(8);
                   SmsContentTipActivity.this.findViewById(2131559423).setVisibility(8);
-                  di.a().b();
+                  dj.a().b();
                   AccountPageActivity.mNeedRefreshEval = true;
                   return;
                 }
@@ -419,7 +419,7 @@ public class SmsContentTipActivity
     public void run()
     {
       g.c("send mod set mbmobile");
-      ca.a().a(0L, SmsContentTipActivity.this.mOpType, SmsContentTipActivity.this.mMobile, SmsContentTipActivity.this.mCountryCode, SmsContentTipActivity.this.mA2, SmsContentTipActivity.this.mHandler);
+      cb.a().a(0L, SmsContentTipActivity.this.mOpType, SmsContentTipActivity.this.mMobile, SmsContentTipActivity.this.mCountryCode, SmsContentTipActivity.this.mA2, SmsContentTipActivity.this.mHandler);
       SmsContentTipActivity.access$908(SmsContentTipActivity.this);
     }
   };
@@ -437,8 +437,8 @@ public class SmsContentTipActivity
       if (!SmsContentTipActivity.this.mIsTimeTask) {
         return;
       }
-      cb.c().n();
-      ca.a().a(SmsContentTipActivity.this.mUserToUnbind.mUin, SmsContentTipActivity.this.mUserToUnbind.mRealUin, 1005, 0, SmsContentTipActivity.this.mHandler);
+      cc.c().n();
+      cb.a().a(SmsContentTipActivity.this.mUserToUnbind.mUin, SmsContentTipActivity.this.mUserToUnbind.mRealUin, 1005, 0, SmsContentTipActivity.this.mHandler);
       SmsContentTipActivity.access$1008(SmsContentTipActivity.this);
     }
   };
@@ -459,11 +459,11 @@ public class SmsContentTipActivity
   {
     resetBtn();
     dismissDialog();
-    Object localObject = cq.a().d(this.mUser.mRealUin);
+    Object localObject = cr.a().d(this.mUser.mRealUin);
     if (localObject != null) {
-      cq.a().b((QQUser)localObject);
+      cr.a().b((QQUser)localObject);
     }
-    cb.c().n();
+    cc.c().n();
     localObject = new Intent(this, VerifySuccActivity.class);
     ((Intent)localObject).putExtra("mRealUin", this.mUser.mRealUin);
     if ((this.mVerifyResult != null) && (this.mVerifyResult.c() == 2)) {
@@ -615,7 +615,7 @@ public class SmsContentTipActivity
       this.mCountryCode = getIntent().getStringExtra("area_code");
       this.mOpType = getIntent().getIntExtra("op_type", 1);
       this.mPageId = getIntent().getIntExtra("page_id", 10);
-      this.mUser = cq.a().e();
+      this.mUser = cr.a().e();
       if (this.mUser == null)
       {
         finish();
@@ -675,13 +675,13 @@ public class SmsContentTipActivity
   protected void onResume()
   {
     super.onResume();
-    cb.c().a.a(this.mHandler);
+    cc.c().a.a(this.mHandler);
   }
   
   protected void onStop()
   {
     super.onStop();
-    cb.c().a.a(null);
+    cc.c().a.a(null);
   }
   
   public void removeTimeTask()
@@ -731,8 +731,8 @@ public class SmsContentTipActivity
   {
     finish();
     AccountPageActivity.mNeedRefreshEval = true;
-    cq.a().b();
-    cq.a().k = false;
+    cr.a().b();
+    cr.a().k = false;
     Intent localIntent = new Intent(this, IndexActivity.class);
     localIntent.putExtra("index_from", 16);
     localIntent.putExtra("snap", true);

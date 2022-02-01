@@ -7,10 +7,10 @@ import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
-import com.tencent.token.cq;
-import com.tencent.token.eo;
-import com.tencent.token.eq;
-import com.tencent.token.es;
+import com.tencent.token.cr;
+import com.tencent.token.ep;
+import com.tencent.token.er;
+import com.tencent.token.et;
 import com.tencent.token.global.RqdApplication;
 import java.util.Collections;
 import java.util.HashMap;
@@ -37,8 +37,8 @@ public class g
     {
       public Bitmap a(String... paramAnonymousVarArgs)
       {
-        paramAnonymousVarArgs = cq.a().a(paramString1, null);
-        Bitmap localBitmap = cq.a().a(paramAnonymousVarArgs);
+        paramAnonymousVarArgs = cr.a().a(paramString1, null);
+        Bitmap localBitmap = cr.a().a(paramAnonymousVarArgs);
         if (localBitmap != null)
         {
           g.c.b(paramString2, localBitmap);
@@ -72,7 +72,7 @@ public class g
       public Bitmap a(String... paramAnonymousVarArgs)
       {
         paramAnonymousVarArgs = null;
-        String str1 = cq.a().a(paramString1, null);
+        String str1 = cr.a().a(paramString1, null);
         if ((str1 != null) && (str1.equals(paramString3))) {}
         Bitmap localBitmap;
         String str2;
@@ -81,7 +81,7 @@ public class g
           do
           {
             return paramAnonymousVarArgs;
-            localBitmap = cq.a().a(str1);
+            localBitmap = cr.a().a(str1);
             paramAnonymousVarArgs = localBitmap;
           } while (localBitmap == null);
           g.c.b(paramString2, localBitmap);
@@ -189,21 +189,21 @@ public class g
     if (paramMap == null) {
       return false;
     }
-    Object localObject = new eo();
+    Object localObject = new ep();
     try
     {
-      localObject = eq.a((es)localObject, "qqface", new String[] { "uinhash", "filename" }, null, null, null, null, null, null);
+      localObject = er.a((et)localObject, "qqface", new String[] { "uinhash", "filename" }, null, null, null, null, null, null);
       if (localObject == null) {
         return false;
       }
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        eo localeo = (eo)((Iterator)localObject).next();
-        if (localeo == null) {
+        ep localep = (ep)((Iterator)localObject).next();
+        if (localep == null) {
           break;
         }
-        paramMap.put(localeo.a, localeo.b);
+        paramMap.put(localep.a, localep.b);
       }
       return true;
     }
@@ -266,10 +266,10 @@ public class g
   {
     try
     {
-      eo localeo = new eo();
-      localeo.a = paramString1;
-      localeo.b = paramString2;
-      eq.c(localeo);
+      ep localep = new ep();
+      localep.a = paramString1;
+      localep.b = paramString2;
+      er.c(localep);
       return;
     }
     finally {}

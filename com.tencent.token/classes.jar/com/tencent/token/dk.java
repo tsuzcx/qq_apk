@@ -1,382 +1,373 @@
 package com.tencent.token;
 
-import com.tencent.token.core.bean.NewConfigureCacheItem;
-import com.tencent.token.global.RqdApplication;
+import android.os.Looper;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.core.bean.SafeMsgItem;
+import com.tencent.token.global.e;
 import com.tencent.token.global.g;
-import com.tencent.token.global.h;
-import java.io.Serializable;
+import com.tencent.token.ui.LoginMsgActivity;
+import com.tencent.token.utils.l;
+import com.tencent.token.utils.m;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Observable;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class dk
-  extends Observable
-  implements de
 {
-  public static final String[] a = { "login_protect", "account_prot", "mail_protect", "qb_prot", "account_lock", "game_lock", "real_name", "modify_pwd", "recover_friends", "account_freeze", "key_value" };
-  public int b = 0;
-  private List<NewConfigureCacheItem> c = Collections.synchronizedList(new ArrayList());
-  private boolean d = false;
+  public es a = null;
+  public boolean b;
+  long c = 0L;
+  public int d = -1;
+  public long e = 0L;
+  private List<SafeMsgItem> f = null;
+  private int g = 0;
+  private boolean h = false;
   
-  private boolean a(List<NewConfigureCacheItem> paramList)
+  public dk(String paramString)
   {
-    if (paramList == null) {
-      return false;
+    this.a = new es(paramString);
+  }
+  
+  private void a(List<SafeMsgItem> paramList)
+  {
+    l();
+    this.f.clear();
+    if (paramList != null) {
+      this.f.addAll(paramList);
     }
-    int k = paramList.size();
-    int i = 0;
-    label16:
-    if (i < a.length)
+  }
+  
+  private void l()
+  {
+    if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) {
+      return;
+    }
+    g.c("should run in mainthread");
+    g.d("should run in mainthread");
+  }
+  
+  public int a(int paramInt)
+  {
+    this.b = false;
+    int i = paramInt;
+    if (this.d > -1) {
+      i = Math.max(paramInt, this.d);
+    }
+    try
     {
-      int j = 0;
-      for (;;)
+      ArrayList localArrayList = new ArrayList();
+      Object localObject = cr.a().e();
+      if ((localObject == null) || (i <= 0))
       {
-        if (j < k)
-        {
-          NewConfigureCacheItem localNewConfigureCacheItem = (NewConfigureCacheItem)paramList.get(j);
-          if (!a[i].equals(localNewConfigureCacheItem.mConfKey)) {}
-        }
-        else
-        {
-          if (j == k) {
-            break;
-          }
-          i += 1;
-          break label16;
-        }
-        j += 1;
+        a(null);
+        return 0;
       }
+      long l2 = ((QQUser)localObject).mUin;
+      long l1 = l2;
+      if (!((QQUser)localObject).mIsBinded)
+      {
+        l1 = l2;
+        if (((QQUser)localObject).mUin == ((QQUser)localObject).mRealUin) {
+          l1 = l.f(((QQUser)localObject).mRealUin);
+        }
+      }
+      localObject = this.a.a(l1, i + 1);
+      if (localObject != null)
+      {
+        if (((List)localObject).size() > i)
+        {
+          this.b = true;
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localArrayList.add(((List)localObject).get(paramInt));
+            paramInt += 1;
+          }
+        }
+        localArrayList.addAll((Collection)localObject);
+      }
+      a(localArrayList);
+      paramInt = g();
+      return paramInt;
     }
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      if (((NewConfigureCacheItem)paramList.next()).mConfIDs == null) {
+    catch (Exception localException)
+    {
+      g.c("Exception:" + localException.toString());
+      a(null);
+    }
+    return 0;
+  }
+  
+  public SafeMsgItem a()
+  {
+    try
+    {
+      Object localObject = cr.a().e();
+      if (localObject == null) {
+        return null;
+      }
+      if ((this.e != 0L) && (this.e != ((QQUser)localObject).mRealUin))
+      {
+        k();
+        com.tencent.token.ui.AccountPageActivity.mNeedShowIpcMsg = false;
+      }
+      long l2 = ((QQUser)localObject).mUin;
+      long l1 = l2;
+      if (!((QQUser)localObject).mIsBinded)
+      {
+        l1 = l2;
+        if (((QQUser)localObject).mUin == ((QQUser)localObject).mRealUin) {
+          l1 = l.f(((QQUser)localObject).mRealUin);
+        }
+      }
+      localObject = this.a.a(l1, 1);
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        localObject = (SafeMsgItem)((List)localObject).get(0);
+        return localObject;
+      }
+      return null;
+    }
+    catch (Exception localException) {}
+    return null;
+  }
+  
+  public e a(JSONObject paramJSONObject, long paramLong, int paramInt)
+  {
+    e locale = new e();
+    long l1 = m.a(paramInt, paramLong);
+    for (;;)
+    {
+      int i;
+      long l2;
+      try
+      {
+        i = paramJSONObject.getInt("is_have_msg");
+        m = paramJSONObject.getInt("rsp_msg_num");
+        JSONArray localJSONArray = paramJSONObject.getJSONArray("msgs");
+        if ((i <= 0) || (m <= 0)) {
+          break label508;
+        }
+        bool = true;
+        this.h = bool;
+        g.a("is need again=" + i + ", msg cnt=" + m);
+        if ((m > 0) && (localJSONArray != null))
+        {
+          c(m);
+          this.a.c(paramLong);
+          j = 0;
+          i = 0;
+          if (i >= localJSONArray.length()) {
+            continue;
+          }
+          JSONObject localJSONObject = localJSONArray.getJSONObject(i);
+          if (localJSONObject == null) {
+            break label514;
+          }
+          bool = true;
+          g.a(bool);
+          SafeMsgItem localSafeMsgItem = new SafeMsgItem();
+          localSafeMsgItem.mUin = paramLong;
+          if (!localSafeMsgItem.a(localJSONObject)) {
+            g.c("object item parse failed: " + i);
+          }
+          if ((this.d == -1) && (localSafeMsgItem.q()))
+          {
+            a(LoginMsgActivity.mNewMsgCntSetByAccount + i + 1, cr.a().e().mRealUin);
+            if (paramInt == 1) {
+              com.tencent.token.ui.AccountPageActivity.mNeedShowIpcMsg = true;
+            }
+            g.c("setlist got IPC msg,index = " + (LoginMsgActivity.mNewMsgCntSetByAccount + i + 1));
+          }
+          if (this.a.a(localSafeMsgItem))
+          {
+            int k = j + 1;
+            j = k;
+            l2 = l1;
+            if (localSafeMsgItem.mTime + 1L > l1)
+            {
+              l2 = localSafeMsgItem.mTime + 1L;
+              j = k;
+            }
+          }
+          else
+          {
+            g.d("msg store to db is wrong" + localJSONObject);
+            l2 = l1;
+          }
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        int m;
+        int j;
+        locale.a(10020, "JSONException:" + paramJSONObject.toString());
+        locale.c();
+        return locale;
+        if (j != m)
+        {
+          c(j);
+          g.c("msg cnt is wrong");
+          g.d("msg cnt is wrong" + paramJSONObject);
+        }
+        m.a(paramInt, paramLong, l1);
+        locale.c();
+        return locale;
+      }
+      catch (Exception paramJSONObject)
+      {
+        locale.a(10021, "JSONException:" + paramJSONObject.toString());
+        continue;
+      }
+      i += 1;
+      l1 = l2;
+      continue;
+      label508:
+      boolean bool = false;
+      continue;
+      label514:
+      bool = false;
+    }
+  }
+  
+  public void a(int paramInt, long paramLong)
+  {
+    this.d = paramInt;
+    this.e = paramLong;
+  }
+  
+  public void a(long paramLong)
+  {
+    l();
+    if (paramLong != 0L)
+    {
+      this.a.a(paramLong);
+      this.f.clear();
+    }
+  }
+  
+  public void a(SafeMsgItem paramSafeMsgItem)
+  {
+    paramSafeMsgItem.mIsRead = true;
+    this.a.d(paramSafeMsgItem.a());
+  }
+  
+  public SafeMsgItem b(int paramInt)
+  {
+    int i = this.f.size();
+    if ((paramInt < 0) || (paramInt >= i)) {
+      return null;
+    }
+    return (SafeMsgItem)this.f.get(paramInt);
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.f.iterator();
+    while (localIterator.hasNext()) {
+      ((SafeMsgItem)localIterator.next()).mIsChecked = true;
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    this.c = paramLong;
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.f.iterator();
+    while (localIterator.hasNext()) {
+      ((SafeMsgItem)localIterator.next()).mIsChecked = false;
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    this.g = paramInt;
+  }
+  
+  public boolean d()
+  {
+    Iterator localIterator = this.f.iterator();
+    while (localIterator.hasNext()) {
+      if (!((SafeMsgItem)localIterator.next()).mIsChecked) {
         return false;
       }
     }
     return true;
   }
   
-  private boolean a(JSONArray paramJSONArray)
+  public int e()
   {
-    if (paramJSONArray == null) {
-      return false;
-    }
+    Iterator localIterator = this.f.iterator();
     int i = 0;
-    for (;;)
+    if (localIterator.hasNext())
     {
-      int j;
-      try
-      {
-        if (i >= paramJSONArray.length()) {
-          break label153;
-        }
-        localObject = paramJSONArray.getJSONArray(i);
-        str = (String)((JSONArray)localObject).get(0);
-        k = ((Integer)((JSONArray)localObject).get(1)).intValue();
-        NewConfigureCacheItem localNewConfigureCacheItem = a(str);
-        localObject = localNewConfigureCacheItem;
-        if (localNewConfigureCacheItem != null) {
-          break label155;
-        }
-        localObject = new NewConfigureCacheItem(str);
-        a((NewConfigureCacheItem)localObject);
-      }
-      catch (JSONException paramJSONArray)
-      {
-        Object localObject;
-        String str;
-        int k;
-        return false;
-      }
-      catch (Exception paramJSONArray)
-      {
-        return false;
-      }
-      if (j < a.length - 1)
-      {
-        if ((this.b != 0) && (((NewConfigureCacheItem)localObject).mClientVersion < k) && (str.equals(a[j]))) {
-          this.d = true;
-        }
-      }
-      else
-      {
-        ((NewConfigureCacheItem)localObject).mClientVersion = k;
-        i += 1;
-        continue;
-        label153:
-        return true;
-        label155:
-        j = 0;
-        continue;
-      }
-      j += 1;
-    }
-  }
-  
-  private boolean b(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return false;
-    }
-    Object localObject1;
-    int i;
-    int j;
-    try
-    {
-      localObject1 = paramJSONObject.getJSONArray("main_tab_new");
-      paramJSONObject = paramJSONObject.getJSONArray("conf_id_new");
-      if (localObject1 != null)
-      {
-        i = 0;
-        if (i < ((JSONArray)localObject1).length())
-        {
-          localObject2 = (String)((JSONArray)localObject1).get(i);
-          NewConfigureCacheItem localNewConfigureCacheItem = a((String)localObject2);
-          if (localNewConfigureCacheItem == null) {
-            break label282;
-          }
-          localNewConfigureCacheItem.mClickVersion = -1;
-          j = 0;
-          label69:
-          if (j >= a.length - 1) {
-            break label282;
-          }
-          if (!((String)localObject2).equals(a[j])) {
-            break label275;
-          }
-          this.d = true;
-          break label275;
-        }
-      }
-      localObject1 = this.c.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (NewConfigureCacheItem)((Iterator)localObject1).next();
-        if (((NewConfigureCacheItem)localObject2).mClickVersion != -1) {
-          ((NewConfigureCacheItem)localObject2).mClickVersion = ((NewConfigureCacheItem)localObject2).mClientVersion;
-        }
-      }
-      localObject1 = a("game_lock");
-    }
-    catch (Exception paramJSONObject)
-    {
-      g.b(paramJSONObject.toString());
-      return false;
-    }
-    if (((NewConfigureCacheItem)localObject1).mConfIDs == null) {
-      ((NewConfigureCacheItem)localObject1).mConfIDs = new ArrayList();
-    }
-    Object localObject2 = a("account_prot");
-    if (((NewConfigureCacheItem)localObject2).mConfIDs == null) {
-      ((NewConfigureCacheItem)localObject2).mConfIDs = new ArrayList();
-    }
-    for (;;)
-    {
-      if (i < paramJSONObject.length())
-      {
-        ((NewConfigureCacheItem)localObject1).mConfIDs.add(Integer.valueOf(paramJSONObject.getInt(i)));
-        ((NewConfigureCacheItem)localObject2).mConfIDs.add(Integer.valueOf(paramJSONObject.getInt(i)));
+      if (((SafeMsgItem)localIterator.next()).mIsChecked) {
         i += 1;
       }
-      else
+      for (;;)
       {
-        label275:
-        label282:
-        do
-        {
-          return true;
-          j += 1;
-          break label69;
-          i += 1;
-          break;
-        } while (paramJSONObject == null);
-        i = 0;
-      }
-    }
-  }
-  
-  private void e()
-  {
-    List localList = g();
-    if (a(localList)) {
-      this.c.addAll(localList);
-    }
-    for (;;)
-    {
-      return;
-      int i = 0;
-      while (i < a.length)
-      {
-        a(new NewConfigureCacheItem(a[i]));
-        i += 1;
-      }
-    }
-  }
-  
-  private void f()
-  {
-    do localdo = new do();
-    localdo.a = this.c;
-    RqdApplication.k().a(this, localdo, null);
-  }
-  
-  private List<NewConfigureCacheItem> g()
-  {
-    dc.a locala = RqdApplication.k().a(this);
-    if (locala == null) {
-      return null;
-    }
-    return (List)locala.b.a;
-  }
-  
-  /* Error */
-  public NewConfigureCacheItem a(String paramString)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 58	com/tencent/token/dk:c	Ljava/util/List;
-    //   6: invokeinterface 87 1 0
-    //   11: astore 4
-    //   13: aload 4
-    //   15: invokeinterface 93 1 0
-    //   20: ifeq +33 -> 53
-    //   23: aload 4
-    //   25: invokeinterface 97 1 0
-    //   30: checkcast 75	com/tencent/token/core/bean/NewConfigureCacheItem
-    //   33: astore_3
-    //   34: aload_3
-    //   35: getfield 79	com/tencent/token/core/bean/NewConfigureCacheItem:mConfKey	Ljava/lang/String;
-    //   38: aload_1
-    //   39: invokevirtual 83	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   42: istore_2
-    //   43: iload_2
-    //   44: ifeq -31 -> 13
-    //   47: aload_3
-    //   48: astore_1
-    //   49: aload_0
-    //   50: monitorexit
-    //   51: aload_1
-    //   52: areturn
-    //   53: aconst_null
-    //   54: astore_1
-    //   55: goto -6 -> 49
-    //   58: astore_1
-    //   59: aload_0
-    //   60: monitorexit
-    //   61: aload_1
-    //   62: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	63	0	this	dk
-    //   0	63	1	paramString	String
-    //   42	2	2	bool	boolean
-    //   33	15	3	localNewConfigureCacheItem	NewConfigureCacheItem
-    //   11	13	4	localIterator	Iterator
-    // Exception table:
-    //   from	to	target	type
-    //   2	13	58	finally
-    //   13	43	58	finally
-  }
-  
-  public do a(Serializable paramSerializable)
-  {
-    do localdo = new do();
-    localdo.a = paramSerializable;
-    return localdo;
-  }
-  
-  public Serializable a(do paramdo)
-  {
-    return (Serializable)paramdo.a;
-  }
-  
-  public void a()
-  {
-    f();
-  }
-  
-  public void a(NewConfigureCacheItem paramNewConfigureCacheItem)
-  {
-    try
-    {
-      this.c.add(paramNewConfigureCacheItem);
-      return;
-    }
-    finally
-    {
-      paramNewConfigureCacheItem = finally;
-      throw paramNewConfigureCacheItem;
-    }
-  }
-  
-  public boolean a(JSONObject paramJSONObject)
-  {
-    bool2 = false;
-    bool1 = false;
-    if (paramJSONObject == null)
-    {
-      bool2 = bool1;
-      return bool2;
-    }
-    g.c(paramJSONObject.toString());
-    for (;;)
-    {
-      try
-      {
-        int i = paramJSONObject.getInt("version");
-        if (this.b >= i) {
-          continue;
-        }
-        bool1 = a(paramJSONObject.getJSONArray("config_version"));
-        h.b(i);
-        if (this.b == 0) {
-          bool1 = b(paramJSONObject.getJSONObject("install_new"));
-        }
-        this.b = i;
-      }
-      catch (Exception paramJSONObject)
-      {
-        bool1 = bool2;
-        continue;
-      }
-      bool2 = bool1;
-      if (!bool1) {
         break;
       }
-      a();
-      setChanged();
-      notifyObservers();
-      bool2 = bool1;
-      if (!this.d) {
-        break;
+    }
+    return i;
+  }
+  
+  public void f()
+  {
+    l();
+    Iterator localIterator = this.f.iterator();
+    while (localIterator.hasNext())
+    {
+      SafeMsgItem localSafeMsgItem = (SafeMsgItem)localIterator.next();
+      if ((localSafeMsgItem != null) && (localSafeMsgItem.mIsChecked))
+      {
+        this.a.b(localSafeMsgItem.a());
+        localIterator.remove();
       }
-      h.a(true);
-      return bool1;
-      bool1 = false;
     }
   }
   
-  public void b()
+  public int g()
   {
-    this.b = h.c();
-    e();
+    return this.f.size();
   }
   
-  public void c()
+  public int h()
   {
-    a();
+    return this.g;
   }
   
-  public String d()
+  public boolean i()
   {
-    return getClass().toString();
+    boolean bool2 = false;
+    QQUser localQQUser = cr.a().e();
+    boolean bool1 = bool2;
+    if (localQQUser != null)
+    {
+      bool1 = bool2;
+      if (localQQUser.mUin == this.c) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public boolean j()
+  {
+    return this.h;
+  }
+  
+  public void k()
+  {
+    this.d = -1;
+    this.e = 0L;
   }
 }
 

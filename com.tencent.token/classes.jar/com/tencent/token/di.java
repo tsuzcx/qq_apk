@@ -1,175 +1,100 @@
 package com.tencent.token;
 
-import com.tencent.token.core.bean.MbInfoResult;
-import com.tencent.token.core.bean.MbInfoResult.MbInfoItem;
+import com.tencent.token.core.bean.DeviceInfo;
 import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.core.bean.f;
 import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class di
 {
-  static di d = null;
-  public MbInfoResult a;
-  String b;
-  long c;
+  public f a = new f();
+  public ArrayList<DeviceInfo> b;
+  String c;
+  long d;
+  private cr e = cr.a();
   
-  public static di a()
+  public void a(f paramf)
   {
-    if (d == null)
+    try
     {
-      d = new di();
-      return d;
+      this.a = paramf;
+      paramf = this.e;
+      this.c = cr.c;
+      if (cr.a().e() != null) {
+        this.d = this.e.e().mUin;
+      }
+      return;
     }
-    return d;
+    finally
+    {
+      paramf = finally;
+      throw paramf;
+    }
   }
   
-  public int a(int paramInt)
+  public boolean a(JSONArray paramJSONArray)
   {
+    f localf = new f();
+    if (paramJSONArray != null) {}
     for (;;)
     {
+      int i;
       try
       {
-        MbInfoResult localMbInfoResult = c();
-        if (localMbInfoResult == null)
-        {
-          paramInt = -1;
-          return paramInt;
-        }
-        int i;
-        if (this.a.mMbInfoItems == null)
-        {
-          paramInt = -1;
-          continue;
-          if (i < this.a.mMbInfoItems.size())
-          {
-            int j = ((MbInfoResult.MbInfoItem)this.a.mMbInfoItems.get(i)).mId;
-            if (j == paramInt) {
-              paramInt = i;
-            } else {
-              i += 1;
-            }
-          }
-          else
-          {
-            paramInt = -1;
-          }
-        }
-        else
+        if (paramJSONArray.length() > 0)
         {
           i = 0;
+          if (i < paramJSONArray.length())
+          {
+            Object localObject = paramJSONArray.getJSONObject(i);
+            localf.a = ((JSONObject)localObject).getInt("id");
+            localf.b = ((JSONObject)localObject).getString("name");
+            if (((JSONObject)localObject).getInt("value") == 0) {
+              break label267;
+            }
+            bool = true;
+            localf.c = bool;
+            localObject = ((JSONObject)localObject).getJSONArray("list");
+            if (((JSONArray)localObject).length() > 0)
+            {
+              this.b = new ArrayList();
+              int j = 0;
+              if (j >= ((JSONArray)localObject).length()) {
+                break label273;
+              }
+              JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(j);
+              DeviceInfo localDeviceInfo = new DeviceInfo();
+              localDeviceInfo.dguid = localJSONObject.getString("dguid");
+              localDeviceInfo.dname = localJSONObject.getString("dname");
+              localDeviceInfo.dtype = localJSONObject.getString("dtype");
+              localDeviceInfo.ddes = localJSONObject.getString("ddes");
+              localDeviceInfo.dappid = localJSONObject.getInt("dappid");
+              localDeviceInfo.dsubappid = localJSONObject.getInt("dsubappid");
+              localDeviceInfo.dappname = localJSONObject.getString("dappname");
+              this.b.add(localDeviceInfo);
+              j += 1;
+              continue;
+            }
+            this.b = new ArrayList();
+            break label273;
+          }
         }
+        a(localf);
+        return true;
       }
-      finally {}
-    }
-  }
-  
-  public void a(MbInfoResult paramMbInfoResult)
-  {
-    try
-    {
-      this.a = paramMbInfoResult;
-      cq.a();
-      this.b = cq.c;
-      if (cq.a().e() != null) {
-        this.c = cq.a().e().mUin;
+      catch (Exception paramJSONArray)
+      {
+        paramJSONArray.printStackTrace();
+        return false;
       }
-      return;
+      label267:
+      boolean bool = false;
+      continue;
+      label273:
+      i += 1;
     }
-    finally
-    {
-      paramMbInfoResult = finally;
-      throw paramMbInfoResult;
-    }
-  }
-  
-  public void b()
-  {
-    try
-    {
-      this.a = null;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  /* Error */
-  public MbInfoResult c()
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: invokestatic 56	com/tencent/token/cq:a	()Lcom/tencent/token/cq;
-    //   7: invokevirtual 64	com/tencent/token/cq:e	()Lcom/tencent/token/core/bean/QQUser;
-    //   10: astore_3
-    //   11: aload_2
-    //   12: astore_1
-    //   13: aload_0
-    //   14: getfield 60	com/tencent/token/di:b	Ljava/lang/String;
-    //   17: ifnull +20 -> 37
-    //   20: aload_2
-    //   21: astore_1
-    //   22: aload_3
-    //   23: ifnull +14 -> 37
-    //   26: aload_0
-    //   27: getfield 28	com/tencent/token/di:a	Lcom/tencent/token/core/bean/MbInfoResult;
-    //   30: astore_1
-    //   31: aload_1
-    //   32: ifnonnull +9 -> 41
-    //   35: aload_2
-    //   36: astore_1
-    //   37: aload_0
-    //   38: monitorexit
-    //   39: aload_1
-    //   40: areturn
-    //   41: aload_0
-    //   42: getfield 60	com/tencent/token/di:b	Ljava/lang/String;
-    //   45: astore 4
-    //   47: invokestatic 56	com/tencent/token/cq:a	()Lcom/tencent/token/cq;
-    //   50: pop
-    //   51: aload_2
-    //   52: astore_1
-    //   53: aload 4
-    //   55: getstatic 58	com/tencent/token/cq:c	Ljava/lang/String;
-    //   58: invokevirtual 77	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   61: ifeq -24 -> 37
-    //   64: aload_2
-    //   65: astore_1
-    //   66: aload_0
-    //   67: getfield 71	com/tencent/token/di:c	J
-    //   70: aload_3
-    //   71: getfield 69	com/tencent/token/core/bean/QQUser:mUin	J
-    //   74: lcmp
-    //   75: ifne -38 -> 37
-    //   78: aload_0
-    //   79: getfield 28	com/tencent/token/di:a	Lcom/tencent/token/core/bean/MbInfoResult;
-    //   82: astore_1
-    //   83: goto -46 -> 37
-    //   86: astore_1
-    //   87: aload_0
-    //   88: monitorexit
-    //   89: aload_1
-    //   90: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	91	0	this	di
-    //   12	71	1	localObject1	Object
-    //   86	4	1	localObject2	Object
-    //   1	64	2	localObject3	Object
-    //   10	61	3	localQQUser	QQUser
-    //   45	9	4	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   4	11	86	finally
-    //   13	20	86	finally
-    //   26	31	86	finally
-    //   41	51	86	finally
-    //   53	64	86	finally
-    //   66	83	86	finally
   }
 }
 

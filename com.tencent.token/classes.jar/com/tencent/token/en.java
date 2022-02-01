@@ -1,50 +1,64 @@
 package com.tencent.token;
 
-import android.content.Context;
-import com.tencent.wcdb.database.SQLiteCipherSpec;
+import android.content.ContentValues;
+import com.tencent.wcdb.Cursor;
 import com.tencent.wcdb.database.SQLiteDatabase;
-import com.tencent.wcdb.database.SQLiteOpenHelper;
 
 public class en
-  extends SQLiteOpenHelper
+  implements et
 {
-  Context a;
+  public final String a = "ksid_data";
+  public String b = "";
+  private int c = 12;
   
-  en(Context paramContext, String paramString, int paramInt, SQLiteCipherSpec paramSQLiteCipherSpec)
+  public et a(Cursor paramCursor)
   {
-    super(paramContext, a(paramInt), paramString.getBytes(), paramSQLiteCipherSpec, null, 1, new el());
-    this.a = paramContext;
+    en localen = new en();
+    localen.b = paramCursor.getString(paramCursor.getColumnIndex("ksid"));
+    return localen;
   }
   
-  public static String a(int paramInt)
+  public void a(SQLiteDatabase paramSQLiteDatabase)
   {
-    switch (paramInt)
-    {
-    default: 
-      return "mobiletoken.db";
-    case 0: 
-      return "mobiletoken_test.db";
-    case 1: 
-      return "mobiletoken.db";
-    case 2: 
-      return "mobiletoken_exp.db";
+    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS ksid_data(_ID INTEGER PRIMARY KEY autoincrement,key INTEGER,ksid TEXT);");
+  }
+  
+  public void a(String paramString)
+  {
+    ContentValues localContentValues = new ContentValues();
+    localContentValues.put("ksid", paramString);
+    er.a(this, "ksid_data", localContentValues, "key=?", new String[] { String.valueOf(this.c) });
+  }
+  
+  public boolean a()
+  {
+    en localen = (en)er.a(this, "ksid_data", new String[] { "ksid" }, null, null);
+    if (localen == null) {
+      return false;
     }
-    return "mobiletoken_gray.db";
+    this.b = localen.b;
+    return true;
   }
   
-  protected void finalize()
+  public long b(SQLiteDatabase paramSQLiteDatabase)
   {
-    try
-    {
-      close();
-      return;
-    }
-    catch (Exception localException) {}
+    a(paramSQLiteDatabase);
+    new ContentValues();
+    ContentValues localContentValues = new ContentValues();
+    localContentValues.put("key", Integer.valueOf(this.c));
+    localContentValues.put("ksid", this.b);
+    return paramSQLiteDatabase.insert("ksid_data", null, localContentValues);
   }
   
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase) {}
+  public String b()
+  {
+    return "ksid_data";
+  }
   
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
+  public ContentValues c()
+  {
+    return null;
+  }
 }
 
 

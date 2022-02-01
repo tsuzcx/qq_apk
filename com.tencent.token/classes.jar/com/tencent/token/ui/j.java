@@ -14,7 +14,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.token.core.bean.f;
-import com.tencent.token.cr;
+import com.tencent.token.cs;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
 import com.tencent.token.ui.base.SwitchButton;
@@ -41,11 +41,11 @@ class j
   
   public void a()
   {
-    int j = cr.a().f();
+    int j = cs.a().f();
     int i = 0;
     while (i < j)
     {
-      f localf = cr.a().b(i);
+      f localf = cs.a().b(i);
       if (localf != null) {
         localf.e = false;
       }
@@ -92,7 +92,7 @@ class j
           return null;
         }
         this.c = paramb.a();
-        paramAnonymousVarArgs = cr.a();
+        paramAnonymousVarArgs = cs.a();
         f localf = this.c;
         if (!this.c.c) {}
         for (boolean bool = true;; bool = false) {
@@ -157,12 +157,12 @@ class j
     if (localf.f) {
       paramb.setVisibility(0);
     }
-    while ((localf.e) || (!cr.a().p()))
+    while ((localf.e) || (!cs.a().p()))
     {
       localProgressBar.setVisibility(0);
       localSwitchButton.setVisibility(0);
       localSwitchButton.setEnabled(false);
-      if ((!cr.a().p()) && (!this.c.mIsIniting)) {
+      if ((!cs.a().p()) && (!this.c.mIsIniting)) {
         this.c.queryGameProtectStatus();
       }
       localTextView.setText(localf.b);
@@ -183,9 +183,9 @@ class j
   public int getCount()
   {
     if (this.a) {
-      return cr.a().e();
+      return cs.a().e();
     }
-    return cr.a().f();
+    return cs.a().f();
   }
   
   public Object getItem(int paramInt)
@@ -200,7 +200,7 @@ class j
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    f localf = cr.a().b(paramInt);
+    f localf = cs.a().b(paramInt);
     View localView = paramView;
     if (paramView == null) {
       localView = this.d.inflate(2130968795, paramViewGroup, false);
@@ -229,7 +229,7 @@ class j
         return;
         localf = paramCompoundButton.a();
         localView = paramCompoundButton.f();
-      } while ((localf == null) || (localView == null) || (!cr.a().p()) || (paramBoolean != localf.c) || (localf.e));
+      } while ((localf == null) || (localView == null) || (!cs.a().p()) || (paramBoolean != localf.c) || (localf.e));
       localf.e = true;
       j.this.a(paramCompoundButton, false);
       j.this.a(paramCompoundButton);

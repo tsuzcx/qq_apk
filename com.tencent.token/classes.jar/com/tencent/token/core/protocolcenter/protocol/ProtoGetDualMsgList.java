@@ -1,14 +1,14 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.bz;
 import com.tencent.token.ca;
 import com.tencent.token.cb;
-import com.tencent.token.co;
+import com.tencent.token.cc;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.cq;
-import com.tencent.token.dn;
+import com.tencent.token.cp;
+import com.tencent.token.cr;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -27,20 +27,20 @@ public class ProtoGetDualMsgList
   private final String f = "/cn/mbtoken3/mbtoken3_get_dual_msg_list_v2";
   private int g;
   
-  public static void a(dn paramdn, long paramLong, byte paramByte)
+  public static void a(do paramdo, long paramLong, byte paramByte)
   {
-    paramdn.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramdn.c.put("param.msg.source", Byte.valueOf(paramByte));
+    paramdo.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdo.c.put("param.msg.source", Byte.valueOf(paramByte));
   }
   
   protected String a()
   {
-    if (bz.a().b() == null)
+    if (ca.a().b() == null)
     {
       this.a.b(104);
       return null;
     }
-    cq localcq = cq.a();
+    cr localcr = cr.a();
     int i;
     Object localObject1;
     if (this.d > 0L)
@@ -48,15 +48,15 @@ public class ProtoGetDualMsgList
       i = 0;
       for (;;)
       {
-        if (i < localcq.d())
+        if (i < localcr.d())
         {
-          localObject1 = localcq.a(i);
+          localObject1 = localcr.a(i);
           g.c("getdualmsglist: hash=" + this.d + ", uin=" + ((QQUser)localObject1).mUin + ", real=" + ((QQUser)localObject1).mRealUin + ", bind=" + ((QQUser)localObject1).mIsBinded);
           if ((!((QQUser)localObject1).mIsBinded) || (((QQUser)localObject1).mUin != this.d)) {}
         }
         else
         {
-          if (i != localcq.d()) {
+          if (i != localcr.d()) {
             break;
           }
           this.a.b(110);
@@ -70,30 +70,30 @@ public class ProtoGetDualMsgList
         i += 1;
       }
     }
-    long l = localcq.f();
-    if ((localcq.e() == null) || (l == 0L))
+    long l = localcr.f();
+    if ((localcr.e() == null) || (l == 0L))
     {
       this.a.b(110);
       return null;
     }
-    if (localcq.e().mIsBinded) {
-      l = localcq.e().mUin;
+    if (localcr.e().mIsBinded) {
+      l = localcr.e().mUin;
     }
     try
     {
       localObject1 = new JSONObject();
       ((JSONObject)localObject1).put("uin", l);
-      i = ca.a + 1;
-      ca.a = i;
+      i = cb.a + 1;
+      cb.a = i;
       this.g = i;
       ((JSONObject)localObject1).put("seq_id", this.g);
-      ((JSONObject)localObject1).put("op_time", cb.c().s() / 1000L);
-      ((JSONObject)localObject1).put("tkn_seq", cb.c().j().replaceAll("-", ""));
+      ((JSONObject)localObject1).put("op_time", cc.c().s() / 1000L);
+      ((JSONObject)localObject1).put("tkn_seq", cc.c().j().replaceAll("-", ""));
       ((JSONObject)localObject1).put("source", this.e);
       localObject1 = ((JSONObject)localObject1).toString();
       g.a("plain:" + (String)localObject1);
       localObject1 = l.b(((String)localObject1).getBytes());
-      localObject1 = "?aq_base_sid=" + localcq.g() + "&data=" + (String)localObject1;
+      localObject1 = "?aq_base_sid=" + localcr.g() + "&data=" + (String)localObject1;
       return c.e() + "/cn/mbtoken3/mbtoken3_get_dual_msg_list_v2" + (String)localObject1;
     }
     catch (JSONException localJSONException)
@@ -106,10 +106,10 @@ public class ProtoGetDualMsgList
     }
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.d = ((Long)paramdn.c.get("param.uinhash")).longValue();
-    this.e = ((Byte)paramdn.c.get("param.msg.source")).byteValue();
+    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
+    this.e = ((Byte)paramdo.c.get("param.msg.source")).byteValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -128,16 +128,16 @@ public class ProtoGetDualMsgList
       if (i != this.g)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + ca.a().b());
+        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + cb.a().b());
         return;
       }
       paramJSONObject = paramJSONObject.getJSONArray("msgs");
-      if (!co.a().a(paramJSONObject, this.d))
+      if (!cp.a().a(paramJSONObject, this.d))
       {
         this.a.a(10000, "update conf list failed:" + paramJSONObject.toString());
         return;
       }
-      cq.a().m();
+      cr.a().m();
       this.a.c();
       return;
     }

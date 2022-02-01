@@ -15,8 +15,8 @@ import android.os.Build.VERSION;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
-import com.tencent.token.gi;
 import com.tencent.token.gj;
+import com.tencent.token.gk;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -35,11 +35,11 @@ public class e
   private static final String d = e.class.getSimpleName();
   f a;
   d b;
-  gi c;
+  gj c;
   private final Matrix e = new Matrix();
   private final Matrix f = new Matrix();
   private a g;
-  private final gj h = new gj();
+  private final gk h = new gk();
   private float i = 1.0F;
   private float j = 0.0F;
   private float k = 1.0F;
@@ -270,9 +270,9 @@ public class e
     a(paramInt / this.g.i());
   }
   
-  public void a(gi paramgi)
+  public void a(gj paramgj)
   {
-    this.c = paramgi;
+    this.c = paramgj;
   }
   
   public void a(String paramString)
@@ -401,11 +401,11 @@ public class e
   public void c(float paramFloat)
   {
     this.i = paramFloat;
-    gj localgj = this.h;
+    gk localgk = this.h;
     if (paramFloat < 0.0F) {}
     for (boolean bool = true;; bool = false)
     {
-      localgj.a(bool);
+      localgk.a(bool);
       if (this.g != null) {
         this.h.setDuration(((float)this.g.c() / Math.abs(paramFloat)));
       }
@@ -415,11 +415,11 @@ public class e
   
   public void c(boolean paramBoolean)
   {
-    gj localgj = this.h;
+    gk localgk = this.h;
     if (paramBoolean) {}
     for (int i1 = -1;; i1 = 0)
     {
-      localgj.setRepeatCount(i1);
+      localgk.setRepeatCount(i1);
       return;
     }
   }
@@ -541,7 +541,7 @@ public class e
     return (this.b == null) && (this.g.f().size() > 0);
   }
   
-  public gi k()
+  public gj k()
   {
     return this.c;
   }

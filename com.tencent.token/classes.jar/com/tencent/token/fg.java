@@ -1,342 +1,262 @@
 package com.tencent.token;
 
-import java.io.Closeable;
-import java.io.File;
-import java.io.Flushable;
-import java.io.IOException;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.concurrent.Executor;
-import java.util.regex.Pattern;
-import okio.d;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+import javax.annotation.Nullable;
+import okhttp3.d;
+import okhttp3.r;
+import okhttp3.r.a;
+import okhttp3.s;
+import okhttp3.x;
+import okhttp3.x.a;
+import okhttp3.z;
+import okhttp3.z.a;
 
 public final class fg
-  implements Closeable, Flushable
 {
-  static final Pattern a;
-  final fv b;
-  final int c;
-  d d;
-  final LinkedHashMap<String, b> e;
-  int f;
-  boolean g;
-  boolean h;
-  boolean i;
-  private long k;
-  private long l;
-  private long m;
-  private final Executor n;
-  private final Runnable o;
+  @Nullable
+  public final x a;
+  @Nullable
+  public final z b;
   
-  static
+  fg(x paramx, z paramz)
   {
-    if (!fg.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      j = bool;
-      a = Pattern.compile("[a-z0-9_-]{1,120}");
-      return;
-    }
+    this.a = paramx;
+    this.b = paramz;
   }
   
-  private void d()
+  public static boolean a(z paramz, x paramx)
   {
-    try
+    switch (paramz.b())
     {
-      if (b()) {
-        throw new IllegalStateException("cache is closed");
-      }
     }
-    finally {}
-  }
-  
-  void a(a parama, boolean paramBoolean)
-  {
-    int i3 = 0;
-    b localb;
-    try
+    do
     {
-      localb = parama.a;
-      if (localb.f != parama) {
-        throw new IllegalStateException();
-      }
-    }
-    finally {}
-    int i2 = i3;
-    if (paramBoolean)
-    {
-      i2 = i3;
-      if (!localb.e)
-      {
-        int i1 = 0;
-        for (;;)
-        {
-          i2 = i3;
-          if (i1 >= this.c) {
-            break;
-          }
-          if (parama.b[i1] == 0)
-          {
-            parama.b();
-            throw new IllegalStateException("Newly created entry didn't create value for index " + i1);
-          }
-          if (!this.b.b(localb.d[i1]))
-          {
-            parama.b();
-            return;
-          }
-          i1 += 1;
-        }
-      }
-    }
-    for (;;)
-    {
-      long l1;
-      if (i2 < this.c)
-      {
-        parama = localb.d[i2];
-        if (paramBoolean)
-        {
-          if (this.b.b(parama))
-          {
-            File localFile = localb.c[i2];
-            this.b.a(parama, localFile);
-            l1 = localb.b[i2];
-            long l2 = this.b.c(localFile);
-            localb.b[i2] = l2;
-            this.l = (this.l - l1 + l2);
-          }
-        }
-        else {
-          this.b.a(parama);
-        }
-      }
-      else
-      {
-        this.f += 1;
-        localb.f = null;
-        if ((localb.e | paramBoolean))
-        {
-          localb.e = true;
-          this.d.b("CLEAN").i(32);
-          this.d.b(localb.a);
-          localb.a(this.d);
-          this.d.i(10);
-          if (paramBoolean)
-          {
-            l1 = this.m;
-            this.m = (1L + l1);
-            localb.g = l1;
-          }
-        }
-        for (;;)
-        {
-          this.d.flush();
-          if ((this.l <= this.k) && (!a())) {
-            break;
-          }
-          this.n.execute(this.o);
-          break;
-          this.e.remove(localb.a);
-          this.d.b("REMOVE").i(32);
-          this.d.b(localb.a);
-          this.d.i(10);
-        }
-      }
-      i2 += 1;
-    }
-  }
-  
-  boolean a()
-  {
-    return (this.f >= 2000) && (this.f >= this.e.size());
-  }
-  
-  boolean a(b paramb)
-  {
-    if (paramb.f != null) {
-      paramb.f.a();
-    }
-    int i1 = 0;
-    while (i1 < this.c)
-    {
-      this.b.a(paramb.c[i1]);
-      this.l -= paramb.b[i1];
-      paramb.b[i1] = 0L;
-      i1 += 1;
-    }
-    this.f += 1;
-    this.d.b("REMOVE").i(32).b(paramb.a).i(10);
-    this.e.remove(paramb.a);
-    if (a()) {
-      this.n.execute(this.o);
-    }
+      return false;
+    } while (((paramz.a("Expires") == null) && (paramz.h().c() == -1) && (!paramz.h().e()) && (!paramz.h().d())) || (paramz.h().b()) || (paramx.f().b()));
     return true;
   }
   
-  public boolean b()
+  public static class a
   {
-    try
+    final long a;
+    final x b;
+    final z c;
+    private Date d;
+    private String e;
+    private Date f;
+    private String g;
+    private Date h;
+    private long i;
+    private long j;
+    private String k;
+    private int l = -1;
+    
+    public a(long paramLong, x paramx, z paramz)
     {
-      boolean bool = this.h;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  void c()
-  {
-    while (this.l > this.k) {
-      a((b)this.e.values().iterator().next());
-    }
-    this.i = false;
-  }
-  
-  public void close()
-  {
-    for (;;)
-    {
-      try
+      this.a = paramLong;
+      this.b = paramx;
+      this.c = paramz;
+      if (paramz != null)
       {
-        if ((!this.g) || (this.h))
+        this.i = paramz.i();
+        this.j = paramz.j();
+        paramx = paramz.d();
+        int m = 0;
+        int n = paramx.a();
+        if (m < n)
         {
-          this.h = true;
-          return;
-        }
-        b[] arrayOfb = (b[])this.e.values().toArray(new b[this.e.size()]);
-        int i2 = arrayOfb.length;
-        int i1 = 0;
-        if (i1 < i2)
-        {
-          b localb = arrayOfb[i1];
-          if (localb.f != null) {
-            localb.f.b();
+          paramz = paramx.a(m);
+          String str = paramx.b(m);
+          if ("Date".equalsIgnoreCase(paramz))
+          {
+            this.d = fm.a(str);
+            this.e = str;
+          }
+          for (;;)
+          {
+            m += 1;
+            break;
+            if ("Expires".equalsIgnoreCase(paramz))
+            {
+              this.h = fm.a(str);
+            }
+            else if ("Last-Modified".equalsIgnoreCase(paramz))
+            {
+              this.f = fm.a(str);
+              this.g = str;
+            }
+            else if ("ETag".equalsIgnoreCase(paramz))
+            {
+              this.k = str;
+            }
+            else if ("Age".equalsIgnoreCase(paramz))
+            {
+              this.l = fn.b(str, -1);
+            }
           }
         }
-        else
-        {
-          c();
-          this.d.close();
-          this.d = null;
-          this.h = true;
-          continue;
-        }
-        i1 += 1;
-      }
-      finally {}
-    }
-  }
-  
-  /* Error */
-  public void flush()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 211	com/tencent/token/fg:g	Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifne +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: invokespecial 223	com/tencent/token/fg:d	()V
-    //   18: aload_0
-    //   19: invokevirtual 219	com/tencent/token/fg:c	()V
-    //   22: aload_0
-    //   23: getfield 132	com/tencent/token/fg:d	Lokio/d;
-    //   26: invokeinterface 155 1 0
-    //   31: goto -20 -> 11
-    //   34: astore_2
-    //   35: aload_0
-    //   36: monitorexit
-    //   37: aload_2
-    //   38: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	39	0	this	fg
-    //   6	2	1	bool	boolean
-    //   34	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	34	finally
-    //   14	31	34	finally
-  }
-  
-  public final class a
-  {
-    final fg.b a;
-    final boolean[] b;
-    private boolean d;
-    
-    void a()
-    {
-      int i;
-      if (this.a.f == this) {
-        i = 0;
-      }
-      for (;;)
-      {
-        if (i < this.c.c) {}
-        try
-        {
-          this.c.b.a(this.a.d[i]);
-          label45:
-          i += 1;
-          continue;
-          this.a.f = null;
-          return;
-        }
-        catch (IOException localIOException)
-        {
-          break label45;
-        }
       }
     }
     
-    public void b()
+    private static boolean a(x paramx)
     {
-      synchronized (this.c)
+      return (paramx.a("If-Modified-Since") != null) || (paramx.a("If-None-Match") != null);
+    }
+    
+    private fg b()
+    {
+      long l4 = 0L;
+      if (this.c == null) {
+        return new fg(this.b, null);
+      }
+      if ((this.b.g()) && (this.c.c() == null)) {
+        return new fg(this.b, null);
+      }
+      if (!fg.a(this.c, this.b)) {
+        return new fg(this.b, null);
+      }
+      Object localObject1 = this.b.f();
+      if ((((d)localObject1).a()) || (a(this.b))) {
+        return new fg(this.b, null);
+      }
+      Object localObject2 = this.c.h();
+      if (((d)localObject2).j()) {
+        return new fg(null, this.c);
+      }
+      long l5 = d();
+      long l2 = c();
+      long l1 = l2;
+      if (((d)localObject1).c() != -1) {
+        l1 = Math.min(l2, TimeUnit.SECONDS.toMillis(((d)localObject1).c()));
+      }
+      if (((d)localObject1).h() != -1) {}
+      for (l2 = TimeUnit.SECONDS.toMillis(((d)localObject1).h());; l2 = 0L)
       {
-        if (this.d) {
-          throw new IllegalStateException();
+        long l3 = l4;
+        if (!((d)localObject2).f())
+        {
+          l3 = l4;
+          if (((d)localObject1).g() != -1) {
+            l3 = TimeUnit.SECONDS.toMillis(((d)localObject1).g());
+          }
+        }
+        if ((!((d)localObject2).a()) && (l5 + l2 < l3 + l1))
+        {
+          localObject1 = this.c.f();
+          if (l2 + l5 >= l1) {
+            ((z.a)localObject1).a("Warning", "110 HttpURLConnection \"Response is stale\"");
+          }
+          if ((l5 > 86400000L) && (e())) {
+            ((z.a)localObject1).a("Warning", "113 HttpURLConnection \"Heuristic expiration\"");
+          }
+          return new fg(null, ((z.a)localObject1).a());
+        }
+        if (this.k != null)
+        {
+          localObject2 = "If-None-Match";
+          localObject1 = this.k;
+        }
+        for (;;)
+        {
+          r.a locala = this.b.c().b();
+          fa.a.a(locala, (String)localObject2, (String)localObject1);
+          return new fg(this.b.e().a(locala.a()).a(), this.c);
+          if (this.f != null)
+          {
+            localObject2 = "If-Modified-Since";
+            localObject1 = this.g;
+          }
+          else
+          {
+            if (this.d == null) {
+              break;
+            }
+            localObject2 = "If-Modified-Since";
+            localObject1 = this.e;
+          }
+        }
+        return new fg(this.b, null);
+      }
+    }
+    
+    private long c()
+    {
+      long l2 = 0L;
+      d locald = this.c.h();
+      if (locald.c() != -1) {
+        l1 = TimeUnit.SECONDS.toMillis(locald.c());
+      }
+      label83:
+      do
+      {
+        do
+        {
+          return l1;
+          if (this.h != null)
+          {
+            if (this.d != null)
+            {
+              l1 = this.d.getTime();
+              l1 = this.h.getTime() - l1;
+              if (l1 <= 0L) {
+                break label83;
+              }
+            }
+            for (;;)
+            {
+              return l1;
+              l1 = this.j;
+              break;
+              l1 = 0L;
+            }
+          }
+          l1 = l2;
+        } while (this.f == null);
+        l1 = l2;
+      } while (this.c.a().a().k() != null);
+      if (this.d != null) {}
+      for (long l1 = this.d.getTime();; l1 = this.i)
+      {
+        long l3 = l1 - this.f.getTime();
+        l1 = l2;
+        if (l3 <= 0L) {
+          break;
+        }
+        return l3 / 10L;
+      }
+    }
+    
+    private long d()
+    {
+      long l1 = 0L;
+      if (this.d != null) {
+        l1 = Math.max(0L, this.j - this.d.getTime());
+      }
+      long l2 = l1;
+      if (this.l != -1) {
+        l2 = Math.max(l1, TimeUnit.SECONDS.toMillis(this.l));
+      }
+      return l2 + (this.j - this.i) + (this.a - this.j);
+    }
+    
+    private boolean e()
+    {
+      return (this.c.h().c() == -1) && (this.h == null);
+    }
+    
+    public fg a()
+    {
+      fg localfg2 = b();
+      fg localfg1 = localfg2;
+      if (localfg2.a != null)
+      {
+        localfg1 = localfg2;
+        if (this.b.f().i()) {
+          localfg1 = new fg(null, null);
         }
       }
-      if (this.a.f == this) {
-        this.c.a(this, false);
-      }
-      this.d = true;
-    }
-  }
-  
-  private final class b
-  {
-    final String a;
-    final long[] b;
-    final File[] c;
-    final File[] d;
-    boolean e;
-    fg.a f;
-    long g;
-    
-    void a(d paramd)
-    {
-      long[] arrayOfLong = this.b;
-      int j = arrayOfLong.length;
-      int i = 0;
-      while (i < j)
-      {
-        long l = arrayOfLong[i];
-        paramd.i(32).l(l);
-        i += 1;
-      }
+      return localfg1;
     }
   }
 }

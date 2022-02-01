@@ -1,159 +1,60 @@
 package com.tencent.token;
 
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.global.g;
-
 public class cl
-  implements ce
 {
-  public long a = 0L;
-  public cj b = null;
-  private Handler d = null;
-  private ev e = null;
-  
-  static
+  public short a(byte[] paramArrayOfByte)
   {
-    if (!cl.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 2) || (paramArrayOfByte[0] != 2) || (paramArrayOfByte[(paramArrayOfByte.length - 1)] != 3)) {
+      return -1;
+    }
+    return cj.a(paramArrayOfByte, 20);
+  }
+  
+  public void a(cg paramcg)
+  {
+    paramcg.a = cj.b(paramcg.f, 0, 32);
+  }
+  
+  public void a(ch paramch, byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 2) || (paramArrayOfByte[0] != 2) || (paramArrayOfByte[(paramArrayOfByte.length - 1)] != 3)) {
+      return;
+    }
+    paramch.g = cj.b(paramArrayOfByte, 1);
+    paramch.h = cj.a(paramArrayOfByte, 5);
+    paramch.i = paramArrayOfByte[7];
+    paramch.j = cj.a(paramArrayOfByte, 8);
+    paramch.k = cj.a(paramArrayOfByte, 10);
+    paramch.l = ((int)cj.b(paramArrayOfByte, 12));
+    paramch.m = ((int)cj.b(paramArrayOfByte, 16));
+    paramch.n = cj.a(paramArrayOfByte, 20);
+    paramch.o = cj.a(paramArrayOfByte, 22);
+    paramch.p = cj.a(paramArrayOfByte, 24);
+    paramch.q = cj.a(paramArrayOfByte, 26);
+    paramch.r = cj.b(paramArrayOfByte, 28, 64);
+    paramch.b = ((int)cj.b(paramArrayOfByte, 92));
+    paramch.c = cj.b(paramArrayOfByte, 96, 256);
+    paramch.d = ((int)cj.b(paramArrayOfByte, 352));
+    paramch.e = cj.a(paramArrayOfByte, 356);
+    cj.a(paramch.t, 0, paramArrayOfByte, 358, paramch.t.length);
+    int j = paramch.t.length + 358;
+    int k = paramArrayOfByte.length - 1 - paramch.s.length - j;
+    int i = j;
+    if (k > 0)
     {
-      c = bool;
-      return;
+      paramch.f = new byte[k];
+      cj.a(paramch.f, 0, paramArrayOfByte, j, paramch.f.length);
+      i = j + paramch.f.length;
     }
+    cj.a(paramch.s, 0, paramArrayOfByte, i, paramch.s.length);
+    i = paramch.s.length;
   }
   
-  public cl()
+  public byte[] a(long paramLong, int paramInt)
   {
-    d();
-  }
-  
-  public void a()
-  {
-    if (this.d == null) {
-      return;
-    }
-    this.d.sendEmptyMessage(10);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("serTime", paramInt);
-    localMessage.what = 13;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("errCode", paramInt);
-    localBundle.putString("error", paramString);
-    localMessage.what = 9;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
-  }
-  
-  public void a(Handler paramHandler)
-  {
-    this.d = paramHandler;
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("error", paramString);
-    localMessage.what = 14;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
-  }
-  
-  public void b()
-  {
-    if (this.d == null) {
-      return;
-    }
-    this.d.sendEmptyMessage(12);
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("errCode", paramInt);
-    localBundle.putString("error", paramString);
-    localMessage.what = 11;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
-  }
-  
-  public void b(String paramString)
-  {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("ucSmsPort", paramString);
-    localMessage.what = 1;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
-  }
-  
-  public void c()
-  {
-    if (this.d == null) {
-      return;
-    }
-    this.d.sendEmptyMessage(15);
-  }
-  
-  public void c(String paramString)
-  {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("error", paramString);
-    localMessage.what = 2;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
-  }
-  
-  public void d()
-  {
-    try
-    {
-      this.e = eu.a();
-      if ((!c) && (this.e == null)) {
-        throw new AssertionError();
-      }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      g.c("RESULT_ERROR!!!" + localException.getMessage());
-      return;
-    }
-    this.b = new cj(this);
-    this.b.a(this.e);
+    ci localci = new ci();
+    localci.a(paramLong, paramInt, (int)(System.currentTimeMillis() / 1000L), (short)1);
+    return localci.a();
   }
 }
 

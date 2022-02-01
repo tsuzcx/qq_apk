@@ -1,12 +1,12 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.bz;
 import com.tencent.token.ca;
 import com.tencent.token.cb;
+import com.tencent.token.cc;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.cq;
-import com.tencent.token.dn;
+import com.tencent.token.cr;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -23,7 +23,7 @@ public class ProtoBindTokenH5
   
   protected String a()
   {
-    String str3 = bz.a().b();
+    String str3 = ca.a().b();
     if (str3 == null)
     {
       this.a.b(104);
@@ -37,17 +37,17 @@ public class ProtoBindTokenH5
       str1 = str2;
       localJSONObject.put("real_uin", this.d);
       str1 = str2;
-      int i = ca.a + 1;
+      int i = cb.a + 1;
       str1 = str2;
-      ca.a = i;
+      cb.a = i;
       str1 = str2;
       localJSONObject.put("seq_id", i);
       str1 = str2;
-      localJSONObject.put("op_time", cb.c().s() / 1000L);
+      localJSONObject.put("op_time", cc.c().s() / 1000L);
       str1 = str2;
-      localJSONObject.put("token_seq", cb.c().k());
+      localJSONObject.put("token_seq", cc.c().k());
       str1 = str2;
-      localJSONObject.put("token_code", cb.c().o());
+      localJSONObject.put("token_code", cc.c().o());
       str1 = str2;
       localJSONObject.put("imei", l.b(RqdApplication.l()));
       str1 = str2;
@@ -74,10 +74,10 @@ public class ProtoBindTokenH5
     return str1;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.d = ((Long)paramdn.c.get("param.realuin")).longValue();
-    this.e = ((String)paramdn.c.get("param.bind.sig"));
+    this.d = ((Long)paramdo.c.get("param.realuin")).longValue();
+    this.e = ((String)paramdo.c.get("param.bind.sig"));
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -98,16 +98,16 @@ public class ProtoBindTokenH5
         byte[] arrayOfByte = l.d(paramJSONObject.getString("seed"));
         if (arrayOfByte != null)
         {
-          cb.c().e();
-          cb.c().a(arrayOfByte);
-          cb.c().i();
+          cc.c().e();
+          cc.c().a(arrayOfByte);
+          cc.c().i();
         }
       }
       long l = paramJSONObject.getLong("server_time");
-      cb.c().b(l);
-      paramJSONObject = cq.a().d(this.d);
+      cc.c().b(l);
+      paramJSONObject = cr.a().d(this.d);
       if (paramJSONObject != null) {
-        cq.a().b(paramJSONObject);
+        cr.a().b(paramJSONObject);
       }
       this.a.c();
       return;

@@ -1,8 +1,10 @@
 package com.tencent.token;
 
+import java.security.cert.X509Certificate;
+
 public abstract interface gi
 {
-  public abstract int a(String paramString, int paramInt);
+  public abstract X509Certificate a(X509Certificate paramX509Certificate);
 }
 
 

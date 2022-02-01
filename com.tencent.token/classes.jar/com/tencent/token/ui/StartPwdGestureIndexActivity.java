@@ -8,10 +8,10 @@ import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
+import com.tencent.token.bv;
+import com.tencent.token.cd;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cq;
+import com.tencent.token.cr;
 import com.tencent.token.global.e;
 import com.tencent.token.utils.l;
 import com.tencent.token.utils.m;
@@ -79,14 +79,14 @@ public class StartPwdGestureIndexActivity
         StartPwdGestureIndexActivity.this.startActivity(paramAnonymousView);
       }
     });
-    if (cq.a().e() == null) {
+    if (cr.a().e() == null) {
       this.mFacePwdView.setVisibility(8);
     }
   }
   
   private void refreshFacePwd()
   {
-    if (cq.a().h())
+    if (cr.a().h())
     {
       QQUser localQQUser = m.f();
       if ((localQQUser != null) && (localQQUser.mIsRegisterFacePwd))
@@ -120,17 +120,17 @@ public class StartPwdGestureIndexActivity
   public void onResume()
   {
     super.onResume();
-    if (cq.a().k) {
+    if (cr.a().k) {
       refreshFacePwd();
     }
-    while (cc.a().c())
+    while (cd.a().c())
     {
       this.mGesturePwdTxt.setText(2131231443);
       this.mGesturePwdTxt.setTextColor(getResources().getColor(2131492937));
       this.mGesturePwdView.setOnClickListener(this.mManageGesturePwdListener);
       return;
-      if (cq.a().e() != null) {
-        ca.a().b(this.mHandler);
+      if (cr.a().e() != null) {
+        bv.a().e(this.mHandler);
       }
     }
     this.mGesturePwdTxt.setText(2131231442);

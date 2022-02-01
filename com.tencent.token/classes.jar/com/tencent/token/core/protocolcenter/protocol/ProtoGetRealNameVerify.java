@@ -1,10 +1,10 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.bz;
-import com.tencent.token.cb;
+import com.tencent.token.ca;
+import com.tencent.token.cc;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -25,23 +25,23 @@ public class ProtoGetRealNameVerify
   
   protected String a()
   {
-    String str1 = bz.a().b();
+    String str1 = ca.a().b();
     if (str1 == null)
     {
       this.a.b(104);
       return null;
     }
-    String str2 = l.a(new Object[] { "real_uin", Long.valueOf(this.g), "seq_id", Integer.valueOf(this.h), "op_time", Long.valueOf(cb.c().s() / 1000L), "scene_id", Integer.valueOf(this.i) });
+    String str2 = l.a(new Object[] { "real_uin", Long.valueOf(this.g), "seq_id", Integer.valueOf(this.h), "op_time", Long.valueOf(cc.c().s() / 1000L), "scene_id", Integer.valueOf(this.i) });
     str1 = "?uin=" + this.f + "&aq_base_sid=" + str1 + "&data=" + str2;
     return c.e() + "/cn/mbtoken3/mbtoken3_realname_lip" + str1;
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.f = ((Long)paramdn.c.get("param.uinhash")).longValue();
-    this.g = ((Long)paramdn.c.get("param.realuin")).longValue();
-    this.i = ((Integer)paramdn.c.get("param.scene.id")).intValue();
-    this.h = paramdn.j;
+    this.f = ((Long)paramdo.c.get("param.uinhash")).longValue();
+    this.g = ((Long)paramdo.c.get("param.realuin")).longValue();
+    this.i = ((Integer)paramdo.c.get("param.scene.id")).intValue();
+    this.h = paramdo.j;
   }
   
   protected void a(JSONObject paramJSONObject)

@@ -4,10 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.bz;
-import com.tencent.token.cb;
+import com.tencent.token.ca;
+import com.tencent.token.cc;
 import com.tencent.token.core.protocolcenter.d;
-import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
@@ -29,7 +29,7 @@ public class ProtoFacePK
   
   protected String a()
   {
-    if (bz.a().b() == null)
+    if (ca.a().b() == null)
     {
       this.a.b(104);
       return null;
@@ -37,14 +37,14 @@ public class ProtoFacePK
     return c.e() + "/cn/mbtoken3/mbtoken3_face_pk";
   }
   
-  protected void a(dn paramdn)
+  protected void a(do paramdo)
   {
-    this.d = ((Long)paramdn.c.get("param.uinhash")).longValue();
-    this.e = paramdn.j;
-    this.g = ((byte[])paramdn.c.get("param.facedata"));
-    paramdn = paramdn.c.get("param.videopath");
-    if (paramdn != null) {
-      this.f = paramdn.toString();
+    this.d = ((Long)paramdo.c.get("param.uinhash")).longValue();
+    this.e = paramdo.j;
+    this.g = ((byte[])paramdo.c.get("param.facedata"));
+    paramdo = paramdo.c.get("param.videopath");
+    if (paramdo != null) {
+      this.f = paramdo.toString();
     }
   }
   
@@ -77,29 +77,29 @@ public class ProtoFacePK
     a(10022, RqdApplication.l().getString(2131230925));
   }
   
-  public dn b(dn paramdn)
+  public do b(do paramdo)
   {
-    int i = paramdn.j;
-    paramdn.m = 1;
-    paramdn.n = new ContentValues(3);
-    paramdn.n.put("aq_base_sid", bz.a().b());
-    paramdn.n.put("uin", Long.valueOf(this.d));
+    int i = paramdo.j;
+    paramdo.m = 1;
+    paramdo.n = new ContentValues(3);
+    paramdo.n.put("aq_base_sid", ca.a().b());
+    paramdo.n.put("uin", Long.valueOf(this.d));
     String str = b.a(l.c(this.g)).replace('+', '-').replace('=', '_');
-    paramdn.n.put("img_data", str);
-    paramdn.n.put("op_time", Integer.valueOf((int)(cb.c().s() / 1000L)));
-    paramdn.n.put("seq_id", Integer.valueOf(i));
+    paramdo.n.put("img_data", str);
+    paramdo.n.put("op_time", Integer.valueOf((int)(cc.c().s() / 1000L)));
+    paramdo.n.put("seq_id", Integer.valueOf(i));
     if (this.f != null)
     {
       str = b.a(l.c(m.a(this.f))).replace('+', '-').replace('=', '_');
-      paramdn.n.put("live_video_data", str);
+      paramdo.n.put("live_video_data", str);
     }
     this.g = null;
-    return paramdn;
+    return paramdo;
   }
   
   protected void b()
   {
-    if (!this.b.e)
+    if ((!this.b.e) && (this.b.d != null))
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.obj = this.h;
