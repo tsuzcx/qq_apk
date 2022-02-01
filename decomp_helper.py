@@ -5,20 +5,31 @@ def del_all(pn:str):
         for fn in os.listdir(pn):
             fn = os.path.join(pn,fn)
             del_all(fn)
-        os.rmdir(pn)
+        try:
+            os.rmdir(pn)
+        except Exception:
+            pass
         return
-    os.remove(pn)
+    try:
+        os.remove(pn)
+    except Exception:
+        pass
 
 def move_all(pn_from,pn_to):
     for fn in os.listdir(pn_from):
         fn_from = os.path.join(pn_from,fn)
         fn_to = os.path.join(pn_to,fn)
-        if os.path.isdir(fn_from):
-            os.makedirs(fn_to,exist_ok=True)
+        if os.path.exists(fn_to) and os.path.isdir(fn_from):
             move_all(fn_from,fn_to)
-            os.rmdir(fn_from)
+            try:
+                os.rmdir(fn_from)
+            except Exception:
+                pass
             continue
-        os.rename(fn_from,fn_to)
+        try:
+            os.rename(fn_from,fn_to)
+        except Exception:
+            continue
 
 glb_jar_list = []
 
